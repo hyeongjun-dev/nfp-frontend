@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const initialSettings = {
   direction: 'ltr',
   responsiveFontSizes: true,
-  theme: 'light'
+  theme: 'dark'
 };
 
 export const restoreSettings = () => {

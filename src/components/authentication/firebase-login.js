@@ -31,7 +31,7 @@ export const FirebaseLogin = (props) => {
         await signInWithEmailAndPassword(values.email, values.password);
 
         if (isMounted()) {
-          const returnUrl = router.query.returnUrl || '/dashboard';
+          const returnUrl = router.query.returnUrl || '/app';
           router.push(returnUrl);
         }
       } catch (err) {

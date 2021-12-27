@@ -5,11 +5,11 @@ import {
   AppBar,
   Avatar,
   Badge,
-  Box,
+  Box, Button,
   ButtonBase,
   IconButton,
   Toolbar,
-  Tooltip
+  Tooltip, Typography
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { Menu as MenuIcon } from '../../icons/menu';
@@ -22,6 +22,7 @@ import { Bell as BellIcon } from '../../icons/bell';
 import { UserCircle as UserCircleIcon } from '../../icons/user-circle';
 import { Search as SearchIcon } from '../../icons/search';
 import { Users as UsersIcon } from '../../icons/users';
+import {Selector as SelectorIcon} from "../../icons/selector";
 
 const languages = {
   en: '/static/icons/uk_flag.svg',
@@ -279,11 +280,45 @@ export const DashboardNavbar = (props) => {
             <MenuIcon fontSize="small" />
           </IconButton>
           <Box sx={{ flexGrow: 1 }} />
-          <LanguageButton />
-          <ContentSearchButton />
-          <ContactsButton />
-          <NotificationsButton />
-          <AccountButton />
+          {/*<LanguageButton />*/}
+          {/*<ContentSearchButton />*/}
+          {/*<ContactsButton />*/}
+          {/*<NotificationsButton />*/}
+          {/*<AccountButton />*/}
+
+          <Box
+              sx={{
+                alignItems: 'center',
+                backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                display: 'flex',
+                justifyContent: 'space-between',
+                px: 3,
+                py: '11px',
+                borderRadius: 1
+              }}
+          >
+            <div>
+              <Typography
+                  color="inherit"
+                  variant="subtitle1"
+              >
+                Connected: SPXADFDFD .... STT2EKYX
+              </Typography>
+            </div>
+          </Box>
+          {' '}
+          <Box
+              sx={{
+                alignItems: 'center',
+                display: 'flex',
+                ml: 2
+              }}>
+            <Button
+                variant="contained"
+              >
+              Connect wallet
+            </Button>
+          </Box>
         </Toolbar>
       </DashboardNavbarRoot>
     </>

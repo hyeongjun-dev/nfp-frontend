@@ -46,7 +46,7 @@ export const MailLabel = (props, ref) => {
   const displayUnreadCount = Boolean(label.unreadCount && label.unreadCount > 0);
   const href = label.id !== 'inbox'
     ? `/dashboard/mail?label=${label.id}`
-    : '/dashboard/mail';
+    : '/app/mail';
 
   return (
     <ListItem

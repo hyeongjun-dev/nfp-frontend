@@ -57,7 +57,7 @@ export const MailDetails = (props) => {
 
   const backHref = (label && label !== 'inbox')
     ? `/dashboard/mail?label=${label}`
-    : '/dashboard/mail';
+    : '/app/mail';
 
   return (
     <Box

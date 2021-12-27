@@ -17,7 +17,7 @@ export const GuestGuard = (props) => {
 
       // You should remove the "disableGuard" check, because it's meant to be used only in the demo.
       if (auth.isAuthenticated && disableGuard !== 'true') {
-        router.push('/dashboard');
+        router.push('/app');
       } else {
         setChecked(true);
       }

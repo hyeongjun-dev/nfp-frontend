@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5b6839ef-f26d-41d3-b137-2d0a09bdfadb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/dashboard/account/account-fiat-balance.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dashboard/account/account-token-balance.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dashboard/account/account-token-list.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dashboard/account/account-wallet-address.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/app/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_docs/auth-guard.md" beforeDir="false" afterPath="$PROJECT_DIR$/_docs/auth-guard.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authentication/amplify-login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/amplify-login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authentication/auth0-login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/auth0-login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authentication/auth0-register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/auth0-register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authentication/firebase-login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/firebase-login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authentication/firebase-register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/firebase-register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authentication/guest-guard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/guest-guard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authentication/jwt-login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/jwt-login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authentication/jwt-register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/jwt-register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dashboard/dashboard-navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/dashboard-navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dashboard/dashboard-sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/dashboard-sidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dashboard/mail/mail-details.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/mail/mail-details.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dashboard/mail/mail-label.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/mail/mail-label.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dashboard/product/product-create-form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/product/product-create-form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/contexts/settings-context.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contexts/settings-context.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/account.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/account.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/analytics.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/analytics.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/calendar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/chat.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/customers/[customerId]/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/customers/[customerId]/edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/customers/[customerId]/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/customers/[customerId]/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/customers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/customers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/finance.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/finance.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/invoices/[invoiceId].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/invoices/[invoiceId].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/invoices/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/invoices/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/jobs/companies/[companyId].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/jobs/companies/[companyId].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/jobs/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/jobs/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/jobs/new.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/jobs/new.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/kanban.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/kanban.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/logistics.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/logistics.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/mail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/mail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/orders/[orderId].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/orders/[orderId].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/orders/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/orders/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/pricing.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/pricing.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/products/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/products/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/products/new.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/products/new.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/social/feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/social/feed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/social/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/social/profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="ProjectId" id="22sRfUwnXJPKGDPrd1gF1mBryJ7" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/dashboard/account" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="MTHome" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/dashboard/account" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5b6839ef-f26d-41d3-b137-2d0a09bdfadb" name="Changes" comment="" />
+      <created>1640624412333</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1640624412333</updated>
+      <workItem from="1640624416044" duration="5680000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>

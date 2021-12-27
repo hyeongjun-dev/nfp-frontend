@@ -11,7 +11,7 @@ the app provides a `hoc` to prevent the entire page render.
 ## Example
 
 ```jsx
-// src/pages/dashboard/index.js
+// src/pages/app/index.js
 import { withAuthGuard } from '../../hocs/with-auth-guard';
 
 const Overview = () => {

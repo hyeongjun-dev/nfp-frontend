@@ -15,7 +15,7 @@ export const Auth0Register = (props) => {
       await loginWithPopup();
 
       if (isMounted()) {
-        const returnUrl = router.query.returnUrl || '/dashboard';
+        const returnUrl = router.query.returnUrl || '/app';
         router.push(returnUrl);
       }
     } catch (err) {

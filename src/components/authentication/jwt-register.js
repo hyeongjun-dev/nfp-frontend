@@ -41,7 +41,7 @@ export const JWTRegister = (props) => {
         await register(values.email, values.name, values.password);
 
         if (isMounted()) {
-          const returnUrl = router.query.returnUrl || '/dashboard';
+          const returnUrl = router.query.returnUrl || '/app';
           router.push(returnUrl);
         }
       } catch (err) {
