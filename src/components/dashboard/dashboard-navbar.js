@@ -6,7 +6,7 @@ import {
   Avatar,
   Badge,
   Box, Button,
-  ButtonBase,
+  ButtonBase, Grow,
   IconButton,
   Toolbar,
   Tooltip, Typography
@@ -290,27 +290,28 @@ export const DashboardNavbar = (props) => {
           {/*<ContactsButton />*/}
           {/*<NotificationsButton />*/}
           {/*<AccountButton />*/}
-
-          <Box
-            sx={{
-              alignItems: 'center',
-              backgroundColor: 'rgba(255, 255, 255, 0.04)',
-              display: 'flex',
-              justifyContent: 'space-between',
-              px: 3,
-              py: '11px',
-              borderRadius: 1
-            }}
-          >
-            <div>
-              <Typography
-                color="inherit"
-                variant="subtitle1"
-              >
-                Connected: {connected ? ownerStxAddress : 'SPXADFDFD .... STT2EKYX'}
-              </Typography>
-            </div>
-          </Box>
+          <Grow in={connected}>
+            <Box
+              sx={{
+                alignItems: 'center',
+                backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                display: 'flex',
+                justifyContent: 'space-between',
+                px: 3,
+                py: '11px',
+                borderRadius: 1
+              }}
+            >
+              <div>
+                <Typography
+                  color="inherit"
+                  variant="subtitle1"
+                >
+                  Connected: {connected ? ownerStxAddress : 'SPXADFDFD .... STT2EKYX'}
+                </Typography>
+              </div>
+            </Box>
+          </Grow>
           {' '}
           <Connect/>
         </Toolbar>

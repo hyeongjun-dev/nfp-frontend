@@ -34,7 +34,7 @@ export const Connect = (props) => {
           variant="contained"
           onClick={() => handleSignOut()}
         >
-          SignOut
+          DISCONNECT
         </Button>
       </Box>
     )
