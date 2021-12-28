@@ -5,51 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b6839ef-f26d-41d3-b137-2d0a09bdfadb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/dashboard/account/account-fiat-balance.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/dashboard/account/account-token-balance.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/dashboard/account/account-token-list.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/dashboard/account/account-wallet-address.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/app/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_docs/auth-guard.md" beforeDir="false" afterPath="$PROJECT_DIR$/_docs/auth-guard.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/amplify-login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/amplify-login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/auth0-login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/auth0-login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/auth0-register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/auth0-register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/firebase-login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/firebase-login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/firebase-register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/firebase-register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/guest-guard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/guest-guard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/jwt-login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/jwt-login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/authentication/jwt-register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/jwt-register.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/connect/auth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/connect/connect.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/connect/constants.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/slices/connect.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dashboard/dashboard-layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/dashboard-layout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/dashboard/dashboard-navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/dashboard-navbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dashboard/dashboard-sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/dashboard-sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dashboard/mail/mail-details.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/mail/mail-details.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dashboard/mail/mail-label.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/mail/mail-label.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dashboard/product/product-create-form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/product/product-create-form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contexts/settings-context.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contexts/settings-context.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/account.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/account.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/analytics.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/analytics.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/calendar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/chat.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/customers/[customerId]/edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/customers/[customerId]/edit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/customers/[customerId]/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/customers/[customerId]/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/customers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/customers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/finance.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/finance.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/invoices/[invoiceId].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/invoices/[invoiceId].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/invoices/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/invoices/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/jobs/companies/[companyId].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/jobs/companies/[companyId].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/jobs/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/jobs/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/jobs/new.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/jobs/new.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/kanban.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/kanban.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/logistics.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/logistics.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/mail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/mail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/orders/[orderId].js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/orders/[orderId].js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/orders/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/orders/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/pricing.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/pricing.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/products/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/products/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/products/new.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/products/new.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/social/feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/social/feed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/social/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/app/social/profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/root-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/root-reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,19 +49,38 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/dashboard/account" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="MTHome" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/components/dashboard/account" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -107,11 +91,23 @@
       <option name="presentableId" value="Default" />
       <updated>1640624412333</updated>
       <workItem from="1640624416044" duration="5680000" />
+      <workItem from="1640682195107" duration="4208000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

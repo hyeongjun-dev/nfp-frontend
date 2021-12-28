@@ -23,6 +23,7 @@ import { UserCircle as UserCircleIcon } from '../../icons/user-circle';
 import { Search as SearchIcon } from '../../icons/search';
 import { Users as UsersIcon } from '../../icons/users';
 import {Selector as SelectorIcon} from "../../icons/selector";
+import {Connect} from "../../connect/connect";
 
 const languages = {
   en: '/static/icons/uk_flag.svg',
@@ -307,18 +308,7 @@ export const DashboardNavbar = (props) => {
             </div>
           </Box>
           {' '}
-          <Box
-              sx={{
-                alignItems: 'center',
-                display: 'flex',
-                ml: 2
-              }}>
-            <Button
-                variant="contained"
-              >
-              Connect wallet
-            </Button>
-          </Box>
+          <Connect isSignedIn={props.isSighedIn}/>
         </Toolbar>
       </DashboardNavbarRoot>
     </>
