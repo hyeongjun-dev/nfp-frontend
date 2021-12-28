@@ -4,17 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b6839ef-f26d-41d3-b137-2d0a09bdfadb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/connect/auth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/connect/connect.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/connect/constants.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/slices/connect.js" afterDir="false" />
+    <list default="true" id="5b6839ef-f26d-41d3-b137-2d0a09bdfadb" name="Changes" comment="Add Connect Wallet function">
+      <change afterPath="$PROJECT_DIR$/src/connect/account.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/connect/hooks.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dashboard/dashboard-layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/dashboard-layout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/dashboard/dashboard-navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/dashboard-navbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/root-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/root-reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/connect/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/connect/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/connect/connect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/connect/connect.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,8 +88,16 @@
       <option name="presentableId" value="Default" />
       <updated>1640624412333</updated>
       <workItem from="1640624416044" duration="5680000" />
-      <workItem from="1640682195107" duration="4208000" />
+      <workItem from="1640682195107" duration="4956000" />
     </task>
+    <task id="LOCAL-00001" summary="Add Connect Wallet function">
+      <created>1640686601715</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1640686601715</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,5 +116,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Add Connect Wallet function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Connect Wallet function" />
   </component>
 </project>

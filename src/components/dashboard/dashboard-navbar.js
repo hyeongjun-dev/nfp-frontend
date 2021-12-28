@@ -1,6 +1,6 @@
-import { useRef, useState } from 'react';
+import {useRef, useState} from 'react';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
 import {
   AppBar,
   Avatar,
@@ -11,19 +11,21 @@ import {
   Toolbar,
   Tooltip, Typography
 } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import { Menu as MenuIcon } from '../../icons/menu';
-import { AccountPopover } from './account-popover';
-import { ContactsPopover } from './contacts-popover';
-import { ContentSearchDialog } from './content-search-dialog';
-import { NotificationsPopover } from './notifications-popover';
-import { LanguagePopover } from './language-popover';
-import { Bell as BellIcon } from '../../icons/bell';
-import { UserCircle as UserCircleIcon } from '../../icons/user-circle';
-import { Search as SearchIcon } from '../../icons/search';
-import { Users as UsersIcon } from '../../icons/users';
+import {styled} from '@mui/material/styles';
+import {Menu as MenuIcon} from '../../icons/menu';
+import {AccountPopover} from './account-popover';
+import {ContactsPopover} from './contacts-popover';
+import {ContentSearchDialog} from './content-search-dialog';
+import {NotificationsPopover} from './notifications-popover';
+import {LanguagePopover} from './language-popover';
+import {Bell as BellIcon} from '../../icons/bell';
+import {UserCircle as UserCircleIcon} from '../../icons/user-circle';
+import {Search as SearchIcon} from '../../icons/search';
+import {Users as UsersIcon} from '../../icons/users';
 import {Selector as SelectorIcon} from "../../icons/selector";
 import {Connect} from "../../connect/connect";
+import {useSelector} from "../../store";
+import {useConnect} from "../../connect/auth";
 
 const languages = {
   en: '/static/icons/uk_flag.svg',
@@ -31,7 +33,7 @@ const languages = {
   es: '/static/icons/es_flag.svg'
 };
 
-const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
+const DashboardNavbarRoot = styled(AppBar)(({theme}) => ({
   backgroundColor: theme.palette.background.paper,
   ...(theme.palette.mode === 'light'
     ? {
@@ -48,7 +50,7 @@ const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
 
 const LanguageButton = () => {
   const anchorRef = useRef(null);
-  const { i18n } = useTranslation();
+  const {i18n} = useTranslation();
   const [openPopover, setOpenPopover] = useState(false);
 
   const handleOpenPopover = () => {
@@ -64,7 +66,7 @@ const LanguageButton = () => {
       <IconButton
         onClick={handleOpenPopover}
         ref={anchorRef}
-        sx={{ ml: 1 }}
+        sx={{ml: 1}}
       >
         <Box
           sx={{
@@ -107,9 +109,9 @@ const ContentSearchButton = () => {
       <Tooltip title="Search">
         <IconButton
           onClick={handleOpenSearchDialog}
-          sx={{ ml: 1 }}
+          sx={{ml: 1}}
         >
-          <SearchIcon fontSize="small" />
+          <SearchIcon fontSize="small"/>
         </IconButton>
       </Tooltip>
       <ContentSearchDialog
@@ -137,10 +139,10 @@ const ContactsButton = () => {
       <Tooltip title="Contacts">
         <IconButton
           onClick={handleOpenPopover}
-          sx={{ ml: 1 }}
+          sx={{ml: 1}}
           ref={anchorRef}
         >
-          <UsersIcon fontSize="small" />
+          <UsersIcon fontSize="small"/>
         </IconButton>
       </Tooltip>
       <ContactsPopover
@@ -176,14 +178,14 @@ const NotificationsButton = () => {
       <Tooltip title="Notifications">
         <IconButton
           ref={anchorRef}
-          sx={{ ml: 1 }}
+          sx={{ml: 1}}
           onClick={handleOpenPopover}
         >
           <Badge
             color="error"
             badgeContent={unread}
           >
-            <BellIcon fontSize="small" />
+            <BellIcon fontSize="small"/>
           </Badge>
         </IconButton>
       </Tooltip>
@@ -234,7 +236,7 @@ const AccountButton = () => {
           }}
           src={user.avatar}
         >
-          <UserCircleIcon fontSize="small" />
+          <UserCircleIcon fontSize="small"/>
         </Avatar>
       </Box>
       <AccountPopover
@@ -247,7 +249,9 @@ const AccountButton = () => {
 };
 
 export const DashboardNavbar = (props) => {
-  const { onOpenSidebar, ...other } = props;
+  const {onOpenSidebar, ...other} = props;
+  const {connected} = useSelector((state) => state.connect);
+  const {ownerStxAddress} = useConnect()
 
   return (
     <>
@@ -278,9 +282,9 @@ export const DashboardNavbar = (props) => {
               }
             }}
           >
-            <MenuIcon fontSize="small" />
+            <MenuIcon fontSize="small"/>
           </IconButton>
-          <Box sx={{ flexGrow: 1 }} />
+          <Box sx={{flexGrow: 1}}/>
           {/*<LanguageButton />*/}
           {/*<ContentSearchButton />*/}
           {/*<ContactsButton />*/}
@@ -288,27 +292,27 @@ export const DashboardNavbar = (props) => {
           {/*<AccountButton />*/}
 
           <Box
-              sx={{
-                alignItems: 'center',
-                backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                display: 'flex',
-                justifyContent: 'space-between',
-                px: 3,
-                py: '11px',
-                borderRadius: 1
-              }}
+            sx={{
+              alignItems: 'center',
+              backgroundColor: 'rgba(255, 255, 255, 0.04)',
+              display: 'flex',
+              justifyContent: 'space-between',
+              px: 3,
+              py: '11px',
+              borderRadius: 1
+            }}
           >
             <div>
               <Typography
-                  color="inherit"
-                  variant="subtitle1"
+                color="inherit"
+                variant="subtitle1"
               >
-                Connected: SPXADFDFD .... STT2EKYX
+                Connected: {connected ? ownerStxAddress : 'SPXADFDFD .... STT2EKYX'}
               </Typography>
             </div>
           </Box>
           {' '}
-          <Connect isSignedIn={props.isSighedIn}/>
+          <Connect/>
         </Toolbar>
       </DashboardNavbarRoot>
     </>

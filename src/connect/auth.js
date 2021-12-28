@@ -4,6 +4,7 @@ import { AppConfig, UserSession } from '@stacks/auth';
 import { authOrigin } from './constants';
 import { atom, useAtom } from 'jotai';
 import { useUpdateAtom } from 'jotai/utils';
+import {useStxAddresses} from "./hooks";
 
 const appConfig = new AppConfig(['store_write', 'publish_data']);
 export const userSessionState = atom(new UserSession({ appConfig }));
@@ -14,6 +15,7 @@ export const useConnect = () => {
   const [userSession] = useAtom(userSessionState);
   const setUserData = useUpdateAtom(userDataState);
   const setAuthResponse = useUpdateAtom(authResponseState);
+  const {ownerStxAddress} = useStxAddresses(userSession);
 
   const onFinish = async payload => {
     setAuthResponse(payload.authResponse);
@@ -43,5 +45,5 @@ export const useConnect = () => {
     userSession?.signUserOut("/app" + parameter);
   }, [userSession]);
 
-  return { handleOpenAuth, handleSignOut, authOptions, userSession};
+  return { handleOpenAuth, handleSignOut, authOptions, userSession, ownerStxAddress};
 };

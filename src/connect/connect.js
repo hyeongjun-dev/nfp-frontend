@@ -1,7 +1,6 @@
 import {Box, Button} from "@mui/material";
 import {useConnect} from "./auth";
 import {useSelector} from "../store";
-import {useEffect} from "react";
 
 export const Connect = (props) => {
   const {handleOpenAuth, handleSignOut} = useConnect();
