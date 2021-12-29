@@ -15,6 +15,7 @@ export const Connect = (props) => {
           ml: 2
         }}>
         <Button
+          size={"small"}
           variant="contained"
           onClick={() => handleOpenAuth()}
         >
@@ -31,6 +32,7 @@ export const Connect = (props) => {
           ml: 2
         }}>
         <Button
+          size={"small"}
           variant="contained"
           onClick={() => handleSignOut()}
         >
