@@ -1,10 +1,22 @@
 import {useEffect, useState} from 'react';
 import Head from 'next/head';
-import {Box, Button, Card, CardContent, CardHeader, Container, Divider, TextField, Typography} from '@mui/material';
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  Container,
+  Divider, IconButton,
+  InputAdornment, OutlinedInput,
+  TextField,
+  Typography
+} from '@mui/material';
 import {DashboardLayout} from '../../components/dashboard/dashboard-layout';
 import {gtm} from '../../lib/gtm';
 import {useConnect} from "../../connect/auth";
 import {useSelector} from "../../store";
+import {PhotoCamera, Visibility} from "@mui/icons-material";
 
 const Stacking = () => {
   const [displayBanner, setDisplayBanner] = useState(true);
@@ -65,8 +77,16 @@ const Stacking = () => {
               <CardHeader
                 subheader={(
                   <Box sx={{mt: 2}}>
-                    <TextField
-                      fullWidth/>
+                    <OutlinedInput
+                      fullWidth
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <Button>
+                            Max
+                          </Button>
+                        </InputAdornment>
+                      }
+                    />
                   </Box>
                 )}
                 sx={{pb: 0}}

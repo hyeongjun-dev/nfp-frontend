@@ -307,7 +307,7 @@ export const DashboardNavbar = (props) => {
                   color="inherit"
                   variant="body2"
                 >
-                  Connected: {connected ? ownerStxAddress.substring(0,8) + '...' + ownerStxAddress.substring(ownerStxAddress.length-7, ownerStxAddress.length) : 'SPXADFDFD .... STT2EKYX'}
+                  Connected: {connected ? ownerStxAddress : 'SPXADFDFD .... STT2EKYX'}
                 </Typography>
               </div>
             </Box>
