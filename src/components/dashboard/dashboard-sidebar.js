@@ -38,6 +38,11 @@ const getSections = (t) => [
         title: t('Overview'),
         path: '/app',
         icon: <HomeIcon fontSize="small" />
+      },
+      {
+        title: t('Stacking'),
+        path: '/stacking',
+        icon: <HomeIcon fontSize="small" />
       }
     ]
   }

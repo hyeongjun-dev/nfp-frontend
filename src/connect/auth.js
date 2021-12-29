@@ -28,7 +28,7 @@ export const useConnect = () => {
     authOrigin: authOrigin,
     onFinish,
     userSession, // usersession is already in state, provide it here
-    redirectTo: '/',
+    redirectTo: window.location.pathname,
     manifestPath: '/manifest.json',
     appDetails: {
       name: 'NFP',
@@ -41,8 +41,9 @@ export const useConnect = () => {
   };
 
   const handleSignOut = useCallback(() => {
+    let path = window.location.pathname
     let parameter = window.location.search
-    userSession?.signUserOut("/app" + parameter);
+    userSession?.signUserOut(path + parameter);
   }, [userSession]);
 
   return { handleOpenAuth, handleSignOut, authOptions, userSession, ownerStxAddress};
