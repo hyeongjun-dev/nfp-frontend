@@ -38,7 +38,7 @@ export const {reducer} = itemSlice;
 
 // set up axios - simple json-server prototype config here
 const api = axios.create({
-  baseURL: "http://localhost:3001",
+  baseURL: "http://localhost:3002",
   withCredentials: false,
   headers: {
     Accept: "application/json",
