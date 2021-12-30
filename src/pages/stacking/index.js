@@ -56,7 +56,7 @@ const Stacking = () => {
         }}
       >
         <Container maxWidth="sm">
-          <Card sx={{backgroundColor: "#0c1236"}}>
+          <Card sx={{backgroundColor: "#141416"}}>
             <CardHeader
               subheader={(
                 <Typography variant="h5">
