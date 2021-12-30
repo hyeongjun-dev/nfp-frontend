@@ -34,18 +34,20 @@ import {AccountFiatBalance} from "../../components/dashboard/account/account-fia
 import {AccountTokenBalance} from "../../components/dashboard/account/account-token-balance";
 import {AccountWalletAddress} from "../../components/dashboard/account/account-wallet-address";
 import {AccountTokenList} from "../../components/dashboard/account/account-token-list";
-import { fetchItems, accountSelector } from "../../slices/account";
-import { useDispatch, useSelector } from "../../store";
+import {fetchItems, accountSelector} from "../../slices/account";
+import {useDispatch, useSelector} from "../../store";
+import {useConnect} from "../../connect/auth";
 
 const Overview = () => {
   const [displayBanner, setDisplayBanner] = useState(true);
 
   const dispatch = useDispatch();
   const { items } = useSelector(accountSelector);
+  const {ownerStxAddress} = useConnect()
 
   useEffect(() => {
     gtm.push({ event: 'page_view' });
-    dispatch(fetchItems());
+    dispatch(fetchItems(ownerStxAddress)); // sample: 'SP13KT116B0A99C1FZB0M10NX3T1AWCPG0ZKYXSN'
   }, []);
 
   useEffect(() => {
@@ -107,14 +109,14 @@ const Overview = () => {
               md={4}
               xs={12}
             >
-              <AccountTokenBalance numberOfFToken={items.numberOffungibleToken}/>
+              <AccountTokenBalance numberOfFToken={items.numberOfFungibleToken}/>
             </Grid>
             <Grid
                 item
                 md={4}
                 xs={12}
             >
-              <AccountWalletAddress />
+              <AccountWalletAddress address={ownerStxAddress}/>
             </Grid>
 
             <Grid

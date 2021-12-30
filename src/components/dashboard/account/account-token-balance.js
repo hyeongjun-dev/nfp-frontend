@@ -8,7 +8,7 @@ export const AccountTokenBalance = (props) => (
             variant="h4"
             color="secondary"
         >
-          { props.numberOfFToken }
+          { numeral(props.numberOfFToken).format('0') }
         </Typography>
         <Typography
             color="textSecondary"

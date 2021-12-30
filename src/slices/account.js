@@ -47,10 +47,10 @@ const api = axios.create({
 });
 
 // fetch all items
-export function fetchItems() {
+export function fetchItems(address) {
   return async (dispatch) => {
     api
-    .get("/account/balance?address=SP13KT116B0A99C1FZB0M10NX3T1AWCPG0ZKYXSN")
+    .get(`/account/balance?address=${address}`)
     .then((response) => {
       dispatch(setItems(response.data));
     })

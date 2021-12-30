@@ -103,16 +103,10 @@ export const AccountTokenList = (props) => {
         <TableHead>
           <TableRow>
             <TableCell>
-              Symbol
+              Name
             </TableCell>
-            <TableCell sortDirection={order}>
-              <TableSortLabel
-                active
-                direction={order}
-                onClick={handleSort}
-              >
-                Balance
-              </TableSortLabel>
+            <TableCell>
+              Balance
             </TableCell>
             <TableCell>
               Price
