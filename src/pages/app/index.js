@@ -41,14 +41,19 @@ import {useConnect} from "../../connect/auth";
 const Overview = () => {
   const [displayBanner, setDisplayBanner] = useState(true);
 
+  const {connected} = useSelector((state) => state.connect);
+  const {ownerStxAddress} = useConnect();
+
   const dispatch = useDispatch();
   const { items } = useSelector(accountSelector);
-  const {ownerStxAddress} = useConnect()
 
   useEffect(() => {
     gtm.push({ event: 'page_view' });
-    dispatch(fetchItems(ownerStxAddress)); // sample: 'SP13KT116B0A99C1FZB0M10NX3T1AWCPG0ZKYXSN'
-  }, []);
+
+    if (connected) {
+      dispatch(fetchItems(ownerStxAddress)); // sample: 'SP13KT116B0A99C1FZB0M10NX3T1AWCPG0ZKYXSN'
+    }
+  }, [ownerStxAddress]);
 
   useEffect(() => {
     // Restore the persistent state from local/session storage
