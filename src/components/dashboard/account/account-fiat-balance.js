@@ -8,7 +8,7 @@ export const AccountFiatBalance = (props) => (
             variant="h4"
             color="secondary"
         >
-          {numeral(104301230).format('$0,0.00')}
+          {numeral(props.totalBalance).format('$0,0.00')}
         </Typography>
         <Typography
             color="textSecondary"

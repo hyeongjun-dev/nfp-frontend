@@ -19,13 +19,13 @@ import {
 import { InformationCircleOutlined as InformationCircleOutlinedIcon } from '../../../icons/information-circle-outlined';
 import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
 
-const sortCountries = (countries, order) => countries
+const sortTokenList = (tokens, order) => tokens
   .sort((a, b) => {
     if (order === 'asc') {
-      return a.seo < b.seo ? -1 : 1;
+      return a.balance < b.balance ? -1 : 1;
     }
 
-    return a.seo > b.seo ? -1 : 1;
+    return a.balance > b.balance ? -1 : 1;
   });
 
 const countries = [
@@ -75,6 +75,7 @@ const countries = [
 
 export const AccountTokenList = (props) => {
   const [order, setOrder] = useState('desc');
+  const fungibleTokenList = props.fungibleTokenList;
 
   const handleSort = () => {
     setOrder((prevOrder) => {
@@ -86,7 +87,7 @@ export const AccountTokenList = (props) => {
     });
   };
 
-  const sortedCountries = sortCountries(countries, order);
+  // const sortedTokenList = sortTokenList(fungibleTokenList, order);
 
   return (
     <Card {...props}>
@@ -122,9 +123,9 @@ export const AccountTokenList = (props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {sortedCountries.map((country) => (
+          {fungibleTokenList && fungibleTokenList.map((token) => (
             <TableRow
-              key={country.name}
+              key={token.name}
               sx={{
                 '&:last-child td': {
                   border: 0
@@ -138,37 +139,37 @@ export const AccountTokenList = (props) => {
                     display: 'flex'
                   }}
                 >
-                  <Box
-                    sx={{
-                      height: 16,
-                      width: 16,
-                      '& img': {
-                        height: 16,
-                        width: 16
-                      }
-                    }}
-                  >
-                    <img
-                      alt={country.name}
-                      src={country.flag}
-                    />
-                  </Box>
+                  {/*<Box*/}
+                  {/*  sx={{*/}
+                  {/*    height: 16,*/}
+                  {/*    width: 16,*/}
+                  {/*    '& img': {*/}
+                  {/*      height: 16,*/}
+                  {/*      width: 16*/}
+                  {/*    }*/}
+                  {/*  }}*/}
+                  {/*>*/}
+                  {/*  <img*/}
+                  {/*    alt={token.name}*/}
+                  {/*    src={token.flag}*/}
+                  {/*  />*/}
+                  {/*</Box>*/}
                   <Typography
                     sx={{ ml: 1 }}
                     variant="subtitle2"
                   >
-                    {country.name}
+                    {token.name}
                   </Typography>
                 </Box>
               </TableCell>
               <TableCell>
-                {country.seo}
+                {token.balance}
               </TableCell>
               <TableCell>
-                {numeral(country.visits).format('$0,0.00')}
+                {token.price}
               </TableCell>
               <TableCell>
-                {numeral(country.value).format('$0,0.00')}
+                {token.value}
               </TableCell>
             </TableRow>
           ))}

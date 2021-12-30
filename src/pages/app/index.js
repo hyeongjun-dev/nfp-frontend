@@ -34,12 +34,18 @@ import {AccountFiatBalance} from "../../components/dashboard/account/account-fia
 import {AccountTokenBalance} from "../../components/dashboard/account/account-token-balance";
 import {AccountWalletAddress} from "../../components/dashboard/account/account-wallet-address";
 import {AccountTokenList} from "../../components/dashboard/account/account-token-list";
+import { fetchItems, accountSelector } from "../../slices/account";
+import { useDispatch, useSelector } from "../../store";
 
 const Overview = () => {
   const [displayBanner, setDisplayBanner] = useState(true);
 
+  const dispatch = useDispatch();
+  const { items } = useSelector(accountSelector);
+
   useEffect(() => {
     gtm.push({ event: 'page_view' });
+    dispatch(fetchItems());
   }, []);
 
   useEffect(() => {
@@ -94,14 +100,14 @@ const Overview = () => {
               md={4}
               xs={12}
             >
-              <AccountFiatBalance />
+              <AccountFiatBalance totalBalance={items.totalBalance}/>
             </Grid>
             <Grid
               item
               md={4}
               xs={12}
             >
-              <AccountTokenBalance />
+              <AccountTokenBalance numberOfFToken={items.numberOffungibleToken}/>
             </Grid>
             <Grid
                 item
@@ -116,7 +122,7 @@ const Overview = () => {
                 md={12}
                 xs={12}
             >
-              <AccountTokenList />
+              <AccountTokenList fungibleTokenList={items.fungibleTokenList}/>
             </Grid>
 
             {/*<Grid*/}
