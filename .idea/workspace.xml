@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b6839ef-f26d-41d3-b137-2d0a09bdfadb" name="Changes" comment="Fetch Stacking info &amp;&amp; enable chain select when build">
+    <list default="true" id="5b6839ef-f26d-41d3-b137-2d0a09bdfadb" name="Changes" comment="Delegate amount to StxAmount">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/stacking/DelegateBtn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/stacking/DelegateBtn.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +47,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -111,7 +110,7 @@
       <workItem from="1640793279435" duration="6541000" />
       <workItem from="1640832291551" duration="1550000" />
       <workItem from="1641058922834" duration="19000" />
-      <workItem from="1641096558010" duration="17299000" />
+      <workItem from="1641096558010" duration="17910000" />
     </task>
     <task id="LOCAL-00001" summary="Add Connect Wallet function">
       <created>1640686601715</created>
@@ -162,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641113750615</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Delegate amount to StxAmount">
+      <created>1641115174141</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1641115174141</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,6 +194,7 @@
     <MESSAGE value="Substr Wallet address" />
     <MESSAGE value="Modify Stacking Ui" />
     <MESSAGE value="Fetch Stacking info &amp;&amp; enable chain select when build" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fetch Stacking info &amp;&amp; enable chain select when build" />
+    <MESSAGE value="Delegate amount to StxAmount" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delegate amount to StxAmount" />
   </component>
 </project>
