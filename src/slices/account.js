@@ -37,7 +37,7 @@ export const accountSelector = (state) => state.account;
 export const {reducer} = itemSlice;
 
 // set up axios - simple json-server prototype config here
-const apiHost = process.env.NEXT_PUBLIC_CHAIN === 'testnet' ? "http://localhost:3001" : "http://ec2-18-221-211-18.us-east-2.compute.amazonaws.com:3002"
+const apiHost = process.env.NEXT_PUBLIC_CHAIN === 'testnet' ? "http://localhost:3001" : "https://api.nfpstudio.io"
 const api = axios.create({
   baseURL: apiHost,
   withCredentials: false,
