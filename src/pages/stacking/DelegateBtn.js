@@ -8,6 +8,10 @@ import {useConnect as uc} from "@stacks/connect-react";
 
 import {noneCV, standardPrincipalCV, uintCV} from "@stacks/transactions";
 
+function toStxAmount(amount){
+  return amount * 1000000
+}
+
 export const DelegateBtn = (props) => {
   const {authOptions} = useConnect();
   const {doContractCall} = uc();
@@ -20,7 +24,7 @@ export const DelegateBtn = (props) => {
     let contractAddress = 'ST000000000000000000002AMW42H'
     let contractName = 'pox'
     let functionName = 'delegate-stx'
-    let functionArgs = [uintCV(amount), standardPrincipalCV(delegate_to), noneCV(), noneCV()]
+    let functionArgs = [uintCV(toStxAmount(amount)), standardPrincipalCV(delegate_to), noneCV(), noneCV()]
 
     await doContractCall({
       contractAddress,
