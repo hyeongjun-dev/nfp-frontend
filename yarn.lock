@@ -3322,12 +3322,37 @@
     buffer "^6.0.3"
     cross-fetch "^3.1.4"
 
+"@stacks/connect-react@^13.0.0":
+  version "13.0.0"
+  resolved "https://registry.yarnpkg.com/@stacks/connect-react/-/connect-react-13.0.0.tgz#1553fa640c83b5085ff205208c69e5ccbe6bf825"
+  integrity sha512-nlykqkbc9XLsNV0WGmgn6A9w6tBm+olZNpOzUhEozFnTdQG1ki42g60+G0OJdDtykpz7hLQ4xJwnd2CUgSerAQ==
+  dependencies:
+    "@stacks/auth" "2.0.1"
+    "@stacks/connect" "6.2.0"
+    jsontokens "^3.0.0"
+
 "@stacks/connect-ui@5.2.0":
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/@stacks/connect-ui/-/connect-ui-5.2.0.tgz#b475029823a6bc3ebc8fda27acfc583527347cce"
   integrity sha512-pBRcCBU4Ka0/PuUFsucML1oDVpXupV5hrW2TVh3HbKTRTyJ6HYWuTh4ckxkPlUKY8q+v3tQ7avwPXQaEfstFiA==
   dependencies:
     "@stencil/core" "^2.6.0"
+
+"@stacks/connect@6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@stacks/connect/-/connect-6.2.0.tgz#d1e34524aa80149ceb9d312a3c8eb2d3e166d9df"
+  integrity sha512-5Go9D4OmkKkwycd244pkl2Zh060YN/1EAHkQa/jpSF2mH2aESXnKpjA0CIpEuhfas7IvcFqHVpa7OdJc6Qkk/w==
+  dependencies:
+    "@stacks/auth" "2.0.1"
+    "@stacks/connect-ui" "5.2.0"
+    "@stacks/network" "2.0.1"
+    "@stacks/prettier-config" "0.0.8"
+    "@stacks/transactions" "2.0.1"
+    bn.js "^5.2.0"
+    buffer "6.0.3"
+    jsontokens "^3.0.0"
+    readable-stream "^3.6.0"
+    url "^0.11.0"
 
 "@stacks/connect@^6.4.0":
   version "6.4.0"
@@ -3441,6 +3466,28 @@
   resolved "https://registry.yarnpkg.com/@stacks/stacks-blockchain-api-types/-/stacks-blockchain-api-types-1.0.4.tgz#4083b75bd367905f98531e40410ff5f122f3b2c9"
   integrity sha512-PjZaZFcsADrGqcAYnW9xkwJIAt8gEgkaBP7R9wKYMACFDuEwoHZ22NntiI636wRf1bMkDIa3T/+4naP6jv5f/A==
 
+"@stacks/transactions@2.0.1", "@stacks/transactions@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@stacks/transactions/-/transactions-2.0.1.tgz#6a9270d49f2b93067f678fe45474a1d72247d4c1"
+  integrity sha512-q+8nCbn+0m1T8NbGG2sfMcBcCxdaH/F+vgBEHkhMIFHFLYXVYBGYbTX2llGS9StLp/tQq6p2Bfb1kzKFSw8FRQ==
+  dependencies:
+    "@stacks/common" "^2.0.1"
+    "@stacks/network" "^1.2.2"
+    "@types/bn.js" "^4.11.6"
+    "@types/elliptic" "^6.4.12"
+    "@types/node" "^14.14.43"
+    "@types/randombytes" "^2.0.0"
+    "@types/sha.js" "^2.4.0"
+    bn.js "^4.12.0"
+    c32check "^1.1.2"
+    cross-fetch "^3.1.4"
+    elliptic "^6.5.4"
+    lodash "^4.17.20"
+    randombytes "^2.1.0"
+    ripemd160-min "^0.0.6"
+    sha.js "^2.4.11"
+    smart-buffer "^4.1.0"
+
 "@stacks/transactions@2.1.0-beta.2":
   version "2.1.0-beta.2"
   resolved "https://registry.yarnpkg.com/@stacks/transactions/-/transactions-2.1.0-beta.2.tgz#d5a0ad36a2f40a244b4d06656d48e90757a8a513"
@@ -3455,28 +3502,6 @@
     "@types/sha.js" "^2.4.0"
     bn.js "^4.12.0"
     c32check "^1.1.3"
-    cross-fetch "^3.1.4"
-    elliptic "^6.5.4"
-    lodash "^4.17.20"
-    randombytes "^2.1.0"
-    ripemd160-min "^0.0.6"
-    sha.js "^2.4.11"
-    smart-buffer "^4.1.0"
-
-"@stacks/transactions@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@stacks/transactions/-/transactions-2.0.1.tgz#6a9270d49f2b93067f678fe45474a1d72247d4c1"
-  integrity sha512-q+8nCbn+0m1T8NbGG2sfMcBcCxdaH/F+vgBEHkhMIFHFLYXVYBGYbTX2llGS9StLp/tQq6p2Bfb1kzKFSw8FRQ==
-  dependencies:
-    "@stacks/common" "^2.0.1"
-    "@stacks/network" "^1.2.2"
-    "@types/bn.js" "^4.11.6"
-    "@types/elliptic" "^6.4.12"
-    "@types/node" "^14.14.43"
-    "@types/randombytes" "^2.0.0"
-    "@types/sha.js" "^2.4.0"
-    bn.js "^4.12.0"
-    c32check "^1.1.2"
     cross-fetch "^3.1.4"
     elliptic "^6.5.4"
     lodash "^4.17.20"
@@ -4754,6 +4779,11 @@ cosmiconfig@^7.0.0:
     parse-json "^5.0.0"
     path-type "^4.0.0"
     yaml "^1.10.0"
+
+countup.js@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/countup.js/-/countup.js-2.0.8.tgz#eca0c31c9db3f7769cba494d9315cd52dbaaf1b9"
+  integrity sha512-pW3xwwD+hB+xmtI16xFcuLS0D5hSQqPQWkZOdgpKQyzxCquDNo2VCFPkRw12vmvdpnicXVTcjmYiakG6biwINg==
 
 create-ecdh@^4.0.0:
   version "4.0.4"
@@ -7546,6 +7576,13 @@ react-beautiful-dnd@^13.0.0:
     react-redux "^7.2.0"
     redux "^4.0.4"
     use-memo-one "^1.1.1"
+
+react-countup@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/react-countup/-/react-countup-6.1.0.tgz#ac9b923ecf1351a0c3281209ba55952345814cd8"
+  integrity sha512-0tN65l4ksaNa4rm8ZKshpGxbIHQ4RAh8TGaKYp06EZ7nZw+haXpW3dQTVDhTey9+10jDkJgdzyXKDmC96c1M8g==
+  dependencies:
+    countup.js "^2.0.8"
 
 react-dom@^17.0.1:
   version "17.0.2"

@@ -7,13 +7,12 @@ import {
 } from '@stacks/blockchain-api-client';
 import { StacksTestnet, StacksMainnet } from '@stacks/network';
 
-export const testnet = window.location.search.includes('chain=testnet');
-export const localMocknet = !testnet && window.location.search.includes('mocknet=local');
-export const mainnet =
-  (!testnet && !localMocknet) || window.location.search.includes('chain=mainnet');
+export const testnet = process.env.NEXT_PUBLIC_CHAIN === 'testnet';
+export const localMocknet = process.env.NEXT_PUBLIC_CHAIN === 'local'
+export const mainnet = process.env.NEXT_PUBLIC_CHAIN === 'mainnet'
 
 export const chainSuffix = `?chain=${mainnet ? 'mainnet' : testnet ? 'testnet' : 'mocknet'}`;
-export const beta = window.location.search.includes('authorigin=beta');
+export const beta = process.env.NEXT_PUBLIC_AUTH_ORIGIN === 'beta';
 export const localNode = localMocknet;
 export const localAuth = false;
 export const mocknet = localMocknet;

@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import Head from 'next/head';
 import {
   Box,
@@ -14,31 +14,47 @@ import {
 } from '@mui/material';
 import {DashboardLayout} from '../../components/dashboard/dashboard-layout';
 import {gtm} from '../../lib/gtm';
-import {useConnect} from "../../connect/auth";
+import {useConnect, userSessionState} from "../../connect/auth";
 import {useSelector} from "../../store";
-import {PhotoCamera, Visibility} from "@mui/icons-material";
+import {DelegateBtn} from "./DelegateBtn";
+import {fetchItems, getBalance} from "../../slices/account";
+import {useAtomValue} from "jotai/utils";
+import {useStxAddresses} from "../../connect/hooks";
+import CountUp from "react-countup";
+
 
 const Stacking = () => {
-  const [displayBanner, setDisplayBanner] = useState(true);
-  const {handleOpenAuth, handleSignOut} = useConnect();
   const { connected } = useSelector((state) => state.connect);
+
+  const [displayBanner, setDisplayBanner] = useState(true);
+  const [delegateAmount, setDelegateAmount] = useState();
+  const [stxBalance, setStxBalance] = useState(0);
+  const {handleOpenAuth} = useConnect();
+  const userSession = useAtomValue(userSessionState);
+  const {ownerStxAddress} = useStxAddresses(userSession);
 
   useEffect(() => {
     gtm.push({event: 'page_view'});
   }, []);
+
+  useEffect(()=>{
+    if (connected) {
+      getBalance(ownerStxAddress)
+        .then((response) => {
+          setStxBalance(response.data.stxInfo.balance)
+        })
+    }
+  },[ownerStxAddress])
 
   useEffect(() => {
     // Restore the persistent state from local/session storage
     const value = globalThis.sessionStorage.getItem('dismiss-banner');
 
     if (value === 'true') {
-      // setDisplayBanner(false);
     }
   }, []);
 
   const handleDismissBanner = () => {
-    // Update the persistent state
-    // globalThis.sessionStorage.setItem('dismiss-banner', 'true');
     setDisplayBanner(false);
   };
 
@@ -60,7 +76,7 @@ const Stacking = () => {
             <CardHeader
               subheader={(
                 <Typography variant="h5">
-                  2,700,000 STX
+                  {<CountUp duration={1.2} end={stxBalance} />} STX
                 </Typography>
               )}
               sx={{pb: 2}}
@@ -79,9 +95,15 @@ const Stacking = () => {
                   <Box sx={{mt: 2}}>
                     <OutlinedInput
                       fullWidth
+                      onChange={(e)=>{setDelegateAmount(e.target.value)}}
+                      type={"number"}
+                      value={delegateAmount}
                       endAdornment={
                         <InputAdornment position="end">
-                          <Button>
+                          <Button onClick={()=>{
+                            let nBalance = parseInt(stxBalance)
+                            setDelegateAmount(nBalance)
+                          }}>
                             Max
                           </Button>
                         </InputAdornment>
@@ -101,7 +123,8 @@ const Stacking = () => {
               />
               <CardContent>
                 {connected?
-                  <Button sx={{width: "100%", borderRadius: '5px'}} variant={"contained"}>Delegate</Button>
+                  <DelegateBtn delegateAmount={delegateAmount}/>
+                  // <Button sx={{width: "100%", borderRadius: '5px'}} variant={"contained"} onClick={()=>{openDelegate(100)}}>Delegate</Button>
                   :
                   <Button sx={{width: "100%", borderRadius: '5px'}} variant={"contained"} onClick={() => handleOpenAuth()}>Connect wallet</Button>}
                 <Divider sx={{mb: 2}}/>

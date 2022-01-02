@@ -37,8 +37,9 @@ export const accountSelector = (state) => state.account;
 export const {reducer} = itemSlice;
 
 // set up axios - simple json-server prototype config here
+const apiHost = process.env.NEXT_PUBLIC_CHAIN === 'testnet' ? "http://localhost:3001" : "http://ec2-18-221-211-18.us-east-2.compute.amazonaws.com:3002"
 const api = axios.create({
-  baseURL: "http://ec2-18-221-211-18.us-east-2.compute.amazonaws.com:3002",
+  baseURL: apiHost,
   withCredentials: false,
   headers: {
     Accept: "application/json",
@@ -49,8 +50,7 @@ const api = axios.create({
 // fetch all items
 export function fetchItems(address) {
   return async (dispatch) => {
-    api
-    .get(`/account/balance?address=${address}`)
+    getBalance(address)
     .then((response) => {
       dispatch(setItems(response.data));
     })
@@ -58,4 +58,8 @@ export function fetchItems(address) {
       dispatch(setError());
     });
   };
+}
+
+export function getBalance(address){
+  return api.get(`/account/balance?address=${address}`);
 }

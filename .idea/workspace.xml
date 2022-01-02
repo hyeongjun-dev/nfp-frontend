@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b6839ef-f26d-41d3-b137-2d0a09bdfadb" name="Changes" comment="Modify Stacking Ui">
+      <change afterPath="$PROJECT_DIR$/src/pages/global.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/stacking/DelegateBtn.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dashboard/dashboard-layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/dashboard-layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/connect/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/connect/constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/stacking/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/stacking/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/slices/account.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/slices/account.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +56,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="MTHome" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -57,7 +65,17 @@
       <recent name="$PROJECT_DIR$/src/components/dashboard/account" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -68,9 +86,21 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="npm.dev" />
+        <item itemvalue="npm.build" />
+        <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
   </component>
@@ -87,7 +117,9 @@
       <workItem from="1640690799018" duration="274000" />
       <workItem from="1640791459142" duration="1464000" />
       <workItem from="1640793279435" duration="6541000" />
-      <workItem from="1640832291551" duration="213000" />
+      <workItem from="1640832291551" duration="1550000" />
+      <workItem from="1641058922834" duration="19000" />
+      <workItem from="1641096558010" duration="15911000" />
     </task>
     <task id="LOCAL-00001" summary="Add Connect Wallet function">
       <created>1640686601715</created>
@@ -124,7 +156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640803517971</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Modify Stacking Ui">
+      <created>1640832791011</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1640832791011</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
