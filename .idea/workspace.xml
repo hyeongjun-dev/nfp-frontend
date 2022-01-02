@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b6839ef-f26d-41d3-b137-2d0a09bdfadb" name="Changes" comment="Delegate amount to StxAmount">
+    <list default="true" id="5b6839ef-f26d-41d3-b137-2d0a09bdfadb" name="Changes" comment="update workspace map">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,7 +110,7 @@
       <workItem from="1640793279435" duration="6541000" />
       <workItem from="1640832291551" duration="1550000" />
       <workItem from="1641058922834" duration="19000" />
-      <workItem from="1641096558010" duration="17910000" />
+      <workItem from="1641096558010" duration="18538000" />
     </task>
     <task id="LOCAL-00001" summary="Add Connect Wallet function">
       <created>1640686601715</created>
@@ -168,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641115174141</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="update workspace map">
+      <created>1641118423667</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1641118423667</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,6 +202,7 @@
     <MESSAGE value="Modify Stacking Ui" />
     <MESSAGE value="Fetch Stacking info &amp;&amp; enable chain select when build" />
     <MESSAGE value="Delegate amount to StxAmount" />
-    <option name="LAST_COMMIT_MESSAGE" value="Delegate amount to StxAmount" />
+    <MESSAGE value="update workspace map" />
+    <option name="LAST_COMMIT_MESSAGE" value="update workspace map" />
   </component>
 </project>
