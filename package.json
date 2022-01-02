@@ -4,7 +4,9 @@
   "author": "Devias",
   "private": true,
   "scripts": {
-    "dev": "export NEXT_PUBLIC_CHAIN=testnet && next",
+    "start:local": "export NEXT_PUBLIC_CHAIN=testnet && next -p 10300",
+    "start:dev": "export NEXT_PUBLIC_CHAIN=testnet && next -p 10301",
+    "start:prod": "export NEXT_PUBLIC_CHAIN=testnet && next -p 10302",
     "build": "next build",
     "start": "export NEXT_PUBLIC_CHAIN=mainnet && next start",
     "export": "next export",
