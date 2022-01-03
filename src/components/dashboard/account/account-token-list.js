@@ -33,7 +33,6 @@ export const AccountTokenList = (props) => {
   const [orderBasis, setOrderBasis] = useState('balance');
 
   const [symbolDirection, setSymbolDirection] = useState('desc');
-  const [decimalDirection, setDecimalDirection] = useState('desc');
   const [balanceDirection, setBalanceDirection] = useState('desc');
   const [priceDirection, setPriceDirection] = useState('desc');
   const [valueDirection, setValueDirection] = useState('desc');
@@ -42,11 +41,6 @@ export const AccountTokenList = (props) => {
 
   const handleSortBySymbol = (orderBasis) => {
     setSymbolDirection(changeOrder);
-    handleSort(orderBasis);
-  };
-
-  const handleSortByDecimal = (orderBasis) => {
-    setDecimalDirection(changeOrder);
     handleSort(orderBasis);
   };
 
@@ -103,15 +97,6 @@ export const AccountTokenList = (props) => {
             <TableCell>
               <TableSortLabel
                   active
-                  direction={decimalDirection}
-                  onClick={() => handleSortByDecimal('decimal')}
-              >
-                decimal
-              </TableSortLabel>
-            </TableCell>
-            <TableCell>
-              <TableSortLabel
-                  active
                   direction={balanceDirection}
                   onClick={() => handleSortByBalance('balance')}
               >
@@ -162,9 +147,6 @@ export const AccountTokenList = (props) => {
                     {token.symbol}
                   </Typography>
                 </Box>
-              </TableCell>
-              <TableCell>
-                {token.decimal}
               </TableCell>
               <TableCell>
                 {token.balance}
