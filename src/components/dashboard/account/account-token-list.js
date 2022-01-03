@@ -19,30 +19,64 @@ import {
 import { InformationCircleOutlined as InformationCircleOutlinedIcon } from '../../../icons/information-circle-outlined';
 import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
 
-const sortTokenList = (tokens, order) => tokens
+const sortTokenList = (tokens, order, orderBasis) => tokens
   .sort((a, b) => {
     if (order === 'asc') {
-      return a.balance < b.balance ? -1 : 1;
+      return a[orderBasis] < b[orderBasis] ? -1 : 1;
     }
 
-    return a.balance > b.balance ? -1 : 1;
+    return a[orderBasis] > b[orderBasis] ? -1 : 1;
   });
 
 export const AccountTokenList = (props) => {
   const [order, setOrder] = useState('desc');
+  const [orderBasis, setOrderBasis] = useState('balance');
+
+  const [symbolDirection, setSymbolDirection] = useState('desc');
+  const [decimalDirection, setDecimalDirection] = useState('desc');
+  const [balanceDirection, setBalanceDirection] = useState('desc');
+  const [priceDirection, setPriceDirection] = useState('desc');
+  const [valueDirection, setValueDirection] = useState('desc');
+
   const fungibleTokenList = props.fungibleTokenList;
 
-  const handleSort = () => {
-    setOrder((prevOrder) => {
-      if (prevOrder === 'asc') {
-        return 'desc';
-      }
-
-      return 'asc';
-    });
+  const handleSortBySymbol = (orderBasis) => {
+    setSymbolDirection(changeOrder);
+    handleSort(orderBasis);
   };
 
-  // const sortedTokenList = sortTokenList(fungibleTokenList, order);
+  const handleSortByDecimal = (orderBasis) => {
+    setDecimalDirection(changeOrder);
+    handleSort(orderBasis);
+  };
+
+  const handleSortByBalance = (orderBasis) => {
+    setBalanceDirection(changeOrder);
+    handleSort(orderBasis);
+  };
+
+  const handleSortByPrice = (orderBasis) => {
+    setPriceDirection(changeOrder);
+    handleSort(orderBasis);
+  };
+
+  const handleSortByValue = (orderBasis) => {
+    setValueDirection(changeOrder);
+    handleSort(orderBasis);
+  };
+
+  const handleSort = (orderBasis) => {
+    setOrderBasis(orderBasis);
+    setOrder(changeOrder);
+  };
+
+  const changeOrder = (prevOrder) => {
+    if (prevOrder === 'asc') {
+      return 'desc';
+    }
+
+    return 'asc';
+  };
 
   return (
     <Card {...props}>
@@ -58,24 +92,54 @@ export const AccountTokenList = (props) => {
         <TableHead>
           <TableRow>
             <TableCell>
-              Symbol
+              <TableSortLabel
+                  active
+                  direction={symbolDirection}
+                  onClick={() => handleSortBySymbol('symbol')}
+              >
+                Symbol
+              </TableSortLabel>
             </TableCell>
             <TableCell>
-              decimal
+              <TableSortLabel
+                  active
+                  direction={decimalDirection}
+                  onClick={() => handleSortByDecimal('decimal')}
+              >
+                decimal
+              </TableSortLabel>
             </TableCell>
             <TableCell>
-              Balance
+              <TableSortLabel
+                  active
+                  direction={balanceDirection}
+                  onClick={() => handleSortByBalance('balance')}
+              >
+                Balance
+              </TableSortLabel>
             </TableCell>
             <TableCell>
-              Price
+              <TableSortLabel
+                  active
+                  direction={priceDirection}
+                  onClick={() => handleSortByPrice('price')}
+              >
+                Price
+              </TableSortLabel>
             </TableCell>
             <TableCell>
-              Value
+              <TableSortLabel
+                  active
+                  direction={valueDirection}
+                  onClick={() => handleSortByValue('value')}
+              >
+                Value
+              </TableSortLabel>
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {fungibleTokenList && fungibleTokenList.map((token) => (
+          {fungibleTokenList && sortTokenList([...fungibleTokenList], order, orderBasis).map((token) => (
             <TableRow
               key={token.symbol}
               sx={{
@@ -91,21 +155,6 @@ export const AccountTokenList = (props) => {
                     display: 'flex'
                   }}
                 >
-                  {/*<Box*/}
-                  {/*  sx={{*/}
-                  {/*    height: 16,*/}
-                  {/*    width: 16,*/}
-                  {/*    '& img': {*/}
-                  {/*      height: 16,*/}
-                  {/*      width: 16*/}
-                  {/*    }*/}
-                  {/*  }}*/}
-                  {/*>*/}
-                  {/*  <img*/}
-                  {/*    alt={token.name}*/}
-                  {/*    src={token.flag}*/}
-                  {/*  />*/}
-                  {/*</Box>*/}
                   <Typography
                     sx={{ ml: 1 }}
                     variant="subtitle2"
