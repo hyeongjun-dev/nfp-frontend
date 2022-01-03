@@ -16,11 +16,11 @@ import {DashboardLayout} from '../../components/dashboard/dashboard-layout';
 import {gtm} from '../../lib/gtm';
 import {useConnect, userSessionState} from "../../connect/auth";
 import {useSelector} from "../../store";
-import {DelegateBtn} from "./DelegateBtn";
 import {fetchItems, getBalance} from "../../slices/account";
 import {useAtomValue} from "jotai/utils";
 import {useStxAddresses} from "../../connect/hooks";
 import CountUp from "react-countup";
+import {DelegateBtn} from "../../components/stacking/DelegateBtn";
 
 
 const Stacking = () => {
