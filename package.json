@@ -6,9 +6,9 @@
   "scripts": {
     "start:local": "export NEXT_PUBLIC_CHAIN=testnet && next -p 10300",
     "start:dev": "export NEXT_PUBLIC_CHAIN=testnet && next -p 10301",
-    "start:prod": "export NEXT_PUBLIC_CHAIN=mainnet && next -p 10302",
+    "start:prod": "export NEXT_PUBLIC_CHAIN=mainnet && npm run build && npm run start",
     "build": "next build",
-    "start": "export NEXT_PUBLIC_CHAIN=mainnet && next start",
+    "start": "export NEXT_PUBLIC_CHAIN=mainnet && next start -p 10302",
     "export": "next export",
     "build-export": "next build && next export",
     "lint": "next lint",

@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5b6839ef-f26d-41d3-b137-2d0a09bdfadb" name="Changes" comment="update workspace map">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/stacking/DelegateBtn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stacking/DelegateBtn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/stacking/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/stacking/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +57,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/components/dashboard/account" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/stacking" />
+    </key>
   </component>
   <component name="RunManager" selected="npm.dev">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -87,11 +92,22 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="start:prod" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start:prod" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.dev" />
-        <item itemvalue="npm.build" />
         <item itemvalue="npm.start" />
+        <item itemvalue="npm.build" />
+        <item itemvalue="npm.start:prod" />
+        <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
   </component>
@@ -110,7 +126,15 @@
       <workItem from="1640793279435" duration="6541000" />
       <workItem from="1640832291551" duration="1550000" />
       <workItem from="1641058922834" duration="19000" />
-      <workItem from="1641096558010" duration="18538000" />
+      <workItem from="1641096558010" duration="19896000" />
+      <workItem from="1641138395229" duration="611000" />
+      <workItem from="1641148708019" duration="118000" />
+      <workItem from="1641149967621" duration="718000" />
+      <workItem from="1641174665922" duration="731000" />
+      <workItem from="1641182090953" duration="49000" />
+      <workItem from="1641188399549" duration="436000" />
+      <workItem from="1641189667664" duration="396000" />
+      <workItem from="1641192661011" duration="1309000" />
     </task>
     <task id="LOCAL-00001" summary="Add Connect Wallet function">
       <created>1640686601715</created>
@@ -175,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641118423667</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="update workspace map">
+      <created>1641118433095</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1641118433095</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
