@@ -28,51 +28,6 @@ const sortTokenList = (tokens, order) => tokens
     return a.balance > b.balance ? -1 : 1;
   });
 
-const countries = [
-  {
-    flag: '/static/icons/us_flag.svg',
-    name: 'STX',
-    seo: 102.31,
-    visits: 2.3,
-    value: 235.313
-  },
-  {
-    flag: '/static/icons/uk_flag.svg',
-    name: 'STX 2',
-    seo: 101.31,
-    visits: 2.3,
-    value: 235.313
-  },
-  {
-    flag: '/static/icons/ru_flag.svg',
-    name: 'STX 3',
-    seo: 100.31,
-    visits: 2.3,
-    value: 235.313
-  },
-  {
-    flag: '/static/icons/ca_flag.svg',
-    name: 'STX 4',
-    seo: 98.31,
-    visits: 2.3,
-    value: 235.313
-  },
-  {
-    flag: '/static/icons/de_flag.svg',
-    name: 'STX 5',
-    seo: 40.31,
-    visits: 2.3,
-    value: 235.313
-  },
-  {
-    flag: '/static/icons/es_flag.svg',
-    name: 'STX 6',
-    seo: 102.31,
-    visits: 2.3,
-    value: 235.313
-  }
-];
-
 export const AccountTokenList = (props) => {
   const [order, setOrder] = useState('desc');
   const fungibleTokenList = props.fungibleTokenList;
@@ -103,7 +58,10 @@ export const AccountTokenList = (props) => {
         <TableHead>
           <TableRow>
             <TableCell>
-              Name
+              Symbol
+            </TableCell>
+            <TableCell>
+              decimal
             </TableCell>
             <TableCell>
               Balance
@@ -119,7 +77,7 @@ export const AccountTokenList = (props) => {
         <TableBody>
           {fungibleTokenList && fungibleTokenList.map((token) => (
             <TableRow
-              key={token.name}
+              key={token.symbol}
               sx={{
                 '&:last-child td': {
                   border: 0
@@ -152,9 +110,12 @@ export const AccountTokenList = (props) => {
                     sx={{ ml: 1 }}
                     variant="subtitle2"
                   >
-                    {token.name}
+                    {token.symbol}
                   </Typography>
                 </Box>
+              </TableCell>
+              <TableCell>
+                {token.decimal}
               </TableCell>
               <TableCell>
                 {token.balance}
