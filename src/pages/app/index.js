@@ -76,7 +76,7 @@ const Overview = () => {
     const walletAddress = event.target.value;
 
     // FIXME: 주소 길이 41자이지만, 정확한 스펙은 확인 필요
-    if (String(walletAddress).length > 40) {
+    if (String(walletAddress).length >= 40) {
       console.log("Search by wallet address: " + walletAddress);
       dispatch(fetchItems(walletAddress));
     }
