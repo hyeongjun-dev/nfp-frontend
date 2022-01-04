@@ -3,7 +3,16 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import { Box, Button, Chip, Divider, Drawer, Typography, useMediaQuery } from '@mui/material';
+import {
+  Box,
+  Button,
+  Chip,
+  Divider,
+  Drawer, Grow,
+  IconButton,
+  Typography,
+  useMediaQuery
+} from '@mui/material';
 import { Calendar as CalendarIcon } from '../../icons/calendar';
 import { Cash as CashIcon } from '../../icons/cash';
 import { ChartBar as ChartBarIcon } from '../../icons/chart-bar';
@@ -30,19 +39,38 @@ import { Logo } from '../logo';
 import { Scrollbar } from '../scrollbar';
 import { DashboardSidebarSection } from './dashboard-sidebar-section';
 import { OrganizationPopover } from './organization-popover';
+import {Link} from "../../icons/link";
+import {useSelector} from "../../store";
+import {useConnect} from "../../connect/auth";
+import StringHelper from "../../utils/StringHelper";
 
 const getSections = (t) => [
   {
     items: [
       {
-        title: t('Overview'),
+        title: t('Dashboard'),
         path: '/app',
-        icon: <HomeIcon fontSize="small" />
+        icon: <ChartPieIcon fontSize="small" />
       },
       {
-        title: t('Stacking'),
-        path: '/stacking',
-        icon: <HomeIcon fontSize="small" />
+        title: t('Multisender'),
+        path: 'https://btc.stx-multisender.com',
+        icon: <CashIcon fontSize="small" />
+      },
+      {
+        title: t('KCV Pool'),
+        path: 'https://pool.kcvdao.com',
+        icon: <TruckIcon fontSize="small" />
+      },
+      {
+        title: t('StacksScan'),
+        path: 'https://stacksscan.org',
+        icon: <ChartBarIcon fontSize="small" />
+      },
+      {
+        title: t('Stacking (not opened)'),
+        path: '',
+        icon: ''
       }
     ]
   }
@@ -58,6 +86,9 @@ export const DashboardSidebar = (props) => {
   const sections = useMemo(() => getSections(t), [t]);
   const organizationsRef = useRef(null);
   const [openOrganizationsPopover, setOpenOrganizationsPopover] = useState(false);
+
+  const {connected} = useSelector((state) => state.connect);
+  const {ownerStxAddress} = useConnect();
 
   const handlePathChange = () => {
     if (!router.isReady) {
@@ -99,20 +130,27 @@ export const DashboardSidebar = (props) => {
           }}
         >
           <div>
-            <Box sx={{ p: 3 }}>
-              <NextLink
-                href="/"
-                passHref
-              >
-                <a>
-                  <Logo
+            <Box sx={{ p: 2 }}>
+              <Grow in={connected}>
+                <Box
                     sx={{
-                      height: 42,
-                      width: 42
+                      alignItems: 'center',
+                      backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      px: 3,
+                      py: '11px',
+                      borderRadius: 1
                     }}
-                  />
-                </a>
-              </NextLink>
+                >
+                  <Typography
+                      color="inherit"
+                      variant="body1"
+                  >
+                    {connected ? StringHelper.getElipsedHashAddress(ownerStxAddress) : ''}
+                  </Typography>
+                </Box>
+              </Grow>
             </Box>
           </div>
           <Divider
@@ -140,34 +178,30 @@ export const DashboardSidebar = (props) => {
               borderColor: '#2D3748'  // dark divider
             }}
           />
-          {/*<Box sx={{ p: 2 }}>*/}
-          {/*  <Typography*/}
-          {/*    color="neutral.100"*/}
-          {/*    variant="subtitle2"*/}
-          {/*  >*/}
-          {/*    {t('Need Help?')}*/}
-          {/*  </Typography>*/}
-          {/*  <Typography*/}
-          {/*    color="neutral.500"*/}
-          {/*    variant="body2"*/}
-          {/*  >*/}
-          {/*    {t('Check our docs')}*/}
-          {/*  </Typography>*/}
-          {/*  <NextLink*/}
-          {/*    href="/docs/welcome"*/}
-          {/*    passHref*/}
-          {/*  >*/}
-          {/*    <Button*/}
-          {/*      color="secondary"*/}
-          {/*      component="a"*/}
-          {/*      fullWidth*/}
-          {/*      sx={{ mt: 2 }}*/}
-          {/*      variant="contained"*/}
-          {/*    >*/}
-          {/*      {t('Documentation')}*/}
-          {/*    </Button>*/}
-          {/*  </NextLink>*/}
-          {/*</Box>*/}
+          <Box sx={{ p: 2 }}>
+            <Typography
+              color="neutral.100"
+              variant="subtitle2"
+            >
+              {t('NFP Twitter')}
+            </Typography>
+            <Typography
+              color="neutral.500"
+              variant="body2"
+            >
+              {t('Join our community !')}
+            </Typography>
+            <NextLink
+                href="https://twitter.com/NFP2021"
+                passHref
+            >
+              <a target="_blank">
+                <IconButton color="secondary">
+                  <ShareIcon fontSize="small" />
+                </IconButton>
+              </a>
+            </NextLink>
+          </Box>
         </Box>
       </Scrollbar>
       <OrganizationPopover

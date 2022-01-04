@@ -251,7 +251,7 @@ const AccountButton = () => {
 export const DashboardNavbar = (props) => {
   const {onOpenSidebar, ...other} = props;
   const {connected} = useSelector((state) => state.connect);
-  const {ownerStxAddress} = useConnect()
+  const {ownerStxAddress} = useConnect();
 
   return (
     <>
@@ -307,7 +307,7 @@ export const DashboardNavbar = (props) => {
                   color="inherit"
                   variant="body2"
                 >
-                  Connected: {connected ? ownerStxAddress : 'SPXADFDFD .... STT2EKYX'}
+                  Connected: {connected ? ownerStxAddress : ''}
                 </Typography>
               </div>
             </Box>
