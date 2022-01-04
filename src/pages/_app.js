@@ -64,7 +64,7 @@ const App = (props) => {
                     <RTL direction={settings.direction}>
                       <CssBaseline />
                       <Toaster position="top-center" />
-                      <SettingsButton />
+                      {/*<SettingsButton />*/}
                       <AuthConsumer>
                         {(auth) => !auth.isInitialized
                           ? <SplashScreen />

@@ -8,6 +8,7 @@ import {setConnected} from "../../slices/connect";
 import {useConnect} from "../../connect/auth";
 import {useDispatch} from "../../store";
 import {Connect} from '@stacks/connect-react';
+import {useSettings} from "../../hooks/use-settings";
 
 const DashboardLayoutRoot = styled('div')(({theme}) => ({
   display: 'flex',
@@ -25,9 +26,17 @@ export const DashboardLayout = (props) => {
   const {authOptions, userSession} = useConnect()
   const dispatch = useDispatch();
 
+  const { settings, saveSettings } = useSettings();
+  const fixedSettings = {
+    direction: 'ltr',
+    responsiveFontSizes: true,
+    theme: 'light'
+  }
+
   useEffect(() => {
+    saveSettings(fixedSettings);
     dispatch(setConnected(userSession.isUserSignedIn()))
-  })
+  }, userSession)
 
   return (
     <>

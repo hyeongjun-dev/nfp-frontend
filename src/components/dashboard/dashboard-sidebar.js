@@ -8,7 +8,7 @@ import {
   Button,
   Chip,
   Divider,
-  Drawer,
+  Drawer, Grow,
   IconButton,
   Typography,
   useMediaQuery
@@ -40,6 +40,9 @@ import { Scrollbar } from '../scrollbar';
 import { DashboardSidebarSection } from './dashboard-sidebar-section';
 import { OrganizationPopover } from './organization-popover';
 import {Link} from "../../icons/link";
+import {useSelector} from "../../store";
+import {useConnect} from "../../connect/auth";
+import StringHelper from "../../utils/StringHelper";
 
 const getSections = (t) => [
   {
@@ -84,6 +87,9 @@ export const DashboardSidebar = (props) => {
   const organizationsRef = useRef(null);
   const [openOrganizationsPopover, setOpenOrganizationsPopover] = useState(false);
 
+  const {connected} = useSelector((state) => state.connect);
+  const {ownerStxAddress} = useConnect();
+
   const handlePathChange = () => {
     if (!router.isReady) {
       return;
@@ -124,20 +130,27 @@ export const DashboardSidebar = (props) => {
           }}
         >
           <div>
-            <Box sx={{ p: 3 }}>
-              <NextLink
-                href="/"
-                passHref
-              >
-                <a>
-                  <Logo
+            <Box sx={{ p: 2 }}>
+              <Grow in={connected}>
+                <Box
                     sx={{
-                      height: 42,
-                      width: 42
+                      alignItems: 'center',
+                      backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      px: 3,
+                      py: '11px',
+                      borderRadius: 1
                     }}
-                  />
-                </a>
-              </NextLink>
+                >
+                  <Typography
+                      color="inherit"
+                      variant="body1"
+                  >
+                    {connected ? StringHelper.getElipsedHashAddress(ownerStxAddress) : ''}
+                  </Typography>
+                </Box>
+              </Grow>
             </Box>
           </div>
           <Divider
@@ -176,14 +189,14 @@ export const DashboardSidebar = (props) => {
               color="neutral.500"
               variant="body2"
             >
-              {t('Join our community')}
+              {t('Join our community !')}
             </Typography>
             <NextLink
                 href="https://twitter.com/NFP2021"
                 passHref
             >
               <a target="_blank">
-                <IconButton color="primary">
+                <IconButton color="secondary">
                   <ShareIcon fontSize="small" />
                 </IconButton>
               </a>
