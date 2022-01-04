@@ -5,12 +5,12 @@ import {
   Button,
   Card,
   CardActions,
-  CardContent,
+  CardContent, CardHeader,
   Container,
   Divider,
-  Grid,
+  Grid, InputAdornment,
   MenuItem,
-  TextField,
+  TextField, Tooltip,
   Typography
 } from '@mui/material';
 import { AuthGuard } from '../../components/authentication/auth-guard';
@@ -37,9 +37,11 @@ import {AccountTokenList} from "../../components/dashboard/account/account-token
 import {fetchItems, accountSelector} from "../../slices/account";
 import {useDispatch, useSelector} from "../../store";
 import {useConnect} from "../../connect/auth";
+import {Search as SearchIcon} from "../../icons/search";
 
 const Overview = () => {
   const [displayBanner, setDisplayBanner] = useState(true);
+  const [searchedOwnerStxAddress, setSearchedOwnerStxAddress] = useState('');
 
   const {connected} = useSelector((state) => state.connect);
   const {ownerStxAddress} = useConnect();
@@ -70,6 +72,16 @@ const Overview = () => {
     setDisplayBanner(false);
   };
 
+  const handleChangeWalletAddress = (event) => {
+    const walletAddress = event.target.value;
+
+    // FIXME: 주소 길이 41자이지만, 정확한 스펙은 확인 필요
+    if (String(walletAddress).length > 40) {
+      console.log("Search by wallet address: " + walletAddress);
+      dispatch(fetchItems(walletAddress));
+    }
+  };
+
   return (
     <>
       <Head>
@@ -77,6 +89,7 @@ const Overview = () => {
           Account Dashboard
         </title>
       </Head>
+
       <Box
         component="main"
         sx={{
@@ -95,6 +108,29 @@ const Overview = () => {
                 <Typography variant="h4">
                   Account Dashboard
                 </Typography>
+              </Grid>
+
+              <Grid item>
+                <Box
+                    sx={{
+                      m: 1,
+                      maxWidth: '100%',
+                      width: 500
+                    }}
+                >
+                  <TextField
+                      fullWidth
+                      onChange={handleChangeWalletAddress}
+                      InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                              <SearchIcon fontSize="small" />
+                            </InputAdornment>
+                        )
+                      }}
+                      placeholder="Your wallet address"
+                  />
+                </Box>
               </Grid>
             </Grid>
           </Box>
