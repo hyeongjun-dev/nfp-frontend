@@ -144,8 +144,9 @@ export const StackingRewards = (props) => {
   return (
     <>
       <Card>
-        <CardHeader title="Stacking Rewards" />
+        <CardHeader sx={{pt: "20px", pb: "20px"}} title="Stacking Rewards" />
         <Divider />
+        <Box sx={{height: "30vh", overflow: "auto"}}>
         <Table>
           <TableBody>
             {campaigns.map((campaign) => (
@@ -237,6 +238,7 @@ export const StackingRewards = (props) => {
             ))}
           </TableBody>
         </Table>
+        </Box>
       </Card>
     </>
   )
