@@ -38,24 +38,24 @@ export const StackingArea = (props) =>{
 
   return(
     <>
-      <Card sx={{backgroundColor: "#141416"}}>
+      <Card sx={{backgroundColor: "#5048E5"}}>
         <CardHeader
           subheader={(
-            <Typography variant="h5">
+            <Typography variant="h5" color="white">
               {<CountUp duration={1.2} end={stxBalance} />} STX
             </Typography>
           )}
           sx={{pb: 2}}
           title={(
             <Typography
-              color="textSecondary"
+              color="white"
               variant="overline"
             >
               STX Balance
             </Typography>
           )}
         />
-        <Card sx={{height: "600px"}}>
+        <Card>
           <CardHeader
             subheader={(
               <Box sx={{mt: 2}}>
