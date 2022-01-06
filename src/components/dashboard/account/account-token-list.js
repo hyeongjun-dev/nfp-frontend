@@ -6,7 +6,7 @@ import {
   Card,
   CardActions,
   CardHeader,
-  Divider,
+  Divider, IconButton,
   Table,
   TableBody,
   TableCell,
@@ -18,6 +18,8 @@ import {
 } from '@mui/material';
 import { InformationCircleOutlined as InformationCircleOutlinedIcon } from '../../../icons/information-circle-outlined';
 import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
+import {Share as ShareIcon} from "../../../icons/share";
+import {ExternalLink as ExternalLinkIcon} from "../../../icons/external-link";
 
 const sortTokenList = (tokens, order, orderBasis) => tokens
   .sort((a, b) => {
@@ -135,17 +137,29 @@ export const AccountTokenList = (props) => {
             >
               <TableCell>
                 <Box
-                  sx={{
-                    alignItems: 'center',
-                    display: 'flex'
-                  }}
+                    sx={{
+                      alignItems: 'center',
+                      display: 'flex'
+                    }}
                 >
                   <Typography
-                    sx={{ ml: 1 }}
-                    variant="subtitle2"
+                      sx={{ ml: 2 }}
+                      variant="body2"
                   >
                     {token.symbol}
                   </Typography>
+                  {token.url ?
+                      <a href={token.url} target='_blank'>
+                        <ExternalLinkIcon
+                            fontSize="small"
+                            sx={{
+                              color: 'text.secondary',
+                              cursor: 'pointer'
+                            }}
+                        />
+                      </a>
+                      : ''
+                  }
                 </Box>
               </TableCell>
               <TableCell>
