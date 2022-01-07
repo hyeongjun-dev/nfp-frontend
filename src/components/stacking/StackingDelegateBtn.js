@@ -12,7 +12,7 @@ function toStxAmount(amount){
   return amount * 1000000
 }
 
-export const DelegateBtn = (props) => {
+export const StackingDelegateBtn = (props) => {
   const {authOptions} = useConnect();
   const {doContractCall} = uc();
   const userSession = useAtomValue(userSessionState);

@@ -46,12 +46,12 @@ const Stacking = () => {
       >
 
         <Grid container spacing={3}>
-          <Grid item md={8}>
+          <Grid item xs={12} md={8}>
             <StackingTitle/>
             <StackingCurrent/>
             <StackingRewards/>
           </Grid>
-          <Grid item md={4}>
+          <Grid item xs={12} md={4}>
             <StackingInfo/>
             <StackingArea/>
           </Grid>
