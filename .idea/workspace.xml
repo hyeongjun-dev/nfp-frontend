@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b6839ef-f26d-41d3-b137-2d0a09bdfadb" name="Changes" comment="update workspace map">
+    <list default="true" id="5b6839ef-f26d-41d3-b137-2d0a09bdfadb" name="Changes" comment="fix stacking rewards ui">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/stacks.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/stacks.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/stacking/DelegateBtn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stacking/StackingDelegateBtn.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/stacking/StackingArea.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stacking/StackingArea.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/stacking/StackingRewards.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stacking/StackingRewards.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/stacking/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/stacking/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,8 +117,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start:dev" />
         <item itemvalue="npm.start:local" />
+        <item itemvalue="npm.start:dev" />
         <item itemvalue="npm.start" />
         <item itemvalue="npm.build" />
         <item itemvalue="npm.start:prod" />
@@ -149,6 +149,7 @@
       <workItem from="1641188399549" duration="436000" />
       <workItem from="1641189667664" duration="396000" />
       <workItem from="1641192661011" duration="1309000" />
+      <workItem from="1641569351483" duration="3443000" />
     </task>
     <task id="LOCAL-00001" summary="Add Connect Wallet function">
       <created>1640686601715</created>
@@ -220,7 +221,21 @@
       <option name="project" value="LOCAL" />
       <updated>1641118433095</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="fix stacking rewards ui">
+      <created>1641398841120</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1641398841120</updated>
+    </task>
+    <task id="LOCAL-00012" summary="fix stacking rewards ui">
+      <created>1641398910382</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1641398910382</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,6 +263,7 @@
     <MESSAGE value="Fetch Stacking info &amp;&amp; enable chain select when build" />
     <MESSAGE value="Delegate amount to StxAmount" />
     <MESSAGE value="update workspace map" />
-    <option name="LAST_COMMIT_MESSAGE" value="update workspace map" />
+    <MESSAGE value="fix stacking rewards ui" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix stacking rewards ui" />
   </component>
 </project>
