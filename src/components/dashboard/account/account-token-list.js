@@ -142,6 +142,10 @@ export const AccountTokenList = (props) => {
                       display: 'flex'
                     }}
                 >
+                  <img
+                      alt={token.symbol}
+                      src={token.image}
+                  />
                   <Typography
                       sx={{ ml: 2 }}
                       variant="body2"
