@@ -143,6 +143,8 @@ export const AccountTokenList = (props) => {
                     }}
                 >
                   <img
+                      width={24}
+                      height={24}
                       alt={token.symbol}
                       src={token.image}
                   />
