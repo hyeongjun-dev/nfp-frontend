@@ -172,10 +172,10 @@ export const AccountTokenList = (props) => {
                 {token.balance}
               </TableCell>
               <TableCell>
-                {token.price}
+                { (Number(token.price)===0) ? '-' : token.price}
               </TableCell>
               <TableCell>
-                {token.value}
+                { (Number(token.value)===0) ? '-' : token.value}
               </TableCell>
             </TableRow>
           ))}

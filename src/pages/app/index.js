@@ -42,6 +42,7 @@ import {Search as SearchIcon} from "../../icons/search";
 const Overview = () => {
   const [displayBanner, setDisplayBanner] = useState(true);
   const [searchedOwnerStxAddress, setSearchedOwnerStxAddress] = useState('');
+  const [displayedOwnerStxAddress, setDisplayedOwnerStxAddress] = useState('');
 
   const {connected} = useSelector((state) => state.connect);
   const {ownerStxAddress} = useConnect();
@@ -53,6 +54,7 @@ const Overview = () => {
     gtm.push({ event: 'page_view' });
 
     if (connected) {
+      setDisplayedOwnerStxAddress(ownerStxAddress);
       dispatch(fetchItems(ownerStxAddress)); // sample: 'SP13KT116B0A99C1FZB0M10NX3T1AWCPG0ZKYXSN'
     }
   }, [ownerStxAddress]);
@@ -77,6 +79,7 @@ const Overview = () => {
 
     // FIXME: 주소 길이 41자이지만, 정확한 스펙은 확인 필요
     if (String(walletAddress).length >= 40) {
+      setDisplayedOwnerStxAddress(walletAddress);
       console.log("Search by wallet address: " + walletAddress);
       dispatch(fetchItems(walletAddress));
     }
@@ -157,7 +160,7 @@ const Overview = () => {
                 md={4}
                 xs={12}
             >
-              <AccountWalletAddress address={ownerStxAddress}/>
+              <AccountWalletAddress address={displayedOwnerStxAddress}/>
             </Grid>
 
             <Grid
