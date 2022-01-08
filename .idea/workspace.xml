@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b6839ef-f26d-41d3-b137-2d0a09bdfadb" name="Changes" comment="fix stacking rewards ui">
+    <list default="true" id="5b6839ef-f26d-41d3-b137-2d0a09bdfadb" name="Changes" comment="Modify stacking ui">
+      <change afterPath="$PROJECT_DIR$/src/api/apiClient.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/stacking/stacking.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/number.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/stacking/DelegateBtn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stacking/StackingDelegateBtn.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/stacking/StackingArea.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stacking/StackingArea.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/stacking/StackingCurrent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stacking/StackingCurrent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/stacking/StackingInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stacking/StackingInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/stacking/StackingTitle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stacking/StackingTitle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/stacking/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/stacking/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -149,7 +154,8 @@
       <workItem from="1641188399549" duration="436000" />
       <workItem from="1641189667664" duration="396000" />
       <workItem from="1641192661011" duration="1309000" />
-      <workItem from="1641569351483" duration="3443000" />
+      <workItem from="1641569351483" duration="9189000" />
+      <workItem from="1641626714501" duration="2575000" />
     </task>
     <task id="LOCAL-00001" summary="Add Connect Wallet function">
       <created>1640686601715</created>
@@ -235,7 +241,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641398910382</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Modify stacking ui">
+      <created>1641573358949</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1641573358949</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,6 +277,7 @@
     <MESSAGE value="Delegate amount to StxAmount" />
     <MESSAGE value="update workspace map" />
     <MESSAGE value="fix stacking rewards ui" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix stacking rewards ui" />
+    <MESSAGE value="Modify stacking ui" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modify stacking ui" />
   </component>
 </project>

@@ -1,11 +1,22 @@
-import {Box, Card, CardContent, CardHeader, Grid, Typography} from "@mui/material";
+import {Box, Card, CardContent, Grid, Typography} from "@mui/material";
 import {Chart} from "../chart";
 import {useTheme} from "@mui/material/styles";
+import {principalCV} from "@stacks/transactions/dist/clarity/types/principalCV";
+import {userSessionState} from "../../connect/auth";
+import {useAtomValue} from "jotai/utils";
+import {useStxAddresses} from "../../connect/hooks";
+import {StacksMainnet} from "@stacks/network";
+import {useEffect, useState} from "react";
+import {callReadOnlyFunction, standardPrincipalCV} from "@stacks/transactions";
+import {getApyHistory} from "../../api/stacking/stacking";
 
 export const StackingCurrent = (props) => {
   const theme = useTheme();
+  const userSession = useAtomValue(userSessionState);
+  const {ownerStxAddress} = useStxAddresses(userSession);
+  const [apyHistory, setApyHistory] = useState([])
 
-  const chartOptions = {
+  let chartOptions = {
     chart: {
       background: 'transparent',
       stacked: false,
@@ -44,29 +55,61 @@ export const StackingCurrent = (props) => {
         color: theme.palette.divider,
         show: true
       },
-      categories: [
-        '#1',
-        '#2',
-        '#3',
-        '#4',
-        '#5',
-        '#6',
-        '#7',
-        '#8',
-        '#9',
-        '#10',
-        '#11',
-        '#12'
-      ]
+      categories: [...(apyHistory.map((apyHistory) => '#'+apyHistory.cycle))],
+      tickAmount: 12
     }
   };
 
-  const chartSeries = [
+  let chartSeries = [
     {
-      name: 'New Customers',
-      data: [9.1, 7.8, 8.0, 8.0, 8.9, 8.3, 11.0, 6.0, 8.1, 8.3, 8.9, 8.2]
+      name: 'Apy Revenue',
+      data: [...apyHistory.map((apyHistory) => apyHistory.apy)]
     },
   ];
+
+  async function getStackingInfo(){
+    if (!ownerStxAddress) {
+      return
+    }
+
+    const contractAddress = 'SP000000000000000000002Q6VF78';
+    const contractName = 'pox';
+    const functionName = 'get-stacker-info';
+    const stacker = standardPrincipalCV(ownerStxAddress);
+    const network = new StacksMainnet();
+
+    const options = {
+      senderAddress: ownerStxAddress,
+      contractAddress,
+      contractName,
+      functionName,
+      functionArgs: [stacker],
+      network,
+    };
+
+    return await callReadOnlyFunction(options);
+  }
+
+  async function callApyHistory() {
+    let response = await getApyHistory();
+    if (response.status === 200) {
+      let sorted = response.data.sort(function(a, b){
+        if(a.cycle > b.cycle){
+          return 1;
+        }
+        if(a.cycle < b.cycle){
+          return -1;
+        }
+        return 0;
+      })
+      setApyHistory(sorted)
+    }
+  }
+
+  useEffect(()=>{
+    getStackingInfo().then((data)=> {console.log(data)})
+    callApyHistory()
+  }, [])
 
   return (
     <>

@@ -87,18 +87,6 @@ export const StackingArea = (props) => {
               7%
             </Typography>
           </Box>
-          <Typography sx={{textAlign: "right"}} id="non-linear-slider" variant={"subtitle2"} gutterBottom>
-            Cycle to participate: {cycle} cycles
-          </Typography>
-          <Slider
-            value={cycle}
-            min={1}
-            step={1}
-            max={12}
-            onChange={handleChange}
-            valueLabelDisplay="auto"
-            aria-labelledby="non-linear-slider"
-          />
           <Box sx={{mt: 2, mb: 2}}>
             <OutlinedInput
               fullWidth
@@ -119,6 +107,18 @@ export const StackingArea = (props) => {
               }
             />
           </Box>
+          <Slider
+            value={cycle}
+            min={1}
+            step={1}
+            max={12}
+            onChange={handleChange}
+            valueLabelDisplay="auto"
+            aria-labelledby="non-linear-slider"
+          />
+          <Typography mb={2} sx={{textAlign: "right"}} id="non-linear-slider" variant={"subtitle2"} gutterBottom>
+            Cycle to participate: {cycle} cycles
+          </Typography>
           {connected ?
             <StackingDelegateBtn delegateAmount={delegateAmount}/>
             :

@@ -1,4 +1,5 @@
 import {Box, Card, CardContent, Typography} from "@mui/material";
+import CountUp from "react-countup";
 
 export const StackingTitle = (props) => {
   return (
@@ -11,7 +12,7 @@ export const StackingTitle = (props) => {
               <Typography variant={"h4"}>Stacks</Typography>
             </Box>
             <Box>
-              <Typography sx={{textAlign: "right"}} variant={"h5"} color={"textPrimary"}>8.9%</Typography>
+              <Typography sx={{textAlign: "right"}} variant={"h5"} color={"textPrimary"}>{<CountUp duration={1.0} end={parseInt(props.apy)}/>}.{<CountUp duration={1.0} end={(props.apy * 10)%10}/>}%</Typography>
               <Typography sx={{textAlign: "right"}} variant={"h7"} color={"textSecondary"}>Estimated APY</Typography>
             </Box>
           </Box>
