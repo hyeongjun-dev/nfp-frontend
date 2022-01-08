@@ -146,98 +146,101 @@ export const StackingRewards = (props) => {
       <Card>
         <CardHeader sx={{pt: "20px", pb: "20px"}} title="Stacking Rewards" />
         <Divider />
-        <Box sx={{height: "30vh", overflow: "auto"}}>
-        <Table>
-          <TableBody>
-            {campaigns.map((campaign) => (
-              <TableRow
-                key={campaign.id}
-                sx={{
-                  '&:last-child td': {
-                    border: 0
-                  }
-                }}
-              >
-                <TableCell>
-                  <Typography
-                    sx={{ cursor: 'pointer' }}
-                    variant="subtitle2"
-                  >
-                    {campaign.name}
-                  </Typography>
-                  <Box
-                    sx={{
-                      alignItems: 'center',
-                      display: 'flex',
-                      mt: 1
-                    }}
-                  >
-                    <Typography
-                      color="textSecondary"
-                      variant="body2"
-                    >
-                      {campaign.platform}
-                    </Typography>
-                    <Box
-                      sx={{
-                        height: 4,
-                        width: 4,
-                        borderRadius: 4,
-                        backgroundColor: 'text.secondary',
-                        mx: 1
-                      }}
-                    />
-                    <Typography
-                      color="textSecondary"
-                      variant="body2"
-                    >
-                      {`${campaign.target}, ${campaign.createdAt}`}
-                    </Typography>
-                  </Box>
-                </TableCell>
-                <TableCell>
-                  <SeverityPill color={labelColorsMap[campaign.status]}>
-                    {campaign.status}
-                  </SeverityPill>
-                </TableCell>
-                <TableCell>
-                  <Typography variant="subtitle2">
-                    {campaign.clickRate}
-                    %
-                  </Typography>
-                  <Typography
-                    color="textSecondary"
-                    sx={{ mt: 1 }}
-                    variant="body2"
-                  >
-                    Click Rate
-                  </Typography>
-                </TableCell>
-                <TableCell>
-                  <Typography variant="subtitle2">
-                    {campaign.conversionRate}
-                    %
-                  </Typography>
-                  <Typography
-                    color="textSecondary"
-                    sx={{ mt: 1 }}
-                    variant="body2"
-                  >
-                    Conversions
-                  </Typography>
-                </TableCell>
-                <TableCell align="right">
-                  <Button
-                    size="small"
-                    variant="outlined"
-                  >
-                    View
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+        <Box sx={{display: "flex", width: "100%",justifyContent: "center", height: "25vh", overflow: "auto"}}>
+          <Typography sx={{alignSelf: "center"}} variant={"h5"} color="#484848bd">
+            No Data
+          </Typography>
+        {/*<Table>*/}
+        {/*  <TableBody>*/}
+        {/*    /!*{campaigns.map((campaign) => (*!/*/}
+        {/*    /!*  <TableRow*!/*/}
+        {/*    /!*    key={campaign.id}*!/*/}
+        {/*    /!*    sx={{*!/*/}
+        {/*    /!*      '&:last-child td': {*!/*/}
+        {/*    /!*        border: 0*!/*/}
+        {/*    /!*      }*!/*/}
+        {/*    /!*    }}*!/*/}
+        {/*    /!*  >*!/*/}
+        {/*    /!*    <TableCell>*!/*/}
+        {/*    /!*      <Typography*!/*/}
+        {/*    /!*        sx={{ cursor: 'pointer' }}*!/*/}
+        {/*    /!*        variant="subtitle2"*!/*/}
+        {/*    /!*      >*!/*/}
+        {/*    /!*        {campaign.name}*!/*/}
+        {/*    /!*      </Typography>*!/*/}
+        {/*    /!*      <Box*!/*/}
+        {/*    /!*        sx={{*!/*/}
+        {/*    /!*          alignItems: 'center',*!/*/}
+        {/*    /!*          display: 'flex',*!/*/}
+        {/*    /!*          mt: 1*!/*/}
+        {/*    /!*        }}*!/*/}
+        {/*    /!*      >*!/*/}
+        {/*    /!*        <Typography*!/*/}
+        {/*    /!*          color="textSecondary"*!/*/}
+        {/*    /!*          variant="body2"*!/*/}
+        {/*    /!*        >*!/*/}
+        {/*    /!*          {campaign.platform}*!/*/}
+        {/*    /!*        </Typography>*!/*/}
+        {/*    /!*        <Box*!/*/}
+        {/*    /!*          sx={{*!/*/}
+        {/*    /!*            height: 4,*!/*/}
+        {/*    /!*            width: 4,*!/*/}
+        {/*    /!*            borderRadius: 4,*!/*/}
+        {/*    /!*            backgroundColor: 'text.secondary',*!/*/}
+        {/*    /!*            mx: 1*!/*/}
+        {/*    /!*          }}*!/*/}
+        {/*    /!*        />*!/*/}
+        {/*    /!*        <Typography*!/*/}
+        {/*    /!*          color="textSecondary"*!/*/}
+        {/*    /!*          variant="body2"*!/*/}
+        {/*    /!*        >*!/*/}
+        {/*    /!*          {`${campaign.target}, ${campaign.createdAt}`}*!/*/}
+        {/*    /!*        </Typography>*!/*/}
+        {/*    /!*      </Box>*!/*/}
+        {/*    /!*    </TableCell>*!/*/}
+        {/*    /!*    <TableCell>*!/*/}
+        {/*    /!*      <SeverityPill color={labelColorsMap[campaign.status]}>*!/*/}
+        {/*    /!*        {campaign.status}*!/*/}
+        {/*    /!*      </SeverityPill>*!/*/}
+        {/*    /!*    </TableCell>*!/*/}
+        {/*    /!*    <TableCell>*!/*/}
+        {/*    /!*      <Typography variant="subtitle2">*!/*/}
+        {/*    /!*        {campaign.clickRate}*!/*/}
+        {/*    /!*        %*!/*/}
+        {/*    /!*      </Typography>*!/*/}
+        {/*    /!*      <Typography*!/*/}
+        {/*    /!*        color="textSecondary"*!/*/}
+        {/*    /!*        sx={{ mt: 1 }}*!/*/}
+        {/*    /!*        variant="body2"*!/*/}
+        {/*    /!*      >*!/*/}
+        {/*    /!*        Click Rate*!/*/}
+        {/*    /!*      </Typography>*!/*/}
+        {/*    /!*    </TableCell>*!/*/}
+        {/*    /!*    <TableCell>*!/*/}
+        {/*    /!*      <Typography variant="subtitle2">*!/*/}
+        {/*    /!*        {campaign.conversionRate}*!/*/}
+        {/*    /!*        %*!/*/}
+        {/*    /!*      </Typography>*!/*/}
+        {/*    /!*      <Typography*!/*/}
+        {/*    /!*        color="textSecondary"*!/*/}
+        {/*    /!*        sx={{ mt: 1 }}*!/*/}
+        {/*    /!*        variant="body2"*!/*/}
+        {/*    /!*      >*!/*/}
+        {/*    /!*        Conversions*!/*/}
+        {/*    /!*      </Typography>*!/*/}
+        {/*    /!*    </TableCell>*!/*/}
+        {/*    /!*    <TableCell align="right">*!/*/}
+        {/*    /!*      <Button*!/*/}
+        {/*    /!*        size="small"*!/*/}
+        {/*    /!*        variant="outlined"*!/*/}
+        {/*    /!*      >*!/*/}
+        {/*    /!*        View*!/*/}
+        {/*    /!*      </Button>*!/*/}
+        {/*    /!*    </TableCell>*!/*/}
+        {/*    /!*  </TableRow>*!/*/}
+        {/*    /!*))}*!/*/}
+        {/*  </TableBody>*/}
+        {/*</Table>*/}
         </Box>
       </Card>
     </>

@@ -1,20 +1,26 @@
 import {Box, Card, CardContent, Grid, Typography} from "@mui/material";
 import {Chart} from "../chart";
 import {useTheme} from "@mui/material/styles";
-import {principalCV} from "@stacks/transactions/dist/clarity/types/principalCV";
 import {userSessionState} from "../../connect/auth";
 import {useAtomValue} from "jotai/utils";
 import {useStxAddresses} from "../../connect/hooks";
 import {StacksMainnet} from "@stacks/network";
 import {useEffect, useState} from "react";
-import {callReadOnlyFunction, standardPrincipalCV} from "@stacks/transactions";
+import {callReadOnlyFunction, cvToJSON, standardPrincipalCV} from "@stacks/transactions";
 import {getApyHistory} from "../../api/stacking/stacking";
+import {withComma} from "../../utils/number";
 
 export const StackingCurrent = (props) => {
   const theme = useTheme();
   const userSession = useAtomValue(userSessionState);
   const {ownerStxAddress} = useStxAddresses(userSession);
   const [apyHistory, setApyHistory] = useState([])
+  const [myStatus, setMyStatus] = useState({
+    amountStacking: '-',
+    firstRewardCycle: '-',
+    lockPeriod: '-',
+    poxAddr: ''
+  })
 
   let chartOptions = {
     chart: {
@@ -107,9 +113,28 @@ export const StackingCurrent = (props) => {
   }
 
   useEffect(()=>{
-    getStackingInfo().then((data)=> {console.log(data)})
     callApyHistory()
   }, [])
+
+  useEffect(()=>{
+    getStackingInfo().then((data)=> {
+      try{
+        let cvJson = cvToJSON(data).value.value
+        let amountStacking = (cvJson['amount-ustx'].value)/1000000
+        let firstRewardCycle = cvJson['first-reward-cycle'].value
+        let lockPeriod = cvJson['lock-period'].value
+        let poxAddr = cvJson['pox-addr'].value
+        setMyStatus({
+          amountStacking: amountStacking,
+          firstRewardCycle: firstRewardCycle,
+          lockPeriod: lockPeriod,
+          poxAddr: poxAddr
+        })
+      }catch(e){
+        console.log(e)
+      }
+    })
+  }, [ownerStxAddress])
 
   return (
     <>
@@ -131,15 +156,15 @@ export const StackingCurrent = (props) => {
               <Typography variant={"h6"} sx={{mb:2}}>My Status</Typography>
               <Box sx={{display:"flex", justifyContent: "space-between"}} mb={1}>
                 <Typography variant={"subtitle2"}>Amount Stacking</Typography>
-                <Typography variant={"subtitle2"}>10,000STX</Typography>
+                <Typography variant={"subtitle2"}>{withComma(myStatus.amountStacking)}</Typography>
               </Box>
               <Box sx={{display:"flex", justifyContent: "space-between"}} mb={1}>
                 <Typography variant={"subtitle2"}>Stacking Started</Typography>
-                <Typography variant={"subtitle2"}>#25</Typography>
+                <Typography variant={"subtitle2"}>{myStatus.firstRewardCycle !== '-'? '#'+myStatus.firstRewardCycle : '-'}</Typography>
               </Box>
               <Box sx={{display:"flex", justifyContent: "space-between"}} mb={2}>
                 <Typography variant={"subtitle2"}>Stacking Ended</Typography>
-                <Typography variant={"subtitle2"}>10,000STX</Typography>
+                <Typography variant={"subtitle2"}>{myStatus.firstRewardCycle !== '-'? '#' + (parseInt(myStatus.firstRewardCycle)+parseInt(myStatus.lockPeriod)-1) : '-'}</Typography>
               </Box>
               <Typography variant={"body2"} color={"textSecondary"}>STX stacking cannot be participated in multiple wallets at once. If you need to participate in additional stacking, you should participate with a new wallet.</Typography>
             </Grid>

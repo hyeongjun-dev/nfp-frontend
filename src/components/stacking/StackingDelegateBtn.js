@@ -24,7 +24,7 @@ export const StackingDelegateBtn = (props) => {
     let contractAddress = 'ST000000000000000000002AMW42H'
     let contractName = 'pox'
     let functionName = 'delegate-stx'
-    let functionArgs = [uintCV(toStxAmount(amount)), standardPrincipalCV(delegate_to), noneCV(), noneCV()]
+    let functionArgs = [uintCV(toStxAmount(amount)), standardPrincipalCV(delegate_to), uintCV(props.untilBurnHeight), noneCV()]
 
     await doContractCall({
       contractAddress,

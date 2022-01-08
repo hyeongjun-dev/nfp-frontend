@@ -34,6 +34,12 @@ export const StackingArea = (props) => {
     }
   };
 
+  function calUntilBurnHeight(){
+    let nextStartBlockHeight = props.stackingInfo.nextRewardStartBlockHeight
+
+    return nextStartBlockHeight + (cycle * 2100)
+  }
+
   useEffect(() => {
     if (connected) {
       getBalance(ownerStxAddress)
@@ -120,7 +126,7 @@ export const StackingArea = (props) => {
             Cycle to participate: {cycle} cycles
           </Typography>
           {connected ?
-            <StackingDelegateBtn delegateAmount={delegateAmount}/>
+            <StackingDelegateBtn delegateAmount={delegateAmount} untilBurnHeight={calUntilBurnHeight()}/>
             :
             <Button sx={{width: "100%", borderRadius: '5px'}} variant={"contained"} onClick={() => handleOpenAuth()}>Connect
               wallet</Button>}

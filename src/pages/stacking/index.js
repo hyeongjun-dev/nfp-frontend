@@ -17,7 +17,8 @@ const Stacking = () => {
     apy: 0.0,
     rewardsCycle: '-',
     selfStacking: '-',
-    delegationStacking: 100
+    delegationStacking: 100,
+    nextRewardStartBlockHeight : 0,
   })
 
   useEffect(() => {
@@ -31,7 +32,8 @@ const Stacking = () => {
           apy: body.apy,
           rewardsCycle: parseInt(body.reward_cycle_length / 6 / 24),
           selfStacking: body.min_amount_ustx / 1000000,
-          delegationStacking: stackingInfo.delegationStacking
+          delegationStacking: stackingInfo.delegationStacking,
+          nextRewardStartBlockHeight: body.next_cycle.reward_phase_start_block_height
         })
       }
     }
@@ -73,7 +75,7 @@ const Stacking = () => {
           </Grid>
           <Grid item xs={12} md={4}>
             <StackingInfo stackingInfo={stackingInfo}/>
-            <StackingArea/>
+            <StackingArea stackingInfo={stackingInfo}/>
           </Grid>
         </Grid>
       </Box>
