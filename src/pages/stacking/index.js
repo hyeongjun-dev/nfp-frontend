@@ -15,7 +15,9 @@ const Stacking = () => {
   const [displayBanner, setDisplayBanner] = useState(true);
   const [stackingInfo, setStackingInfo] = useState({
     apy: 0.0,
-    rewardsCycle: '-',
+    rewardsCyclePeriod: '-',
+    nextCycle: 0,
+    deadLine: 0,
     selfStacking: '-',
     delegationStacking: 100,
     nextRewardStartBlockHeight : 0,
@@ -31,7 +33,9 @@ const Stacking = () => {
         let body = response.data;
         setStackingInfo({
           apy: body.apy,
-          rewardsCycle: parseInt(body.reward_cycle_length / 6 / 24),
+          rewardsCyclePeriod: parseInt(body.reward_cycle_length / 6 / 24),
+          nextCycle: body.next_cycle.id,
+          deadLine: (body.next_reward_cycle_in - 100 - 201),
           selfStacking: body.min_amount_ustx / 1000000,
           delegationStacking: stackingInfo.delegationStacking,
           nextRewardStartBlockHeight: body.next_cycle.reward_phase_start_block_height,

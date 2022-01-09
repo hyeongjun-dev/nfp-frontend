@@ -68,13 +68,19 @@ export const StackingArea = (props) => {
             </Typography>
           </Box>
           <Box sx={{display: "flex", justifyContent: "space-between"}}>
-            <Typography variant={"overline"} color={"textSecondary"}>Waiting for participation</Typography>
+            <Typography variant={"overline"} color={"textSecondary"}>Upcoming Cycle</Typography>
             <Typography variant={"overline"} color={"textSecondary"}>
-              10 days
+              #{props.stackingInfo.nextCycle}
             </Typography>
           </Box>
           <Box sx={{display: "flex", justifyContent: "space-between"}}>
-            <Typography variant={"overline"} color={"textSecondary"}>Rewarding means</Typography>
+            <Typography variant={"overline"} color={"textSecondary"}>Delegation Deadline IN</Typography>
+            <Typography variant={"overline"} color={"textSecondary"}>
+              {props.stackingInfo.deadLine} blocks
+            </Typography>
+          </Box>
+          <Box sx={{display: "flex", justifyContent: "space-between"}}>
+            <Typography variant={"overline"} color={"textSecondary"}>Reward Payout in</Typography>
             <Typography variant={"overline"} color={"textSecondary"}>
               XBTC
             </Typography>
