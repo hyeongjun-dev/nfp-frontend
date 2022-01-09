@@ -42,7 +42,7 @@ export const StackingArea = (props) => {
 
   useEffect(() => {
     if (connected) {
-      getBalance(ownerStxAddress)
+      getBalance(ownerStxAddress, true)
         .then((response) => {
           setStxBalance(response.data.stxInfo.balance)
         })
@@ -105,7 +105,7 @@ export const StackingArea = (props) => {
                 <InputAdornment position="end">
                   <Button onClick={() => {
                     let nBalance = parseInt(stxBalance)
-                    setDelegateAmount(nBalance)
+                    setDelegateAmount(nBalance - 1 > 0 ? nBalance - 1 : 0)
                   }}>
                     Max
                   </Button>
@@ -126,7 +126,7 @@ export const StackingArea = (props) => {
             Cycle to participate: {cycle} cycles
           </Typography>
           {connected ?
-            <StackingDelegateBtn delegateAmount={delegateAmount} untilBurnHeight={calUntilBurnHeight()}/>
+            <StackingDelegateBtn poolAddress={props.stackingInfo.poolAddress} delegateAmount={delegateAmount} untilBurnHeight={calUntilBurnHeight()}/>
             :
             <Button sx={{width: "100%", borderRadius: '5px'}} variant={"contained"} onClick={() => handleOpenAuth()}>Connect
               wallet</Button>}

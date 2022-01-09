@@ -8,7 +8,7 @@ import {StackingArea} from "../../components/stacking/StackingArea";
 import {StackingCurrent} from "../../components/stacking/StackingCurrent";
 import {StackingRewards} from "../../components/stacking/StackingRewards";
 import {StackingInfo} from "../../components/stacking/StackingInfo";
-import {getApyHistory, getPoxInfo} from "../../api/stacking/stacking";
+import {getPoxInfo} from "../../api/stacking/stacking";
 
 
 const Stacking = () => {
@@ -19,6 +19,7 @@ const Stacking = () => {
     selfStacking: '-',
     delegationStacking: 100,
     nextRewardStartBlockHeight : 0,
+    poolAddress: ''
   })
 
   useEffect(() => {
@@ -33,7 +34,8 @@ const Stacking = () => {
           rewardsCycle: parseInt(body.reward_cycle_length / 6 / 24),
           selfStacking: body.min_amount_ustx / 1000000,
           delegationStacking: stackingInfo.delegationStacking,
-          nextRewardStartBlockHeight: body.next_cycle.reward_phase_start_block_height
+          nextRewardStartBlockHeight: body.next_cycle.reward_phase_start_block_height,
+          poolAddress: body.poolAddress
         })
       }
     }

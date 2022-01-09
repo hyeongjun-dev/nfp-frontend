@@ -7,6 +7,7 @@ import {Connect} from '@stacks/connect-react';
 import {useConnect as uc} from "@stacks/connect-react";
 
 import {noneCV, standardPrincipalCV, uintCV} from "@stacks/transactions";
+import {testnet} from "../../connect/constants";
 
 function toStxAmount(amount){
   return amount * 1000000
@@ -19,9 +20,9 @@ export const StackingDelegateBtn = (props) => {
   const {ownerStxAddress} = useStxAddresses(userSession);
 
   async function openDelegate(amount) {
-    let delegate_to = 'ST36FGDM6D0X0JSMG9M9ZKQXHMRK3BCMF21B9YG5E'
+    let delegate_to = props.poolAddress
 
-    let contractAddress = 'ST000000000000000000002AMW42H'
+    let contractAddress = testnet ? 'ST000000000000000000002AMW42H' : 'SP000000000000000000002Q6VF78'
     let contractName = 'pox'
     let functionName = 'delegate-stx'
     let functionArgs = [uintCV(toStxAmount(amount)), standardPrincipalCV(delegate_to), uintCV(props.untilBurnHeight), noneCV()]

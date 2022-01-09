@@ -60,6 +60,7 @@ export function fetchItems(address) {
   };
 }
 
-export function getBalance(address){
-  return api.get(`/account/balance?address=${address}`);
+export function getBalance(address, onlyStxBalance){
+  let apiUrl = onlyStxBalance ? `/account/balance?address=${address}&onlyStxBalance=true` : `/account/balance?address=${address}`;
+  return api.get(apiUrl);
 }
