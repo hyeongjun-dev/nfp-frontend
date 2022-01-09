@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b6839ef-f26d-41d3-b137-2d0a09bdfadb" name="Changes" comment="Modify stacking infos">
+    <list default="true" id="5b6839ef-f26d-41d3-b137-2d0a09bdfadb" name="Changes" comment="Delegate as mainnet">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/stacking/StackingDelegateBtn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stacking/StackingDelegateBtn.js" afterDir="false" />
     </list>
@@ -150,7 +150,7 @@
       <workItem from="1641569351483" duration="9189000" />
       <workItem from="1641626714501" duration="2930000" />
       <workItem from="1641656292773" duration="4538000" />
-      <workItem from="1641702280975" duration="6319000" />
+      <workItem from="1641702280975" duration="7282000" />
     </task>
     <task id="LOCAL-00001" summary="Add Connect Wallet function">
       <created>1640686601715</created>
@@ -271,7 +271,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641708934471</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Delegate as mainnet">
+      <created>1641730710311</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1641730710311</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,6 +312,7 @@
     <MESSAGE value="Update Stacking Rewards Area" />
     <MESSAGE value="Modify stacking" />
     <MESSAGE value="Modify stacking infos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modify stacking infos" />
+    <MESSAGE value="Delegate as mainnet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delegate as mainnet" />
   </component>
 </project>

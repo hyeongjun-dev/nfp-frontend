@@ -6,7 +6,7 @@ import {StacksMainnet, StacksTestnet} from "@stacks/network";
 import {Connect} from '@stacks/connect-react';
 import {useConnect as uc} from "@stacks/connect-react";
 
-import {noneCV, standardPrincipalCV, uintCV} from "@stacks/transactions";
+import {noneCV, someCV, standardPrincipalCV, uintCV} from "@stacks/transactions";
 import {testnet} from "../../connect/constants";
 
 function toStxAmount(amount){
@@ -25,7 +25,7 @@ export const StackingDelegateBtn = (props) => {
     let contractAddress = testnet ? 'ST000000000000000000002AMW42H' : 'SP000000000000000000002Q6VF78'
     let contractName = 'pox'
     let functionName = 'delegate-stx'
-    let functionArgs = [uintCV(toStxAmount(amount)), standardPrincipalCV(delegate_to), uintCV(props.untilBurnHeight), noneCV()]
+    let functionArgs = [uintCV(toStxAmount(amount)), standardPrincipalCV(delegate_to), someCV(uintCV(props.untilBurnHeight)), noneCV()]
 
     await doContractCall({
       contractAddress,
