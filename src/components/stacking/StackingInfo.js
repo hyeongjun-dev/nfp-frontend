@@ -9,7 +9,7 @@ export const StackingInfo = (props) => {
         <CardContent sx={{pt: "15px", paddingBottom: "0px"}}>
           <Box sx={{display: "flex", justifyContent: "space-between"}}>
             <Typography variant={"overline"} color={"textSecondary"}>Rewards cycle</Typography>
-            <Typography sx={{textAlign: "right"}} variant={"overline"} color={"textSecondary"}>≈{props.stackingInfo.rewardsCyclePeriod} days</Typography>
+            <Typography sx={{textAlign: "right"}} variant={"overline"} color={"textSecondary"}>{'≈'+props.stackingInfo.rewardsCyclePeriod} days</Typography>
           </Box>
           <Box sx={{display: "flex", justifyContent: "space-between"}}>
             <Typography variant={"overline"} color={"textSecondary"}>Self Stacking</Typography>
