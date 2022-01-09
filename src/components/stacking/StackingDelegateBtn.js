@@ -2,7 +2,7 @@ import {Box, Button} from "@mui/material";
 import {useAtomValue} from "jotai/utils";
 import {useConnect, userSessionState} from "../../connect/auth";
 import {useStxAddresses} from "../../connect/hooks";
-import {StacksTestnet} from "@stacks/network";
+import {StacksMainnet, StacksTestnet} from "@stacks/network";
 import {Connect} from '@stacks/connect-react';
 import {useConnect as uc} from "@stacks/connect-react";
 
@@ -32,7 +32,7 @@ export const StackingDelegateBtn = (props) => {
       contractName,
       functionName,
       functionArgs: functionArgs,
-      network: new StacksTestnet(),
+      network: testnet ? new StacksTestnet() : new StacksMainnet(),
       onFinish: data => {
         console.log("finished")
         console.log(data)
