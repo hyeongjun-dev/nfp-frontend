@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import { Logo } from './logo';
+import { Logo } from './logoBig';
 import { keyframes } from '@emotion/react';
 
 const bounce1 = keyframes`
