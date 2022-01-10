@@ -50,7 +50,7 @@ const getSections = (t) => [
     items: [
       {
         title: t('Dashboard'),
-        path: '/app',
+        path: '/',
         icon: <ChartPieIcon fontSize="small"/>
       },
       {
@@ -148,7 +148,7 @@ export const DashboardSidebar = (props) => {
             >
 
               <NextLink
-                  href="/app"
+                  href="/"
                   passHref
               >
                 <a>
@@ -182,7 +182,6 @@ export const DashboardSidebar = (props) => {
           </Grid>
           <div>
             <Box sx={{ p: 2 }}>
-              <Grow in={connected}>
                 <Box
                     sx={{
                       alignItems: 'center',
@@ -205,11 +204,10 @@ export const DashboardSidebar = (props) => {
                         color="neutral.400"
                         variant="body2"
                     >
-                      {connected ? StringHelper.getElipsedHashAddress(ownerStxAddress) : ''}
+                      {connected ? StringHelper.getElipsedHashAddress(ownerStxAddress) : 'wallet not connected'}
                     </Typography>
                   </div>
                 </Box>
-              </Grow>
             </Box>
           </div>
           <Divider

@@ -45,7 +45,7 @@ export const FirebaseRegister = (props) => {
         await createUserWithEmailAndPassword(values.email, values.password);
 
         if (isMounted()) {
-          const returnUrl = router.query.returnUrl || '/app';
+          const returnUrl = router.query.returnUrl || '/';
           router.push(returnUrl);
         }
       } catch (err) {

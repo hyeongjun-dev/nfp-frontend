@@ -41,7 +41,7 @@ const App = (props) => {
     <CacheProvider value={emotionCache}>
       <Head>
         <title>
-          Material Kit Pro
+          NFP STUDIO
         </title>
         <meta
           name="viewport"
