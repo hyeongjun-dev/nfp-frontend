@@ -6,7 +6,7 @@ export const AccountFiatBalance = (props) => (
       <CardContent>
         <Typography
             variant="h4"
-            color="secondary"
+            color="black"
         >
           {numeral(props.totalBalance).format('$0,0.00')}
         </Typography>
