@@ -118,7 +118,7 @@ const Overview = () => {
                     sx={{
                       m: 1,
                       maxWidth: '100%',
-                      width: 500
+                      minWidth: 400
                     }}
                 >
                   <TextField
