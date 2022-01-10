@@ -6,8 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="5b6839ef-f26d-41d3-b137-2d0a09bdfadb" name="Changes" comment="Implement Delegate Stacking Activieis.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/stacking/StackingActivities.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stacking/StackingActivities.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/stacking/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/stacking/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authentication/amplify-login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/amplify-login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authentication/auth0-login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/auth0-login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authentication/auth0-register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/auth0-register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authentication/firebase-login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/firebase-login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authentication/firebase-register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/firebase-register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authentication/guest-guard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/guest-guard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authentication/jwt-login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/jwt-login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/authentication/jwt-register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/authentication/jwt-register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dashboard/dashboard-sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/dashboard-sidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/app/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +69,7 @@
       <recent name="$PROJECT_DIR$/src/components/dashboard/account" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src/components/stacking" />
     </key>
