@@ -8,7 +8,7 @@ import {
   Button,
   Chip,
   Divider,
-  Drawer, Grow,
+  Drawer, Grid, Grow, Link,
   IconButton,
   Typography,
   useMediaQuery
@@ -39,38 +39,44 @@ import { Logo } from '../logo';
 import { Scrollbar } from '../scrollbar';
 import { DashboardSidebarSection } from './dashboard-sidebar-section';
 import { OrganizationPopover } from './organization-popover';
-import {Link} from "../../icons/link";
 import {useSelector} from "../../store";
 import {useConnect} from "../../connect/auth";
 import StringHelper from "../../utils/StringHelper";
+import {ExternalLink} from "../../icons/external-link";
 
 const getSections = (t) => [
   {
+    title: t('NFP MAIN STUDIO'),
     items: [
       {
         title: t('Dashboard'),
         path: '/app',
-        icon: <ChartPieIcon fontSize="small" />
+        icon: <ChartPieIcon fontSize="small"/>
       },
+      {
+        title: t('Stacking'),
+        path: '/stacking',
+        icon: <UsersIcon fontSize="small"/>
+      }
+    ]
+  },
+  {
+    title: t('NFP TOOLS'),
+    items: [
       {
         title: t('Multisender'),
         path: 'https://btc.stx-multisender.com',
-        icon: <CashIcon fontSize="small" />
+        icon: <ExternalLink fontSize="small"/>
       },
       {
         title: t('KCV Pool'),
         path: 'https://pool.kcvdao.com',
-        icon: <TruckIcon fontSize="small" />
+        icon: <ExternalLink fontSize="small"/>
       },
       {
         title: t('StacksScan'),
         path: 'https://stacksscan.org',
-        icon: <ChartBarIcon fontSize="small" />
-      },
-      {
-        title: t('Stacking (not opened)'),
-        path: '',
-        icon: ''
+        icon: <ExternalLink fontSize="small"/>
       }
     ]
   }
@@ -126,9 +132,54 @@ export const DashboardSidebar = (props) => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            height: '100%'
+            height: '100%',
+            mt: 3
           }}
         >
+          <Grid
+              container
+              spacing={1}
+              alignItems="center"
+              justify="center"
+          >
+            <Grid item
+                  md={3}
+                  align="right"
+            >
+
+              <NextLink
+                  href="/app"
+                  passHref
+              >
+                <a>
+                  <Logo/>
+                </a>
+              </NextLink>
+            </Grid>
+            <Grid item
+                  md={9}
+                  align="left"
+            >
+              {/*<NextLink*/}
+              {/*    href="/app"*/}
+              {/*    passHref*/}
+              {/*>*/}
+              {/*  <Link*/}
+              {/*      component="a"*/}
+              {/*      underline="none"*/}
+              {/*  >*/}
+              {/*    <Typography*/}
+              {/*        variant="h6">*/}
+              {/*      NFP STUDIO*/}
+              {/*    </Typography>*/}
+              {/*  </Link>*/}
+              {/*</NextLink>*/}
+              <Typography
+                  variant="h6">
+                NFP STUDIO
+              </Typography>
+            </Grid>
+          </Grid>
           <div>
             <Box sx={{ p: 2 }}>
               <Grow in={connected}>
@@ -143,12 +194,20 @@ export const DashboardSidebar = (props) => {
                       borderRadius: 1
                     }}
                 >
-                  <Typography
-                      color="inherit"
-                      variant="body1"
-                  >
-                    {connected ? StringHelper.getElipsedHashAddress(ownerStxAddress) : ''}
-                  </Typography>
+                  <div>
+                    <Typography
+                        color="inherit"
+                        variant="subtitle1"
+                    >
+                      Stacks Account
+                    </Typography>
+                    <Typography
+                        color="neutral.400"
+                        variant="body2"
+                    >
+                      {connected ? StringHelper.getElipsedHashAddress(ownerStxAddress) : ''}
+                    </Typography>
+                  </div>
                 </Box>
               </Grow>
             </Box>
@@ -179,27 +238,19 @@ export const DashboardSidebar = (props) => {
             }}
           />
           <Box sx={{ p: 2 }}>
-            <Typography
-              color="neutral.100"
-              variant="subtitle2"
-            >
-              {t('NFP Twitter')}
-            </Typography>
-            <Typography
-              color="neutral.500"
-              variant="body2"
-            >
-              {t('Join our community !')}
-            </Typography>
             <NextLink
                 href="https://twitter.com/NFP2021"
                 passHref
             >
-              <a target="_blank">
-                <IconButton color="secondary">
-                  <ShareIcon fontSize="small" />
-                </IconButton>
-              </a>
+              <Button
+                  color="secondary"
+                  component="a"
+                  fullWidth
+                  sx={{ mt: 2 }}
+                  variant="contained"
+              >
+                {t('NFP Twitter')}
+              </Button>
             </NextLink>
           </Box>
         </Box>

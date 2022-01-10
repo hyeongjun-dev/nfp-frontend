@@ -142,30 +142,20 @@ export const AccountTokenList = (props) => {
                       display: 'flex'
                     }}
                 >
-                  <img
+                  <a href={token.url} target='_blank'>
+                    <img
                       width={24}
                       height={24}
                       alt={token.symbol}
                       src={token.image}
-                  />
+                    />
+                  </a>
                   <Typography
                       sx={{ ml: 2 }}
                       variant="body2"
                   >
                     {token.symbol}
                   </Typography>
-                  {token.url ?
-                      <a href={token.url} target='_blank'>
-                        <ExternalLinkIcon
-                            fontSize="small"
-                            sx={{
-                              color: 'text.secondary',
-                              cursor: 'pointer'
-                            }}
-                        />
-                      </a>
-                      : ''
-                  }
                 </Box>
               </TableCell>
               <TableCell>

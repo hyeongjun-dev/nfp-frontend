@@ -7,7 +7,7 @@ export const AccountWalletAddress = (props) => (
       <CardContent>
         <Typography
             variant="h4"
-            color="secondary"
+            color="black"
         >
           { StringHelper.getElipsedHashAddress(props.address || "-") }
         </Typography>
