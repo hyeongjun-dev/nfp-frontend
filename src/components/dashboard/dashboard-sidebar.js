@@ -144,6 +144,7 @@ export const DashboardSidebar = (props) => {
           >
             <Grid item
                   md={3}
+                  xs={3}
                   align="right"
             >
 
@@ -158,26 +159,27 @@ export const DashboardSidebar = (props) => {
             </Grid>
             <Grid item
                   md={9}
+                  xs={9}
                   align="left"
             >
-              {/*<NextLink*/}
-              {/*    href="/app"*/}
-              {/*    passHref*/}
-              {/*>*/}
-              {/*  <Link*/}
-              {/*      component="a"*/}
-              {/*      underline="none"*/}
-              {/*  >*/}
-              {/*    <Typography*/}
-              {/*        variant="h6">*/}
-              {/*      NFP STUDIO*/}
-              {/*    </Typography>*/}
-              {/*  </Link>*/}
-              {/*</NextLink>*/}
-              <Typography
-                  variant="h6">
-                NFP STUDIO
-              </Typography>
+              <NextLink
+                  href="/"
+                  passHref
+              >
+                <Link
+                    component="a"
+                    underline="none"
+                    sx={{
+                      color: 'white'
+                    }}
+                >
+                  <Typography
+                      variant="h6"
+                  >
+                    NFP STUDIO
+                  </Typography>
+                </Link>
+              </NextLink>
             </Grid>
           </Grid>
           <div>
@@ -240,15 +242,17 @@ export const DashboardSidebar = (props) => {
                 href="https://twitter.com/NFP2021"
                 passHref
             >
-              <Button
-                  color="secondary"
-                  component="a"
-                  fullWidth
-                  sx={{ mt: 2 }}
-                  variant="contained"
-              >
-                {t('NFP Twitter')}
-              </Button>
+              <Link target="_blank">
+                <Button
+                    color="secondary"
+                    component="a"
+                    fullWidth
+                    sx={{ mt: 2 }}
+                    variant="contained"
+                >
+                  {t('NFP Twitter')}
+                </Button>
+              </Link>
             </NextLink>
           </Box>
         </Box>
