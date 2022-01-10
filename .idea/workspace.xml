@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b6839ef-f26d-41d3-b137-2d0a09bdfadb" name="Changes" comment="add abount text">
-      <change beforePath="$PROJECT_DIR$/src/components/stacking/StackingInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stacking/StackingInfo.js" afterDir="false" />
+    <list default="true" id="5b6839ef-f26d-41d3-b137-2d0a09bdfadb" name="Changes" comment="change about text">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/stacking/StackingArea.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stacking/StackingArea.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/stacking/StackingRewards.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stacking/StackingActivities.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/stacking/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/stacking/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +154,11 @@
       <workItem from="1641626714501" duration="2930000" />
       <workItem from="1641656292773" duration="4538000" />
       <workItem from="1641702280975" duration="8107000" />
-      <workItem from="1641743377973" duration="259000" />
+      <workItem from="1641743377973" duration="870000" />
+      <workItem from="1641753690398" duration="352000" />
+      <workItem from="1641778782408" duration="8000" />
+      <workItem from="1641810259179" duration="7000" />
+      <workItem from="1641821773472" duration="7759000" />
     </task>
     <task id="LOCAL-00001" summary="Add Connect Wallet function">
       <created>1640686601715</created>
@@ -292,7 +300,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641743475580</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="change about text">
+      <created>1641743651828</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1641743651828</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -329,6 +344,7 @@
     <MESSAGE value="Delegate as mainnet" />
     <MESSAGE value="Delegate amount to some" />
     <MESSAGE value="add abount text" />
-    <option name="LAST_COMMIT_MESSAGE" value="add abount text" />
+    <MESSAGE value="change about text" />
+    <option name="LAST_COMMIT_MESSAGE" value="change about text" />
   </component>
 </project>

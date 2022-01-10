@@ -6,7 +6,7 @@ import {gtm} from '../../lib/gtm';
 import {StackingTitle} from "../../components/stacking/StackingTitle";
 import {StackingArea} from "../../components/stacking/StackingArea";
 import {StackingCurrent} from "../../components/stacking/StackingCurrent";
-import {StackingRewards} from "../../components/stacking/StackingRewards";
+import {StackingActivities} from "../../components/stacking/StackingActivities";
 import {StackingInfo} from "../../components/stacking/StackingInfo";
 import {getPoxInfo} from "../../api/stacking/stacking";
 
@@ -77,7 +77,7 @@ const Stacking = () => {
           <Grid item xs={12} md={8}>
             <StackingTitle apy={stackingInfo.apy}/>
             <StackingCurrent/>
-            <StackingRewards/>
+            <StackingActivities/>
           </Grid>
           <Grid item xs={12} md={4}>
             <StackingInfo stackingInfo={stackingInfo}/>

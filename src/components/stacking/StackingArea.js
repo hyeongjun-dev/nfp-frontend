@@ -128,7 +128,7 @@ export const StackingArea = (props) => {
             valueLabelDisplay="auto"
             aria-labelledby="non-linear-slider"
           />
-          <Typography mb={2} sx={{textAlign: "right"}} id="non-linear-slider" variant={"subtitle2"} gutterBottom>
+          <Typography mb={2} sx={{textAlign: "right"}} id="non-linear-slider" variant={"subtitle2"} color={"textSecondary"}>
             Cycle to participate: {cycle} cycles
           </Typography>
           {connected ?
