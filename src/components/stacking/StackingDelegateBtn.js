@@ -1,4 +1,4 @@
-import {Box, Button} from "@mui/material";
+import {Box, Button, Snackbar} from "@mui/material";
 import {useAtomValue} from "jotai/utils";
 import {useConnect, userSessionState} from "../../connect/auth";
 import {useStxAddresses} from "../../connect/hooks";
@@ -8,6 +8,7 @@ import {useConnect as uc} from "@stacks/connect-react";
 
 import {noneCV, someCV, standardPrincipalCV, uintCV} from "@stacks/transactions";
 import {testnet} from "../../connect/constants";
+import {useState} from "react";
 
 function toStxAmount(amount){
   return amount * 1000000
@@ -18,6 +19,14 @@ export const StackingDelegateBtn = (props) => {
   const {doContractCall} = uc();
   const userSession = useAtomValue(userSessionState);
   const {ownerStxAddress} = useStxAddresses(userSession);
+  const [state, setState] = useState({
+    open: false,
+    message: ''
+  });
+
+  const handleClose = () => {
+    setState({...state, open: false});
+  };
 
   async function openDelegate(amount) {
     let delegate_to = props.poolAddress
@@ -34,8 +43,10 @@ export const StackingDelegateBtn = (props) => {
       functionArgs: functionArgs,
       network: testnet ? new StacksTestnet() : new StacksMainnet(),
       onFinish: data => {
-        console.log("finished")
-        console.log(data)
+        setState({
+          open: true,
+          message: `Delegate transaction broadcast succeed. txId: ${data.txId}`
+        })
       },
       onCancel: () => {
       },
@@ -49,6 +60,13 @@ export const StackingDelegateBtn = (props) => {
           openDelegate(props.delegateAmount)
         }}>Delegate</Button>
       </Connect>
+      <Snackbar
+        anchorOrigin={{vertical: 'bottom', horizontal: 'center'}}
+        open={state.open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message={state.message}
+      />
     </Box>
   )
 }
