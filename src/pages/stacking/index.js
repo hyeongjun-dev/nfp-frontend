@@ -6,7 +6,7 @@ import {gtm} from '../../lib/gtm';
 import {StackingTitle} from "../../components/stacking/StackingTitle";
 import {StackingArea} from "../../components/stacking/StackingArea";
 import {StackingCurrent} from "../../components/stacking/StackingCurrent";
-import {StackingRewards} from "../../components/stacking/StackingRewards";
+import {StackingActivities} from "../../components/stacking/StackingActivities";
 import {StackingInfo} from "../../components/stacking/StackingInfo";
 import {getPoxInfo} from "../../api/stacking/stacking";
 
@@ -16,6 +16,7 @@ const Stacking = () => {
   const [stackingInfo, setStackingInfo] = useState({
     apy: 0.0,
     rewardsCyclePeriod: '-',
+    currentCycle: 0,
     nextCycle: 0,
     deadLine: 0,
     selfStacking: '-',
@@ -34,6 +35,7 @@ const Stacking = () => {
         setStackingInfo({
           apy: body.apy,
           rewardsCyclePeriod: parseInt(body.reward_cycle_length / 6 / 24),
+          currentCycle: body.currentCycle,
           nextCycle: body.next_cycle.id,
           deadLine: (body.next_reward_cycle_in - 100 - 201),
           selfStacking: body.min_amount_ustx / 1000000,
@@ -77,7 +79,7 @@ const Stacking = () => {
           <Grid item xs={12} md={8}>
             <StackingTitle apy={stackingInfo.apy}/>
             <StackingCurrent/>
-            <StackingRewards/>
+            <StackingActivities currentCycle={stackingInfo.currentCycle}/>
           </Grid>
           <Grid item xs={12} md={4}>
             <StackingInfo stackingInfo={stackingInfo}/>
