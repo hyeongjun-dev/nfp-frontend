@@ -45,7 +45,13 @@ const labelColorsMap = {
 //     "updatedAt": "2022-01-10T14:26:08.790Z"
 //   },
 //   {
-//     "rewards": [],
+//     "rewards": [{
+//       cycle: 30,
+//       amount: 0.00001
+//     },{
+//       cycle: 26,
+//       amount: 0.02001
+//     }],
 //     "_id": "61dadba04c86dd3612f97660",
 //     "delegateStxCycle": 30,
 //     "delegator": "SP1687AZQFX0JFKWG9Z2X5W13GXV690Y33T9335SD",
@@ -59,7 +65,7 @@ const labelColorsMap = {
 //   }
 // ]
 
-function convertHistoryForUI(stackingHistories) {
+function convertHistoryForUI(stackingHistories, currentCycle) {
   let uiDatas = []
   stackingHistories.forEach((stackingHistory) => {
     const delegateStxCycle = stackingHistory.delegateStxCycle
@@ -74,7 +80,7 @@ function convertHistoryForUI(stackingHistories) {
       let uiData = {
         cycle: cycle,
         amount: amount / 1000000,
-        status: reward ? 'rewarded' : lockedBlockHeight === 0 ? 'waiting' : lockedBlockHeight === -1 ? 'failed' : 'delegated',
+        status: reward ? 'rewarded' : lockedBlockHeight === 0 && currentCycle > delegateStxCycle ? 'failed' : lockedBlockHeight === 0 ? 'waiting'  : 'delegated',
         reward: reward
       }
       uiDatas.push(uiData)
@@ -100,7 +106,7 @@ export const StackingActivities = (props) => {
   async function getStackerHistories() {
     let response = await api.get(`/stacking/stacker/history/${ownerStxAddress}`)
     if (response.status === 200) {
-      setActivities(convertHistoryForUI(response.data.data))
+      setActivities(convertHistoryForUI(response.data.data, props.currentCycle))
     }
   }
 

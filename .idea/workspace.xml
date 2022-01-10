@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b6839ef-f26d-41d3-b137-2d0a09bdfadb" name="Changes" comment="change about text">
+    <list default="true" id="5b6839ef-f26d-41d3-b137-2d0a09bdfadb" name="Changes" comment="Implement Delegate Stacking Activieis.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/stacking/StackingArea.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stacking/StackingArea.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/stacking/StackingRewards.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stacking/StackingActivities.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/stacking/StackingActivities.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/stacking/StackingActivities.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/stacking/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/stacking/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -158,7 +156,7 @@
       <workItem from="1641753690398" duration="352000" />
       <workItem from="1641778782408" duration="8000" />
       <workItem from="1641810259179" duration="7000" />
-      <workItem from="1641821773472" duration="7759000" />
+      <workItem from="1641821773472" duration="9262000" />
     </task>
     <task id="LOCAL-00001" summary="Add Connect Wallet function">
       <created>1640686601715</created>
@@ -307,7 +305,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641743651828</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Implement Delegate Stacking Activieis.">
+      <created>1641832213373</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1641832213373</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,6 +350,7 @@
     <MESSAGE value="Delegate amount to some" />
     <MESSAGE value="add abount text" />
     <MESSAGE value="change about text" />
-    <option name="LAST_COMMIT_MESSAGE" value="change about text" />
+    <MESSAGE value="Implement Delegate Stacking Activieis." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement Delegate Stacking Activieis." />
   </component>
 </project>
