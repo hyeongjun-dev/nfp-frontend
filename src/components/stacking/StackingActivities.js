@@ -7,7 +7,7 @@ import {
   Table,
   TableBody,
   TableCell, TableHead,
-  TableRow,
+  TableRow, Tooltip,
   Typography
 } from "@mui/material";
 import {SeverityPill} from "../severity-pill";
@@ -16,6 +16,7 @@ import {useAtomValue} from "jotai/utils";
 import {userSessionState} from "../../connect/auth";
 import {useStxAddresses} from "../../connect/hooks";
 import {api} from "../../api/apiClient";
+import {InformationCircleOutlined as InformationCircleOutlinedIcon} from "../../icons/information-circle-outlined";
 
 const labelColorsMap = {
   waiting: 'warning',
@@ -120,7 +121,11 @@ export const StackingActivities = (props) => {
   return (
     <>
       <Card>
-        <CardHeader sx={{pt: "20px", pb: "20px"}} title="Stacking Activities"/>
+        <CardHeader sx={{pt: "20px", pb: "20px"}} title="Stacking Activities" action={(
+          <Tooltip title="It takes some time for the activity to be reflected.">
+            <InformationCircleOutlinedIcon sx={{ color: 'action.active' }} />
+          </Tooltip>
+        )}/>
         <Divider/>
         {activities.length === 0 ?
           <Box sx={{display: "flex", width: "100%", justifyContent: "center", height: "30vh", overflow: "auto"}}>
