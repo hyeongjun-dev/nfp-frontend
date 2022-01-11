@@ -218,7 +218,7 @@ export const DashboardSidebar = (props) => {
               my: 3
             }}
           />
-          <Box sx={{ flexGrow: 1 }}>
+          <Box sx={{ flexGrow: 10 }}>
             {sections.map((section) => (
               <DashboardSidebarSection
                 key={section.title}
@@ -237,7 +237,7 @@ export const DashboardSidebar = (props) => {
               borderColor: '#2D3748'  // dark divider
             }}
           />
-          <Box sx={{ p: 2 }}>
+          <Box sx={{ flexGrow: 1, p: 2 }}>
             <NextLink
                 href="https://twitter.com/NFP2021"
                 passHref
