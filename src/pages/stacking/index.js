@@ -38,7 +38,7 @@ const Stacking = () => {
           currentCycle: body.currentCycle,
           nextCycle: body.next_cycle.id,
           deadLine: (body.next_reward_cycle_in - 100 - 201),
-          selfStacking: body.min_amount_ustx / 1000000,
+          selfStacking: body.current_cycle.min_threshold_ustx / 1000000,
           delegationStacking: stackingInfo.delegationStacking,
           nextRewardStartBlockHeight: body.next_cycle.reward_phase_start_block_height,
           poolAddress: body.poolAddress
