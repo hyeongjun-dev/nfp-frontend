@@ -42,28 +42,28 @@ export const AccountTokenList = (props) => {
   const fungibleTokenList = props.fungibleTokenList;
 
   const handleSortBySymbol = (orderBasis) => {
-    setSymbolDirection(changeOrder);
-    handleSort(orderBasis);
+    setSymbolDirection(changeOrder(symbolDirection));
+    handleSort(orderBasis, symbolDirection);
   };
 
   const handleSortByBalance = (orderBasis) => {
-    setBalanceDirection(changeOrder);
-    handleSort(orderBasis);
+    setBalanceDirection(changeOrder(balanceDirection));
+    handleSort(orderBasis, balanceDirection);
   };
 
   const handleSortByPrice = (orderBasis) => {
-    setPriceDirection(changeOrder);
-    handleSort(orderBasis);
+    setPriceDirection(changeOrder(priceDirection));
+    handleSort(orderBasis, priceDirection);
   };
 
   const handleSortByValue = (orderBasis) => {
-    setValueDirection(changeOrder);
-    handleSort(orderBasis);
+    setValueDirection(changeOrder(valueDirection));
+    handleSort(orderBasis, valueDirection);
   };
 
-  const handleSort = (orderBasis) => {
+  const handleSort = (orderBasis, order) => {
     setOrderBasis(orderBasis);
-    setOrder(changeOrder);
+    setOrder(order);
   };
 
   const changeOrder = (prevOrder) => {
