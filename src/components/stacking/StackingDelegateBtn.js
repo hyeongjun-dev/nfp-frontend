@@ -29,6 +29,13 @@ export const StackingDelegateBtn = (props) => {
   };
 
   async function openDelegate(amount) {
+    if(amount < 100){
+      setState({
+        open: true,
+        message: 'Minimum delegate amount is 100 STX'
+      })
+      return
+    }
     let delegate_to = props.poolAddress
 
     let contractAddress = testnet ? 'ST000000000000000000002AMW42H' : 'SP000000000000000000002Q6VF78'

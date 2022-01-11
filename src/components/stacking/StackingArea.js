@@ -21,7 +21,7 @@ import {useSelector} from "../../store";
 export const StackingArea = (props) => {
   const {connected} = useSelector((state) => state.connect);
 
-  const [delegateAmount, setDelegateAmount] = useState();
+  const [delegateAmount, setDelegateAmount] = useState(0);
   const [stxBalance, setStxBalance] = useState(0);
   const {handleOpenAuth} = useConnect();
   const userSession = useAtomValue(userSessionState);
@@ -53,14 +53,14 @@ export const StackingArea = (props) => {
     <>
       <Card>
         <CardHeader
-          sx={{pb: 0}}
+          sx={{pb: 0, pt: 3}}
           title={(
             <Typography variant="h6">
               Delegate Stacks
             </Typography>
           )}
         />
-        <CardContent>
+        <CardContent sx={{pt: "15px", paddingBottom: "0px"}}>
           <Box sx={{display: "flex", justifyContent: "space-between"}}>
             <Typography variant={"overline"} color={"textSecondary"}>My Balance</Typography>
             <Typography variant={"overline"}>
@@ -85,7 +85,7 @@ export const StackingArea = (props) => {
               XBTC
             </Typography>
           </Box>
-          <Box sx={{display: "flex", justifyContent: "space-between", mb: 6}}>
+          <Box sx={{display: "flex", justifyContent: "space-between", mb: 4}}>
             <Typography
               color="textSecondary"
               variant="overline"
@@ -113,7 +113,7 @@ export const StackingArea = (props) => {
                     let nBalance = parseInt(stxBalance)
                     setDelegateAmount(nBalance - 1 > 0 ? nBalance - 1 : 0)
                   }}>
-                    Max
+                    MAX
                   </Button>
                 </InputAdornment>
               }

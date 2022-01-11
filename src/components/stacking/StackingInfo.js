@@ -5,7 +5,7 @@ export const StackingInfo = (props) => {
   return (
     <>
       <Card sx={{mb: 2}}>
-        <CardHeader sx={{pb: "0px", pt: "15px"}} title={"Stacking Info"}/>
+        <CardHeader sx={{pb: "0px", pt: 3}} title={"Stacking Info"}/>
         <CardContent sx={{pt: "15px", paddingBottom: "0px"}}>
           <Box sx={{display: "flex", justifyContent: "space-between"}}>
             <Typography variant={"overline"} color={"textSecondary"}>Current cycle</Typography>

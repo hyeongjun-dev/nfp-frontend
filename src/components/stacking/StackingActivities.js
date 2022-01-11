@@ -80,7 +80,7 @@ function convertHistoryForUI(stackingHistories, currentCycle) {
       let uiData = {
         cycle: cycle,
         amount: amount / 1000000,
-        status: reward ? 'rewarded' : lockedBlockHeight === 0 && currentCycle > delegateStxCycle ? 'failed' : lockedBlockHeight === 0 ? 'waiting'  : 'delegated',
+        status: reward ? 'rewarded' : lockedBlockHeight === 0 && currentCycle > delegateStxCycle ? 'failed' : lockedBlockHeight === 0 ? 'waiting' : 'delegated',
         reward: reward
       }
       uiDatas.push(uiData)
@@ -124,9 +124,24 @@ export const StackingActivities = (props) => {
         <Divider/>
         {activities.length === 0 ?
           <Box sx={{display: "flex", width: "100%", justifyContent: "center", height: "25vh", overflow: "auto"}}>
-            <Typography sx={{alignSelf: "center"}} variant={"h5"} color="#484848bd">
-              No Data
-            </Typography>
+            <Table>
+              <TableHead>
+                <TableCell sx={{textAlign: "center"}}>Cycle</TableCell>
+                <TableCell sx={{textAlign: "center"}}>Delegate Amount</TableCell>
+                <TableCell sx={{textAlign: "center"}}>Status</TableCell>
+                <TableCell sx={{textAlign: "center"}}>Rewarded In</TableCell>
+                <TableCell sx={{textAlign: "center"}}>Reward Amount</TableCell>
+              </TableHead>
+              <TableBody>
+                <TableRow>
+                  <TableCell colSpan={5}>
+                    <Typography sx={{width: "100%", textAlign: "center"}} variant={"h5"} color="#484848bd">
+                      No Data
+                    </Typography>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
           </Box>
           :
           <Box sx={{display: "flex", width: "100%", justifyContent: "center", maxHeight: "25vh", overflow: "auto"}}>

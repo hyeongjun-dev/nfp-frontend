@@ -139,14 +139,16 @@ export const StackingCurrent = (props) => {
   return (
     <>
       <Card sx={{mb: 2}}>
-        <CardContent sx={{padding: "15px 20px"}}>
+        <CardContent sx={{pt: 3, '&:last-child': {
+            paddingBottom: '20px'
+          }}}>
           <Box>
           <Grid container spacing={2}>
             <Grid item md={7}>
-              <Typography variant={"h6"}>Stacking APY</Typography>
+              <Typography variant={"h6"} sx={{mb:2}}>Stacking APY</Typography>
               <Chart
                 sx={{width: "100%"}}
-                height={170}
+                height={'100%'}
                 options={chartOptions}
                 series={chartSeries}
                 type="area"
@@ -154,19 +156,19 @@ export const StackingCurrent = (props) => {
             </Grid>
             <Grid item md={5}>
               <Typography variant={"h6"} sx={{mb:2}}>My Status</Typography>
-              <Box sx={{display:"flex", justifyContent: "space-between"}} mb={1}>
-                <Typography variant={"subtitle2"}>Amount Stacking</Typography>
-                <Typography variant={"subtitle2"}>{withComma(myStatus.amountStacking)}</Typography>
+              <Box sx={{display:"flex", justifyContent: "space-between"}}>
+                <Typography variant={"overline"} color={"textSecondary"}>Amount Stacking</Typography>
+                <Typography variant={"overline"} color={"textSecondary"}>{withComma(myStatus.amountStacking)}</Typography>
               </Box>
-              <Box sx={{display:"flex", justifyContent: "space-between"}} mb={1}>
-                <Typography variant={"subtitle2"}>Stacking Started</Typography>
-                <Typography variant={"subtitle2"}>{myStatus.firstRewardCycle !== '-'? '#'+myStatus.firstRewardCycle : '-'}</Typography>
+              <Box sx={{display:"flex", justifyContent: "space-between"}}>
+                <Typography variant={"overline"} color={"textSecondary"}>Stacking Started</Typography>
+                <Typography variant={"overline"} color={"textSecondary"}>{myStatus.firstRewardCycle !== '-'? '#'+myStatus.firstRewardCycle : '-'}</Typography>
               </Box>
               <Box sx={{display:"flex", justifyContent: "space-between"}} mb={2}>
-                <Typography variant={"subtitle2"}>Stacking Ended</Typography>
-                <Typography variant={"subtitle2"}>{myStatus.firstRewardCycle !== '-'? '#' + (parseInt(myStatus.firstRewardCycle)+parseInt(myStatus.lockPeriod)-1) : '-'}</Typography>
+                <Typography variant={"overline"} color={"textSecondary"}>Stacking Ended</Typography>
+                <Typography variant={"overline"} color={"textSecondary"}>{myStatus.firstRewardCycle !== '-'? '#' + (parseInt(myStatus.firstRewardCycle)+parseInt(myStatus.lockPeriod)-1) : '-'}</Typography>
               </Box>
-              <Typography variant={"body2"} color={"textSecondary"}>STX stacking cannot be participated in multiple wallets at once. If you need to participate in additional stacking, you should participate with a new wallet.</Typography>
+              <Typography variant={"caption"} color={"textSecondary"}>STX stacking cannot be participated in multiple wallets at once. If you need to participate in additional stacking, you should participate with a new wallet.</Typography>
             </Grid>
           </Grid>
           </Box>
