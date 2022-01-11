@@ -21,7 +21,7 @@ import {useSelector} from "../../store";
 export const StackingArea = (props) => {
   const {connected} = useSelector((state) => state.connect);
 
-  const [delegateAmount, setDelegateAmount] = useState(0);
+  const [delegateAmount, setDelegateAmount] = useState();
   const [stxBalance, setStxBalance] = useState(0);
   const {handleOpenAuth} = useConnect();
   const userSession = useAtomValue(userSessionState);
@@ -106,7 +106,9 @@ export const StackingArea = (props) => {
                 setDelegateAmount(e.target.value)
               }}
               type={"number"}
+              placeholder={"MIN 100 STX"}
               value={delegateAmount}
+              sx={{fontSize: "0.9rem"}}
               endAdornment={
                 <InputAdornment position="end">
                   <Button onClick={() => {
