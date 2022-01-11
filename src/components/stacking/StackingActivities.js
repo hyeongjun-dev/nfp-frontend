@@ -123,7 +123,7 @@ export const StackingActivities = (props) => {
         <CardHeader sx={{pt: "20px", pb: "20px"}} title="Stacking Activities"/>
         <Divider/>
         {activities.length === 0 ?
-          <Box sx={{display: "flex", width: "100%", justifyContent: "center", height: "25vh", overflow: "auto"}}>
+          <Box sx={{display: "flex", width: "100%", justifyContent: "center", height: "30vh", overflow: "auto"}}>
             <Table>
               <TableHead>
                 <TableCell sx={{textAlign: "center"}}>Cycle</TableCell>
@@ -144,7 +144,7 @@ export const StackingActivities = (props) => {
             </Table>
           </Box>
           :
-          <Box sx={{display: "flex", width: "100%", justifyContent: "center", maxHeight: "25vh", overflow: "auto"}}>
+          <Box sx={{display: "flex", width: "100%", justifyContent: "center", maxHeight: "30vh", overflow: "auto"}}>
             <Table>
               <TableHead>
                 <TableCell sx={{textAlign: "center"}}>Cycle</TableCell>
