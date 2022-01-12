@@ -32,7 +32,7 @@ export const useConnect = () => {
     manifestPath: '/manifest.json',
     appDetails: {
       name: 'NFP',
-      icon: '/apple-touch-icon.png'
+      icon: 'https://app.nfpstudio.io/apple-touch-icon.png'
     },
   };
 
