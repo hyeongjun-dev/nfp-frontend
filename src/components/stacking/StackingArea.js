@@ -17,6 +17,7 @@ import {useConnect, userSessionState} from "../../connect/auth";
 import {useAtomValue} from "jotai/utils";
 import {useStxAddresses} from "../../connect/hooks";
 import {useSelector} from "../../store";
+import {SeverityPill} from "../severity-pill";
 
 export const StackingArea = (props) => {
   const {connected} = useSelector((state) => state.connect);
@@ -76,7 +77,9 @@ export const StackingArea = (props) => {
           <Box sx={{display: "flex", justifyContent: "space-between"}}>
             <Typography variant={"overline"} color={"textSecondary"}>Delegation Deadline IN</Typography>
             <Typography variant={"overline"} color={"textSecondary"}>
-              {props.stackingInfo.deadLine} blocks
+              {props.stackingInfo.deadLine > 0 ? `${props.stackingInfo.deadLine} blocks`:
+                props.stackingInfo.nextRewardCycleIn === -9999 ? '-'
+                  : <SeverityPill sx={{fontSize: "10px"}} color={"error"}>{"CLOSED"}</SeverityPill>}
             </Typography>
           </Box>
           <Box sx={{display: "flex", justifyContent: "space-between"}}>
@@ -134,7 +137,7 @@ export const StackingArea = (props) => {
             Cycle to participate: {cycle} cycles
           </Typography>
           {connected ?
-            <StackingDelegateBtn poolAddress={props.stackingInfo.poolAddress} delegateAmount={delegateAmount} untilBurnHeight={calUntilBurnHeight()}/>
+            <StackingDelegateBtn stackingInfo={props.stackingInfo} delegateAmount={delegateAmount} untilBurnHeight={calUntilBurnHeight()}/>
             :
             <Button sx={{width: "100%", borderRadius: '5px'}} variant={"contained"} onClick={() => handleOpenAuth()}>Connect
               wallet</Button>}

@@ -36,7 +36,7 @@ export const StackingDelegateBtn = (props) => {
       })
       return
     }
-    let delegate_to = props.poolAddress
+    let delegate_to = props.stackingInfo.poolAddress
 
     let contractAddress = testnet ? 'ST000000000000000000002AMW42H' : 'SP000000000000000000002Q6VF78'
     let contractName = 'pox'
@@ -65,7 +65,7 @@ export const StackingDelegateBtn = (props) => {
       <Connect authOptions={authOptions}>
         <Button sx={{width: "100%", borderRadius: '5px'}} variant={"contained"} onClick={() => {
           openDelegate(props.delegateAmount)
-        }}>Delegate</Button>
+        }} disabled={props.stackingInfo.deadLine < 0}>{props.stackingInfo.deadLine < 0 ? `${props.stackingInfo.nextRewardCycleIn} block left` : 'Delegate'}</Button>
       </Connect>
       <Snackbar
         anchorOrigin={{vertical: 'bottom', horizontal: 'center'}}
