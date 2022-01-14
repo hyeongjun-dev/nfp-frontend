@@ -85,6 +85,10 @@ function convertHistoryForUI(stackingHistories, currentCycle) {
         reward: reward
       }
       uiDatas.push(uiData)
+
+      if (uiData.status === 'failed') {
+        break;
+      }
     }
   })
   uiDatas = uiDatas.sort((a, b) => {
@@ -123,7 +127,7 @@ export const StackingActivities = (props) => {
       <Card>
         <CardHeader sx={{pt: "20px", pb: "20px"}} title="Stacking Activities" action={(
           <Tooltip title="It takes some time for the activity to be reflected.">
-            <InformationCircleOutlinedIcon sx={{ color: 'action.active' }} />
+            <InformationCircleOutlinedIcon sx={{color: 'action.active'}}/>
           </Tooltip>
         )}/>
         <Divider/>
