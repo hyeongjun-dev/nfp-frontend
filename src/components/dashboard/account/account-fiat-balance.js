@@ -1,5 +1,6 @@
 import numeral from 'numeral';
 import {Card, CardContent, Typography} from '@mui/material';
+import CountUp from "react-countup";
 
 export const AccountFiatBalance = (props) => (
     <Card {...props}>
@@ -8,7 +9,7 @@ export const AccountFiatBalance = (props) => (
             variant="h4"
             color="black"
         >
-          {numeral(props.totalBalance).format('$0,0.00')}
+          <CountUp prefix={'$'} duration={1.0} separator={','} end={props.totalBalance} decimals={2}/>
         </Typography>
         <Typography
             color="textSecondary"

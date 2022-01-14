@@ -12,7 +12,7 @@ export const StackingTitle = (props) => {
               <Typography variant={"h4"}>Stacks</Typography>
             </Box>
             <Box>
-              <Typography sx={{textAlign: "right"}} variant={"h5"} color={"textPrimary"}>{<CountUp duration={1.0} end={parseInt(props.apy)}/>}.{<CountUp duration={1.0} end={(props.apy * 10)%10}/>}%</Typography>
+              <Typography sx={{textAlign: "right"}} variant={"h5"} color={"textPrimary"}>{<CountUp duration={1.0} end={props.apy} decimals={1}/>}%</Typography>
               <Typography sx={{textAlign: "right"}} variant={"h7"} color={"textSecondary"}>Estimated APY</Typography>
             </Box>
           </Box>
