@@ -14,6 +14,15 @@ function toStxAmount(amount){
   return amount * 1000000
 }
 
+const linkButton = (txId) =>{
+  let url = `https://explorer.stacks.co/txid/${txId}?chain=mainnet`
+  return (
+    <Button variant={"text"} color={"primary"} size={"small"}>
+      <a href={url} target={"_blank"} style={{textDecoration: "none", color: "#0088ff"}}>View</a>
+    </Button>
+  )
+}
+
 export const StackingDelegateBtn = (props) => {
   const {authOptions} = useConnect();
   const {doContractCall} = uc();
@@ -21,7 +30,8 @@ export const StackingDelegateBtn = (props) => {
   const {ownerStxAddress} = useStxAddresses(userSession);
   const [state, setState] = useState({
     open: false,
-    message: ''
+    message: '',
+    txId: ''
   });
 
   const handleClose = () => {
@@ -52,7 +62,8 @@ export const StackingDelegateBtn = (props) => {
       onFinish: data => {
         setState({
           open: true,
-          message: `Delegate transaction broadcast succeed. txId: ${data.txId}`
+          message: `Delegate transaction broadcast succeed. `,
+          txId: data.txId
         })
       },
       onCancel: () => {
@@ -70,9 +81,10 @@ export const StackingDelegateBtn = (props) => {
       <Snackbar
         anchorOrigin={{vertical: 'bottom', horizontal: 'center'}}
         open={state.open}
-        autoHideDuration={6000}
+        autoHideDuration={7000}
         onClose={handleClose}
         message={state.message}
+        action={state.txId? linkButton(state.txId) : ''}
       />
     </Box>
   )
