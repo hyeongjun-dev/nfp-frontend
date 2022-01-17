@@ -24,3 +24,5 @@ export const firebaseConfig = {
 export const gtmConfig = {
   containerId: process.env.NEXT_PUBLIC_GTM_CONTAINER_ID
 };
+
+export const GOOGLE_TRACKING_ID = "UA-217433020-1";

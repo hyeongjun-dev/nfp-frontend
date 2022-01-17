@@ -14,13 +14,14 @@ import { SettingsButton } from '../components/settings-button';
 import { SplashScreen } from '../components/splash-screen';
 import { SettingsConsumer, SettingsProvider } from '../contexts/settings-context';
 import { AuthConsumer, AuthProvider } from '../contexts/jwt-context';
-import { gtmConfig } from '../config';
+import {GOOGLE_TRACKING_ID, gtmConfig} from '../config';
 import { gtm } from '../lib/gtm';
 import { store } from '../store';
 import { createTheme } from '../theme';
 import { createEmotionCache } from '../utils/create-emotion-cache';
 import './global.css';
 import '../i18n';
+import initGA from '../ga';
 
 Router.events.on('routeChangeStart', nProgress.start);
 Router.events.on('routeChangeError', nProgress.done);
@@ -35,6 +36,7 @@ const App = (props) => {
 
   useEffect(() => {
     gtm.initialize(gtmConfig);
+    initGA(GOOGLE_TRACKING_ID, Router);
   }, []);
 
   return (
