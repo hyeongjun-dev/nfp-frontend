@@ -6,7 +6,7 @@ const isLocal = () => {
 };
 
 const isDev = () => {
-  return process.env.NODE_ENV !== 'production';
+  return process.env.NEXT_PUBLIC_CHAIN !== 'mainnet';
 };
 
 const initGA = (code, Router) => {
