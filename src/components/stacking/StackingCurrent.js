@@ -130,6 +130,7 @@ export const StackingCurrent = (props) => {
           lockPeriod: lockPeriod,
           poxAddr: poxAddr
         })
+        props.setIsStacked(true)
       }catch(e){
         console.log(e)
       }

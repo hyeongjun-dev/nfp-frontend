@@ -143,7 +143,7 @@ export const StackingArea = (props) => {
             Cycle to participate: {cycle} cycles
           </Typography>
           {connected ?
-            <StackingDelegateBtn stackingInfo={props.stackingInfo} delegateAmount={delegateAmount}
+            <StackingDelegateBtn isStacked={props.isStacked} stackingInfo={props.stackingInfo} delegateAmount={delegateAmount}
                                  untilBurnHeight={calUntilBurnHeight()}/>
             :
             <Button sx={{width: "100%", borderRadius: '5px'}} variant={"contained"} onClick={() => handleOpenAuth()}>Connect

@@ -25,6 +25,7 @@ const Stacking = () => {
     nextRewardStartBlockHeight : 0,
     poolAddress: ''
   })
+  const [isStacked, setIsStacked] = useState(false)
 
   useEffect(() => {
     gtm.push({event: 'page_view'});
@@ -80,12 +81,12 @@ const Stacking = () => {
         <Grid container spacing={3}>
           <Grid item xs={12} md={8}>
             <StackingTitle apy={stackingInfo.apy}/>
-            <StackingCurrent/>
+            <StackingCurrent setIsStacked={setIsStacked}/>
             <StackingActivities currentCycle={stackingInfo.currentCycle}/>
           </Grid>
           <Grid item xs={12} md={4}>
             <StackingInfo stackingInfo={stackingInfo}/>
-            <StackingArea stackingInfo={stackingInfo}/>
+            <StackingArea isStacked={isStacked} stackingInfo={stackingInfo}/>
           </Grid>
         </Grid>
       </Box>

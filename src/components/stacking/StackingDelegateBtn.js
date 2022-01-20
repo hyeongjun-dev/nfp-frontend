@@ -76,7 +76,7 @@ export const StackingDelegateBtn = (props) => {
       <Connect authOptions={authOptions}>
         <Button sx={{width: "100%", borderRadius: '5px'}} variant={"contained"} onClick={() => {
           openDelegate(props.delegateAmount)
-        }} disabled={props.stackingInfo.deadLine < 0}>{props.stackingInfo.deadLine < 0 ? `${props.stackingInfo.nextRewardCycleIn} block left` : 'Delegate'}</Button>
+        }} disabled={props.stackingInfo.deadLine < 0 || props.isStacked}>{props.stackingInfo.deadLine < 0 ? `${props.stackingInfo.nextRewardCycleIn} block left` : props.isStacked ? 'Already Participated' : 'Delegate'}</Button>
       </Connect>
       <Snackbar
         anchorOrigin={{vertical: 'bottom', horizontal: 'center'}}
