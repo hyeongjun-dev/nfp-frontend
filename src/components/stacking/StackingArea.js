@@ -35,7 +35,7 @@ export const StackingArea = (props) => {
     }
   };
 
-  function calUntilBurnHeight(){
+  function calUntilBurnHeight() {
     let nextStartBlockHeight = props.stackingInfo.nextRewardStartBlockHeight
 
     return nextStartBlockHeight + (cycle * 2100)
@@ -56,9 +56,14 @@ export const StackingArea = (props) => {
         <CardHeader
           sx={{pb: 0, pt: 3}}
           title={(
-            <Typography variant="h6">
-              Delegate Stacks
-            </Typography>
+            <Box sx={{display: "flex", justifyContent: "space-between"}}>
+              <Typography variant="h6">
+                Delegate Stacks
+              </Typography>
+              <a href={"https://stacking.club/reward-address/12DQ3u4JdnGf6QZF9qAd7z9zUo7NnXpXFg"} target={"_blank"}>
+                <img style={{width: "20px", height: "20px"}} src={"/pancake.png"}/>
+              </a>
+            </Box>
           )}
         />
         <CardContent sx={{pt: "15px", paddingBottom: "0px"}}>
@@ -77,7 +82,7 @@ export const StackingArea = (props) => {
           <Box sx={{display: "flex", justifyContent: "space-between"}}>
             <Typography variant={"overline"} color={"textSecondary"}>Delegation Deadline IN</Typography>
             <Typography variant={"overline"} color={"textSecondary"}>
-              {props.stackingInfo.deadLine > 0 ? `${props.stackingInfo.deadLine} blocks`:
+              {props.stackingInfo.deadLine > 0 ? `${props.stackingInfo.deadLine} blocks` :
                 props.stackingInfo.nextRewardCycleIn === -9999 ? '-'
                   : <SeverityPill sx={{fontSize: "10px"}} color={"error"}>{"CLOSED"}</SeverityPill>}
             </Typography>
@@ -133,14 +138,29 @@ export const StackingArea = (props) => {
             valueLabelDisplay="auto"
             aria-labelledby="non-linear-slider"
           />
-          <Typography mb={2} sx={{textAlign: "right"}} id="non-linear-slider" variant={"subtitle2"} color={"textSecondary"}>
+          <Typography mb={2} sx={{textAlign: "right"}} id="non-linear-slider" variant={"subtitle2"}
+                      color={"textSecondary"}>
             Cycle to participate: {cycle} cycles
           </Typography>
           {connected ?
-            <StackingDelegateBtn stackingInfo={props.stackingInfo} delegateAmount={delegateAmount} untilBurnHeight={calUntilBurnHeight()}/>
+            <StackingDelegateBtn stackingInfo={props.stackingInfo} delegateAmount={delegateAmount}
+                                 untilBurnHeight={calUntilBurnHeight()}/>
             :
             <Button sx={{width: "100%", borderRadius: '5px'}} variant={"contained"} onClick={() => handleOpenAuth()}>Connect
               wallet</Button>}
+          <Typography mt={2} sx={{textAlign: "center"}} id="non-linear-slider" variant={"subtitle2"}
+                      color={"textSecondary"}>
+            FAQ: <a style={{textDecoration: "none", color: "blue"}}
+                    href={"https://nfpstudio.medium.com/exploring-nfp-studio-stacking-service-1c98a72092df"}
+                    target={"_blank"}>English</a> | <a style={{textDecoration: "none", color: "blue"}}
+                                                       href={"https://nfpstudio.medium.com/nfp-%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4-%EC%8A%A4%ED%83%9D%ED%82%B9-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0-5697a11ff6e7"}
+                                                       target={"_blank"}>Korean</a>
+          </Typography>
+          <Typography mt={1} sx={{textAlign: "center", fontSize: "11px"}} id="non-linear-slider"
+                      color={"textSecondary"}>
+            <a href={"https://stackskorea.co/"} style={{textDecoration: "none", color: "#65748B"}} target={"_blank"}>Trusted
+              By Stacks Korea.</a>
+          </Typography>
         </CardContent>
       </Card>
     </>
