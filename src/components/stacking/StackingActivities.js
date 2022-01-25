@@ -3,7 +3,7 @@ import {
   Card,
   CardContent,
   CardHeader,
-  Divider,
+  Divider, Link,
   Table,
   TableBody,
   TableCell, TableHead,
@@ -27,42 +27,23 @@ const labelColorsMap = {
 
 // let data = [
 //   {
-//     "rewards": [{
-//       cycle: 25,
-//       amount: 0.00001
-//     },{
-//       cycle: 26,
-//       amount: 0.02001
-//     }],
-//     "_id": "61dadba04c86dd3612f97660",
+//     "_id": "61dd974c4c86dd3612fa2825",
 //     "delegateStxCycle": 24,
-//     "delegator": "SP1687AZQFX0JFKWG9Z2X5W13GXV690Y33T9335SD",
+//     "delegator": "SP1NGMS9Z48PRXFAG2MKBSP0PWERF07C0KV9SPJ66",
 //     "__v": 0,
-//     "amount": 10000000,
-//     "createdAt": "2022-01-09T12:57:04.603Z",
-//     "endCycle": 27,
-//     "lockedBlockHeight": 717882,
-//     "untilBlockHeight": 720650,
-//     "updatedAt": "2022-01-10T14:26:08.790Z"
-//   },
-//   {
-//     "rewards": [{
-//       cycle: 30,
-//       amount: 0.00001
-//     },{
-//       cycle: 26,
-//       amount: 0.02001
-//     }],
-//     "_id": "61dadba04c86dd3612f97660",
-//     "delegateStxCycle": 30,
-//     "delegator": "SP1687AZQFX0JFKWG9Z2X5W13GXV690Y33T9335SD",
-//     "__v": 0,
-//     "amount": 10000000,
-//     "createdAt": "2022-01-09T12:57:04.603Z",
-//     "endCycle": 35,
-//     "lockedBlockHeight": 0,
-//     "untilBlockHeight": 720650,
-//     "updatedAt": "2022-01-10T14:26:08.790Z"
+//     "amount": 130000000000,
+//     "createdAt": "2022-01-11T14:42:20.326Z",
+//     "endCycle": 26,
+//     "lockedBlockHeight": 718164,
+//     "rewards": [
+//       {
+//         "cycle": "25",
+//         "amount": 2258672,
+//         "txId": "a82d5805b2bdbb64bdf4c8bc1b0ebdb263fb052417e02343fc6b6769b803444f"
+//       }
+//     ],
+//     "untilBlockHeight": 722750,
+//     "updatedAt": "2022-01-25T14:13:25.413Z"
 //   }
 // ]
 
@@ -77,7 +58,7 @@ function convertHistoryForUI(stackingHistories, currentCycle) {
 
     for (let i = delegateStxCycle + 1; i <= endCycle; i++) {
       let cycle = i
-      let reward = rewards.find((reward) => reward.cycle === cycle)
+      let reward = rewards.find((reward) => parseInt(reward.cycle) === cycle)
       let uiData = {
         cycle: cycle,
         amount: amount / 1000000,
@@ -196,9 +177,15 @@ export const StackingActivities = (props) => {
                       >XBTC</Typography>
                     </TableCell>
                     <TableCell sx={{textAlign: "center"}}>
-                      <Typography
-                        variant="overline"
-                      >{activity.reward && activity.reward.amount ? activity.reward.amount : '-'}</Typography>
+                      {activity.reward && activity.reward.amount ? <Link
+                          variant="overline"
+                          href={`https://explorer.stacks.co/txid/${activity.reward.txId}`}
+                          target={"_blank"}
+                        >{(activity.reward.amount / 100000000).toFixed(8)}</Link> :
+                        <Typography
+                          variant="overline"
+                        >{'-'}</Typography>
+                      }
                     </TableCell>
                   </TableRow>
                 ))}
