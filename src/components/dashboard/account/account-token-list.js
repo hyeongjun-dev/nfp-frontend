@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import numeral from 'numeral';
 import {
   Box,
@@ -16,8 +16,8 @@ import {
   Tooltip,
   Typography
 } from '@mui/material';
-import { InformationCircleOutlined as InformationCircleOutlinedIcon } from '../../../icons/information-circle-outlined';
-import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
+import {InformationCircleOutlined as InformationCircleOutlinedIcon} from '../../../icons/information-circle-outlined';
+import {ArrowRight as ArrowRightIcon} from '../../../icons/arrow-right';
 import {Share as ShareIcon} from "../../../icons/share";
 import {ExternalLink as ExternalLinkIcon} from "../../../icons/external-link";
 
@@ -80,7 +80,7 @@ export const AccountTokenList = (props) => {
         title="Token Balance"
         action={(
           <Tooltip title="Refresh rate is 24h">
-            <InformationCircleOutlinedIcon sx={{ color: 'action.active' }} />
+            <InformationCircleOutlinedIcon sx={{color: 'action.active'}}/>
           </Tooltip>
         )}
       />
@@ -89,36 +89,36 @@ export const AccountTokenList = (props) => {
           <TableRow>
             <TableCell>
               <TableSortLabel
-                  active
-                  direction={symbolDirection}
-                  onClick={() => handleSortBySymbol('symbol')}
+                active
+                direction={symbolDirection}
+                onClick={() => handleSortBySymbol('symbol')}
               >
                 Symbol
               </TableSortLabel>
             </TableCell>
             <TableCell>
               <TableSortLabel
-                  active
-                  direction={balanceDirection}
-                  onClick={() => handleSortByBalance('balance')}
+                active
+                direction={balanceDirection}
+                onClick={() => handleSortByBalance('balance')}
               >
                 Balance
               </TableSortLabel>
             </TableCell>
             <TableCell>
               <TableSortLabel
-                  active
-                  direction={priceDirection}
-                  onClick={() => handleSortByPrice('price')}
+                active
+                direction={priceDirection}
+                onClick={() => handleSortByPrice('price')}
               >
                 Price
               </TableSortLabel>
             </TableCell>
             <TableCell>
               <TableSortLabel
-                  active
-                  direction={valueDirection}
-                  onClick={() => handleSortByValue('value')}
+                active
+                direction={valueDirection}
+                onClick={() => handleSortByValue('value')}
               >
                 Value
               </TableSortLabel>
@@ -137,13 +137,14 @@ export const AccountTokenList = (props) => {
             >
               <TableCell>
                 <Box
-                    sx={{
-                      alignItems: 'center',
-                      display: 'flex'
-                    }}
+                  sx={{
+                    alignItems: 'center',
+                    display: 'flex'
+                  }}
                 >
                   <a href={token.url} target='_blank'>
                     <img
+                      style={{display: 'inline-block', verticalAlign: 'middle'}}
                       width={24}
                       height={24}
                       alt={token.symbol}
@@ -151,8 +152,8 @@ export const AccountTokenList = (props) => {
                     />
                   </a>
                   <Typography
-                      sx={{ ml: 2 }}
-                      variant="body2"
+                    sx={{ml: 2}}
+                    variant="body2"
                   >
                     {token.symbol}
                   </Typography>
@@ -162,10 +163,10 @@ export const AccountTokenList = (props) => {
                 {token.balance}
               </TableCell>
               <TableCell>
-                { (Number(token.price)===0) ? '-' : token.price}
+                {(Number(token.price) === 0) ? '-' : token.price}
               </TableCell>
               <TableCell>
-                { (Number(token.value)===0) ? '-' : token.value}
+                {(Number(token.value) === 0) ? '-' : token.value}
               </TableCell>
             </TableRow>
           ))}
