@@ -6,6 +6,7 @@ import {useTranslation} from 'react-i18next';
 import {Box, Button, Divider, Drawer, Grid, Link, Typography, useMediaQuery} from '@mui/material';
 import {ChartPie as ChartPieIcon} from '../../icons/chart-pie';
 import {Users as UsersIcon} from '../../icons/users';
+import {Reports as ReportIcon} from '../../icons/reports';
 import {Logo} from '../logo';
 import {Scrollbar} from '../scrollbar';
 import {DashboardSidebarSection} from './dashboard-sidebar-section';
@@ -23,6 +24,11 @@ const getSections = (t) => [
         title: t('Dashboard'),
         path: '/',
         icon: <ChartPieIcon fontSize="small"/>
+      },
+      {
+        title: t('Projects'),
+        path: '/projects',
+        icon: <ReportIcon fontSize="small"/>
       },
       {
         title: t('Stacking'),
