@@ -10,11 +10,11 @@ import {
   TableSortLabel,
   Typography
 } from "@mui/material";
-import {ProjectInfo} from "./info/ProjectInfo";
-import {ProjectTitle} from "./info/ProjectTitle";
 import {api} from "../../api/apiClient";
 import {useEffect, useState} from "react";
 import {withComma} from "../../utils/number";
+import {ProjectTitle} from "../../components/projects/ProjectTitle";
+import {ProjectInfo} from "../../components/projects/ProjectInfo";
 
 const Projects = () => {
   const [projects, setProjects] = useState([])

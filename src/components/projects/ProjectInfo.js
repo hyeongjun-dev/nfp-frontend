@@ -1,6 +1,6 @@
 import {Box, Card, CardContent, Grid, Typography} from "@mui/material";
 import CountUp from "react-countup";
-import {withComma} from "../../../utils/number";
+import {withComma} from "../../utils/number";
 
 export const ProjectInfo = (props) => {
 
