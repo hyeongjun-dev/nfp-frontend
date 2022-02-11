@@ -14,7 +14,7 @@ export const ProjectInfo = (props) => {
                 variant="h4"
                 color="black"
               >
-                $ {withComma(props.totalMarketCap)}
+                <CountUp prefix={'$'} duration={1.0} separator={','} end={props.totalMarketCap}/>
               </Typography>
               <Typography
                 color="textSecondary"
