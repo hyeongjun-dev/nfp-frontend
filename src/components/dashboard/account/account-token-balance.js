@@ -5,7 +5,7 @@ export const AccountTokenBalance = (props) => (
     <Card {...props}>
       <CardContent>
         <Typography
-            variant="h4"
+            variant="h5"
             color="black"
         >
           { numeral(props.numberOfFToken).format('0') }

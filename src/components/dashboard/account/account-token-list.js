@@ -153,20 +153,26 @@ export const AccountTokenList = (props) => {
                   </a>
                   <Typography
                     sx={{ml: 2}}
-                    variant="body2"
+                    variant="subtitle2"
                   >
                     {token.symbol}
                   </Typography>
                 </Box>
               </TableCell>
               <TableCell>
-                {token.balance}
+                <Typography variant="subtitle2">
+                  {token.balance}
+                </Typography>
               </TableCell>
               <TableCell>
-                {(Number(token.price) === 0) ? '-' : token.price}
+                <Typography variant="subtitle2">
+                  {(Number(token.price) === 0) ? '-' : token.price}
+                </Typography>
               </TableCell>
               <TableCell>
-                {(Number(token.value) === 0) ? '-' : token.value}
+                <Typography variant="subtitle2">
+                  {(Number(token.value) === 0) ? '-' : token.value}
+                </Typography>
               </TableCell>
             </TableRow>
           ))}

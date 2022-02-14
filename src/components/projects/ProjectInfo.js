@@ -11,7 +11,7 @@ export const ProjectInfo = (props) => {
           <Card>
             <CardContent>
               <Typography
-                variant="h4"
+                variant="h5"
                 color="black"
               >
                 <CountUp prefix={'$'} duration={1.0} separator={','} end={props.totalMarketCap}/>
@@ -29,7 +29,7 @@ export const ProjectInfo = (props) => {
           <Card>
             <CardContent>
               <Typography
-                variant="h4"
+                variant="h5"
                 color="black"
               >
                 $ -
@@ -47,7 +47,7 @@ export const ProjectInfo = (props) => {
           <Card>
             <CardContent>
               <Typography
-                variant="h4"
+                variant="h5"
                 color="black"
               >
                 -
