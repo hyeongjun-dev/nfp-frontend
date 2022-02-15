@@ -1,13 +1,13 @@
 import {DashboardLayout} from "../../components/dashboard/dashboard-layout";
 import {
-  Box,
+  Box, Card, CardHeader,
   Container,
   Table,
   TableBody,
   TableCell, TableContainer,
   TableHead,
   TableRow,
-  TableSortLabel,
+  TableSortLabel, Tooltip,
   Typography
 } from "@mui/material";
 import {api} from "../../api/apiClient";
@@ -15,6 +15,7 @@ import {useEffect, useState} from "react";
 import {withComma} from "../../utils/number";
 import {ProjectTitle} from "../../components/projects/ProjectTitle";
 import {ProjectInfo} from "../../components/projects/ProjectInfo";
+import {InformationCircleOutlined as InformationCircleOutlinedIcon} from "../../icons/information-circle-outlined";
 
 const Projects = () => {
   const [projects, setProjects] = useState([])
@@ -43,29 +44,42 @@ const Projects = () => {
       <Container sx={{mb: 4}}>
         <ProjectTitle/>
         <ProjectInfo totalMarketCap={totalMarketCap}/>
+        <Card sx={{mt: 4}}>
+          <CardHeader
+            title="Project List"
+            action={(
+              <Tooltip title="MarketCap = totalSupply x price">
+                <InformationCircleOutlinedIcon sx={{color: 'action.active'}}/>
+              </Tooltip>
+            )}
+          />
         <TableContainer>
-          <Table sx={{mt: 4, border: "0.5px solid #dadada"}}>
+          <Table sx={{border: "0.5px solid #dadada"}}>
             <TableHead>
               <TableRow>
-                <TableCell>
-                  #
+                <TableCell align="center">
+                  <Box ml={1}>
+                    #
+                  </Box>
                 </TableCell>
                 <TableCell>
-                  PROJECT
+                  <Box ml={5}>
+                    PROJECT
+                  </Box>
                 </TableCell>
-                <TableCell>
+                <TableCell align="center">
                   TOKEN
                 </TableCell>
-                <TableCell sx={{textAlign: 'right'}}>
+                <TableCell align="right">
                   PRICE
                 </TableCell>
-                <TableCell sx={{textAlign: 'right'}}>
+                <TableCell align="right">
                   MARKET CAP
                 </TableCell>
-                <TableCell sx={{textAlign: 'right'}}>
+                <TableCell align="right">
                   TVL
                 </TableCell>
-                <TableCell sx={{textAlign: 'right'}}>
+                <TableCell align="right">
                   24H
                 </TableCell>
               </TableRow>
@@ -82,11 +96,14 @@ const Projects = () => {
                       background: "#ffffff"
                     }}
                   >
-                    <TableCell>
+                    <TableCell align="center">
+                      <Box ml={1}>
                       {index + 1}
+                      </Box>
                     </TableCell>
                     <TableCell>
                       <Box
+                        ml={5}
                         sx={{
                           alignItems: 'center',
                           display: 'flex'
@@ -108,7 +125,7 @@ const Projects = () => {
                         </Typography>
                       </Box>
                     </TableCell>
-                    <TableCell>
+                    <TableCell align="center">
                       <Typography variant="subtitle2">
                         {project.symbol}
                       </Typography>
@@ -139,6 +156,7 @@ const Projects = () => {
             </TableBody>
           </Table>
         </TableContainer>
+        </Card>
       </Container>
     </Box>
   )

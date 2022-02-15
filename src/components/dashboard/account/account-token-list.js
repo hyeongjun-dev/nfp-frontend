@@ -93,7 +93,9 @@ export const AccountTokenList = (props) => {
                 direction={symbolDirection}
                 onClick={() => handleSortBySymbol('symbol')}
               >
-                Symbol
+                <Box ml={2}>
+                  Symbol
+                </Box>
               </TableSortLabel>
             </TableCell>
             <TableCell>
@@ -141,6 +143,7 @@ export const AccountTokenList = (props) => {
                     alignItems: 'center',
                     display: 'flex'
                   }}
+                  ml={2}
                 >
                   <a href={token.url} target='_blank'>
                     <img

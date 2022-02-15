@@ -116,7 +116,6 @@ const Overview = () => {
               <Grid item>
                 <Box
                     sx={{
-                      m: 1,
                       maxWidth: '100%',
                       minWidth: 400
                     }}

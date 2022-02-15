@@ -79,7 +79,7 @@ export const baseThemeOptions = {
       },
       styleOverrides: {
         root: {
-          padding: '32px 24px'
+          padding: '25px 25px'
         }
       }
     },
