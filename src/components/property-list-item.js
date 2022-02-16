@@ -30,7 +30,7 @@ export const PropertyListItem = (props) => {
           >
             {children || (
               <Typography
-                color="textSecondary"
+                color="inherit"
                 variant="body2"
               >
                 {value}

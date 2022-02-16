@@ -30,7 +30,7 @@ const sortTokenList = (tokens, order, orderBasis) => tokens
     return a[orderBasis] > b[orderBasis] ? -1 : 1;
   });
 
-export const AccountTokenList = (props) => {
+export const AccountFungibleTokenList = (props) => {
   const [order, setOrder] = useState('desc');
   const [orderBasis, setOrderBasis] = useState('balance');
 

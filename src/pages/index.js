@@ -33,11 +33,12 @@ import { gtm } from '../lib/gtm';
 import {AccountFiatBalance} from "../components/dashboard/account/account-fiat-balance";
 import {AccountTokenBalance} from "../components/dashboard/account/account-token-balance";
 import {AccountWalletAddress} from "../components/dashboard/account/account-wallet-address";
-import {AccountTokenList} from "../components/dashboard/account/account-token-list";
+import {AccountFungibleTokenList} from "../components/dashboard/account/account-fungible-token-list";
 import {fetchItems, accountSelector} from "../slices/account";
 import {useDispatch, useSelector} from "../store";
 import {useConnect} from "../connect/auth";
 import {Search as SearchIcon} from "../icons/search";
+import {AccountOverviewList} from "../components/dashboard/account/account-overview-list";
 
 const Overview = () => {
   const [displayBanner, setDisplayBanner] = useState(true);
@@ -167,7 +168,15 @@ const Overview = () => {
                 md={12}
                 xs={12}
             >
-              <AccountTokenList fungibleTokenList={items.fungibleTokenList}/>
+              <AccountOverviewList totalSpentFees={items.totalSpentFees} />
+            </Grid>
+
+            <Grid
+                item
+                md={12}
+                xs={12}
+            >
+              <AccountFungibleTokenList fungibleTokenList={items.fungibleTokenList}/>
             </Grid>
 
             {/*<Grid*/}
