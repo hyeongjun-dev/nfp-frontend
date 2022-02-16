@@ -17,7 +17,7 @@ export const AccountOverviewList = (props) => {
               align={align}
               divider
               label="Total spent fees"
-              value={`${totalSpentFees} STX`}
+              value={`${(totalSpentFees || 0)} STX`}
           />
         </PropertyList>
       </Card>
