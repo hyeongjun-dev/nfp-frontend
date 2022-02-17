@@ -1,12 +1,8 @@
 import {useState} from 'react';
-import numeral from 'numeral';
 import {
   Box,
-  Button,
   Card,
-  CardActions,
   CardHeader,
-  Divider, IconButton,
   Table,
   TableBody,
   TableCell,
@@ -17,9 +13,6 @@ import {
   Typography
 } from '@mui/material';
 import {InformationCircleOutlined as InformationCircleOutlinedIcon} from '../../../icons/information-circle-outlined';
-import {ArrowRight as ArrowRightIcon} from '../../../icons/arrow-right';
-import {Share as ShareIcon} from "../../../icons/share";
-import {ExternalLink as ExternalLinkIcon} from "../../../icons/external-link";
 import {Skeleton} from "@mui/lab";
 
 const sortTokenList = (tokens, order, orderBasis) => tokens
@@ -31,7 +24,7 @@ const sortTokenList = (tokens, order, orderBasis) => tokens
     return a[orderBasis] > b[orderBasis] ? -1 : 1;
   });
 
-export const AccountFungibleTokenList = (props) => {
+export const AccountFarmTokenList = (props) => {
   const [order, setOrder] = useState('desc');
   const [orderBasis, setOrderBasis] = useState('balance');
 
@@ -40,7 +33,7 @@ export const AccountFungibleTokenList = (props) => {
   const [priceDirection, setPriceDirection] = useState('desc');
   const [valueDirection, setValueDirection] = useState('desc');
 
-  const fungibleTokenList = props.fungibleTokenList;
+  const farmTokenList = props.farmTokenList;
 
   const handleSortBySymbol = (orderBasis) => {
     setSymbolDirection(changeOrder(symbolDirection));
@@ -78,17 +71,11 @@ export const AccountFungibleTokenList = (props) => {
   return (
     <Card {...props}>
       <CardHeader
-        title="Token Balance"
-        action={(
-          <Tooltip title="Refresh rate is 24h">
-            <InformationCircleOutlinedIcon sx={{color: 'action.active'}}/>
-          </Tooltip>
-        )}
+        title="Farm Balance"
       />
-
       {
-        props.accountLoading ?
-          <Skeleton variant="rectangular" width={"100%"} height={100} />
+        props.farmLoading ?
+          <Skeleton variant="rectangular" width={"100%"} height={100}/>
           :
           <Table>
             <TableHead>
@@ -100,7 +87,7 @@ export const AccountFungibleTokenList = (props) => {
                     onClick={() => handleSortBySymbol('symbol')}
                   >
                     <Box ml={2}>
-                      Symbol
+                      Protocol
                     </Box>
                   </TableSortLabel>
                 </TableCell>
@@ -110,7 +97,7 @@ export const AccountFungibleTokenList = (props) => {
                     direction={balanceDirection}
                     onClick={() => handleSortByBalance('balance')}
                   >
-                    Balance
+                    Pair
                   </TableSortLabel>
                 </TableCell>
                 <TableCell>
@@ -119,7 +106,7 @@ export const AccountFungibleTokenList = (props) => {
                     direction={priceDirection}
                     onClick={() => handleSortByPrice('price')}
                   >
-                    Price
+                    Amount
                   </TableSortLabel>
                 </TableCell>
                 <TableCell>
@@ -134,9 +121,9 @@ export const AccountFungibleTokenList = (props) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {fungibleTokenList && sortTokenList([...fungibleTokenList], order, orderBasis).map((token) => (
+              {farmTokenList && sortTokenList([...farmTokenList], order, orderBasis).filter(token => token.value > 0).map((token, index) => (
                 <TableRow
-                  key={token.symbol}
+                  key={index}
                   sx={{
                     '&:last-child td': {
                       border: 0
@@ -156,31 +143,30 @@ export const AccountFungibleTokenList = (props) => {
                           style={{display: 'inline-block', verticalAlign: 'middle'}}
                           width={24}
                           height={24}
-                          alt={token.symbol}
+                          alt={token.pair}
                           src={token.image}
                         />
                       </a>
                       <Typography
                         sx={{ml: 2}}
                         variant="subtitle2"
-                      >
-                        {token.symbol}
+                      >{token.protocol}
                       </Typography>
                     </Box>
                   </TableCell>
                   <TableCell width="25%">
                     <Typography variant="subtitle2">
-                      {token.balance}
+                      {token.pair}
                     </Typography>
                   </TableCell>
                   <TableCell width="20%">
                     <Typography variant="subtitle2">
-                      {(Number(token.price) === 0) ? '-' : token.price}
+                      {token.amount}
                     </Typography>
                   </TableCell>
                   <TableCell width="30%">
                     <Typography variant="subtitle2">
-                      {(Number(token.value) === 0) ? '-' : token.value}
+                      {token.value}
                     </Typography>
                   </TableCell>
                 </TableRow>

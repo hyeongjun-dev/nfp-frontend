@@ -1,12 +1,8 @@
 import {useState} from 'react';
-import numeral from 'numeral';
 import {
   Box,
-  Button,
   Card,
-  CardActions,
   CardHeader,
-  Divider, IconButton,
   Table,
   TableBody,
   TableCell,
@@ -17,9 +13,6 @@ import {
   Typography
 } from '@mui/material';
 import {InformationCircleOutlined as InformationCircleOutlinedIcon} from '../../../icons/information-circle-outlined';
-import {ArrowRight as ArrowRightIcon} from '../../../icons/arrow-right';
-import {Share as ShareIcon} from "../../../icons/share";
-import {ExternalLink as ExternalLinkIcon} from "../../../icons/external-link";
 import {Skeleton} from "@mui/lab";
 
 const sortTokenList = (tokens, order, orderBasis) => tokens
@@ -31,7 +24,7 @@ const sortTokenList = (tokens, order, orderBasis) => tokens
     return a[orderBasis] > b[orderBasis] ? -1 : 1;
   });
 
-export const AccountFungibleTokenList = (props) => {
+export const AccountStakeTokenList = (props) => {
   const [order, setOrder] = useState('desc');
   const [orderBasis, setOrderBasis] = useState('balance');
 
@@ -40,7 +33,7 @@ export const AccountFungibleTokenList = (props) => {
   const [priceDirection, setPriceDirection] = useState('desc');
   const [valueDirection, setValueDirection] = useState('desc');
 
-  const fungibleTokenList = props.fungibleTokenList;
+  const stakedTokenList = props.stakedTokenList;
 
   const handleSortBySymbol = (orderBasis) => {
     setSymbolDirection(changeOrder(symbolDirection));
@@ -78,16 +71,10 @@ export const AccountFungibleTokenList = (props) => {
   return (
     <Card {...props}>
       <CardHeader
-        title="Token Balance"
-        action={(
-          <Tooltip title="Refresh rate is 24h">
-            <InformationCircleOutlinedIcon sx={{color: 'action.active'}}/>
-          </Tooltip>
-        )}
+        title="Stake Balance"
       />
-
       {
-        props.accountLoading ?
+        props.stakedLoading ?
           <Skeleton variant="rectangular" width={"100%"} height={100} />
           :
           <Table>
@@ -134,9 +121,9 @@ export const AccountFungibleTokenList = (props) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {fungibleTokenList && sortTokenList([...fungibleTokenList], order, orderBasis).map((token) => (
+              {stakedTokenList && sortTokenList([...stakedTokenList], order, orderBasis).filter(token => token.value > 0).map((token, index) => (
                 <TableRow
-                  key={token.symbol}
+                  key={index}
                   sx={{
                     '&:last-child td': {
                       border: 0
@@ -163,14 +150,13 @@ export const AccountFungibleTokenList = (props) => {
                       <Typography
                         sx={{ml: 2}}
                         variant="subtitle2"
-                      >
-                        {token.symbol}
+                      >{token.tokenName}
                       </Typography>
                     </Box>
                   </TableCell>
                   <TableCell width="25%">
                     <Typography variant="subtitle2">
-                      {token.balance}
+                      {token.amount}
                     </Typography>
                   </TableCell>
                   <TableCell width="20%">
