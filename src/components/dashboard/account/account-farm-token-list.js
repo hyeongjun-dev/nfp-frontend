@@ -106,7 +106,7 @@ export const AccountFarmTokenList = (props) => {
                     direction={priceDirection}
                     onClick={() => handleSortByPrice('price')}
                   >
-                    Amount
+                    Balance
                   </TableSortLabel>
                 </TableCell>
                 <TableCell>
