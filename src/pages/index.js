@@ -16,7 +16,6 @@ import {api} from "../api/apiClient";
 import {AccountFarmTokenList} from "../components/dashboard/account/account-farm-token-list";
 
 const Overview = () => {
-  const [displayBanner, setDisplayBanner] = useState(true);
   const [searchedOwnerStxAddress, setSearchedOwnerStxAddress] = useState('');
   const [displayedOwnerStxAddress, setDisplayedOwnerStxAddress] = useState('');
   const [totalBalance, setTotalBalance] = useState(0)
@@ -74,7 +73,7 @@ const Overview = () => {
   useEffect(() => {
     gtm.push({ event: 'page_view' });
 
-    if (connected) {
+    if (connected && ownerStxAddress) {
       setDisplayedOwnerStxAddress(ownerStxAddress);
       fetchBalanceData(ownerStxAddress)
         .catch(reason => {
@@ -85,17 +84,12 @@ const Overview = () => {
 
   useEffect(() => {
     // Restore the persistent state from local/session storage
-    const value = globalThis.sessionStorage.getItem('dismiss-banner');
-
-    if (value === 'true') {
-      // setDisplayBanner(false);
-    }
+    // const value = globalThis.sessionStorage.getItem('dismiss-banner');
   }, []);
 
   const handleDismissBanner = () => {
     // Update the persistent state
     // globalThis.sessionStorage.setItem('dismiss-banner', 'true');
-    setDisplayBanner(false);
   };
 
   const handleChangeWalletAddress = (event) => {
