@@ -21,6 +21,7 @@ import {ArrowRight as ArrowRightIcon} from '../../../icons/arrow-right';
 import {Share as ShareIcon} from "../../../icons/share";
 import {ExternalLink as ExternalLinkIcon} from "../../../icons/external-link";
 import {Skeleton} from "@mui/lab";
+import {asNumFormat} from "../../../utils/number";
 
 const sortTokenList = (tokens, order, orderBasis) => tokens
   .sort((a, b) => {
@@ -170,17 +171,17 @@ export const AccountFungibleTokenList = (props) => {
                   </TableCell>
                   <TableCell width="25%">
                     <Typography variant="subtitle2">
-                      {token.balance}
+                      {asNumFormat(token.balance)}
                     </Typography>
                   </TableCell>
                   <TableCell width="20%">
                     <Typography variant="subtitle2">
-                      {(Number(token.price) === 0) ? '-' : token.price}
+                      {(Number(token.price) === 0) ? '-' : asNumFormat(token.price)}
                     </Typography>
                   </TableCell>
                   <TableCell width="30%">
                     <Typography variant="subtitle2">
-                      {(Number(token.value) === 0) ? '-' : token.value}
+                      {(Number(token.value) === 0) ? '-' : asNumFormat(token.value)}
                     </Typography>
                   </TableCell>
                 </TableRow>

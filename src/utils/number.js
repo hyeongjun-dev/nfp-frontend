@@ -1,4 +1,8 @@
 export function withComma(num) {
-  let regexp = /\B(?=(\d{3})+(?!\d))/g;
-  return (num+'').replace(regexp, ',');
+  return num.toLocaleString('en-US');
+}
+
+export function asNumFormat(num) {
+  let fixed = Number(num)
+  return fixed.toLocaleString('en-US');
 }

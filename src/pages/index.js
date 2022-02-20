@@ -19,6 +19,7 @@ const Overview = () => {
   const [displayBanner, setDisplayBanner] = useState(true);
   const [searchedOwnerStxAddress, setSearchedOwnerStxAddress] = useState('');
   const [displayedOwnerStxAddress, setDisplayedOwnerStxAddress] = useState('');
+  const [totalBalance, setTotalBalance] = useState(0)
   const [account, setAccount] = useState([])
   const [stakedTokenList, setStakedTokenList] = useState([])
   const [farmTokenList, setFarmedTokenList] = useState([])
@@ -42,28 +43,40 @@ const Overview = () => {
     return await api.get(`/account/farm?address=${address}`)
   }
 
+  async function fetchBalanceData(address){
+    try {
+      let totalBalance = 0
+      let account = await getAccounts(address)
+      setAccount(account.data)
+      totalBalance += account.data.totalBalance
+
+      let stake = await getStakedTokenList(address)
+      setStakedTokenList(stake.data.data)
+      totalBalance += stake.data.data.reduce((prevValue, currentValue) => prevValue + currentValue.value, 0)
+
+      let farm = await getFarmTokenList(address)
+      setFarmedTokenList(farm.data.data)
+      totalBalance += farm.data.data.reduce((prevValue, currentValue) => prevValue + currentValue.value, 0)
+      setTotalBalance(totalBalance)
+
+    } finally {
+      setAccountLoading(false)
+      setStakedLoading(false)
+      setFarmLoading(false)
+    }
+
+  }
+
 
   useEffect(() => {
     gtm.push({ event: 'page_view' });
 
     if (connected) {
       setDisplayedOwnerStxAddress(ownerStxAddress);
-      getAccounts(ownerStxAddress).then(response => {
-        setAccount(response.data)
-      }).finally(() => {
-        setAccountLoading(false)
-      })
-      getStakedTokenList(ownerStxAddress).then(response => {
-        setStakedTokenList(response.data.data)
-      }).finally(() => {
-        setStakedLoading(false)
-      })
-
-      getFarmTokenList(ownerStxAddress).then(response => {
-        setFarmedTokenList(response.data.data)
-      }).finally(() => {
-        setFarmLoading(false)
-      })
+      fetchBalanceData(ownerStxAddress)
+        .catch(reason => {
+          console.log(reason)
+        })
     }
   }, [ownerStxAddress]);
 
@@ -93,27 +106,15 @@ const Overview = () => {
       setFarmLoading(true)
 
       console.log("Search by wallet address: " + walletAddress);
-      getAccounts(walletAddress).then(response => {
-        setAccount(response.data)
-      }).finally(() => {
-        setAccountLoading(false)
-      })
-      getStakedTokenList(walletAddress).then(response => {
-        setStakedTokenList(response.data.data)
-      }).finally(() => {
-        setStakedLoading(false)
-      })
-
-      getFarmTokenList(walletAddress).then(response => {
-        setFarmedTokenList(response.data.data)
-      }).finally(() => {
-        setFarmLoading(false)
-      })
+      fetchBalanceData(walletAddress)
+        .catch(reason => {
+          console.log(reason)
+        })
     }
   };
 
   return (
-    <z>
+    <>
       <Head>
         <title>
           Account Dashboard
@@ -172,7 +173,7 @@ const Overview = () => {
               md={4}
               xs={12}
             >
-              <AccountFiatBalance totalBalance={account.totalBalance}/>
+              <AccountFiatBalance totalBalance={totalBalance}/>
             </Grid>
             <Grid
               item
@@ -223,7 +224,7 @@ const Overview = () => {
           </Grid>
         </Container>
       </Box>
-    </z>
+    </>
   );
 };
 
