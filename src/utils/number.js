@@ -6,3 +6,7 @@ export function asNumFormat(num) {
   let fixed = Number(num)
   return fixed.toLocaleString('en-US');
 }
+
+export function asDollarFormat(num){
+  return '$'+ asNumFormat(num)
+}

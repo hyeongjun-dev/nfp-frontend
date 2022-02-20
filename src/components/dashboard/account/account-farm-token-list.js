@@ -14,7 +14,7 @@ import {
 } from '@mui/material';
 import {InformationCircleOutlined as InformationCircleOutlinedIcon} from '../../../icons/information-circle-outlined';
 import {Skeleton} from "@mui/lab";
-import {asNumFormat} from "../../../utils/number";
+import {asDollarFormat, asNumFormat} from "../../../utils/number";
 
 const sortTokenList = (tokens, order, orderBasis) => tokens
   .sort((a, b) => {
@@ -167,7 +167,7 @@ export const AccountFarmTokenList = (props) => {
                   </TableCell>
                   <TableCell width="30%">
                     <Typography variant="subtitle2">
-                      {asNumFormat(token.value)}
+                      {asDollarFormat(token.value)}
                     </Typography>
                   </TableCell>
                 </TableRow>
