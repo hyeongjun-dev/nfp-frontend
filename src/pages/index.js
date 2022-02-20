@@ -45,6 +45,10 @@ const Overview = () => {
 
   async function fetchBalanceData(address){
     try {
+      setAccountLoading(true)
+      setStakedLoading(true)
+      setFarmLoading(true)
+
       let totalBalance = 0
       let account = await getAccounts(address)
       setAccount(account.data)
@@ -66,7 +70,6 @@ const Overview = () => {
     }
 
   }
-
 
   useEffect(() => {
     gtm.push({ event: 'page_view' });
@@ -101,9 +104,6 @@ const Overview = () => {
     // FIXME: 주소 길이 41자이지만, 정확한 스펙은 확인 필요
     if (String(walletAddress).length >= 40) {
       setDisplayedOwnerStxAddress(walletAddress);
-      setAccountLoading(true)
-      setStakedLoading(true)
-      setFarmLoading(true)
 
       console.log("Search by wallet address: " + walletAddress);
       fetchBalanceData(walletAddress)
