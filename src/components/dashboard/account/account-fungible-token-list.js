@@ -17,9 +17,7 @@ import {
   Typography
 } from '@mui/material';
 import {InformationCircleOutlined as InformationCircleOutlinedIcon} from '../../../icons/information-circle-outlined';
-import {ArrowRight as ArrowRightIcon} from '../../../icons/arrow-right';
-import {Share as ShareIcon} from "../../../icons/share";
-import {ExternalLink as ExternalLinkIcon} from "../../../icons/external-link";
+import { ChartPie as ChartIcon } from '../../../icons/chart-pie';
 import {Skeleton} from "@mui/lab";
 import {asDollarFormat, asNumFormat} from "../../../utils/number";
 
@@ -79,6 +77,7 @@ export const AccountFungibleTokenList = (props) => {
   return (
     <Card {...props}>
       <CardHeader
+        avatar={<ChartIcon/>}
         title="Token Balance"
         action={(
           <Tooltip title="Refresh rate is 24h">

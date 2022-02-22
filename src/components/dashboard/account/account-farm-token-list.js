@@ -12,7 +12,7 @@ import {
   Tooltip,
   Typography
 } from '@mui/material';
-import {InformationCircleOutlined as InformationCircleOutlinedIcon} from '../../../icons/information-circle-outlined';
+import { ChartBar as ChartBarIcon } from '../../../icons/chart-bar';
 import {Skeleton} from "@mui/lab";
 import {asDollarFormat, asNumFormat} from "../../../utils/number";
 
@@ -72,6 +72,7 @@ export const AccountFarmTokenList = (props) => {
   return (
     <Card {...props}>
       <CardHeader
+        avatar={<ChartBarIcon/>}
         title="Farm Balance"
       />
       {

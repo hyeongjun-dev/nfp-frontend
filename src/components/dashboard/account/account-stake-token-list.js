@@ -13,6 +13,7 @@ import {
   Typography
 } from '@mui/material';
 import {InformationCircleOutlined as InformationCircleOutlinedIcon} from '../../../icons/information-circle-outlined';
+import { Lock as LockIcon } from '../../../icons/lock';
 import {Skeleton} from "@mui/lab";
 import {asDollarFormat, asNumFormat, withComma} from "../../../utils/number";
 
@@ -72,6 +73,7 @@ export const AccountStakeTokenList = (props) => {
   return (
     <Card {...props}>
       <CardHeader
+        avatar={<LockIcon/>}
         title="Stake Balance"
       />
       {

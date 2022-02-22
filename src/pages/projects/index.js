@@ -10,6 +10,7 @@ import {
   TableSortLabel, Tooltip,
   Typography
 } from "@mui/material";
+import { Reports as ReportIcon } from '../../icons/reports';
 import {api} from "../../api/apiClient";
 import {useEffect, useState} from "react";
 import {withComma} from "../../utils/number";
@@ -46,6 +47,7 @@ const Projects = () => {
         <ProjectInfo totalMarketCap={totalMarketCap}/>
         <Card sx={{mt: 4}}>
           <CardHeader
+            avatar={<ReportIcon/>}
             title="Project List"
             action={(
               <Tooltip title="MarketCap = totalSupply x price">
