@@ -3885,10 +3885,10 @@
     "normalize-path" "^3.0.0"
     "picomatch" "^2.0.4"
 
-"apexcharts@^3.18.0", "apexcharts@^3.23.1":
-  "integrity" "sha512-PhI17VayidYAbLb5/g+7WOeirgFrVopzt0qGwLq8V+cd6NXx4CeHYq3S0pDZiUGO7UFQ4YIrT8+ie9/Fnler+w=="
-  "resolved" "https://registry.npmjs.org/apexcharts/-/apexcharts-3.29.0.tgz"
-  "version" "3.29.0"
+"apexcharts@^3.18.0", "apexcharts@^3.33.2":
+  "integrity" "sha512-GkHZ3o36ZT/jSBh5y1pxxRzwM3tvtladtkcUTfXwP0wYAHK8Qj0X4ZPsupP7emRIjhOVpGsCxW9xeO3F5w+AOQ=="
+  "resolved" "https://registry.npmjs.org/apexcharts/-/apexcharts-3.33.2.tgz"
+  "version" "3.33.2"
   dependencies:
     "svg.draggable.js" "^2.2.2"
     "svg.easing.js" "^2.0.0"
@@ -5564,6 +5564,11 @@
   "resolved" "https://registry.npmjs.org/extend/-/extend-3.0.2.tgz"
   "version" "3.0.2"
 
+"fancy-canvas@0.2.2":
+  "integrity" "sha512-50qi8xA0QkHbjmb8h7XQ6k2fvD7y/yMfiUw9YTarJ7rWrq6o5/3CCXPouYk+XSLASvvxtjyiQLRBFt3qkE3oyA=="
+  "resolved" "https://registry.npmjs.org/fancy-canvas/-/fancy-canvas-0.2.2.tgz"
+  "version" "0.2.2"
+
 "fast-base64-decode@^1.0.0":
   "integrity" "sha512-qwaScUgUGBYeDNRnbc/KyllVU88Jk1pRHPStuF/lO7B0/RTRLj7U0lkdTAutlBblY08rwZDff6tNU9cjv6j//Q=="
   "resolved" "https://registry.npmjs.org/fast-base64-decode/-/fast-base64-decode-1.0.0.tgz"
@@ -6529,6 +6534,13 @@
   dependencies:
     "prelude-ls" "^1.2.1"
     "type-check" "~0.4.0"
+
+"lightweight-charts@^3.8.0":
+  "integrity" "sha512-7yFGnYuE1RjRJG9RwUTBz5wvF1QtjBOSW4FFlikr8Dh+/TDNt4ci+HsWSYmStgQUpawpvkCJ3j5/W25GppGj9Q=="
+  "resolved" "https://registry.npmjs.org/lightweight-charts/-/lightweight-charts-3.8.0.tgz"
+  "version" "3.8.0"
+  dependencies:
+    "fancy-canvas" "0.2.2"
 
 "lines-and-columns@^1.1.6":
   "integrity" "sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA="

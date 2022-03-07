@@ -1,9 +1,9 @@
 import {Box, Card, CardContent, Grid, Typography} from "@mui/material";
 import CountUp from "react-countup";
 import {withComma} from "../../utils/number";
+import dynamic from 'next/dynamic';
 
 export const ProjectInfo = (props) => {
-
   return (
     <>
       <Grid container spacing={2} sx={{marginTop: "10px"}}>
