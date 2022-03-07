@@ -102,7 +102,7 @@ const Dashboard = () => {
         })
       }
     }
-  }, [router, ownerStxAddress]);
+  }, [ownerStxAddress, router]);
 
   const handleDismissBanner = () => {
     // Update the persistent state
