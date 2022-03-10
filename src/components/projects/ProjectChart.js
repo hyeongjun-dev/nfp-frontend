@@ -35,7 +35,11 @@ export const ProjectChart = ({symbol}) => {
         height: 300,
         toolbar: {
           autoSelected: 'pan',
-          zoom: false
+        },
+        zoom: {
+          enabled: true,
+          type: "x",
+          autoScaleYaxis: true,
         }
       },
       dataLabels: {
