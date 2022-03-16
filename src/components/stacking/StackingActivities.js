@@ -97,11 +97,13 @@ export const StackingActivities = (props) => {
   }
 
   useEffect(() => {
-    getStackerHistories()
-      .catch((e) => {
-        console.log(e)
-        console.log("Error fetching stackerInfos")
-      })
+    if(props.currentCycle > 0) {
+      getStackerHistories()
+        .catch((e) => {
+          console.log(e)
+          console.log("Error fetching stackerInfos")
+        })
+    }
   }, [ownerStxAddress, props.currentCycle])
   return (
     <>
