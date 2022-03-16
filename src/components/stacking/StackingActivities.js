@@ -102,7 +102,7 @@ export const StackingActivities = (props) => {
         console.log(e)
         console.log("Error fetching stackerInfos")
       })
-  }, [ownerStxAddress])
+  }, [ownerStxAddress, props.currentCycle])
   return (
     <>
       <Card>
