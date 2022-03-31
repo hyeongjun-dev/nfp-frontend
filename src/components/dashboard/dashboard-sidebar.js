@@ -51,11 +51,6 @@ const getSections = (t) => [
         icon: <ExternalLink fontSize="small"/>
       },
       {
-        title: t('KCV Pool'),
-        path: 'https://pool.kcvdao.com',
-        icon: <ExternalLink fontSize="small"/>
-      },
-      {
         title: t('StacksScan'),
         path: 'https://stacksscan.org',
         icon: <ExternalLink fontSize="small"/>
