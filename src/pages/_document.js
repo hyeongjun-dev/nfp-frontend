@@ -49,6 +49,21 @@ class CustomDocument extends Document {
             name="theme-color"
             content="#111827"
           />
+          <meta property="og:locale" content="en_US" />
+          <meta property="og:type" content="website" />
+          <meta
+              property="og:image"
+              content="https://nfpstudio.io/resource/og_image.png"
+          />
+          <meta
+              property="og:title"
+              content="NFP STUDIO"
+          />
+          <meta
+              property="og:description"
+              content="Build Tools for Stacks Community."
+          />
+          <meta property="og:url" content="https://app.nfpstudio.io" />
         </Head>
         <body>
         <Main />
