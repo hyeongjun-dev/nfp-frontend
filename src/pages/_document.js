@@ -50,7 +50,7 @@ class CustomDocument extends Document {
             content="#111827"
           />
           <meta property="og:locale" content="en_US" />
-          <meta property="og:type" content="website" />
+          <meta property="og:type" content="article">
           <meta
               property="og:image"
               content="https://nfpstudio.io/resource/og_image.png"
