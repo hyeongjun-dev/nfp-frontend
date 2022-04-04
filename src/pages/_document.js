@@ -53,7 +53,7 @@ class CustomDocument extends Document {
           <meta property="og:type" content="website" />
           <meta
               property="og:image"
-              content="https://nfpstudio.io/resource/og_image_for_kakao.png"
+              content="https://nfpstudio.io/resource/og_image/og_image.png"
           />
           <meta
               property="og:title"
