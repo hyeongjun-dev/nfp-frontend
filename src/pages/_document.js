@@ -64,6 +64,8 @@ class CustomDocument extends Document {
               content="Build Tools for Stacks Community."
           />
           <meta property="og:url" content="https://app.nfpstudio.io" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:image" content="https://nfpstudio.io/resource/og_image.png" />
         </Head>
         <body>
         <Main />
