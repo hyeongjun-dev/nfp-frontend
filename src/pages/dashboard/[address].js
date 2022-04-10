@@ -67,19 +67,27 @@ const Dashboard = () => {
       setVaultLoading(true)
 
       let totalBalance = 0
-      let account = await getAccounts(address)
+      let accountsResponse = await Promise.all(
+          [
+              getAccounts(address),
+            getVaultsList(address),
+            getStakedTokenList(address),
+            getFarmTokenList(address)
+          ])
+
+      let account = accountsResponse[0]
       setAccount(account.data)
       totalBalance += account.data.totalBalance
 
-      let vault = await getVaultsList(address)
+      let vault = accountsResponse[1]
       setVaultList(vault.data.data)
 
-      let stake = await getStakedTokenList(address)
+      let stake = accountsResponse[2]
       setStakedTokenList(stake.data.data)
       totalBalance += stake.data.data.reduce(
           (prevValue, currentValue) => prevValue + currentValue.value, 0)
 
-      let farm = await getFarmTokenList(address)
+      let farm = accountsResponse[3]
       setFarmedTokenList(farm.data.data)
       totalBalance += farm.data.data.reduce(
           (prevValue, currentValue) => prevValue + currentValue.value, 0)
