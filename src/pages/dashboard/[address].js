@@ -22,15 +22,19 @@ import {AccountStakeTokenList} from "../../components/dashboard/account/account-
 import {api} from "../../api/apiClient";
 import {AccountFarmTokenList} from "../../components/dashboard/account/account-farm-token-list";
 import {useRouter} from "next/router";
+import {AccountVaultTokenList} from "../../components/dashboard/account/account-vault-token-list";
 
 const Dashboard = () => {
   const [displayedOwnerStxAddress, setDisplayedOwnerStxAddress] = useState('');
   const [totalBalance, setTotalBalance] = useState(0)
   const [account, setAccount] = useState([])
+
+  const [vaultList, setVaultList] = useState([])
   const [stakedTokenList, setStakedTokenList] = useState([])
   const [farmTokenList, setFarmedTokenList] = useState([])
 
   const [accountLoading, setAccountLoading] = useState(true)
+  const [vaultLoading, setVaultLoading] = useState(true)
   const [stakedLoading, setStakedLoading] = useState(true)
   const [farmLoading, setFarmLoading] = useState(true)
 
@@ -41,6 +45,10 @@ const Dashboard = () => {
 
   async function getAccounts(address) {
     return await api.get(`/account/balance?address=${address}`)
+  }
+
+  async function getVaultsList(address) {
+    return await api.get(`/account/vault?address=${address}`)
   }
 
   async function getStakedTokenList(address) {
@@ -56,11 +64,15 @@ const Dashboard = () => {
       setAccountLoading(true)
       setStakedLoading(true)
       setFarmLoading(true)
+      setVaultLoading(true)
 
       let totalBalance = 0
       let account = await getAccounts(address)
       setAccount(account.data)
       totalBalance += account.data.totalBalance
+
+      let vault = await getVaultsList(address)
+      setVaultList(vault.data.data)
 
       let stake = await getStakedTokenList(address)
       setStakedTokenList(stake.data.data)
@@ -77,6 +89,7 @@ const Dashboard = () => {
       setAccountLoading(false)
       setStakedLoading(false)
       setFarmLoading(false)
+      setVaultLoading(false)
     }
 
   }
@@ -218,6 +231,15 @@ const Dashboard = () => {
                 <AccountFungibleTokenList
                     fungibleTokenList={account.fungibleTokenList}
                     accountLoading={accountLoading}/>
+              </Grid>
+
+              <Grid
+                  item
+                  md={12}
+                  xs={12}
+              >
+                <AccountVaultTokenList vaultList={vaultList}
+                                       vaultLoading={vaultLoading}/>
               </Grid>
 
               <Grid
