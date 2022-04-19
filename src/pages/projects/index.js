@@ -154,7 +154,7 @@ const Projects = () => {
                         </TableCell>
                         <TableCell sx={{textAlign: 'right'}}>
                           <Typography variant="subtitle2">
-                            -
+                            {isNaN(project.dayChangeRateByPercentage) ? '-' : parseFloat(project.dayChangeRateByPercentage) + '%'}
                           </Typography>
                         </TableCell>
                         <TableCell sx={{textAlign: 'right'}}>
