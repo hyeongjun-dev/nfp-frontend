@@ -124,8 +124,8 @@ const Projects = () => {
                             <a target='_blank'>
                               <img
                                 style={{display: 'inline-block', verticalAlign: 'middle'}}
-                                width={24}
-                                height={24}
+                                width={30}
+                                height={30}
                                 src={project.image}
                               />
                             </a>
