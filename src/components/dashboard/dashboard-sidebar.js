@@ -41,8 +41,13 @@ const getSections = (t) => [
     title: t('NFP TOOLS'),
     items: [
       {
-        title: t('Telegram BOT'),
-        path: 'https://t.me/nfp_studio_bot',
+        title: t('NFP Telegram BOT'),
+        path: 'https://t.me/NfpHelpBot',
+        icon: <ExternalLink fontSize="small"/>
+      },
+      {
+        title: t('Stacks Tracker BOT'),
+        path: 'https://t.me/StacksTrackerBot',
         icon: <ExternalLink fontSize="small"/>
       },
       {

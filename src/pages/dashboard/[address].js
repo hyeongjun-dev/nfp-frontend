@@ -81,6 +81,8 @@ const Dashboard = () => {
 
       let vault = accountsResponse[1]
       setVaultList(vault.data.data)
+      totalBalance += vault.data.data.reduce(
+          (prevValue, currentValue) => prevValue + currentValue.value, 0)
 
       let stake = accountsResponse[2]
       setStakedTokenList(stake.data.data)

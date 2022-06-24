@@ -34,6 +34,7 @@ export const AccountVaultTokenList = (props) => {
     const [typeDirection, setTypeDirection] = useState('desc');
     const [tokenDirection, setTokenDirection] = useState('desc');
     const [amountDirection, setAmountDirection] = useState('desc');
+    const [valueDirection, setValueDirection] = useState('desc');
 
     const vaultList = props.vaultList;
 
@@ -57,6 +58,11 @@ export const AccountVaultTokenList = (props) => {
         handleSort(orderBasis, amountDirection);
     };
 
+    const handleSortByValue = (orderBasis) => {
+        setValueDirection(changeOrder(valueDirection));
+        handleSort(orderBasis, valueDirection);
+    };
+
     const handleSort = (orderBasis, order) => {
         setOrderBasis(orderBasis);
         setOrder(order);
@@ -75,11 +81,11 @@ export const AccountVaultTokenList = (props) => {
             <CardHeader
                 avatar={<CogIcon/>}
                 title="Vaults"
-                action={(
-                    <Tooltip title="Vault is not added to the total value.">
-                        <InformationCircleOutlinedIcon sx={{color: 'action.active'}}/>
-                    </Tooltip>
-                )}
+                // action={(
+                //     <Tooltip title="Vault is not added to the total value.">
+                //         <InformationCircleOutlinedIcon sx={{color: 'action.active'}}/>
+                //     </Tooltip>
+                // )}
             />
             {
                 props.vaultLoading ?
@@ -124,6 +130,15 @@ export const AccountVaultTokenList = (props) => {
                                         onClick={() => handleSortByAmount('amount')}
                                     >
                                         Amount
+                                    </TableSortLabel>
+                                </TableCell>
+                                <TableCell>
+                                    <TableSortLabel
+                                        active
+                                        direction={valueDirection}
+                                        onClick={() => handleSortByValue('value')}
+                                    >
+                                        Value
                                     </TableSortLabel>
                                 </TableCell>
                             </TableRow>
@@ -172,9 +187,14 @@ export const AccountVaultTokenList = (props) => {
                                             {vault.token}
                                         </Typography>
                                     </TableCell>
-                                    <TableCell width="30%">
+                                    <TableCell width="15%">
                                         <Typography variant="subtitle2">
                                             {asNumFormat(vault.amount)}
+                                        </Typography>
+                                    </TableCell>
+                                    <TableCell width="15%">
+                                        <Typography variant="subtitle2">
+                                            {asNumFormat(vault.value)}
                                         </Typography>
                                     </TableCell>
                                 </TableRow>
