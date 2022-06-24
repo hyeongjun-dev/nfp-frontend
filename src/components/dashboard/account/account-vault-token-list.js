@@ -192,7 +192,7 @@ export const AccountVaultTokenList = (props) => {
                                     </TableCell>
                                     <TableCell width="15%">
                                         <Typography variant="subtitle2">
-                                            ${asDollarFormat(vault.value)}
+                                            {asDollarFormat(vault.value)}
                                         </Typography>
                                     </TableCell>
                                 </TableRow>
