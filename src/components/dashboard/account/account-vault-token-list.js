@@ -9,13 +9,11 @@ import {
     TableHead,
     TableRow,
     TableSortLabel,
-    Tooltip,
     Typography
 } from "@mui/material";
 import {Skeleton} from "@mui/lab";
-import {asNumFormat} from "../../../utils/number";
+import {asDollarFormat, asNumFormat} from "../../../utils/number";
 import {Cog as CogIcon} from "../../../icons/cog";
-import {InformationCircleOutlined as InformationCircleOutlinedIcon} from "../../../icons/information-circle-outlined";
 
 const sortVaultList = (vaults, order, orderBasis) => vaults
     .sort((a, b) => {
@@ -194,7 +192,7 @@ export const AccountVaultTokenList = (props) => {
                                     </TableCell>
                                     <TableCell width="15%">
                                         <Typography variant="subtitle2">
-                                            {asNumFormat(vault.value)}
+                                            ${asDollarFormat(vault.value)}
                                         </Typography>
                                     </TableCell>
                                 </TableRow>
