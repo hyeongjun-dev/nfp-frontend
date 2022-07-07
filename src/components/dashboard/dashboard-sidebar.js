@@ -51,13 +51,8 @@ const getSections = (t) => [
         icon: <ExternalLink fontSize="small"/>
       },
       {
-        title: t('Multisender'),
+        title: t('Multi Sender'),
         path: 'https://btc.stx-multisender.com',
-        icon: <ExternalLink fontSize="small"/>
-      },
-      {
-        title: t('StacksScan'),
-        path: 'https://stacksscan.org',
         icon: <ExternalLink fontSize="small"/>
       }
     ]
