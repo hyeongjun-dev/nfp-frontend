@@ -21,6 +21,38 @@ import {Chart} from "../../components/chart";
 import dynamic from "next/dynamic";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import NextLink from "next/link";
+
+const projectsData = [
+  {
+    "image": "https://nfpstudio.io/resource/token/stx.png",
+    "project": "Stacks",
+    "url": "",
+    "address": "",
+    "symbol": "STX",
+    "decimal": 0,
+    "price": 0.40742,
+    "totalSupply": 1322938856.3246734,
+    "totalMarketCap": 538991748.8437984,
+    "display": true,
+    "dayChangeRateByPercentage": 3.39,
+    "link": "naver.com"
+  },
+  {
+    "image": "https://nfpstudio.io/resource/token/alex.png",
+    "project": "ALEX",
+    "url": "https://stacksscan.org/txid/0x460353087a14a6570647ef3892e3e888b2384b74b5b695c852230a49180816ea?chain=mainnet",
+    "address": "SP3K8BC0PPEVCV7NZ6QSRWPQ2JE9E5B6N3PA0KBR9.age000-governance-token",
+    "symbol": "ALEX",
+    "decimal": 8,
+    "price": 0.0882,
+    "totalSupply": 67990353.12619168,
+    "totalMarketCap": 5996749.145730106,
+    "display": true,
+    "dayChangeRateByPercentage": 4.56,
+    "link": "naver.com"
+  }
+]
 
 const Projects = () => {
   const [projects, setProjects] = useState([])
@@ -34,8 +66,8 @@ const Projects = () => {
   useEffect(() => {
     api.get(`/project`)
       .then(response => {
-        setProjects(response.data)
-        let totalMarketCap = response.data.reduce((lastValue, currentValue) => {
+        setProjects(projectsData)
+        let totalMarketCap = projectsData.reduce((lastValue, currentValue) => {
           return lastValue + parseInt(currentValue.totalMarketCap)
         }, 0)
 
@@ -133,7 +165,12 @@ const Projects = () => {
                               sx={{ml: 2}}
                               variant="subtitle2"
                             >
-                              {project.project}
+                              <NextLink
+                                  href="/projects/detail/stx"
+                                  passHref
+                              >
+                                {project.project}
+                              </NextLink>
                             </Typography>
                           </Box>
                         </TableCell>
