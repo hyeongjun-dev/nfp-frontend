@@ -175,7 +175,7 @@ Our mission emphasizes seeking and hiring diverse voices, including those who ar
     return Promise.resolve({
       "STACKS": {
         title: "Stacks",
-        logo: 'https://nfpstudio.io/resource/token/stx.png',
+        logo: 'https://cryptologos.cc/logos/stacks-stx-logo.png?v=022',
         symbol: "STX",
         shortDescription: 'Stacks is a layer-1 blockchain solution that is designed to bring smart contracts and decentralized applications (DApps) to Bitcoin (BTC). These smart contracts are brought to Bitcoin without changing any of the features that make it so powerful — including its security and stability.',
         description: `These DApps are open and modular, meaning developers can build on top of each other's apps to produce features that are simply not possible in a regular app. Since Stacks uses Bitcoin as a base layer, everything that happens on the network is settled on the most widely used arguably the most secure blockchain in operation — Bitcoin.
@@ -185,7 +185,15 @@ The platform is powered by the Stacks token (STX), which is used for fueling the
 The platform was formerly known as Blockstack, but was rebranded to Stacks in Q4 2020 in order to "separate the ecosystem and open source project from Blockstack PBC" — the company that built the original protocols.
 
 The mainnet for Stacks 2.0 launched in January 2021.`,
-        website: "https://stacks.co"
+        tags: ["DeFi", "NFT", "BTC"],
+        links: {
+          website: "https://stacks.co",
+          github: "https://github.com/stacks-network",
+          discord: "https://discord.com/invite/5DJaBrf",
+          twitter: "https://twitter.com/Stacks",
+          telegram: "https://t.me/StacksChat",
+          reddit: "https://www.reddit.com/r/stacks/",
+        }
       }
     });
   }
