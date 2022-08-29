@@ -26,3 +26,7 @@ export const gtmConfig = {
 };
 
 export const GOOGLE_TRACKING_ID = "UA-217433020-1";
+
+export const apiConfig = {
+  projectInfo: "https://nfp-studio-default-rtdb.firebaseio.com/projectInfo.json"
+}

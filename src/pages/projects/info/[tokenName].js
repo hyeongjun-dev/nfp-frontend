@@ -17,19 +17,24 @@ import {
   Typography
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import {projectInfoApi} from '../../../__fake-api__/project-info-api';
 import {DashboardLayout} from '../../../components/dashboard/dashboard-layout';
-import {CompanyOverview} from '../../../components/projects/projectInfo/company-overview';
+import {
+  CompanyOverview
+} from '../../../components/projects/projectInfo/company-overview';
 import {useMounted} from '../../../hooks/use-mounted';
 import {gtm} from '../../../lib/gtm';
 import {useTheme} from "@mui/material/styles";
 import {green, grey, red} from '@mui/material/colors';
-import {CallMade, GitHub, Reddit, Share, Telegram, Twitter} from "@mui/icons-material";
+import {GitHub, Reddit, Share, Telegram, Twitter} from "@mui/icons-material";
 import {faDiscord} from "@fortawesome/free-brands-svg-icons"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {api} from "../../../api/apiClient";
 import dynamic from "next/dynamic";
-import {ContentShareDialog} from "../../../components/dashboard/conent-share-dialog";
+import {
+  ContentShareDialog
+} from "../../../components/dashboard/conent-share-dialog";
+import StringHelper from "../../../utils/StringHelper";
+import {apiConfig} from "../../../config";
 
 const Header = ({logoImg, title, description, tags}) => {
   const theme = useTheme();
@@ -132,7 +137,7 @@ const CompanySummary = ({links}) => {
   }
 
   const getLinkButton = ({keyName, href}) => {
-    if (!linkIconKeys.includes(keyName)) return null
+    // if (!linkIconKeys.includes(keyName)) return null
     return (<Button
       variant="text" startIcon={getLinkIcon(keyName)} size={"small"} sx={{borderRadius:4}}
       onClick={(e)=>{
@@ -152,17 +157,17 @@ const CompanySummary = ({links}) => {
           alignItems="flex-start"
           sx={{marginBottom:4}}
         >
-          <Button
-            startIcon={<CallMade />}
-            sx={{borderRadius:4}}
-            variant="contained"
-            onClick={(e)=>{
-              e.preventDefault();
-              window.location.href=links.website;
-            }}
-          >
-            Visit website
-          </Button>
+          {/*<Button*/}
+          {/*  startIcon={<CallMade />}*/}
+          {/*  sx={{borderRadius:4}}*/}
+          {/*  variant="contained"*/}
+          {/*  onClick={(e)=>{*/}
+          {/*    e.preventDefault();*/}
+          {/*    window.location.href=links.website;*/}
+          {/*  }}*/}
+          {/*>*/}
+          {/*  Visit website*/}
+          {/*</Button>*/}
         </Stack>
         <Stack
           justifyContent="flex-start"
@@ -199,11 +204,19 @@ const CompanyDetails = () => {
 
   const getProjectInfo = useCallback(async () => {
     try {
-      const data = await projectInfoApi.getProjectInfo();
+      const response = await api.get(apiConfig.projectInfo);
+      const dataMap = response.data;
       if (isMounted()) {
         const pageName = window.location.pathname.trim().split('/').slice(-1).pop().toUpperCase();
-        setProjectInfo(data[pageName.toUpperCase()]);
-        return data[pageName.toUpperCase()];
+        const projectData = dataMap[pageName.toUpperCase()];
+        // set up tag list
+        const tagList = [];
+        projectData.tags.split(",").forEach(tag => {
+          tagList.push(tag);
+        })
+        projectData.tags = tagList;
+        setProjectInfo(projectData);
+        return projectData;
       }
       return null;
     } catch (err) {
@@ -225,7 +238,7 @@ const CompanyDetails = () => {
     api.get(`/project`)
       .then(response => {
         const pageName = window.location.pathname.trim().split('/').slice(-1).pop().toUpperCase();
-        const projMarketInfo = response.data?.filter(e => e.project.toUpperCase() === pageName)[0];
+        const projMarketInfo = response.data?.filter(e => StringHelper.isEqualTrimAndIgnoreCase(e.symbol, pageName))[0];
         if (projMarketInfo) {
           setLastPrice(projMarketInfo.price);
           const {dayChangeRateByPercentage} = projMarketInfo;

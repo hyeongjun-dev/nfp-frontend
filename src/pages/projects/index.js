@@ -1,13 +1,18 @@
 import {DashboardLayout} from "../../components/dashboard/dashboard-layout";
 import {
-  Box, Card, CardHeader, Collapse,
-  Container, IconButton,
+  Box,
+  Card,
+  CardHeader,
+  Collapse,
+  Container,
+  IconButton,
   Table,
   TableBody,
-  TableCell, TableContainer,
+  TableCell,
+  TableContainer,
   TableHead,
   TableRow,
-  TableSortLabel, Tooltip,
+  Tooltip,
   Typography
 } from "@mui/material";
 import {Reports as ReportIcon} from '../../icons/reports';
@@ -16,11 +21,16 @@ import {useEffect, useState} from "react";
 import {withComma} from "../../utils/number";
 import {ProjectTitle} from "../../components/projects/ProjectTitle";
 import {ProjectInfo} from "../../components/projects/ProjectInfo";
-import {InformationCircleOutlined as InformationCircleOutlinedIcon} from "../../icons/information-circle-outlined";
+import {
+  InformationCircleOutlined as InformationCircleOutlinedIcon
+} from "../../icons/information-circle-outlined";
 import {Chart} from "../../components/chart";
 import dynamic from "next/dynamic";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import {OpenInNew} from "@mui/icons-material";
+import StringHelper from "../../utils/StringHelper";
+import {apiConfig} from "../../config";
 
 const Projects = () => {
   const [projects, setProjects] = useState([])
@@ -33,7 +43,14 @@ const Projects = () => {
 
   useEffect(() => {
     api.get(`/project`)
-      .then(response => {
+      .then(async (response) => {
+        const responseOfProjectInfo = await api.get(apiConfig.projectInfo);
+        const responseOfProjectInfoData = responseOfProjectInfo.data;
+
+        for (const d of response.data) {
+          d.displayInfo = responseOfProjectInfoData.hasOwnProperty(StringHelper.trimAndUppercase(d.symbol));
+        }
+
         setProjects(response.data)
         let totalMarketCap = response.data.reduce((lastValue, currentValue) => {
           return lastValue + parseInt(currentValue.totalMarketCap)
@@ -129,12 +146,18 @@ const Projects = () => {
                                 src={project.image}
                               />
                             </a>
-                            <Typography
-                              sx={{ml: 2}}
-                              variant="subtitle2"
-                            >
-                              {project.project}
-                            </Typography>
+                              <Typography
+                                sx={{ml: 2}}
+                                variant="subtitle2"
+                              >
+                                {project.project}
+                              </Typography>
+                            { project.displayInfo ?
+                                <a href={`/projects/info/${StringHelper.trimAndUppercase(project.symbol)}`} target={"_blank"}>
+                                  <OpenInNew sx={{ml: 1}} style={{ fontSize: 15 }}/>
+                                </a> :
+                                ""
+                            }
                           </Box>
                         </TableCell>
                         <TableCell align="center">
