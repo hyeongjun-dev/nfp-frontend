@@ -25,7 +25,14 @@ import {useMounted} from '../../../hooks/use-mounted';
 import {gtm} from '../../../lib/gtm';
 import {useTheme} from "@mui/material/styles";
 import {green, grey, red} from '@mui/material/colors';
-import {GitHub, Reddit, Share, Telegram, Twitter} from "@mui/icons-material";
+import {
+  CallMade,
+  GitHub,
+  Reddit,
+  Share,
+  Telegram,
+  Twitter
+} from "@mui/icons-material";
 import {faDiscord} from "@fortawesome/free-brands-svg-icons"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {api} from "../../../api/apiClient";
@@ -137,7 +144,7 @@ const CompanySummary = ({links}) => {
   }
 
   const getLinkButton = ({keyName, href}) => {
-    // if (!linkIconKeys.includes(keyName)) return null
+    if (!linkIconKeys.includes("website")) return null
     return (<Button
       variant="text" startIcon={getLinkIcon(keyName)} size={"small"} sx={{borderRadius:4}}
       onClick={(e)=>{
@@ -157,17 +164,17 @@ const CompanySummary = ({links}) => {
           alignItems="flex-start"
           sx={{marginBottom:4}}
         >
-          {/*<Button*/}
-          {/*  startIcon={<CallMade />}*/}
-          {/*  sx={{borderRadius:4}}*/}
-          {/*  variant="contained"*/}
-          {/*  onClick={(e)=>{*/}
-          {/*    e.preventDefault();*/}
-          {/*    window.location.href=links.website;*/}
-          {/*  }}*/}
-          {/*>*/}
-          {/*  Visit website*/}
-          {/*</Button>*/}
+          <Button
+            startIcon={<CallMade />}
+            sx={{borderRadius:4}}
+            variant="contained"
+            onClick={(e)=>{
+              e.preventDefault();
+              window.open(links.website, "_blank");
+            }}
+          >
+            Visit website
+          </Button>
         </Stack>
         <Stack
           justifyContent="flex-start"
