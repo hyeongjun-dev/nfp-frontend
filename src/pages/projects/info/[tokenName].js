@@ -144,12 +144,14 @@ const CompanySummary = ({links}) => {
   }
 
   const getLinkButton = ({keyName, href}) => {
-    if (!linkIconKeys.includes("website")) return null
+    // if (!linkIconKeys.includes(keyName)) return null
+    if (StringHelper.isEqualTrimAndIgnoreCase(keyName, 'WEBSITE')) return null;
+
     return (<Button
       variant="text" startIcon={getLinkIcon(keyName)} size={"small"} sx={{borderRadius:4}}
       onClick={(e)=>{
         e.preventDefault();
-        window.location.href=href;
+        window.open(href, "_blank");
       }}
     >
       {keyName?.toUpperCase()}
