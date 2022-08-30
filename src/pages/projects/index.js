@@ -28,7 +28,6 @@ import {Chart} from "../../components/chart";
 import dynamic from "next/dynamic";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import {OpenInNew} from "@mui/icons-material";
 import StringHelper from "../../utils/StringHelper";
 import {apiConfig} from "../../config";
 
@@ -118,11 +117,22 @@ const Projects = () => {
                     <>
                       <TableRow
                         key={index}
+                        hover={project.displayInfo}
                         sx={{
                           '&:last-child td': {
                             border: 0
                           },
-                          background: "#ffffff"
+                          background: "#ffffff",
+                          hover: {
+                            color: "#374151"
+                          },
+                          cursor: project.displayInfo ? "pointer": undefined
+                        }}
+                        onClick={event => {
+                          if (project.displayInfo) {
+                            event.preventDefault();
+                            window.location.href = `/projects/info/${StringHelper.trimAndUppercase(project.symbol)}`
+                          }
                         }}
                       >
                         <TableCell align="center">
@@ -152,12 +162,12 @@ const Projects = () => {
                               >
                                 {project.project}
                               </Typography>
-                            { project.displayInfo ?
-                                <a href={`/projects/info/${StringHelper.trimAndUppercase(project.symbol)}`} target={"_blank"}>
-                                  <OpenInNew sx={{ml: 1}} style={{ fontSize: 15 }}/>
-                                </a> :
-                                ""
-                            }
+                            {/*{ project.displayInfo ?*/}
+                            {/*    <a href={`/projects/info/${StringHelper.trimAndUppercase(project.symbol)}`} target={"_blank"}>*/}
+                            {/*      <OpenInNew sx={{ml: 1, mt:1}} style={{ fontSize: 15 }}/>*/}
+                            {/*    </a> :*/}
+                            {/*    ""*/}
+                            {/*}*/}
                           </Box>
                         </TableCell>
                         <TableCell align="center">
