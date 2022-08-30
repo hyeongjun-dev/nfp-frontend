@@ -148,7 +148,7 @@ const CompanySummary = ({links}) => {
     if (StringHelper.isEqualTrimAndIgnoreCase(keyName, 'WEBSITE')) return null;
 
     return (<Button
-      variant="text" startIcon={getLinkIcon(keyName)} size={"small"} sx={{borderRadius:4}}
+      variant="text" size={"small"} sx={{borderRadius:4}}
       onClick={(e)=>{
         e.preventDefault();
         window.open(href, "_blank");

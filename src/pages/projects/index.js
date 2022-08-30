@@ -59,6 +59,13 @@ const Projects = () => {
       })
   }, [])
 
+  function goToProjectInfoPage(event, project) {
+    if (project.displayInfo) {
+      event.preventDefault();
+      window.location.href = `/projects/info/${StringHelper.trimAndUppercase(project.symbol)}`
+    }
+  }
+
   return (
     <Box
       component="main"
@@ -128,19 +135,13 @@ const Projects = () => {
                           },
                           cursor: project.displayInfo ? "pointer": undefined
                         }}
-                        onClick={event => {
-                          if (project.displayInfo) {
-                            event.preventDefault();
-                            window.location.href = `/projects/info/${StringHelper.trimAndUppercase(project.symbol)}`
-                          }
-                        }}
                       >
-                        <TableCell align="center">
-                          <Box ml={1}>
+                        <TableCell align="center" onClick={event => goToProjectInfoPage(event, project)}>
+                          <Box ml={1} onClick={event => goToProjectInfoPage(event, project)}>
                             {index + 1}
                           </Box>
                         </TableCell>
-                        <TableCell>
+                        <TableCell onClick={event => goToProjectInfoPage(event, project)}>
                           <Box
                             ml={5}
                             sx={{
@@ -170,27 +171,27 @@ const Projects = () => {
                             {/*}*/}
                           </Box>
                         </TableCell>
-                        <TableCell align="center">
+                        <TableCell align="center" onClick={event => goToProjectInfoPage(event, project)}>
                           <Typography variant="subtitle2">
                             {project.symbol}
                           </Typography>
                         </TableCell>
-                        <TableCell sx={{textAlign: 'right'}}>
+                        <TableCell sx={{textAlign: 'right'}} onClick={event => goToProjectInfoPage(event, project)}>
                           <Typography variant="subtitle2">
                             {'$' + parseFloat(project.price)}
                           </Typography>
                         </TableCell>
-                        <TableCell sx={{textAlign: 'right'}}>
+                        <TableCell sx={{textAlign: 'right'}} onClick={event => goToProjectInfoPage(event, project)}>
                           <Typography variant="subtitle2">
                             {'$' + withComma(parseInt(project.totalMarketCap))}
                           </Typography>
                         </TableCell>
-                        <TableCell sx={{textAlign: 'right'}}>
+                        <TableCell sx={{textAlign: 'right'}} onClick={event => goToProjectInfoPage(event, project)}>
                           <Typography variant="subtitle2">
                             {isNaN(project.dayChangeRateByPercentage) ? '-' : parseFloat(project.dayChangeRateByPercentage) + '%'}
                           </Typography>
                         </TableCell>
-                        <TableCell sx={{textAlign: 'right'}}>
+                        <TableCell sx={{textAlign: 'right', ":hover": false}}>
                           <IconButton onClick={() => {
                             // let newOpenMap = {...openMap}
                             // newOpenMap[index] = openMap[index] !== undefined ? !openMap[index] : true
