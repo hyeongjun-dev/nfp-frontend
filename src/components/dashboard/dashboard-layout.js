@@ -58,6 +58,14 @@ export const DashboardLayout = (props) => {
       <DashboardSidebar
         onClose={() => setIsSidebarOpen(false)}
         open={isSidebarOpen}
+        chainName={() => {
+          const pathName = window.location.pathname;
+          if (pathName.toUpperCase().trim().indexOf('APTOS') !== -1) {
+            return 'aptos';
+          }
+
+          return 'stacks';
+        }}
       />
     </>
   );

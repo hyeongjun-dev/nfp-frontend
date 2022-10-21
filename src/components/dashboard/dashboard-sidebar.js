@@ -3,7 +3,17 @@ import NextLink from 'next/link';
 import {useRouter} from 'next/router';
 import PropTypes from 'prop-types';
 import {useTranslation} from 'react-i18next';
-import {Box, Button, Divider, Drawer, Grid, Link, Typography, useMediaQuery} from '@mui/material';
+import {
+  Box,
+  Button,
+  Divider,
+  Drawer, FormControl,
+  Grid, InputLabel,
+  Link, MenuItem,
+  Select, SelectChangeEvent,
+  Typography,
+  useMediaQuery
+} from '@mui/material';
 import {ChartPie as ChartPieIcon} from '../../icons/chart-pie';
 import {Users as UsersIcon} from '../../icons/users';
 import {Reports as ReportIcon} from '../../icons/reports';
@@ -16,7 +26,7 @@ import {useConnect} from "../../connect/auth";
 import StringHelper from "../../utils/StringHelper";
 import {ExternalLink} from "../../icons/external-link";
 
-const getSections = (t) => [
+const getSections = (t, chainName) => [
   {
     title: t('NFP MAIN STUDIO'),
     items: [
@@ -27,7 +37,7 @@ const getSections = (t) => [
       },
       {
         title: t('Projects'),
-        path: '/projects',
+        path: '/projects/' + chainName,
         icon: <ReportIcon fontSize="small"/>
       },
       {
@@ -60,18 +70,26 @@ const getSections = (t) => [
 ];
 
 export const DashboardSidebar = (props) => {
-  const { onClose, open } = props;
+  const { onClose, open, chainName } = props;
   const router = useRouter();
   const { t } = useTranslation();
   const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'), {
     noSsr: true
   });
-  const sections = useMemo(() => getSections(t), [t]);
+  const [selectedChain, setSelectedChain] = useState(chainName);
+
+  let sections = useMemo(() => getSections(t, selectedChain), [t, selectedChain]);
   const organizationsRef = useRef(null);
   const [openOrganizationsPopover, setOpenOrganizationsPopover] = useState(false);
 
   const {connected} = useSelector((state) => state.connect);
   const {ownerStxAddress} = useConnect();
+
+
+  const handleChange = (event) => {
+    window.location.href = `/projects/${event.target.value}`;
+    setSelectedChain(event.target.value);
+  };
 
   const handlePathChange = () => {
     if (!router.isReady) {
@@ -110,7 +128,7 @@ export const DashboardSidebar = (props) => {
             display: 'flex',
             flexDirection: 'column',
             height: '100%',
-            mt: 3
+            mt: 3,
           }}
         >
           <Grid
@@ -122,45 +140,52 @@ export const DashboardSidebar = (props) => {
             <Grid item
                   md={3}
                   xs={3}
-                  align="right"
-            >
-
+                  ml={4}
+                  align="right">
               <NextLink
                   href="/"
                   passHref
               >
                 <a>
-                  <Logo/>
+                  <img
+                      width={200}
+                      src="https://despread.s3.ap-northeast-2.amazonaws.com/logo/despread_studio_white_logo.png"
+                  />
+                  {/*<Logo/>*/}
                 </a>
-              </NextLink>
-            </Grid>
-            <Grid item
-                  md={9}
-                  xs={9}
-                  align="left"
-            >
-              <NextLink
-                  href="/"
-                  passHref
-              >
-                <Link
-                    component="a"
-                    underline="none"
-                    sx={{
-                      color: 'white'
-                    }}
-                >
-                  <Typography
-                      variant="h6"
-                  >
-                    NFP STUDIO
-                  </Typography>
-                </Link>
               </NextLink>
             </Grid>
           </Grid>
           <div>
             <Box sx={{ p: 2 }}>
+
+              <Box
+                  sx={{
+                    alignItems: 'center',
+                    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    px: 3,
+                    py: '11px',
+                    mb: 3,
+                    borderRadius: 1
+                  }}
+              >
+                <FormControl fullWidth>
+                  <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      style={{
+                        color: "white"
+                      }}
+                      value={selectedChain}
+                      onChange={handleChange}
+                  >
+                    <MenuItem value={"stacks"}>Stacks</MenuItem>
+                    <MenuItem value={"aptos"}>Aptos</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
                 <Box
                     sx={{
                       alignItems: 'center',
@@ -177,7 +202,7 @@ export const DashboardSidebar = (props) => {
                         color="inherit"
                         variant="subtitle1"
                     >
-                      Stacks Account
+                      {selectedChain} Account
                     </Typography>
                     <Typography
                         color="neutral.400"
