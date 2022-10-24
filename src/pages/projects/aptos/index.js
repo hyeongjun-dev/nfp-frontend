@@ -10,15 +10,9 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Tooltip,
   Typography
 } from "@mui/material";
-import {Reports as ReportIcon} from '../../../icons/reports';
 import {useEffect, useState} from "react";
-import {
-  InformationCircleOutlined as InformationCircleOutlinedIcon
-} from "../../../icons/information-circle-outlined";
-import StringHelper from "../../../utils/StringHelper";
 import {aptosApi} from '../../../__fake-api__/aptos-api';
 
 const Projects = () => {
