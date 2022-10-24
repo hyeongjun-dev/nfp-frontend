@@ -20,7 +20,7 @@ export const Connect = (props) => {
               variant="contained"
               disabled={true}
           >
-            Support Soon Wallet
+            Support Soon
           </Button>
         </Box>
     )
