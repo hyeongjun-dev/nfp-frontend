@@ -17,12 +17,14 @@ import {
   Typography
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import {DashboardLayout} from '../../../components/dashboard/dashboard-layout';
+import {
+  DashboardLayout
+} from '../../../../components/dashboard/dashboard-layout';
 import {
   CompanyOverview
-} from '../../../components/projects/projectInfo/company-overview';
-import {useMounted} from '../../../hooks/use-mounted';
-import {gtm} from '../../../lib/gtm';
+} from '../../../../components/projects/projectInfo/company-overview';
+import {useMounted} from '../../../../hooks/use-mounted';
+import {gtm} from '../../../../lib/gtm';
 import {useTheme} from "@mui/material/styles";
 import {green, grey, red} from '@mui/material/colors';
 import {
@@ -35,13 +37,12 @@ import {
 } from "@mui/icons-material";
 import {faDiscord} from "@fortawesome/free-brands-svg-icons"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {api} from "../../../api/apiClient";
-import dynamic from "next/dynamic";
+import {api} from "../../../../api/apiClient";
 import {
   ContentShareDialog
-} from "../../../components/dashboard/conent-share-dialog";
-import StringHelper from "../../../utils/StringHelper";
-import {apiConfig} from "../../../config";
+} from "../../../../components/dashboard/conent-share-dialog";
+import StringHelper from "../../../../utils/StringHelper";
+import {apiConfig} from "../../../../config";
 
 const Header = ({logoImg, title, description, tags}) => {
   const theme = useTheme();
@@ -203,10 +204,6 @@ const CompanyDetails = () => {
   const [lastPrice, setLastPrice] = useState("");
   const [dayChangeRateByPercentage, setDayChangeRateByPercentage] = useState(0);
 
-  const Chart = dynamic(() => import("../../../components/projects/ProjectChart2"), {
-    ssr: false
-  });
-
   useEffect(() => {
     gtm.push({ event: 'page_view' });
   }, []);
@@ -338,40 +335,6 @@ const CompanyDetails = () => {
                   )}
                 />
                 <Divider />
-                <CardContent>
-                  <Stack>
-                    <Stack
-                      sx={{marginLeft: 2}}
-                      direction={"row"}
-                      spacing={1}
-                      justifyContent="flex-start"
-                      alignItems="center">
-                      <Avatar
-                        src={projectInfo.logo}
-                        sx={{
-                          background: 'transparent',
-                          width: 32,
-                          height: 32,
-                        }}
-                        variant="rounded"
-                      />
-                      <Typography variant="h6" align={"left"}>
-                        {projectInfo.symbol}
-                      </Typography>
-                    </Stack>
-                    <Stack direction={"row"} spacing={1} sx={{marginLeft: 2, marginTop: 1}} alignItems="flex-start">
-                      <Typography variant="body1" align={"left"}>
-                        ${lastPrice}
-                      </Typography>
-                      <Typography variant="body2" align={"left"} sx={{color: getChangeRateByPercentageColor(dayChangeRateByPercentage)}}>
-                        {dayChangeRateByPercentage}%
-                      </Typography>
-                    </Stack>
-                    <Box component="span" sx={{ marginTop: 5 }}>
-                      <Chart series={series}/>
-                    </Box>
-                  </Stack>
-                </CardContent>
                 <CardContent sx={{marginTop:-5}}>
                   <CompanyOverview projectInfo={projectInfo} />
                 </CardContent>
