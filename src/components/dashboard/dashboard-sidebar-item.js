@@ -16,6 +16,7 @@ export const DashboardSidebarItem = (props) => {
     open: openProp,
     path,
     title,
+    disabled,
     ...other
   } = props;
   const [open, setOpen] = useState(openProp);
@@ -99,6 +100,7 @@ export const DashboardSidebarItem = (props) => {
         passHref
       >
         <Button
+          disabled={disabled}
           component="a"
           startIcon={icon}
           endIcon={chip}

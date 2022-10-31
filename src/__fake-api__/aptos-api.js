@@ -75,7 +75,7 @@ class AptosApi {
   getLaunchpadProjects() {
     return [{
       "project": "Meeiro",
-      "image": "https://pbs.twimg.com/profile_images/1576916095709155328/ioqfSCca_400x400.jpg",
+      "image": "https://meeiro.xyz/_nuxt/img/favicon.a3a0a95.svg",
       "url": "https://meeiro.xyz/",
       "shortDescription": "A token launch platform for transformative projects, built on Aptos.",
       "display": true,

@@ -39,7 +39,8 @@ const getSections = (t, chain) => {
             {
               title: t('Dashboard (Coming Soon)'),
               path: '/',
-              icon: <ChartPieIcon fontSize="small"/>
+              icon: <ChartPieIcon fontSize="small"/>,
+              disabled: true
             },
             {
               title: t('Projects'),
@@ -49,7 +50,8 @@ const getSections = (t, chain) => {
             {
               title: t('Stacking (Coming Soon)'),
               path: '/stacking',
-              icon: <UsersIcon fontSize="small"/>
+              icon: <UsersIcon fontSize="small"/>,
+              disabled: true
             }
           ]
         }
