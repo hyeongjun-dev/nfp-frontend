@@ -61,10 +61,10 @@ export const DashboardLayout = (props) => {
         chainName={() => {
           const pathName = window.location.pathname;
           if (pathName.toUpperCase().trim().indexOf('APTOS') !== -1) {
-            return 'aptos';
+            return 'Aptos';
           }
 
-          return 'stacks';
+          return 'Stacks';
         }}
       />
     </>

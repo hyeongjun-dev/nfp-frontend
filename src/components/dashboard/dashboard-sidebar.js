@@ -7,17 +7,18 @@ import {
   Box,
   Button,
   Divider,
-  Drawer, FormControl,
-  Grid, InputLabel,
-  Link, MenuItem,
-  Select, SelectChangeEvent,
+  Drawer,
+  FormControl,
+  Grid,
+  Link,
+  MenuItem,
+  Select,
   Typography,
   useMediaQuery
 } from '@mui/material';
 import {ChartPie as ChartPieIcon} from '../../icons/chart-pie';
 import {Users as UsersIcon} from '../../icons/users';
 import {Reports as ReportIcon} from '../../icons/reports';
-import {Logo} from '../logo';
 import {Scrollbar} from '../scrollbar';
 import {DashboardSidebarSection} from './dashboard-sidebar-section';
 import {OrganizationPopover} from './organization-popover';
@@ -26,48 +27,79 @@ import {useConnect} from "../../connect/auth";
 import StringHelper from "../../utils/StringHelper";
 import {ExternalLink} from "../../icons/external-link";
 
-const getSections = (t, chainName) => [
-  {
-    title: t('NFP MAIN STUDIO'),
-    items: [
-      {
-        title: t('Dashboard'),
-        path: '/',
-        icon: <ChartPieIcon fontSize="small"/>
-      },
-      {
-        title: t('Projects'),
-        path: '/projects/' + chainName,
-        icon: <ReportIcon fontSize="small"/>
-      },
-      {
-        title: t('Stacking'),
-        path: '/stacking',
-        icon: <UsersIcon fontSize="small"/>
-      }
-    ]
-  },
-  {
-    title: t('NFP TOOLS'),
-    items: [
-      {
-        title: t('NFP Telegram BOT'),
-        path: 'https://t.me/NfpHelpBot',
-        icon: <ExternalLink fontSize="small"/>
-      },
-      {
-        title: t('Stacks Tracker BOT'),
-        path: 'https://t.me/StacksTrackerBot',
-        icon: <ExternalLink fontSize="small"/>
-      },
-      {
-        title: t('Multi Sender'),
-        path: 'https://btc.stx-multisender.com',
-        icon: <ExternalLink fontSize="small"/>
-      }
-    ]
+const getSections = (t, chain) => {
+  const chainName = chain.trim().toLowerCase();
+
+  switch (chainName) {
+    case 'aptos':
+      return [
+        {
+          title: t('NFP MAIN STUDIO'),
+          items: [
+            {
+              title: t('Dashboard (Coming Soon)'),
+              path: '/',
+              icon: <ChartPieIcon fontSize="small"/>
+            },
+            {
+              title: t('Projects'),
+              path: '/projects/' + chainName,
+              icon: <ReportIcon fontSize="small"/>
+            },
+            {
+              title: t('Stacking (Coming Soon)'),
+              path: '/stacking',
+              icon: <UsersIcon fontSize="small"/>
+            }
+          ]
+        }
+      ];
+    default:
+      return [
+        {
+          title: t('NFP MAIN STUDIO'),
+          items: [
+            {
+              title: t('Dashboard'),
+              path: '/',
+              icon: <ChartPieIcon fontSize="small"/>
+            },
+            {
+              title: t('Projects'),
+              path: '/projects/' + chainName,
+              icon: <ReportIcon fontSize="small"/>
+            },
+            {
+              title: t('Stacking'),
+              path: '/stacking',
+              icon: <UsersIcon fontSize="small"/>
+            }
+          ]
+        },
+        {
+          title: t('NFP TOOLS'),
+          items: [
+            {
+              title: t('NFP Telegram BOT'),
+              path: 'https://t.me/NfpHelpBot',
+              icon: <ExternalLink fontSize="small"/>
+            },
+            {
+              title: t('Stacks Tracker BOT'),
+              path: 'https://t.me/StacksTrackerBot',
+              icon: <ExternalLink fontSize="small"/>
+            },
+            {
+              title: t('Multi Sender'),
+              path: 'https://btc.stx-multisender.com',
+              icon: <ExternalLink fontSize="small"/>
+            }
+          ]
+        }
+      ];
   }
-];
+
+}
 
 export const DashboardSidebar = (props) => {
   const { onClose, open, chainName } = props;
@@ -82,13 +114,19 @@ export const DashboardSidebar = (props) => {
   const organizationsRef = useRef(null);
   const [openOrganizationsPopover, setOpenOrganizationsPopover] = useState(false);
 
-  const {connected} = useSelector((state) => state.connect);
+  const {connected} = useSelector((state) => {
+    if (selectedChain.trim().toUpperCase() === 'APTOS') {
+      return false;
+    }
+    return state.connect
+  });
   const {ownerStxAddress} = useConnect();
 
 
   const handleChange = (event) => {
-    window.location.href = `/projects/${event.target.value}`;
-    setSelectedChain(event.target.value);
+    const chainName = String(event.target.value).trim().toLowerCase();
+    window.location.href = `/projects/${chainName}`;
+    setSelectedChain(chainName);
   };
 
   const handlePathChange = () => {
@@ -134,55 +172,54 @@ export const DashboardSidebar = (props) => {
           <Grid
               container
               spacing={1}
+              direction="column"
               alignItems="center"
-              justify="center"
+              justifyContent="center"
           >
             <Grid item
                   md={3}
                   xs={3}
-                  ml={4}
-                  align="right">
+                  align="center">
               <NextLink
                   href="/"
                   passHref
               >
-                <a>
-                  <img
-                      width={200}
-                      src="https://despread.s3.ap-northeast-2.amazonaws.com/logo/despread_studio_white_logo.png"
-                  />
-                  {/*<Logo/>*/}
-                </a>
+                <img
+                    width={200}
+                    src="https://despread.s3.ap-northeast-2.amazonaws.com/logo/despread_studio_white_logo.png"
+                />
               </NextLink>
             </Grid>
           </Grid>
           <div>
-            <Box sx={{ p: 2 }}>
+            <Box sx={{ p: 2, mt: 2 }}>
 
               <Box
                   sx={{
-                    alignItems: 'center',
                     backgroundColor: 'rgba(255, 255, 255, 0.04)',
                     display: 'flex',
                     justifyContent: 'space-between',
+                    alignItems: 'center',
                     px: 3,
                     py: '11px',
                     mb: 3,
                     borderRadius: 1
                   }}
               >
-                <FormControl fullWidth>
+                <FormControl
+                    fullWidth
+                >
                   <Select
-                      labelId="demo-simple-select-label"
-                      id="demo-simple-select"
                       style={{
-                        color: "white"
+                        color: "white",
                       }}
+                      variant="standard"
                       value={selectedChain}
                       onChange={handleChange}
+                      disableUnderline={true}
                   >
-                    <MenuItem value={"stacks"}>Stacks</MenuItem>
-                    <MenuItem value={"aptos"}>Aptos</MenuItem>
+                    <MenuItem value={"Stacks"}>Stacks</MenuItem>
+                    <MenuItem value={"Aptos"}>Aptos</MenuItem>
                   </Select>
                 </FormControl>
               </Box>
@@ -252,7 +289,7 @@ export const DashboardSidebar = (props) => {
                     sx={{ mt: 2 }}
                     variant="contained"
                 >
-                  {t('NFP Twitter')}
+                  {t('DeSpread Studio Twitter')}
                 </Button>
               </Link>
             </NextLink>
