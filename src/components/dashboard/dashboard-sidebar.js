@@ -35,10 +35,10 @@ const getSections = (t, chain) => {
     case 'aptos':
       return [
         {
-          title: t('DeSpread STUDIO'),
+          // title: t('DeSpread STUDIO'),
           items: [
             {
-              title: t('Dashboard (Coming Soon)'),
+              title: t('Dashboard'),
               path: '/',
               icon: <ChartPieIcon fontSize="small"/>,
               disabled: true
@@ -49,7 +49,7 @@ const getSections = (t, chain) => {
               icon: <ReportIcon fontSize="small"/>
             },
             {
-              title: t('Stacking (Coming Soon)'),
+              title: t('Stacking'),
               path: '/stacking',
               icon: <UsersIcon fontSize="small"/>,
               disabled: true
@@ -60,7 +60,7 @@ const getSections = (t, chain) => {
     default:
       return [
         {
-          title: t('DeSpread STUDIO'),
+          // title: t('DeSpread STUDIO'),
           items: [
             {
               title: t('Dashboard'),
