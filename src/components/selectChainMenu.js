@@ -81,6 +81,7 @@ export default function SelectChainMenu() {
             disableElevation
             onClick={handleClick}
             endIcon={<KeyboardArrowDownIcon />}
+            color={"secondary"}
         >
           { chainName }
         </Button>
