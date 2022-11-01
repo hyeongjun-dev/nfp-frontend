@@ -26,6 +26,7 @@ import {useSelector} from "../../store";
 import {useConnect} from "../../connect/auth";
 import StringHelper from "../../utils/StringHelper";
 import {ExternalLink} from "../../icons/external-link";
+import SelectChainMenu from "../selectChainMenu";
 
 const getSections = (t, chain) => {
   const chainName = chain.trim().toLowerCase();
@@ -34,7 +35,7 @@ const getSections = (t, chain) => {
     case 'aptos':
       return [
         {
-          title: t('NFP MAIN STUDIO'),
+          title: t('DeSpread STUDIO'),
           items: [
             {
               title: t('Dashboard (Coming Soon)'),
@@ -59,7 +60,7 @@ const getSections = (t, chain) => {
     default:
       return [
         {
-          title: t('NFP MAIN STUDIO'),
+          title: t('DeSpread STUDIO'),
           items: [
             {
               title: t('Dashboard'),
@@ -79,7 +80,7 @@ const getSections = (t, chain) => {
           ]
         },
         {
-          title: t('NFP TOOLS'),
+          title: t('TOOLS'),
           items: [
             {
               title: t('NFP Telegram BOT'),
@@ -194,12 +195,13 @@ export const DashboardSidebar = (props) => {
             </Grid>
           </Grid>
           <div>
-            <Box sx={{ p: 2, mt: 2 }}>
+            <Box sx={{ p: 2, mt: 2}}>
 
               <Box
                   sx={{
                     backgroundColor: 'rgba(255, 255, 255, 0.04)',
                     display: 'flex',
+                    flex:'1',
                     justifyContent: 'space-between',
                     alignItems: 'center',
                     px: 3,
@@ -208,22 +210,23 @@ export const DashboardSidebar = (props) => {
                     borderRadius: 1
                   }}
               >
-                <FormControl
-                    fullWidth
-                >
-                  <Select
-                      style={{
-                        color: "white",
-                      }}
-                      variant="standard"
-                      value={selectedChain}
-                      onChange={handleChange}
-                      disableUnderline={true}
-                  >
-                    <MenuItem value={"Stacks"}>Stacks</MenuItem>
-                    <MenuItem value={"Aptos"}>Aptos</MenuItem>
-                  </Select>
-                </FormControl>
+                <SelectChainMenu />
+                {/*<FormControl*/}
+                {/*    fullWidth*/}
+                {/*>*/}
+                {/*  <Select*/}
+                {/*      style={{*/}
+                {/*        color: "white",*/}
+                {/*      }}*/}
+                {/*      variant="standard"*/}
+                {/*      value={selectedChain}*/}
+                {/*      onChange={handleChange}*/}
+                {/*      disableUnderline={true}*/}
+                {/*  >*/}
+                {/*    <MenuItem value={"Stacks"}>Stacks</MenuItem>*/}
+                {/*    <MenuItem value={"Aptos"}>Aptos</MenuItem>*/}
+                {/*  </Select>*/}
+                {/*</FormControl>*/}
               </Box>
                 <Box
                     sx={{
