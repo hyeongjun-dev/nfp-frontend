@@ -42,7 +42,8 @@ export const StackingArea = (props) => {
   }
 
   useEffect(() => {
-    if (connected) {
+    console.log("connected: " + connected + " / ownerStxAddress: " + ownerStxAddress);
+    if (connected & ownerStxAddress) {
       getBalance(ownerStxAddress, true)
         .then((response) => {
           setStxBalance(response.data.stxInfo.balance)
