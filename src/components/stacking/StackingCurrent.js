@@ -22,7 +22,7 @@ export const StackingCurrent = (props) => {
     poxAddr: ''
   })
 
-  let chartOptions = {
+  const chartOptions = {
     chart: {
       background: 'transparent',
       stacked: false,
@@ -30,7 +30,7 @@ export const StackingCurrent = (props) => {
         show: false
       }
     },
-    colors: ['#ffb547', '#7783DB'],
+    colors: [theme.palette.primary.main, '#7783DB'],
     dataLabels: {
       enabled: false
     },
@@ -53,16 +53,38 @@ export const StackingCurrent = (props) => {
       mode: theme.palette.mode
     },
     xaxis: {
+      labels: {
+        show: true,
+        style: {
+          colors: "white",
+          fontSize: '12px',
+          fontFamily: 'Helvetica, Arial, sans-serif',
+          fontWeight: 400,
+          cssClass: 'apexcharts-xaxis-label',
+        },
+      },
       axisBorder: {
-        color: theme.palette.divider,
+        color: "white",
         show: true
       },
       axisTicks: {
-        color: theme.palette.divider,
+        color: "white",
         show: true
       },
       categories: [...(apyHistory.map((apyHistory) => '#'+apyHistory.cycle))],
       tickAmount: 12
+    },
+    yaxis: {
+      labels: {
+        show: true,
+        style: {
+          colors: "white",
+          fontSize: '12px',
+          fontFamily: 'Helvetica, Arial, sans-serif',
+          fontWeight: 400,
+          cssClass: 'apexcharts-xaxis-label',
+        },
+      },
     }
   };
 
@@ -139,14 +161,21 @@ export const StackingCurrent = (props) => {
 
   return (
     <>
-      <Card sx={{mb: 2}}>
+      <Card
+        sx={{background:'rgba(255, 255, 255, 0.1)',
+          borderColor: '#54576a',
+          borderWidth: 1,
+          borderStyle: 'solid',
+          mb: 2
+        }}
+      >
         <CardContent sx={{pt: 3, '&:last-child': {
             paddingBottom: '20px'
           }}}>
           <Box>
           <Grid container spacing={2}>
             <Grid item md={7}>
-              <Typography variant={"h6"} sx={{mb:2}}>Stacking APY</Typography>
+              <Typography variant={"h6"} sx={{mb:2}} color={"white"}>Stacking APY</Typography>
               <Chart
                 sx={{width: "100%"}}
                 height={'100%'}
@@ -156,20 +185,20 @@ export const StackingCurrent = (props) => {
               />
             </Grid>
             <Grid item md={5}>
-              <Typography variant={"h6"} sx={{mb:2}}>My Status</Typography>
+              <Typography variant={"h6"} sx={{mb:2, color:"white"}}>My Status</Typography>
               <Box sx={{display:"flex", justifyContent: "space-between"}}>
-                <Typography variant={"overline"} color={"textSecondary"}>Amount Stacking</Typography>
-                <Typography variant={"overline"} color={"textSecondary"}>{withComma(myStatus.amountStacking)}</Typography>
+                <Typography variant={"overline"} color={"white"}>Amount Stacking</Typography>
+                <Typography variant={"overline"} color={"white"}>{withComma(myStatus.amountStacking)}</Typography>
               </Box>
               <Box sx={{display:"flex", justifyContent: "space-between"}}>
-                <Typography variant={"overline"} color={"textSecondary"}>Stacking Started</Typography>
-                <Typography variant={"overline"} color={"textSecondary"}>{myStatus.firstRewardCycle !== '-'? '#'+myStatus.firstRewardCycle : '-'}</Typography>
+                <Typography variant={"overline"} color={"white"}>Stacking Started</Typography>
+                <Typography variant={"overline"} color={"white"}>{myStatus.firstRewardCycle !== '-'? '#'+myStatus.firstRewardCycle : '-'}</Typography>
               </Box>
               <Box sx={{display:"flex", justifyContent: "space-between"}} mb={2}>
-                <Typography variant={"overline"} color={"textSecondary"}>Stacking Ended</Typography>
-                <Typography variant={"overline"} color={"textSecondary"}>{myStatus.firstRewardCycle !== '-'? '#' + (parseInt(myStatus.firstRewardCycle)+parseInt(myStatus.lockPeriod)-1) : '-'}</Typography>
+                <Typography variant={"overline"} color={"white"}>Stacking Ended</Typography>
+                <Typography variant={"overline"} color={"white"}>{myStatus.firstRewardCycle !== '-'? '#' + (parseInt(myStatus.firstRewardCycle)+parseInt(myStatus.lockPeriod)-1) : '-'}</Typography>
               </Box>
-              <Typography variant={"caption"} color={"textSecondary"}>STX stacking cannot be participated in multiple wallets at once. If you need to participate in additional stacking, you should participate with a new wallet.</Typography>
+              <Typography variant={"caption"} color={"white"}>STX stacking cannot be participated in multiple wallets at once. If you need to participate in additional stacking, you should participate with a new wallet.</Typography>
             </Grid>
           </Grid>
           </Box>

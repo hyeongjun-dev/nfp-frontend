@@ -107,8 +107,15 @@ export const StackingActivities = (props) => {
   }, [ownerStxAddress, props.currentCycle])
   return (
     <>
-      <Card>
-        <CardHeader sx={{pt: "20px", pb: "20px"}} title="Stacking Activities" action={(
+      <Card
+        sx={{background:'rgba(255, 255, 255, 0.1)',
+          borderColor: '#54576a',
+          borderWidth: 1,
+          borderStyle: 'solid',
+          // mb: 2
+        }}
+      >
+        <CardHeader sx={{pt: "20px", pb: "20px", color:"white"}} title="Stacking Activities" action={(
           <Tooltip title="It takes some time for the activity to be reflected.">
             <InformationCircleOutlinedIcon sx={{color: 'action.active'}}/>
           </Tooltip>
@@ -117,17 +124,24 @@ export const StackingActivities = (props) => {
         {activities.length === 0 ?
           <Box sx={{display: "flex", width: "100%", justifyContent: "center", height: "30vh", overflow: "auto"}}>
             <Table>
-              <TableHead>
-                <TableCell sx={{textAlign: "center"}}>Cycle</TableCell>
-                <TableCell sx={{textAlign: "center"}}>Delegate Amount</TableCell>
-                <TableCell sx={{textAlign: "center"}}>Status</TableCell>
-                <TableCell sx={{textAlign: "center"}}>Rewarded In</TableCell>
-                <TableCell sx={{textAlign: "center"}}>Reward Amount</TableCell>
+              <TableHead
+                sx={{background:'rgba(255, 255, 255, 0.1)',
+                  borderColor: '#54576a',
+                  borderWidth: 1,
+                  borderStyle: 'solid',
+                  mt: 4
+                }}
+              >
+                <TableCell sx={{textAlign: "center"}}><Box color={"white"}>Cycle</Box></TableCell>
+                <TableCell sx={{textAlign: "center"}}><Box color={"white"}>Delegate Amount</Box></TableCell>
+                <TableCell sx={{textAlign: "center"}}><Box color={"white"}>Status</Box></TableCell>
+                <TableCell sx={{textAlign: "center"}}><Box color={"white"}>Rewarded In</Box></TableCell>
+                <TableCell sx={{textAlign: "center"}}><Box color={"white"}>Reward Amount</Box></TableCell>
               </TableHead>
               <TableBody>
                 <TableRow>
                   <TableCell colSpan={5}>
-                    <Typography sx={{width: "100%", textAlign: "center"}} variant={"h5"} color="#484848bd">
+                    <Typography sx={{width: "100%", textAlign: "center"}} variant={"h5"} color="white">
                       No Data
                     </Typography>
                   </TableCell>
@@ -139,11 +153,11 @@ export const StackingActivities = (props) => {
           <Box sx={{display: "flex", width: "100%", justifyContent: "center", maxHeight: "30vh", overflow: "auto"}}>
             <Table>
               <TableHead>
-                <TableCell sx={{textAlign: "center"}}>Cycle</TableCell>
-                <TableCell sx={{textAlign: "center"}}>Delegate Amount</TableCell>
-                <TableCell sx={{textAlign: "center"}}>Status</TableCell>
-                <TableCell sx={{textAlign: "center"}}>Rewarded In</TableCell>
-                <TableCell sx={{textAlign: "center"}}>Reward Amount</TableCell>
+                <TableCell sx={{textAlign: "center"}}><Box color={"white"}>Cycle</Box></TableCell>
+                <TableCell sx={{textAlign: "center"}}><Box color={"white"}>Delegate Amount</Box></TableCell>
+                <TableCell sx={{textAlign: "center"}}><Box color={"white"}>Status</Box></TableCell>
+                <TableCell sx={{textAlign: "center"}}><Box color={"white"}>Rewarded In</Box></TableCell>
+                <TableCell sx={{textAlign: "center"}}><Box color={"white"}>Rewarded Amount</Box></TableCell>
               </TableHead>
               <TableBody>
                 {activities.map((activity) => (
@@ -153,16 +167,21 @@ export const StackingActivities = (props) => {
                       '&:last-child td': {
                         border: 0
                       },
+                      "&:hover": {
+                        backgroundColor: "#5149e5 !important"
+                      },
                     }}
                   >
                     <TableCell sx={{textAlign: "center"}}>
                       <Typography
                         variant="overline"
+                        color={"white"}
                       >#{activity.cycle}</Typography>
                     </TableCell>
                     <TableCell sx={{textAlign: "center"}}>
                       <Typography
                         variant="overline"
+                        color={"white"}
                       >{activity.amount} STX</Typography>
                     </TableCell>
                     <TableCell sx={{textAlign: "center"}}>
@@ -176,6 +195,7 @@ export const StackingActivities = (props) => {
                       <Typography
                         sx={{ml: 1}}
                         variant="overline"
+                        color={"white"}
                       >XBTC</Typography>
                     </TableCell>
                     <TableCell sx={{textAlign: "center"}}>
@@ -186,6 +206,7 @@ export const StackingActivities = (props) => {
                         >{(activity.reward.amount / 100000000).toFixed(8)}</Link> :
                         <Typography
                           variant="overline"
+                          color={"white"}
                         >{'-'}</Typography>
                       }
                     </TableCell>

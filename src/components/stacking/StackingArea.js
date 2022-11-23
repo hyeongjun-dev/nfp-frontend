@@ -6,7 +6,7 @@ import {
   CardHeader,
   Divider,
   InputAdornment,
-  OutlinedInput, Slider,
+  OutlinedInput, Slider, TextField,
   Typography
 } from "@mui/material";
 import CountUp from "react-countup";
@@ -18,6 +18,8 @@ import {useAtomValue} from "jotai/utils";
 import {useStxAddresses} from "../../connect/hooks";
 import {useSelector} from "../../store";
 import {SeverityPill} from "../severity-pill";
+
+
 
 export const StackingArea = (props) => {
   const {connected} = useSelector((state) => state.connect);
@@ -53,12 +55,19 @@ export const StackingArea = (props) => {
 
   return (
     <>
-      <Card>
+      <Card
+        sx={{background:'rgba(255, 255, 255, 0.1)',
+          borderColor: '#54576a',
+          borderWidth: 1,
+          borderStyle: 'solid',
+          mb: 2
+        }}
+      >
         <CardHeader
           sx={{pb: 0, pt: 3}}
           title={(
             <Box sx={{display: "flex", justifyContent: "space-between"}}>
-              <Typography variant="h6">
+              <Typography variant="h6" color={"white"}>
                 Delegate Stacks
               </Typography>
               <a href={"https://stacking.club/reward-address/12DQ3u4JdnGf6QZF9qAd7z9zUo7NnXpXFg"} target={"_blank"}>
@@ -69,40 +78,40 @@ export const StackingArea = (props) => {
         />
         <CardContent sx={{pt: "15px", paddingBottom: "0px"}}>
           <Box sx={{display: "flex", justifyContent: "space-between"}}>
-            <Typography variant={"overline"} color={"textSecondary"}>My Balance</Typography>
-            <Typography variant={"overline"}>
+            <Typography variant={"overline"} color={"white"}>My Balance</Typography>
+            <Typography variant={"overline"} color={"white"}>
               {<CountUp duration={1.2} end={stxBalance}/>} STX
             </Typography>
           </Box>
           <Box sx={{display: "flex", justifyContent: "space-between"}}>
-            <Typography variant={"overline"} color={"textSecondary"}>Upcoming Cycle</Typography>
-            <Typography variant={"overline"} color={"textSecondary"}>
+            <Typography variant={"overline"} color={"white"}>Upcoming Cycle</Typography>
+            <Typography variant={"overline"} color={"white"}>
               #{props.stackingInfo.nextCycle}
             </Typography>
           </Box>
           <Box sx={{display: "flex", justifyContent: "space-between"}}>
-            <Typography variant={"overline"} color={"textSecondary"}>Delegation Deadline IN</Typography>
-            <Typography variant={"overline"} color={"textSecondary"}>
+            <Typography variant={"overline"} color={"white"}>Delegation Deadline IN</Typography>
+            <Typography variant={"overline"} color={"white"}>
               {props.stackingInfo.deadLine > 0 ? `${props.stackingInfo.deadLine} blocks` :
                 props.stackingInfo.nextRewardCycleIn === -9999 ? '-'
                   : <SeverityPill sx={{fontSize: "10px"}} color={"error"}>{"CLOSED"}</SeverityPill>}
             </Typography>
           </Box>
           <Box sx={{display: "flex", justifyContent: "space-between"}}>
-            <Typography variant={"overline"} color={"textSecondary"}>Reward Payout in</Typography>
-            <Typography variant={"overline"} color={"textSecondary"}>
+            <Typography variant={"overline"} color={"white"}>Reward Payout in</Typography>
+            <Typography variant={"overline"} color={"white"}>
               XBTC
             </Typography>
           </Box>
           <Box sx={{display: "flex", justifyContent: "space-between", mb: 4}}>
             <Typography
-              color="textSecondary"
+              color="white"
               variant="overline"
             >
               Rewards fee
             </Typography>
             <Typography
-              color="textSecondary"
+              color="white"
               variant="overline"
             >
               7%
@@ -140,7 +149,7 @@ export const StackingArea = (props) => {
             aria-labelledby="non-linear-slider"
           />
           <Typography mb={2} sx={{textAlign: "right"}} id="non-linear-slider" variant={"subtitle2"}
-                      color={"textSecondary"}>
+                      color={"white"}>
             Cycle to participate: {cycle} cycles
           </Typography>
           {connected ?
@@ -150,7 +159,7 @@ export const StackingArea = (props) => {
             <Button sx={{width: "100%", borderRadius: '5px'}} variant={"contained"} onClick={() => handleOpenAuth()}>Connect
               wallet</Button>}
           <Typography mt={2} sx={{textAlign: "center"}} id="non-linear-slider" variant={"subtitle2"}
-                      color={"textSecondary"}>
+                      color="neutral.400">
             FAQ: <a style={{textDecoration: "none", color: "blue"}}
                     href={"https://nfpstudio.medium.com/exploring-nfp-studio-stacking-service-1c98a72092df"}
                     target={"_blank"}>English</a> | <a style={{textDecoration: "none", color: "blue"}}
@@ -158,8 +167,8 @@ export const StackingArea = (props) => {
                                                        target={"_blank"}>Korean</a>
           </Typography>
           <Typography mt={1} sx={{textAlign: "center", fontSize: "11px"}} id="non-linear-slider"
-                      color={"textSecondary"}>
-            <a href={"https://stackskorea.co/"} style={{textDecoration: "none", color: "#65748B"}} target={"_blank"}>Trusted
+                      color="neutral.400">
+            <a href={"https://stackskorea.co/"} style={{textDecoration: "none", color: "#9aa3ae"}} target={"_blank"}>Trusted
               By Stacks Korea.</a>
           </Typography>
         </CardContent>

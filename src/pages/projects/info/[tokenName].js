@@ -11,7 +11,7 @@ import {
   Chip,
   Container,
   Divider,
-  Grid,
+  Grid, InputAdornment,
   Link,
   Stack,
   Typography
@@ -42,6 +42,7 @@ import {
 } from "../../../components/dashboard/conent-share-dialog";
 import StringHelper from "../../../utils/StringHelper";
 import {apiConfig} from "../../../config";
+import {Search as SearchIcon} from "../../../icons/search";
 
 const Header = ({logoImg, title, description, tags}) => {
   const theme = useTheme();
@@ -72,12 +73,13 @@ const Header = ({logoImg, title, description, tags}) => {
         </Grid>
       </Grid>
       <Grid item sm={9} md={9} sx={{marginLeft:theme.spacing(2)}}>
-        <Typography variant="h6" align={"left"}>
+        <Typography variant="h6" align={"left"} color={"white"}>
           {title}
         </Typography>
         <Typography
           sx={{ mt: 1 }}
           variant="body2"
+          color={"white"}
         >
           {description}
         </Typography>
@@ -87,7 +89,7 @@ const Header = ({logoImg, title, description, tags}) => {
               key={idx}
               label={e}
               variant="outlined"
-              sx={{color:grey[600]}}
+              sx={{color:"white", background:'rgba(255, 255, 255, 0.1)'}}
             />)
           })}
         </Stack>
@@ -109,7 +111,8 @@ const ContentShareButton = () => {
 
   return (
     <>
-      <Button variant="outlined" startIcon={<Share />} sx={{borderRadius:4}}
+      <Button variant="contained" startIcon={<Share />} sx={{borderRadius:4, color:"white"}}
+              color="primary"
               onClick={handleOpenSearchDialog}>
         Share
       </Button>
@@ -122,6 +125,7 @@ const ContentShareButton = () => {
 };
 
 const CompanySummary = ({links}) => {
+  const theme = useTheme();
 
   const linkIconKeys = [
     "twitter", "reddit", "discord", "github", "telegram",
@@ -148,7 +152,11 @@ const CompanySummary = ({links}) => {
     if (StringHelper.isEqualTrimAndIgnoreCase(keyName, 'WEBSITE')) return null;
 
     return (<Button
-      variant="text" size={"small"} sx={{borderRadius:4}}
+      variant="text" size={"small"} sx={{borderRadius:4, color:"white",
+      '&:hover': {
+        color: 'rgba(255, 255, 255, 0.5)',
+      },
+      }}
       onClick={(e)=>{
         e.preventDefault();
         window.open(href, "_blank");
@@ -159,7 +167,14 @@ const CompanySummary = ({links}) => {
   };
 
   return (
-    <Card>
+    <Card
+      sx={{background:'rgba(255, 255, 255, 0.1)',
+        borderColor: '#54576a',
+        borderWidth: 1,
+        borderStyle: 'solid',
+        mb: 2
+      }}
+    >
       <CardContent>
         <Stack
           justifyContent="flex-start"
@@ -286,46 +301,64 @@ const CompanyDetails = () => {
           {projectInfo.title}
         </title>
       </Head>
+
       <Box
         component="main"
         sx={{
+          width: "100%",
           flexGrow: 1,
-          py: 4,
+          py: 8,
         }}
       >
-        <Container maxWidth="lg" style={{backgroundColor:"transparent"}}>
-          <Box sx={{ mb: 4 }}>
-            <NextLink
-              href="/projects"
-              passHref
-            >
-              <Link
-                color="textPrimary"
-                sx={{
-                  alignItems: 'center',
-                  display: 'flex'
-                }}
+        <Container maxWidth="lg">
+          <Box sx={{mb: 4}}>
+            <Stack direction={"row"} alignItems="center" justifyContent="flex-start">
+              <Box>
+                    <NextLink
+                      href="/projects"
+                      passHref
+                    >
+                      <Link
+                        color="white"
+                        sx={{
+                          alignItems: 'center',
+                          display: 'flex'
+                        }}
+                      >
+                        <ArrowBackIcon
+                          fontSize="large"
+                          sx={{ mr: 1 }}
+                        />
+                      </Link>
+                    </NextLink>
+              </Box>
+              <Typography variant="h4"
+                          style={{
+                            background: "-webkit-linear-gradient(45deg, #e9e1fe 30%, #e3eafc 90%)",
+                            WebkitBackgroundClip: "text",
+                            WebkitTextFillColor: "transparent"
+                          }}
               >
-                <ArrowBackIcon
-                  fontSize="small"
-                  sx={{ mr: 1 }}
-                />
-                <Typography variant="subtitle2">
-                  Projects
-                </Typography>
-              </Link>
-            </NextLink>
+                Project Information
+              </Typography>
+            </Stack>
           </Box>
           <Grid
             container
-            spacing={4}
+            spacing={3}
           >
             <Grid
               item
               xs={12}
               lg={8}
             >
-              <Card>
+              <Card
+                sx={{background:'rgba(255, 255, 255, 0.1)',
+                  borderColor: '#54576a',
+                  borderWidth: 1,
+                  borderStyle: 'solid'
+                }}
+              >
                 <CardHeader
                   disableTypography
                   title={(
@@ -355,12 +388,12 @@ const CompanyDetails = () => {
                         }}
                         variant="rounded"
                       />
-                      <Typography variant="h6" align={"left"}>
+                      <Typography variant="h6" align={"left"} color={"white"}>
                         {projectInfo.symbol}
                       </Typography>
                     </Stack>
                     <Stack direction={"row"} spacing={1} sx={{marginLeft: 2, marginTop: 1}} alignItems="flex-start">
-                      <Typography variant="body1" align={"left"}>
+                      <Typography variant="body1" align={"left"} color={"white"}>
                         ${lastPrice}
                       </Typography>
                       <Typography variant="body2" align={"left"} sx={{color: getChangeRateByPercentageColor(dayChangeRateByPercentage)}}>

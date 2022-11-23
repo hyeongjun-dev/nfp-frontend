@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {styled} from '@mui/material/styles';
 import {DashboardNavbar} from './dashboard-navbar';
 import {DashboardSidebar} from './dashboard-sidebar';
-import {Box} from '@mui/material';
+import {Box, useMediaQuery} from '@mui/material';
 import {setConnected} from "../../slices/connect";
 import {useConnect} from "../../connect/auth";
 import {useDispatch} from "../../store";
@@ -14,10 +14,6 @@ const DashboardLayoutRoot = styled('div')(({theme}) => ({
   display: 'flex',
   flex: '1 1 auto',
   maxWidth: '100%',
-  paddingTop: 64,
-  [theme.breakpoints.up('lg')]: {
-    paddingLeft: 280
-  }
 }));
 
 export const DashboardLayout = (props) => {
@@ -25,6 +21,9 @@ export const DashboardLayout = (props) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const {authOptions, userSession} = useConnect()
   const dispatch = useDispatch();
+  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'), {
+    noSsr: true
+  });
 
   const { settings, saveSettings } = useSettings();
   const fixedSettings = {
@@ -41,32 +40,39 @@ export const DashboardLayout = (props) => {
   return (
     <>
       <Connect authOptions={authOptions}>
-        <DashboardLayoutRoot>
-          <Box
-            sx={{
-              display: 'flex',
-              flex: '1 1 auto',
-              flexDirection: 'column',
-              width: '100%'
+        <DashboardNavbar onOpenSidebar={() => setIsSidebarOpen(true)}/>
+        <div
+          style={{
+            display:'flex',
+            flexDirection:'row',
+            flex:1,
+            background: 'linear-gradient(to right bottom, #192039, #283779)',
+          }}
+        >
+          <DashboardSidebar
+            onClose={() => setIsSidebarOpen(false)}
+            open={isSidebarOpen}
+            chainName={() => {
+              const pathName = window.location.pathname;
+              if (pathName.toUpperCase().trim().indexOf('APTOS') !== -1) {
+                return 'Aptos';
+              }
+              return 'Stacks';
             }}
-          >
+          />
+          <Box sx={{
+            display: 'flex',
+            flex: '1 1 auto',
+            flexDirection: 'column',
+            width: '100%',
+            alignItems:'flex-start',
+            // paddingLeft: lgUp ? 6 : 0,
+            marginTop: -3
+          }}>
             {children}
           </Box>
-        </DashboardLayoutRoot>
+        </div>
       </Connect>
-      <DashboardNavbar onOpenSidebar={() => setIsSidebarOpen(true)}/>
-      <DashboardSidebar
-        onClose={() => setIsSidebarOpen(false)}
-        open={isSidebarOpen}
-        chainName={() => {
-          const pathName = window.location.pathname;
-          if (pathName.toUpperCase().trim().indexOf('APTOS') !== -1) {
-            return 'Aptos';
-          }
-
-          return 'Stacks';
-        }}
-      />
     </>
   );
 };

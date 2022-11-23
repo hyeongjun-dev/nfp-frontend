@@ -2,14 +2,14 @@ import {useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {useTranslation} from 'react-i18next';
 import {
-  AppBar,
-  Avatar,
-  Badge,
-  Box, Button,
-  ButtonBase, Grow,
-  IconButton,
-  Toolbar,
-  Tooltip, Typography
+    AppBar,
+    Avatar,
+    Badge,
+    Box, Button,
+    ButtonBase, Grid, Grow,
+    IconButton, Link,
+    Toolbar,
+    Tooltip, Typography
 } from '@mui/material';
 import {styled} from '@mui/material/styles';
 import {Menu as MenuIcon} from '../../icons/menu';
@@ -26,6 +26,9 @@ import {Selector as SelectorIcon} from "../../icons/selector";
 import {Connect} from "../../connect/connect";
 import {useSelector} from "../../store";
 import {useConnect} from "../../connect/auth";
+import NextLink from "next/link";
+import {Logo} from "../logo";
+
 
 const languages = {
   en: '/static/icons/uk_flag.svg',
@@ -33,7 +36,7 @@ const languages = {
   es: '/static/icons/es_flag.svg'
 };
 
-const DashboardNavbarRoot = styled(AppBar)(({theme}) => ({
+const DashboardNavbarRoot = styled(Box)(({theme}) => ({
   backgroundColor: theme.palette.background.paper,
   ...(theme.palette.mode === 'light'
     ? {
@@ -248,6 +251,42 @@ const AccountButton = () => {
   );
 };
 
+const LogoMark = () => {
+  return (<Grid container sx={{flexDirection:'row'}} alignItems="center" columnSpacing={1}>
+    <Grid item marginTop={"2px"}>
+      <NextLink
+        href="/"
+        passHref
+      >
+        <a>
+          <Logo/>
+        </a>
+      </NextLink>
+    </Grid>
+    <Grid item>
+      <NextLink
+        href="/"
+        passHref
+      >
+        <Link
+          component="a"
+          underline="none"
+          sx={{
+            color: 'white'
+          }}
+        >
+          <Typography
+            variant="h6"
+            fontWeight='bold'
+          >
+            NFP STUDIO
+          </Typography>
+        </Link>
+      </NextLink>
+    </Grid>
+  </Grid>)
+}
+
 export const DashboardNavbar = (props) => {
   const {onOpenSidebar, ...other} = props;
   const {connected} = useSelector((state) => state.connect);
@@ -257,12 +296,7 @@ export const DashboardNavbar = (props) => {
     <>
       <DashboardNavbarRoot
         sx={{
-          left: {
-            lg: 280
-          },
-          width: {
-            lg: 'calc(100% - 280px)'
-          }
+          background: 'linear-gradient(to right bottom, #232a3e, #2c2d5b)'
         }}
         {...other}>
         <Toolbar
@@ -273,6 +307,7 @@ export const DashboardNavbar = (props) => {
             px: 2
           }}
         >
+          <LogoMark></LogoMark>
           <IconButton
             onClick={onOpenSidebar}
             sx={{
@@ -284,35 +319,6 @@ export const DashboardNavbar = (props) => {
           >
             <MenuIcon fontSize="small"/>
           </IconButton>
-          <Box sx={{flexGrow: 1}}/>
-          {/*<LanguageButton />*/}
-          {/*<ContentSearchButton />*/}
-          {/*<ContactsButton />*/}
-          {/*<NotificationsButton />*/}
-          {/*<AccountButton />*/}
-          <Grow in={connected}>
-            <Box
-              sx={{
-                alignItems: 'center',
-                backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                display: 'flex',
-                justifyContent: 'space-between',
-                px: 3,
-                py: '11px',
-                borderRadius: 1
-              }}
-            >
-              <div>
-                <Typography
-                  color="inherit"
-                  variant="body2"
-                >
-                  Connected: {connected ? ownerStxAddress : ''}
-                </Typography>
-              </div>
-            </Box>
-          </Grow>
-          {' '}
           <Connect/>
         </Toolbar>
       </DashboardNavbarRoot>

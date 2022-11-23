@@ -37,11 +37,38 @@ export const ProjectChart2 = ({series}) => {
       },
       yaxis: {
         title: {
-          text: 'Price'
+          text: 'Price',
+          style: {
+            fontSize: '12px',
+            color:  'white',
+            fontFamily: 'Helvetica, Arial, sans-serif',
+            fontWeight: 400,
+            cssClass: 'apexcharts-xaxis-label',
+          },
+        },
+        labels: {
+          show: true,
+          style: {
+            colors: "white",
+            fontSize: '12px',
+            fontFamily: 'Helvetica, Arial, sans-serif',
+            fontWeight: 400,
+            cssClass: 'apexcharts-xaxis-label',
+          },
         },
       },
       xaxis: {
         type: 'datetime',
+        labels: {
+          show: true,
+          style: {
+            colors: "white",
+            fontSize: '12px',
+            fontFamily: 'Helvetica, Arial, sans-serif',
+            fontWeight: 400,
+            cssClass: 'apexcharts-xaxis-label',
+          },
+        },
       },
       tooltip: {
         shared: false,
@@ -51,7 +78,7 @@ export const ProjectChart2 = ({series}) => {
         y: {
           formatter: function (val) {
             return val
-          }
+          },
         }
       }
     },

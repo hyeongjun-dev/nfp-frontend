@@ -4,7 +4,7 @@ import {
   Box,
   Container,
   Grid,
-  InputAdornment,
+  InputAdornment, Stack,
   TextField,
   Typography
 } from '@mui/material';
@@ -23,6 +23,17 @@ import {api} from "../../api/apiClient";
 import {AccountFarmTokenList} from "../../components/dashboard/account/account-farm-token-list";
 import {useRouter} from "next/router";
 import {AccountVaultTokenList} from "../../components/dashboard/account/account-vault-token-list";
+import {styled} from "@mui/material/styles";
+
+
+const CssTextField = styled(TextField)(({theme}) => ({
+  '& .MuiOutlinedInput-root': {
+    '&:hover fieldset': {
+      borderColor: theme.palette.primary.main,
+    },
+  },
+}))
+
 
 const Dashboard = () => {
   const [displayedOwnerStxAddress, setDisplayedOwnerStxAddress] = useState('');
@@ -158,45 +169,49 @@ const Dashboard = () => {
         <Box
             component="main"
             sx={{
+              width: "100%",
               flexGrow: 1,
-              py: 7
+              py: 7,
             }}
         >
           <Container maxWidth="lg">
             <Box sx={{mb: 4}}>
-              <Grid
-                  container
-                  justifyContent="space-between"
-                  spacing={3}
-              >
-                <Grid item>
-                  <Typography variant="h4">
-                    Account Dashboard
-                  </Typography>
-                </Grid>
-
-                <Grid item>
-                  <Box
-                      sx={{
-                        maxWidth: '100%',
-                        minWidth: 400
-                      }}
-                  >
-                    <TextField
-                        fullWidth
-                        onChange={handleChangeWalletAddress}
-                        InputProps={{
-                          startAdornment: (
-                              <InputAdornment position="start">
-                                <SearchIcon fontSize="small"/>
-                              </InputAdornment>
-                          )
-                        }}
-                        placeholder="Your wallet address"
-                    />
-                  </Box>
-                </Grid>
-              </Grid>
+              <Stack direction={"row"} alignItems="center" justifyContent="space-between">
+                <Typography variant="h4"
+                            style={{
+                              background: "-webkit-linear-gradient(45deg, #e9e1fe 30%, #e3eafc 90%)",
+                              WebkitBackgroundClip: "text",
+                              WebkitTextFillColor: "transparent"
+                            }}
+                >
+                  Account Dashboard
+                </Typography>
+                <Box
+                  sx={{
+                    maxWidth: '100%',
+                    minWidth: 400,
+                  }}
+                >
+                  <CssTextField
+                    fullWidth
+                    onChange={handleChangeWalletAddress}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <SearchIcon fontSize="small"/>
+                        </InputAdornment>
+                      ),
+                    }}
+                    // color="secondary"
+                    placeholder="Your wallet address"
+                    sx={{
+                      '& .MuiInputBase-root': {
+                        color: 'white',
+                      },
+                    }}
+                  />
+                </Box>
+              </Stack>
             </Box>
             <Grid
                 container
@@ -214,8 +229,7 @@ const Dashboard = () => {
                   md={4}
                   xs={12}
               >
-                <AccountTokenBalance
-                    numberOfFToken={account.numberOfFungibleToken}/>
+                <AccountTokenBalance numberOfFToken={account.numberOfFungibleToken}/>
               </Grid>
               <Grid
                   item

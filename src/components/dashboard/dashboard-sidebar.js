@@ -27,6 +27,7 @@ import {useConnect} from "../../connect/auth";
 import StringHelper from "../../utils/StringHelper";
 import {ExternalLink} from "../../icons/external-link";
 import SelectChainMenu from "../selectChainMenu";
+import useScrollTracker from "../../utils/useScrollTracker";
 
 const getSections = (t, chain) => {
   const chainName = chain.trim().toLowerCase();
@@ -124,6 +125,9 @@ export const DashboardSidebar = (props) => {
     return state.connect
   });
   const {ownerStxAddress} = useConnect();
+  const { scrollY, scrollPercent } = useScrollTracker();
+
+  console.log(`${scrollY} ${scrollPercent}`)
 
 
   const handleChange = (event) => {
@@ -155,15 +159,16 @@ export const DashboardSidebar = (props) => {
   };
 
   const content = (
-    <>
-      <Scrollbar
-        sx={{
-          height: '100%',
-          '& .simplebar-content': {
-            height: '100%'
-          }
-        }}
-      >
+    <Box
+      sx={{
+        marginTop: scrollY < 80 ? 0: -10,
+        position: scrollY < 80 ? 'relative' : 'fixed',
+        flexDirection: 'column',
+        display: 'flex',
+        height: '100%',
+        width: 280,
+      }}
+    >
         <Box
           sx={{
             display: 'flex',
@@ -241,14 +246,14 @@ export const DashboardSidebar = (props) => {
                 >
                   <div>
                     <Typography
-                        color="inherit"
-                        variant="subtitle1"
+                      color="white"
+                      variant="subtitle1"
                     >
                       {selectedChain} Account
                     </Typography>
                     <Typography
-                        color="neutral.400"
-                        variant="body2"
+                      color="neutral.400"
+                      variant="body2"
                     >
                       {connected ? StringHelper.getElipsedHashAddress(ownerStxAddress) : 'wallet not connected'}
                     </Typography>
@@ -283,51 +288,41 @@ export const DashboardSidebar = (props) => {
           />
           <Box sx={{ flexGrow: 1, p: 2 }}>
             <NextLink
-                href="https://twitter.com/NFP2021"
-                passHref
+              href="https://twitter.com/NFP2021"
+              passHref
             >
               <Link target="_blank">
                 <Button
-                    color="secondary"
-                    component="a"
-                    fullWidth
-                    sx={{ mt: 2 }}
-                    variant="contained"
+                  color="secondary"
+                  component="a"
+                  fullWidth
+                  sx={{ mt: 2 }}
+                  variant="contained"
                 >
-                  {t('DeSpread Studio Twitter')}
+                  {t('NFP Twitter')}
                 </Button>
               </Link>
             </NextLink>
           </Box>
         </Box>
-      </Scrollbar>
       <OrganizationPopover
         anchorEl={organizationsRef.current}
         onClose={handleCloseOrganizationsPopover}
         open={openOrganizationsPopover}
       />
-    </>
+    </Box>
   );
 
   if (lgUp) {
     return (
-      <Drawer
-        anchor="left"
-        open
-        PaperProps={{
-          sx: {
-            backgroundColor: 'neutral.900',
-            borderRightColor: 'divider',
-            borderRightStyle: 'solid',
-            borderRightWidth: (theme) => theme.palette.mode === 'dark' ? 1 : 0,
-            color: '#FFFFFF',
-            width: 280
-          }
-        }}
-        variant="permanent"
-      >
+      <Box sx={{
+        minWidth: 280,
+        borderRightColor: '#2d3748',
+        borderRightStyle: 'solid',
+        borderRightWidth: 1,
+      }}>
         {content}
-      </Drawer>
+      </Box>
     );
   }
 
