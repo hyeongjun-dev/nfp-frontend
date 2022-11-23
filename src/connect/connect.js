@@ -1,4 +1,4 @@
-import {Box, Button} from "@mui/material";
+import {Box, Button, Typography} from "@mui/material";
 import {useConnect} from "./auth";
 import {useSelector} from "../store";
 
@@ -20,7 +20,7 @@ export const Connect = () => {
               variant="contained"
               disabled={true}
           >
-            Support Soon
+            <Typography style={{display: 'inline-block', width: 100}} color={"white"} variant={"subtitle2"}>Support Soon</Typography>
           </Button>
         </Box>
     )

@@ -3,31 +3,29 @@ import NextLink from 'next/link';
 import {useRouter} from 'next/router';
 import PropTypes from 'prop-types';
 import {useTranslation} from 'react-i18next';
-import {
-  Box,
-  Button,
-  Divider,
-  Drawer,
-  FormControl,
-  Grid,
-  Link,
-  MenuItem,
-  Select,
-  Typography,
-  useMediaQuery
-} from '@mui/material';
+import {Box, Button, Divider, Drawer, Grid, Link, Typography, useMediaQuery} from '@mui/material';
 import {ChartPie as ChartPieIcon} from '../../icons/chart-pie';
 import {Users as UsersIcon} from '../../icons/users';
 import {Reports as ReportIcon} from '../../icons/reports';
-import {Scrollbar} from '../scrollbar';
 import {DashboardSidebarSection} from './dashboard-sidebar-section';
 import {OrganizationPopover} from './organization-popover';
 import {useSelector} from "../../store";
 import {useConnect} from "../../connect/auth";
 import StringHelper from "../../utils/StringHelper";
 import {ExternalLink} from "../../icons/external-link";
-import SelectChainMenu from "../selectChainMenu";
 import useScrollTracker from "../../utils/useScrollTracker";
+
+
+const LogoMark = () => {
+  return (<Grid container sx={{flexDirection:'row', flex:1}} alignItems="center" columnSpacing={1}>
+    <Grid item marginLeft={"0px"} marginTop={"2px"} >
+      <img
+        width={200}
+        src="https://despread.s3.ap-northeast-2.amazonaws.com/logo/despread_studio_white_logo.png"
+      />
+    </Grid>
+  </Grid>)
+}
 
 const getSections = (t, chain) => {
   const chainName = chain.trim().toLowerCase();
@@ -102,7 +100,6 @@ const getSections = (t, chain) => {
         }
       ];
   }
-
 }
 
 export const DashboardSidebar = (props) => {
@@ -128,7 +125,6 @@ export const DashboardSidebar = (props) => {
   const { scrollY, scrollPercent } = useScrollTracker();
 
   console.log(`${scrollY} ${scrollPercent}`)
-
 
   const handleChange = (event) => {
     const chainName = String(event.target.value).trim().toLowerCase();
@@ -177,88 +173,51 @@ export const DashboardSidebar = (props) => {
             mt: 3,
           }}
         >
-          <Grid
-              container
-              spacing={1}
-              direction="column"
-              alignItems="center"
-              justifyContent="center"
-          >
-            <Grid item
-                  md={3}
-                  xs={3}
-                  align="center">
-              <NextLink
-                  href="/"
-                  passHref
-              >
-                <img
-                    width={200}
-                    src="https://despread.s3.ap-northeast-2.amazonaws.com/logo/despread_studio_white_logo.png"
-                />
-              </NextLink>
-            </Grid>
-          </Grid>
           <div>
-            <Box sx={{ p: 2, mt: 2}}>
-
-              <Box
-                  sx={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                    display: 'flex',
-                    flex:'1',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    px: 3,
-                    py: '11px',
-                    mb: 3,
-                    borderRadius: 1
-                  }}
-              >
-                <SelectChainMenu />
-                {/*<FormControl*/}
-                {/*    fullWidth*/}
-                {/*>*/}
-                {/*  <Select*/}
-                {/*      style={{*/}
-                {/*        color: "white",*/}
-                {/*      }}*/}
-                {/*      variant="standard"*/}
-                {/*      value={selectedChain}*/}
-                {/*      onChange={handleChange}*/}
-                {/*      disableUnderline={true}*/}
-                {/*  >*/}
-                {/*    <MenuItem value={"Stacks"}>Stacks</MenuItem>*/}
-                {/*    <MenuItem value={"Aptos"}>Aptos</MenuItem>*/}
-                {/*  </Select>*/}
-                {/*</FormControl>*/}
-              </Box>
-                <Box
+            <Box sx={{ p: 2}}>
+              {
+                !lgUp ? (
+                  <Box
                     sx={{
                       alignItems: 'center',
-                      backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                      // backgroundColor: 'rgba(255, 255, 255, 0.04)',
                       display: 'flex',
                       justifyContent: 'space-between',
                       px: 3,
-                      py: '11px',
+                      py: '10px',
                       borderRadius: 1
                     }}
-                >
-                  <div>
-                    <Typography
-                      color="white"
-                      variant="subtitle1"
-                    >
-                      {selectedChain} Account
-                    </Typography>
-                    <Typography
-                      color="neutral.400"
-                      variant="body2"
-                    >
-                      {connected ? StringHelper.getElipsedHashAddress(ownerStxAddress) : 'wallet not connected'}
-                    </Typography>
-                  </div>
-                </Box>
+                  >
+                    <LogoMark></LogoMark>
+                  </Box>
+                ) : <div></div>
+              }
+              <Box
+                sx={{
+                  alignItems: 'center',
+                  backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  px: 3,
+                  py: '10px',
+                  borderRadius: 1
+                }}
+              >
+                <div>
+                  <Typography
+                    color="white"
+                    variant="subtitle1"
+                  >
+                    {selectedChain} Account
+                  </Typography>
+                  <Typography
+                    color="neutral.400"
+                    variant="body2"
+                  >
+                    {connected ? StringHelper.getElipsedHashAddress(ownerStxAddress) : 'wallet not connected'}
+                  </Typography>
+                </div>
+              </Box>
             </Box>
           </div>
           <Divider
@@ -280,29 +239,29 @@ export const DashboardSidebar = (props) => {
                 }}
                 {...section} />
             ))}
-          </Box>
-          <Divider
-            sx={{
-              borderColor: '#2D3748'  // dark divider
-            }}
-          />
-          <Box sx={{ flexGrow: 1, p: 2 }}>
-            <NextLink
-              href="https://twitter.com/NFP2021"
-              passHref
-            >
-              <Link target="_blank">
-                <Button
-                  color="secondary"
-                  component="a"
-                  fullWidth
-                  sx={{ mt: 2 }}
-                  variant="contained"
-                >
-                  {t('NFP Twitter')}
-                </Button>
-              </Link>
-            </NextLink>
+            <Divider
+              sx={{
+                borderColor: '#2D3748'  // dark divider
+              }}
+            />
+            <Box sx={{ flexGrow: 1, p: 2 }}>
+              <NextLink
+                href="https://twitter.com/NFP2021"
+                passHref
+              >
+                <Link target="_blank">
+                  <Button
+                    color="primary"
+                    component="a"
+                    fullWidth
+                    sx={{ mt: 2 }}
+                    variant="contained"
+                  >
+                    {t('NFP Twitter')}
+                  </Button>
+                </Link>
+              </NextLink>
+            </Box>
           </Box>
         </Box>
       <OrganizationPopover

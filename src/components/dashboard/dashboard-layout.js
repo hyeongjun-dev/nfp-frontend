@@ -21,9 +21,6 @@ export const DashboardLayout = (props) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const {authOptions, userSession} = useConnect()
   const dispatch = useDispatch();
-  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'), {
-    noSsr: true
-  });
 
   const { settings, saveSettings } = useSettings();
   const fixedSettings = {

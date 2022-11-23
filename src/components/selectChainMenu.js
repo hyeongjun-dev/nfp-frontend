@@ -1,14 +1,11 @@
 import * as React from 'react';
-import {alpha, styled} from '@mui/material/styles';
+import {alpha, styled, useTheme} from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import EditIcon from '@mui/icons-material/Edit';
-import FileCopyIcon from '@mui/icons-material/FileCopy';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import {Box} from "@mui/material";
-import {useEffect} from "react";
-import {useSelector} from "../store";
+import {Box, Stack, Typography} from "@mui/material";
+import CheckIcon from '@mui/icons-material/Check';
 
 const StyledMenu = styled((props) => (
     <Menu
@@ -21,15 +18,20 @@ const StyledMenu = styled((props) => (
           vertical: 'top',
           horizontal: 'right',
         }}
+        sx={{
+
+        }}
         {...props}
     />
 ))(({ theme }) => ({
   '& .MuiPaper-root': {
     borderRadius: 6,
     marginTop: theme.spacing(1),
-    minWidth: 180,
-    color:
-        theme.palette.mode === 'light' ? 'rgb(55, 65, 81)' : theme.palette.grey[300],
+    minWidth: 218,
+    background: "#384169",//theme.palette.primary.main,
+    color: "white",
+    // color: 'rgba(255, 255, 255, 0.04)',
+        // theme.palette.mode === 'light' ? 'rgb(55, 65, 81)' : theme.palette.grey[300],
     boxShadow:
         'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
     '& .MuiMenu-list': {
@@ -51,15 +53,25 @@ const StyledMenu = styled((props) => (
   },
 }));
 
-export default function SelectChainMenu() {
+export default function SelectChainMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState();
   const open = Boolean(anchorEl);
+  const theme = useTheme();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
+  const chainImgMap = {
+    "Aptos": "/static/icons/aptos_icon.svg",
+    "Stacks": "/static/icons/stx_icon.svg"
+  }
+
   const handleClose = (event) => {
     setAnchorEl(null);
+  };
 
+  const redirectPage = (event) => {
+    setAnchorEl(null);
     const chainName = String(event.target.innerText).trim().toLowerCase();
     window.location.href = `/projects/${chainName}`;
   };
@@ -70,9 +82,8 @@ export default function SelectChainMenu() {
   }
 
   return (
-      <Box sx={{ display: 'flex', flex: 1}}>
+      <Box sx={{ display: 'flex', flex: 1 }}>
         <Button
-            fullWidth
             id="demo-customized-button"
             aria-controls={open ? 'demo-customized-menu' : undefined}
             aria-haspopup="true"
@@ -81,9 +92,28 @@ export default function SelectChainMenu() {
             disableElevation
             onClick={handleClick}
             endIcon={<KeyboardArrowDownIcon />}
-            color={"secondary"}
+            size="small"
+            sx={{
+              background: "transparent"
+            }}
         >
-          { chainName }
+          <Stack direction={"row"} justifyContent={"flex-start"} sx={{flex:1}}>
+            <img
+              alt="Aptos"
+              src={chainImgMap[chainName]}
+              width={20}
+              height={20}
+              style={{
+                backgroundColor: "white",
+                borderRadius: 20,
+                borderWidth: 1,
+                borderColor: "white",
+                borderStyle: "solid"
+              }}
+            />
+            <Typography variant={"subtitle2"} sx={{marginLeft:1}}>{ chainName }</Typography>
+          </Stack>
+          {/**/}
         </Button>
         <StyledMenu
             id="demo-customized-menu"
@@ -94,24 +124,29 @@ export default function SelectChainMenu() {
             open={open}
             onClose={handleClose}
         >
-          <MenuItem onClick={handleClose} disableRipple>
-            <img
-                alt="Stacks"
-                src="/static/icons/stx_icon.svg"
-                width={20}
-                height={20}
-            />
-            &nbsp; Stacks
-          </MenuItem>
-          <MenuItem onClick={handleClose} disableRipple>
-            <img
-                alt="Aptos"
-                src="/static/icons/aptos_icon.svg"
-                width={20}
-                height={20}
-            />
-            &nbsp; Aptos
-          </MenuItem>
+          {["Stacks", "Aptos"].map(e => {
+            return (<MenuItem onClick={redirectPage}>
+              <Stack direction={"row"} justifyContent={"space-between"} sx={{flex:1}}>
+                <Stack direction={"row"} justifyContent={"flex-start"} >
+                  <img
+                    alt={e}
+                    src={chainImgMap[e]}
+                    width={20}
+                    height={20}
+                    style={{
+                      backgroundColor: "white",
+                      borderRadius: 20,
+                      borderWidth: 1,
+                      borderColor: "white",
+                      borderStyle: "solid"
+                    }}
+                  />
+                  <Typography variant={"subtitle2"} sx={{marginLeft:1}}>{e}</Typography>
+                </Stack>
+                {e === chainName ? (<CheckIcon style={{fill: "white"}}/>) : <div/>}
+              </Stack>
+            </MenuItem>)
+          })}
         </StyledMenu>
       </Box>
   );

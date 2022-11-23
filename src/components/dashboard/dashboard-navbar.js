@@ -1,18 +1,8 @@
 import {useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {useTranslation} from 'react-i18next';
-import {
-    AppBar,
-    Avatar,
-    Badge,
-    Box, Button,
-    ButtonBase, Grid, Grow,
-    IconButton, Link,
-    Toolbar,
-    Tooltip, Typography
-} from '@mui/material';
+import {Avatar, Badge, Box, ButtonBase, Grid, IconButton, Stack, Toolbar, Tooltip, useMediaQuery} from '@mui/material';
 import {styled} from '@mui/material/styles';
-import {Menu as MenuIcon} from '../../icons/menu';
 import {AccountPopover} from './account-popover';
 import {ContactsPopover} from './contacts-popover';
 import {ContentSearchDialog} from './content-search-dialog';
@@ -22,12 +12,9 @@ import {Bell as BellIcon} from '../../icons/bell';
 import {UserCircle as UserCircleIcon} from '../../icons/user-circle';
 import {Search as SearchIcon} from '../../icons/search';
 import {Users as UsersIcon} from '../../icons/users';
-import {Selector as SelectorIcon} from "../../icons/selector";
 import {Connect} from "../../connect/connect";
-import {useSelector} from "../../store";
-import {useConnect} from "../../connect/auth";
-import NextLink from "next/link";
-import {Logo} from "../logo";
+import SelectChainMenu from "../selectChainMenu";
+import {Menu as MenuIcon} from '../../icons/menu';
 
 
 const languages = {
@@ -253,44 +240,21 @@ const AccountButton = () => {
 
 const LogoMark = () => {
   return (<Grid container sx={{flexDirection:'row'}} alignItems="center" columnSpacing={1}>
-    <Grid item marginTop={"2px"}>
-      <NextLink
-        href="/"
-        passHref
-      >
-        <a>
-          <Logo/>
-        </a>
-      </NextLink>
-    </Grid>
-    <Grid item>
-      <NextLink
-        href="/"
-        passHref
-      >
-        <Link
-          component="a"
-          underline="none"
-          sx={{
-            color: 'white'
-          }}
-        >
-          <Typography
-            variant="h6"
-            fontWeight='bold'
-          >
-            NFP STUDIO
-          </Typography>
-        </Link>
-      </NextLink>
+    <Grid item marginLeft={"24px"} marginTop={"2px"} >
+      <img
+        width={200}
+        src="https://despread.s3.ap-northeast-2.amazonaws.com/logo/despread_studio_white_logo.png"
+      />
     </Grid>
   </Grid>)
 }
 
 export const DashboardNavbar = (props) => {
   const {onOpenSidebar, ...other} = props;
-  const {connected} = useSelector((state) => state.connect);
-  const {ownerStxAddress} = useConnect();
+  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'), {
+    noSsr: true
+  });
+  const [isOpen, setOpen] = useState(false);
 
   return (
     <>
@@ -307,24 +271,35 @@ export const DashboardNavbar = (props) => {
             px: 2
           }}
         >
-          <LogoMark></LogoMark>
-          <IconButton
-            onClick={onOpenSidebar}
-            sx={{
-              display: {
-                xs: 'inline-flex',
-                lg: 'none'
-              }
-            }}
-          >
-            <MenuIcon fontSize="small"/>
-          </IconButton>
-          <Connect/>
+          <Stack direction={"row"} justifyContent={"space-between"} sx={{display: "flex", flex:1}}>
+            <Stack direction={"row"}>
+              {lgUp ? <LogoMark></LogoMark> : <div></div>}
+              {lgUp ? <div/> : (
+                <IconButton
+                  onClick={onOpenSidebar}
+                  sx={{
+                    display: {
+                      xs: 'inline-flex',
+                      lg: 'none'
+                    },
+                    color:"white"
+                  }}
+                >
+                  <MenuIcon fontSize="medium"/>
+                </IconButton>
+              )}
+            </Stack>
+            <Stack direction={"row"}>
+              <SelectChainMenu />
+              <Connect/>
+            </Stack>
+          </Stack>
         </Toolbar>
       </DashboardNavbarRoot>
     </>
   );
 };
+
 
 DashboardNavbar.propTypes = {
   onOpenSidebar: PropTypes.func

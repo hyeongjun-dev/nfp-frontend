@@ -314,23 +314,23 @@ const CompanyDetails = () => {
           <Box sx={{mb: 4}}>
             <Stack direction={"row"} alignItems="center" justifyContent="flex-start">
               <Box>
-                    <NextLink
-                      href="/projects"
-                      passHref
-                    >
-                      <Link
-                        color="white"
-                        sx={{
-                          alignItems: 'center',
-                          display: 'flex'
-                        }}
-                      >
-                        <ArrowBackIcon
-                          fontSize="large"
-                          sx={{ mr: 1 }}
-                        />
-                      </Link>
-                    </NextLink>
+                <NextLink
+                  href="/projects"
+                  passHref
+                >
+                  <Link
+                    color="white"
+                    sx={{
+                      alignItems: 'center',
+                      display: 'flex'
+                    }}
+                  >
+                    <ArrowBackIcon
+                      fontSize="large"
+                      sx={{ mr: 1 }}
+                    />
+                  </Link>
+                </NextLink>
               </Box>
               <Typography variant="h4"
                           style={{

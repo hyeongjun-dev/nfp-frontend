@@ -60,42 +60,63 @@ const Projects = () => {
       }}
     >
       <Container sx={{mb: 4}}>
-        <Typography variant={"h4"}>
+        <Typography variant={"h4"} style={{
+          background: "-webkit-linear-gradient(45deg, #e9e1fe 30%, #e3eafc 90%)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent"
+        }}>
           Aptos Projects
         </Typography>
         {
           projectList.map(projects => {
             return (
-              <Card sx={{mt: 4}}>
+              <Card sx={{
+                background: 'rgba(255, 255, 255, 0.1)',
+                borderColor: '#54576a',
+                borderWidth: 1,
+                borderStyle: 'solid',
+                mt: 4
+              }}>
                 <CardHeader
-                  // avatar={<ReportIcon/>}
-                  title={projects['title']}
-                  // action={(
-                  //   <Tooltip title="MarketCap = totalSupply x price">
-                  //     <InformationCircleOutlinedIcon sx={{color: 'action.active'}}/>
-                  //   </Tooltip>
-                  // )}
+                  title={<Box color={"white"}>{projects['title']}</Box>}
                 />
                 <TableContainer>
                   <Table sx={{border: "0.5px solid #dadada"}}>
-                    <TableHead>
+                    <TableHead
+                      sx={{background:'rgba(255, 255, 255, 0.1)',
+                        borderColor: '#54576a',
+                        borderWidth: 1,
+                        borderStyle: 'solid',
+                        mt: 4
+                      }}
+                    >
                       <TableRow>
                         <TableCell align="left">
-                          <Box ml={1}>
+                          <Box ml={1} color={"white"}>
                             #
                           </Box>
                         </TableCell>
                         <TableCell>
-                          <Box ml={5}>
+                          <Box ml={5} color={"white"}>
                             PROJECT
                           </Box>
                         </TableCell>
                         <TableCell align="left">
-                          Description
+                          <Box color={"white"}>
+                            Description
+                          </Box>
                         </TableCell>
                       </TableRow>
                     </TableHead>
-                    <TableBody>
+                    <TableBody
+                      sx={{
+                        background:'transparent',
+                        borderColor: '#54576a',
+                        borderWidth: 1,
+                        borderStyle: 'solid',
+                        mt: 4,
+                      }}
+                    >
                       {projects.map((project, index) => {
                         return (
                           <>
@@ -105,19 +126,18 @@ const Projects = () => {
                                 '&:last-child td': {
                                   border: 0
                                 },
-                                background: "#ffffff",
-                                hover: {
-                                  color: "#374151"
+                                "&:hover": {
+                                  backgroundColor: "#5149e5 !important"
                                 },
                                 cursor: "pointer"
                               }}
                             >
-                              <TableCell align="left" onClick={event => goToProjectInfoPage(event, project)}>
-                                <Box ml={1} onClick={event => goToProjectInfoPage(event, project)}>
+                              <TableCell style={{width: 16}} align="left" onClick={event => goToProjectInfoPage(event, project)}>
+                                <Box ml={1} onClick={event => goToProjectInfoPage(event, project)} color={"white"}>
                                   {index + 1}
                                 </Box>
                               </TableCell>
-                              <TableCell onClick={event => goToProjectInfoPage(event, project)}>
+                              <TableCell style={{ width: 320 }} onClick={event => goToProjectInfoPage(event, project)}>
                                 <Box
                                   ml={5}
                                   sx={{
@@ -136,13 +156,14 @@ const Projects = () => {
                                     <Typography
                                       sx={{ml: 2}}
                                       variant="subtitle2"
+                                      color={"white"}
                                     >
                                       {project.project}
                                     </Typography>
                                 </Box>
                               </TableCell>
                               <TableCell align="left" onClick={event => goToProjectInfoPage(event, project)}>
-                                <Typography variant="subtitle2">
+                                <Typography variant="subtitle2" color={"white"}>
                                   {project.shortDescription}
                                 </Typography>
                               </TableCell>

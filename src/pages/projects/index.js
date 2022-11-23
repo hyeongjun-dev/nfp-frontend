@@ -97,7 +97,8 @@ const Projects = () => {
           <ProjectTitle/>
           <ProjectInfo totalMarketCap={totalMarketCap}/>
           <Card
-            sx={{background:'rgba(255, 255, 255, 0.1)',
+            sx={{
+              background: 'rgba(255, 255, 255, 0.1)',
               borderColor: '#54576a',
               borderWidth: 1,
               borderStyle: 'solid',
@@ -126,7 +127,7 @@ const Projects = () => {
                   <TableRow>
                     <TableCell align="center">
                       <Box ml={1} color={"white"}>
-                        #
+                        {"#"}
                       </Box>
                     </TableCell>
                     <TableCell>
