@@ -6,7 +6,7 @@ import {
   Grid,
   InputAdornment, Stack,
   TextField,
-  Typography
+  Typography, useMediaQuery
 } from '@mui/material';
 import {DashboardLayout} from '../../components/dashboard/dashboard-layout';
 import {gtm} from '../../lib/gtm';
@@ -51,6 +51,10 @@ const Dashboard = () => {
 
   const {connected} = useSelector((state) => state.connect);
   const {ownerStxAddress} = useConnect();
+
+  const smUp = useMediaQuery((theme) => theme.breakpoints.up('sm'), {
+    noSsr: true
+  });
 
   const router = useRouter();
 
@@ -189,7 +193,7 @@ const Dashboard = () => {
                 <Box
                   sx={{
                     maxWidth: '100%',
-                    minWidth: 400,
+                    minWidth: smUp ? 400 : 200,
                   }}
                 >
                   <CssTextField
@@ -224,13 +228,6 @@ const Dashboard = () => {
               >
                 <AccountFiatBalance totalBalance={totalBalance}/>
               </Grid>
-              {/*<Grid*/}
-              {/*    item*/}
-              {/*    md={4}*/}
-              {/*    xs={12}*/}
-              {/*>*/}
-              {/*  <AccountTokenBalance numberOfFToken={account.numberOfFungibleToken}/>*/}
-              {/*</Grid>*/}
               <Grid
                   item
                   md={6}
@@ -238,14 +235,6 @@ const Dashboard = () => {
               >
                 <AccountWalletAddress address={displayedOwnerStxAddress}/>
               </Grid>
-
-              {/*<Grid*/}
-              {/*    item*/}
-              {/*    md={12}*/}
-              {/*    xs={12}*/}
-              {/*>*/}
-              {/*  <AccountOverviewList totalSpentFees={account.totalSpentFees}/>*/}
-              {/*</Grid>*/}
 
               <Grid
                   item

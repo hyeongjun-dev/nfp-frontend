@@ -10,7 +10,7 @@ import {Connect} from '@stacks/connect-react';
 import {useSettings} from "../../hooks/use-settings";
 
 
-export const DashboardLayout = (props) => {
+export const LandingLayout = (props) => {
   const {children} = props;
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const {authOptions, userSession} = useConnect()
@@ -31,7 +31,7 @@ export const DashboardLayout = (props) => {
   return (
     <>
       <Connect authOptions={authOptions}>
-        <DashboardNavbar onOpenSidebar={() => setIsSidebarOpen(true)}/>
+        <DashboardNavbar />
         <div
           style={{
             display:'flex',
@@ -40,24 +40,12 @@ export const DashboardLayout = (props) => {
             background: 'linear-gradient(to right bottom, #192039, #283779)',
           }}
         >
-          <DashboardSidebar
-            onClose={() => setIsSidebarOpen(false)}
-            open={isSidebarOpen}
-            chainName={() => {
-              const pathName = window.location.pathname;
-              if (pathName.toUpperCase().trim().indexOf('APTOS') !== -1) {
-                return 'Aptos';
-              }
-              return 'Stacks';
-            }}
-          />
           <Box sx={{
             display: 'flex',
             flex: '1 1 auto',
             flexDirection: 'column',
             width: '100%',
             alignItems:'flex-start',
-            // paddingLeft: lgUp ? 6 : 0,
             marginTop: -3
           }}>
             {children}
@@ -68,6 +56,6 @@ export const DashboardLayout = (props) => {
   );
 };
 
-DashboardLayout.propTypes = {
+LandingLayout.propTypes = {
   children: PropTypes.node
 };

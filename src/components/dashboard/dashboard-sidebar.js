@@ -258,7 +258,7 @@ export const DashboardSidebar = (props) => {
                     sx={{ mt: 2 }}
                     variant="contained"
                   >
-                    {t('NFP Twitter')}
+                    {t('Twitter')}
                   </Button>
                 </Link>
               </NextLink>
