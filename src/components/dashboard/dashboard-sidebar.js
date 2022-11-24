@@ -48,8 +48,8 @@ const getSections = (t, chain) => {
               icon: <ReportIcon fontSize="small"/>
             },
             {
-              title: t('Stacking'),
-              path: '/stacking',
+              title: t('Staking'),
+              path: '/staking',
               icon: <UsersIcon fontSize="small"/>,
               disabled: true
             }
@@ -72,8 +72,8 @@ const getSections = (t, chain) => {
               icon: <ReportIcon fontSize="small"/>
             },
             {
-              title: t('Stacking'),
-              path: '/stacking',
+              title: t('Staking'),
+              path: '/staking',
               icon: <UsersIcon fontSize="small"/>
             }
           ]
@@ -124,7 +124,7 @@ export const DashboardSidebar = (props) => {
   const {ownerStxAddress} = useConnect();
   const { scrollY, scrollPercent } = useScrollTracker();
 
-  console.log(`${scrollY} ${scrollPercent}`)
+  // console.log(`${scrollY} ${scrollPercent}`)
 
   const handleChange = (event) => {
     const chainName = String(event.target.value).trim().toLowerCase();
@@ -185,7 +185,8 @@ export const DashboardSidebar = (props) => {
                       justifyContent: 'space-between',
                       px: 3,
                       py: '10px',
-                      borderRadius: 1
+                      borderRadius: 1,
+                      marginBottom: 5,
                     }}
                   >
                     <LogoMark></LogoMark>

@@ -219,33 +219,33 @@ const Dashboard = () => {
             >
               <Grid
                   item
-                  md={4}
+                  md={6}
                   xs={12}
               >
                 <AccountFiatBalance totalBalance={totalBalance}/>
               </Grid>
+              {/*<Grid*/}
+              {/*    item*/}
+              {/*    md={4}*/}
+              {/*    xs={12}*/}
+              {/*>*/}
+              {/*  <AccountTokenBalance numberOfFToken={account.numberOfFungibleToken}/>*/}
+              {/*</Grid>*/}
               <Grid
                   item
-                  md={4}
-                  xs={12}
-              >
-                <AccountTokenBalance numberOfFToken={account.numberOfFungibleToken}/>
-              </Grid>
-              <Grid
-                  item
-                  md={4}
+                  md={6}
                   xs={12}
               >
                 <AccountWalletAddress address={displayedOwnerStxAddress}/>
               </Grid>
 
-              <Grid
-                  item
-                  md={12}
-                  xs={12}
-              >
-                <AccountOverviewList totalSpentFees={account.totalSpentFees}/>
-              </Grid>
+              {/*<Grid*/}
+              {/*    item*/}
+              {/*    md={12}*/}
+              {/*    xs={12}*/}
+              {/*>*/}
+              {/*  <AccountOverviewList totalSpentFees={account.totalSpentFees}/>*/}
+              {/*</Grid>*/}
 
               <Grid
                   item

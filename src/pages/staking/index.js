@@ -68,7 +68,7 @@ const Stacking = () => {
     <>
       <Head>
         <title>
-          Stacking
+          Staking
         </title>
       </Head>
       <Box

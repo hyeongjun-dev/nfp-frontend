@@ -8,7 +8,7 @@ export const ProjectTitle = () => {
         WebkitBackgroundClip: "text",
         WebkitTextFillColor: "transparent"
       }}>
-        Stacks Projects
+        Ecosystem Projects
       </Typography>
     </>
   )

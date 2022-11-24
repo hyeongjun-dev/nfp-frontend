@@ -240,7 +240,7 @@ const AccountButton = () => {
 
 const LogoMark = () => {
   return (<Grid container sx={{flexDirection:'row'}} alignItems="center" columnSpacing={1}>
-    <Grid item marginLeft={"24px"} marginTop={"2px"} >
+    <Grid item marginLeft={"24px"} marginTop={"6px"} >
       <img
         width={200}
         src="https://despread.s3.ap-northeast-2.amazonaws.com/logo/despread_studio_white_logo.png"

@@ -20,7 +20,10 @@ export const ProjectInfo = (props) => {
                 variant="h5"
                 color="white"
               >
-                <CountUp prefix={'$'} duration={1.0} separator={','} end={props.totalMarketCap}/>
+                {
+                  props.totalMarketCap < 0 ? "-" :
+                  <CountUp prefix = {'$'} duration={1.0} separator={','} end={props.totalMarketCap}/>
+                }
               </Typography>
               <Typography
                 color="white"
