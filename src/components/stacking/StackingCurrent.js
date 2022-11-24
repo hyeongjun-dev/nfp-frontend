@@ -1,4 +1,4 @@
-import {Box, Card, CardContent, Grid, Typography} from "@mui/material";
+import {Box, Card, CardContent, Grid, Stack, Typography} from "@mui/material";
 import {Chart} from "../chart";
 import {useTheme} from "@mui/material/styles";
 import {userSessionState} from "../../connect/auth";
@@ -174,15 +174,16 @@ export const StackingCurrent = (props) => {
           }}}>
           <Box>
           <Grid container spacing={2}>
-            <Grid item md={7}>
+            <Grid item md={7} sx={{flex:1}}>
               <Typography variant={"h6"} sx={{mb:2}} color={"white"}>Stacking APY</Typography>
-              <Chart
-                sx={{width: "100%"}}
-                height={'100%'}
-                options={chartOptions}
-                series={chartSeries}
-                type="area"
-              />
+              <Box sx={{flex:1, marginLeft:-2, height: '100%', width: '100%'}}>
+                <Chart
+                  height={'100%'}
+                  options={chartOptions}
+                  series={chartSeries}
+                  type="area"
+                />
+              </Box>
             </Grid>
             <Grid item md={5}>
               <Typography variant={"h6"} sx={{mb:2, color:"white"}}>My Status</Typography>
