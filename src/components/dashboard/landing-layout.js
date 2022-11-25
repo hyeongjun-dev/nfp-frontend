@@ -32,7 +32,7 @@ export const LandingLayout = (props) => {
     <>
       <Connect authOptions={authOptions}>
         <DashboardNavbar />
-        <div
+        <Box
           style={{
             display:'flex',
             flexDirection:'row',
@@ -46,11 +46,11 @@ export const LandingLayout = (props) => {
             flexDirection: 'column',
             width: '100%',
             alignItems:'flex-start',
-            marginTop: -3
           }}>
             {children}
           </Box>
-        </div>
+        </Box>
+
       </Connect>
     </>
   );

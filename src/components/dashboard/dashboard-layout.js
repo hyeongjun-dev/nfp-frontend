@@ -31,7 +31,7 @@ export const DashboardLayout = (props) => {
   return (
     <>
       <Connect authOptions={authOptions}>
-        <DashboardNavbar onOpenSidebar={() => setIsSidebarOpen(true)}/>
+        <DashboardNavbar hasConnect={true} onOpenSidebar={() => setIsSidebarOpen(true)}/>
         <div
           style={{
             display:'flex',

@@ -1,7 +1,9 @@
 import Chart from "react-apexcharts";
 import {Box} from "@mui/material";
+import {useTheme} from "@mui/material/styles";
 
 export const ProjectChart2 = ({series}) => {
+  const theme = useTheme();
 
   const options = {
     options: {
@@ -19,6 +21,7 @@ export const ProjectChart2 = ({series}) => {
           autoScaleYaxis: true,
         }
       },
+      colors: [theme.palette.primary.main, '#7783DB'],
       dataLabels: {
         enabled: false
       },

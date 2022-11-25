@@ -113,7 +113,6 @@ export default function SelectChainMenu(props) {
             />
             <Typography variant={"subtitle2"} sx={{marginLeft:1}}>{ chainName }</Typography>
           </Stack>
-          {/**/}
         </Button>
         <StyledMenu
             id="demo-customized-menu"

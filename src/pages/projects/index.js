@@ -187,8 +187,8 @@ const Projects = () => {
                             <Box
                               ml={COLUMN_LEFT_MARGINS[1]}
                               sx={{
-                                alignItems: 'flex-start',
-                                display: 'flex'
+                                alignItems: 'center',
+                                display: 'flex',
                               }}
                             >
                               <a target='_blank'>

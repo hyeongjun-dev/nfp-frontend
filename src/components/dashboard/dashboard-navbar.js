@@ -23,20 +23,6 @@ const languages = {
   es: '/static/icons/es_flag.svg'
 };
 
-const DashboardNavbarRoot = styled(Box)(({theme}) => ({
-  backgroundColor: theme.palette.background.paper,
-  ...(theme.palette.mode === 'light'
-    ? {
-      boxShadow: theme.shadows[3]
-    }
-    : {
-      backgroundColor: theme.palette.background.paper,
-      borderBottomColor: theme.palette.divider,
-      borderBottomStyle: 'solid',
-      borderBottomWidth: 1,
-      boxShadow: 'none'
-    })
-}));
 
 const LanguageButton = () => {
   const anchorRef = useRef(null);
@@ -242,6 +228,11 @@ const LogoMark = () => {
   return (<Grid container sx={{flexDirection:'row'}} alignItems="center" columnSpacing={1}>
     <Grid item marginLeft={"24px"} marginTop={"6px"} >
       <img
+        onClick={
+          () => {
+            window.location.href = `/home`;
+          }
+        }
         width={200}
         src="https://despread.s3.ap-northeast-2.amazonaws.com/logo/despread_studio_white_logo.png"
       />
@@ -254,13 +245,13 @@ export const DashboardNavbar = (props) => {
   const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'), {
     noSsr: true
   });
-  const [isOpen, setOpen] = useState(false);
 
   return (
     <>
-      <DashboardNavbarRoot
+      <Box
         sx={{
-          background: 'linear-gradient(to right bottom, #232a3e, #2c2d5b)'
+          background: 'linear-gradient(to right bottom, #232a3e, #2c2d5b)',
+          zIndex: 10,
         }}
         {...other}>
         <Toolbar
@@ -289,13 +280,17 @@ export const DashboardNavbar = (props) => {
                 </IconButton>
               )}
             </Stack>
-            <Stack direction={"row"}>
-              <SelectChainMenu />
-              <Connect/>
-            </Stack>
+            {
+              props.hasConnect ? (
+                <Stack direction={"row"}>
+                  <SelectChainMenu />
+                  <Connect/>
+                </Stack>
+              ) : <></>
+            }
           </Stack>
         </Toolbar>
-      </DashboardNavbarRoot>
+      </Box>
     </>
   );
 };
