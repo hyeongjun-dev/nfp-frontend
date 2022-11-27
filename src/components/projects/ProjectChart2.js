@@ -2,7 +2,7 @@ import Chart from "react-apexcharts";
 import {Box} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 
-export const ProjectChart2 = ({series}) => {
+export const ProjectChart2 = ({series, style}) => {
   const theme = useTheme();
 
   const options = {
@@ -88,11 +88,13 @@ export const ProjectChart2 = ({series}) => {
   };
 
   return (
-    <Box sx={{display: "flex", justifyContent: "center"}}>
-      <Box sx={{width: "95%",}}>
-        <Chart options={options.options} series={series} type="area" width={"95%"} height={300}/>
+    <div style={style}>
+      <Box sx={{display: "flex", flex:1, justifyContent: "center"}}>
+        <Box sx={{width: "100%",}}>
+          <Chart options={options.options} series={series} type="area" width={"100%"} height={300}/>
+        </Box>
       </Box>
-    </Box>
+    </div>
   )
 };
 

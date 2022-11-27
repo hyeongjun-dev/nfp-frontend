@@ -94,7 +94,10 @@ export default function SelectChainMenu(props) {
             endIcon={<KeyboardArrowDownIcon />}
             size="small"
             sx={{
-              background: "transparent"
+              background: "transparent",
+              '&:hover': {
+                backgroundColor: 'rgba(255,255,255, 0.08)'
+              },
             }}
         >
           <Stack direction={"row"} justifyContent={"flex-start"} sx={{flex:1}}>

@@ -165,7 +165,7 @@ class AptosApi {
           "twitter": "https://twitter.com/Stackswap_BTC",
           "website": "https://stackswap.org"
         },
-        "logo": "https://app.stackswap.org/img/stsw.2da1d6f2.svg",
+        "logo": "https://nfp-bucket.s3.ap-northeast-2.amazonaws.com/logo/stsw.png",
         "shortDescription": "Stackswap is a decentralized finance platform that offers products that enable users to exchange and launch tokens, mint and trade NFTs and borrow algorithmic stable crypto-currencies on the Bitcoin network.",
         "symbol": "STSW",
         "tags": "DeFi, DEX, AMM, Yield Farming",

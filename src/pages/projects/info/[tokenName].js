@@ -14,7 +14,7 @@ import {
   Grid, InputAdornment,
   Link,
   Stack,
-  Typography
+  Typography, useMediaQuery
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import {DashboardLayout} from '../../../components/dashboard/dashboard-layout';
@@ -46,56 +46,76 @@ import {Search as SearchIcon} from "../../../icons/search";
 
 const Header = ({logoImg, title, description, tags}) => {
   const theme = useTheme();
-  return (
-    <Grid container direction="row" spacing={theme.spacing(1)}>
-      <Grid
-        item
-        container
-        sm={2}
-        md={2}
-        direction={'column'}
-        alignItems="center"
-        justifyContent={"start"}
-      >
-        <Grid item sx={{backgroundColor:"transparent", marginTop: theme.spacing(1)}}>
-          <Typography>
-            <Avatar
-              src={logoImg}
-              sx={{
-                background: 'transparent',
-                width: 100,
-                height: 100,
-              }}
-              variant="rounded"
-            >
-            </Avatar>
+  const mdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
+
+  if (mdUp) {
+    return (
+      <Stack direction={"row"} style={{background: "transparent", flex:1}} spacing={theme.spacing(4)}>
+        <img
+          width={100}
+          height={100}
+          src={logoImg}
+          style={{marginTop: 4}}
+        />
+        <Stack>
+          <Typography variant="h6" align={"left"} color={"white"}>
+            {title}
           </Typography>
-        </Grid>
-      </Grid>
-      <Grid item sm={9} md={9} sx={{marginLeft:theme.spacing(2)}}>
-        <Typography variant="h6" align={"left"} color={"white"}>
-          {title}
-        </Typography>
-        <Typography
-          sx={{ mt: 1 }}
-          variant="body2"
-          color={"white"}
-        >
-          {description}
-        </Typography>
-        <Stack direction={"row"} sx={{marginTop:theme.spacing(2)}} spacing={theme.spacing(1)}>
-          {tags?.map((e, idx) => {
-            return (<Chip
-              key={idx}
-              label={e}
-              variant="outlined"
-              sx={{color:"white", background:'rgba(255, 255, 255, 0.1)'}}
-            />)
-          })}
+          <Typography
+            sx={{mt: 1}}
+            variant="body2"
+            color={"white"}
+          >
+            {description}
+          </Typography>
+          <Grid container direction={"row"} spacing={theme.spacing(1)} sx={{marginTop: theme.spacing(2)}}>
+            {tags?.map((e, idx) => {
+              return (
+                <Grid item>
+                <Chip
+                key={idx}
+                label={e}
+                variant="outlined"
+                sx={{color: "white", background: 'rgba(255, 255, 255, 0.1)'}}
+              /></Grid>)
+            })}
+          </Grid>
+          {/*</Stack>*/}
         </Stack>
-      </Grid>
-    </Grid>
-  )
+      </Stack>)
+  } else {
+    return (
+      <Stack direction={"column"} style={{background: "transparent"}} alignItems={"center"} spacing={theme.spacing(4)}>
+        <img
+          width={100}
+          height={100}
+          src={logoImg}
+        />
+        <Stack>
+          <Typography variant="h6" align={"left"} color={"white"}>
+            {title}
+          </Typography>
+          <Typography
+            sx={{mt: 1}}
+            variant="body2"
+            color={"white"}
+          >
+            {description}
+          </Typography>
+          <Stack direction={"row"} sx={{marginTop: theme.spacing(2)}} spacing={theme.spacing(1)}>
+            {tags?.map((e, idx) => {
+              return (<Chip
+                key={idx}
+                label={e}
+                variant="outlined"
+                sx={{color: "white", background: 'rgba(255, 255, 255, 0.1)'}}
+              />)
+            })}
+          </Stack>
+        </Stack>
+      </Stack>
+    )
+  }
 }
 
 const ContentShareButton = () => {
@@ -154,7 +174,7 @@ const CompanySummary = ({links}) => {
     return (<Button
       variant="text" size={"small"} sx={{borderRadius:4, color:"white",
       '&:hover': {
-        color: 'rgba(255, 255, 255, 0.5)',
+        backgroundColor: 'rgba(255,255,255, 0.08)'
       },
       }}
       onClick={(e)=>{
@@ -400,8 +420,8 @@ const CompanyDetails = () => {
                         {dayChangeRateByPercentage}%
                       </Typography>
                     </Stack>
-                    <Box component="span" sx={{ marginTop: 5 }}>
-                      <Chart series={series}/>
+                    <Box component="span" sx={{ marginTop: 5, background: 'transparent' }}>
+                      <Chart series={series} style={{paddingLeft: 8, paddingRight: 8}}/>
                     </Box>
                   </Stack>
                 </CardContent>
