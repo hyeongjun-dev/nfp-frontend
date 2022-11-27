@@ -127,7 +127,13 @@ export default function SelectChainMenu(props) {
             onClose={handleClose}
         >
           {["Stacks", "Aptos"].map(e => {
-            return (<MenuItem onClick={redirectPage}>
+            return (<MenuItem onClick={redirectPage}
+              sx={{
+                '&:hover': {
+                  backgroundColor: 'rgba(255,255,255, 0.08)'
+                },
+              }}
+            >
               <Stack direction={"row"} justifyContent={"space-between"} sx={{flex:1}}>
                 <Stack direction={"row"} justifyContent={"flex-start"} >
                   <img
