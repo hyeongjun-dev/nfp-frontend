@@ -22,9 +22,9 @@ export const StackingTitle = (props) => {
 
   const getIconSize = () => {
     if (lgUp)
-      return "40px"
+      return "38px"
     if (mdUp)
-      return "40px"
+      return "38px"
     if (smUp)
       return "30px"
     return "30px"
@@ -35,7 +35,7 @@ export const StackingTitle = (props) => {
       <Box sx={{mb: 4}}>
         <Stack direction={"row"} alignContent="center" justifyContent="space-between">
           <Stack direction={"row"} alignItems={"center"}>
-            <StacksImg width={getIconSize()} height={getIconSize()} style={{marginRight:"15px", marginTop:"4px"}}/>
+            <StacksImg width={getIconSize()} height={getIconSize()} style={{marginRight:"15px", marginTop:"8px"}}/>
             <Typography variant="h4"
                         style={{
                           background: "-webkit-linear-gradient(45deg, #e9e1fe 30%, #e3eafc 90%)",
