@@ -235,6 +235,9 @@ const LogoMark = () => {
         }
         width={200}
         src="https://despread.s3.ap-northeast-2.amazonaws.com/logo/despread_studio_white_logo.png"
+        style={{
+          cursor: 'pointer',
+        }}
       />
     </Grid>
   </Grid>)
