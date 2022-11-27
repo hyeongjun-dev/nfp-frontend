@@ -60,7 +60,6 @@ const Projects = () => {
         for (const d of response.data) {
           d.displayInfo = responseOfProjectInfoData.hasOwnProperty(StringHelper.trimAndUppercase(d.symbol));
         }
-
         setProjects(response.data)
         let totalMarketCap = response.data.reduce((lastValue, currentValue) => {
           return lastValue + parseInt(currentValue.totalMarketCap)

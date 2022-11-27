@@ -60,6 +60,7 @@ const Projects = () => {
     data = data.concat(walletProjects)
     data = data.concat(launchpadProjects)
 
+    console.log(data);
     setProjects(data);
   }, [])
 
