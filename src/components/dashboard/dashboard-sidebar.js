@@ -63,7 +63,7 @@ const getSections = (t, chain) => {
           items: [
             {
               title: t('Dashboard'),
-              path: '/',
+              path: '/dashboard',
               icon: <ChartPieIcon fontSize="small"/>
             },
             {
