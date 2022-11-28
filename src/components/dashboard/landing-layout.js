@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import {DashboardNavbar} from './dashboard-navbar';
+import {DashboardNavbar} from './dashboard-navbar2';
 import {DashboardSidebar} from './dashboard-sidebar';
 import {Box} from '@mui/material';
 import {setConnected} from "../../slices/connect";

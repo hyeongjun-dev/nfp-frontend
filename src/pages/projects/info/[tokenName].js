@@ -85,12 +85,15 @@ const Header = ({logoImg, title, description, tags}) => {
       </Stack>)
   } else {
     return (
-      <Stack direction={"column"} style={{background: "transparent"}} alignItems={"center"} spacing={theme.spacing(4)}>
-        <img
-          width={100}
-          height={100}
-          src={logoImg}
-        />
+      <Stack direction={"column"} style={{background: "transparent", flex:1}} spacing={theme.spacing(4)}>
+        <Stack direction={"row"} sx={{flex:1}} justifyContent={"center"}>
+          <img
+            width={100}
+            height={100}
+            src={logoImg}
+            style={{marginTop: 4}}
+          />
+        </Stack>
         <Stack>
           <Typography variant="h6" align={"left"} color={"white"}>
             {title}
@@ -102,19 +105,21 @@ const Header = ({logoImg, title, description, tags}) => {
           >
             {description}
           </Typography>
-          <Stack direction={"row"} sx={{marginTop: theme.spacing(2)}} spacing={theme.spacing(1)}>
+          <Grid container direction={"row"} spacing={theme.spacing(1)} sx={{marginTop: theme.spacing(2)}}>
             {tags?.map((e, idx) => {
-              return (<Chip
-                key={idx}
-                label={e}
-                variant="outlined"
-                sx={{color: "white", background: 'rgba(255, 255, 255, 0.1)'}}
-              />)
+              return (
+                <Grid key={idx} item>
+                  <Chip
+                    key={idx}
+                    label={e}
+                    variant="outlined"
+                    sx={{color: "white", background: 'rgba(255, 255, 255, 0.1)'}}
+                  /></Grid>)
             })}
-          </Stack>
+          </Grid>
+          {/*</Stack>*/}
         </Stack>
-      </Stack>
-    )
+      </Stack>)
   }
 }
 

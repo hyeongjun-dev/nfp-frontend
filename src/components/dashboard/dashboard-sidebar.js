@@ -15,13 +15,20 @@ import StringHelper from "../../utils/StringHelper";
 import {ExternalLink} from "../../icons/external-link";
 import useScrollTracker from "../../utils/useScrollTracker";
 
-
 const LogoMark = () => {
   return (<Grid container sx={{flexDirection:'row', flex:1}} alignItems="center" columnSpacing={1}>
     <Grid item marginLeft={"0px"} marginTop={"2px"} >
       <img
         width={200}
         src="https://despread.s3.ap-northeast-2.amazonaws.com/logo/despread_studio_white_logo.png"
+        style={{
+          cursor: 'pointer',
+        }}
+        onClick={
+          () => {
+            window.location.href = `/home`;
+          }
+        }
       />
     </Grid>
   </Grid>)

@@ -1,0 +1,289 @@
+import {useRef, useState} from 'react';
+import PropTypes from 'prop-types';
+import {useTranslation} from 'react-i18next';
+import {Avatar, Badge, Box, ButtonBase, Grid, IconButton, Stack, Toolbar, Tooltip, useMediaQuery} from '@mui/material';
+import {styled} from '@mui/material/styles';
+import {AccountPopover} from './account-popover';
+import {ContactsPopover} from './contacts-popover';
+import {ContentSearchDialog} from './content-search-dialog';
+import {NotificationsPopover} from './notifications-popover';
+import {LanguagePopover} from './language-popover';
+import {Bell as BellIcon} from '../../icons/bell';
+import {UserCircle as UserCircleIcon} from '../../icons/user-circle';
+import {Search as SearchIcon} from '../../icons/search';
+import {Users as UsersIcon} from '../../icons/users';
+import {Connect} from "../../connect/connect";
+import SelectChainMenu from "../selectChainMenu";
+import {Menu as MenuIcon} from '../../icons/menu';
+
+
+const languages = {
+  en: '/static/icons/uk_flag.svg',
+  de: '/static/icons/de_flag.svg',
+  es: '/static/icons/es_flag.svg'
+};
+
+
+const LanguageButton = () => {
+  const anchorRef = useRef(null);
+  const {i18n} = useTranslation();
+  const [openPopover, setOpenPopover] = useState(false);
+
+  const handleOpenPopover = () => {
+    setOpenPopover(true);
+  };
+
+  const handleClosePopover = () => {
+    setOpenPopover(false);
+  };
+
+  return (
+    <>
+      <IconButton
+        onClick={handleOpenPopover}
+        ref={anchorRef}
+        sx={{ml: 1}}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            height: 20,
+            width: 20,
+            '& img': {
+              width: '100%'
+            }
+          }}
+        >
+          <img
+            alt=""
+            src={languages[i18n.language]}
+          />
+        </Box>
+      </IconButton>
+      <LanguagePopover
+        anchorEl={anchorRef.current}
+        onClose={handleClosePopover}
+        open={openPopover}
+      />
+    </>
+  );
+};
+
+const ContentSearchButton = () => {
+  const [openDialog, setOpenDialog] = useState(false);
+
+  const handleOpenSearchDialog = () => {
+    setOpenDialog(true);
+  };
+
+  const handleCloseSearchDialog = () => {
+    setOpenDialog(false);
+  };
+
+  return (
+    <>
+      <Tooltip title="Search">
+        <IconButton
+          onClick={handleOpenSearchDialog}
+          sx={{ml: 1}}
+        >
+          <SearchIcon fontSize="small"/>
+        </IconButton>
+      </Tooltip>
+      <ContentSearchDialog
+        onClose={handleCloseSearchDialog}
+        open={openDialog}
+      />
+    </>
+  );
+};
+
+const ContactsButton = () => {
+  const anchorRef = useRef(null);
+  const [openPopover, setOpenPopover] = useState(false);
+
+  const handleOpenPopover = () => {
+    setOpenPopover(true);
+  };
+
+  const handleClosePopover = () => {
+    setOpenPopover(false);
+  };
+
+  return (
+    <>
+      <Tooltip title="Contacts">
+        <IconButton
+          onClick={handleOpenPopover}
+          sx={{ml: 1}}
+          ref={anchorRef}
+        >
+          <UsersIcon fontSize="small"/>
+        </IconButton>
+      </Tooltip>
+      <ContactsPopover
+        anchorEl={anchorRef.current}
+        onClose={handleClosePopover}
+        open={openPopover}
+      />
+    </>
+  );
+};
+
+const NotificationsButton = () => {
+  const anchorRef = useRef(null);
+  const [unread, setUnread] = useState(0);
+  const [openPopover, setOpenPopover] = useState(false);
+  // Unread notifications should come from a context and be shared with both this component and
+  // notifications popover. To simplify the demo, we get it from the popover
+
+  const handleOpenPopover = () => {
+    setOpenPopover(true);
+  };
+
+  const handleClosePopover = () => {
+    setOpenPopover(false);
+  };
+
+  const handleUpdateUnread = (value) => {
+    setUnread(value);
+  };
+
+  return (
+    <>
+      <Tooltip title="Notifications">
+        <IconButton
+          ref={anchorRef}
+          sx={{ml: 1}}
+          onClick={handleOpenPopover}
+        >
+          <Badge
+            color="error"
+            badgeContent={unread}
+          >
+            <BellIcon fontSize="small"/>
+          </Badge>
+        </IconButton>
+      </Tooltip>
+      <NotificationsPopover
+        anchorEl={anchorRef.current}
+        onClose={handleClosePopover}
+        onUpdateUnread={handleUpdateUnread}
+        open={openPopover}
+      />
+    </>
+  );
+};
+
+const AccountButton = () => {
+  const anchorRef = useRef(null);
+  const [openPopover, setOpenPopover] = useState(false);
+  // To get the user from the authContext, you can use
+  // `const { user } = useAuth();`
+  const user = {
+    avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
+    name: 'Anika Visser'
+  };
+
+  const handleOpenPopover = () => {
+    setOpenPopover(true);
+  };
+
+  const handleClosePopover = () => {
+    setOpenPopover(false);
+  };
+
+  return (
+    <>
+      <Box
+        component={ButtonBase}
+        onClick={handleOpenPopover}
+        ref={anchorRef}
+        sx={{
+          alignItems: 'center',
+          display: 'flex',
+          ml: 2
+        }}
+      >
+        <Avatar
+          sx={{
+            height: 40,
+            width: 40
+          }}
+          src={user.avatar}
+        >
+          <UserCircleIcon fontSize="small"/>
+        </Avatar>
+      </Box>
+      <AccountPopover
+        anchorEl={anchorRef.current}
+        onClose={handleClosePopover}
+        open={openPopover}
+      />
+    </>
+  );
+};
+
+const LogoMark = ({width=200, marginLeft="4px", marginTop="6px"}) => {
+  return (<Grid container sx={{flexDirection:'row'}} alignItems="center" columnSpacing={1}>
+    <Grid item marginLeft={marginLeft} marginTop={marginTop} >
+      <img
+        onClick={
+          () => {
+            window.location.href = `/home`;
+          }
+        }
+        width={width}
+        src="https://despread.s3.ap-northeast-2.amazonaws.com/logo/despread_studio_white_logo.png"
+        style={{
+          cursor: 'pointer',
+        }}
+      />
+    </Grid>
+  </Grid>)
+}
+
+export const DashboardNavbar = (props) => {
+  const {onOpenSidebar, ...other} = props;
+  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'), {
+    noSsr: true
+  });
+  const mdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
+  const smUp = useMediaQuery((theme) => theme.breakpoints.up('sm'));
+
+
+
+  return (
+    <>
+      <Box
+        sx={{
+          background: 'linear-gradient(to right bottom, #232a3e, #2c2d5b)',
+          zIndex: 10,
+        }}
+        {...other}>
+        <Toolbar
+          disableGutters
+          sx={{
+            minHeight: 64,
+            left: 0,
+            px: 2
+          }}
+        >
+          <Stack direction={"row"} justifyContent={"space-between"} sx={{display: "flex", flex:1}}>
+            <Stack direction={"row"}>
+              {lgUp ? <LogoMark marginLeft={"24px"}></LogoMark> : <div></div>}
+              {lgUp ? <div/> : (
+                <LogoMark width={130}></LogoMark>
+              )}
+            </Stack>
+          </Stack>
+        </Toolbar>
+      </Box>
+    </>
+  );
+};
+
+
+DashboardNavbar.propTypes = {
+  onOpenSidebar: PropTypes.func
+};

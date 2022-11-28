@@ -19,7 +19,7 @@ const ChainSelectButton = ({src, chainName, color="white", onClick=null, active=
       return 64
     if (smUp)
       return 64
-    return 64
+    return 32
   };
 
   const getIconStyle = () => {
@@ -89,6 +89,26 @@ const Home = () => {
       return 10
     return 10
   };
+
+  const getMainTitleVariant = () => {
+    if (lgUp)
+      return "h1"
+    if (mdUp)
+      return "h1"
+    if (smUp)
+      return "h3"
+    return "h4"
+  }
+
+  const getVersionTitleVariant = () => {
+    if (lgUp)
+      return "h5"
+    if (mdUp)
+      return "h5"
+    if (smUp)
+      return "h6"
+    return "subtitle2"
+  }
 
   const particlesInit = useCallback(async engine => {
     // console.log(engine);
@@ -188,7 +208,7 @@ const Home = () => {
                       WebkitBackgroundClip: "text",
                       WebkitTextFillColor: "transparent",
                     }}
-                    variant={"h1"}>DeSpread
+                    variant={getMainTitleVariant()}>DeSpread
                   </Typography>
                 </Stack>
               </Stack>
@@ -200,7 +220,7 @@ const Home = () => {
                     WebkitTextFillColor: "transparent",
                     marginTop: 0
                   }}
-                  variant={"h1"} >Multi-chain Dashboard</Typography>
+                  variant={getMainTitleVariant()} >Multi-chain Dashboard</Typography>
                 <Typography
                   style={{
                     // color:"white"
@@ -209,7 +229,7 @@ const Home = () => {
                     WebkitTextFillColor: "transparent",
                     marginLeft: 1,
                   }}
-                  variant={"h5"}>beta
+                  variant={getVersionTitleVariant()}>beta
                 </Typography>
 
               </Stack>
