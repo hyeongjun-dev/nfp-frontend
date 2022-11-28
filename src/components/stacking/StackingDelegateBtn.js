@@ -18,7 +18,7 @@ const linkButton = (txId) =>{
   let url = `https://explorer.stacks.co/txid/${txId}?chain=mainnet`
   return (
     <Button variant={"text"} color={"primary"} size={"small"}>
-      <a href={url} target={"_blank"} style={{textDecoration: "none", color: "#0088ff"}}>View</a>
+      <a href={url} rel="noreferrer" target={"_blank"} style={{textDecoration: "none", color: "#0088ff"}}>View</a>
     </Button>
   )
 }

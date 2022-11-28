@@ -184,7 +184,7 @@ export const AccountVaultTokenList = (props) => {
                                             }}
                                             ml={2}
                                         >
-                                            <a href={vault.url} target='_blank'>
+                                            <a href={vault.url} rel="noreferrer" target='_blank'>
                                                 <img
                                                     style={{display: 'inline-block', verticalAlign: 'middle'}}
                                                     width={24}

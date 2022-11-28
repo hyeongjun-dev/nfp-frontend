@@ -9,6 +9,7 @@ import {
   TextField,
   Typography
 } from '@mui/material';
+import Image from 'next/image'
 
 export const Form15 = () => (
   <Box
@@ -46,7 +47,7 @@ export const Form15 = () => (
                 Log in on the internal platform
               </Typography>
             </div>
-            <img
+            <Image
               alt="Amplify"
               src="/static/icons/amplify.svg"
               style={{

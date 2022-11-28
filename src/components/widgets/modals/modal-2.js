@@ -1,4 +1,5 @@
 import { Box, ListItemIcon, ListItemText, MenuItem, Paper, Typography } from '@mui/material';
+import Image from 'next/image'
 
 const languageOptions = [
   {
@@ -43,7 +44,7 @@ export const Modal2 = () => (
                 }
               }}
             >
-              <img
+              <Image
                 alt={languageOptions[language].label}
                 src={languageOptions[language].icon}
               />

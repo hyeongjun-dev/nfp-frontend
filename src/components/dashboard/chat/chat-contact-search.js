@@ -15,7 +15,7 @@ import {
 import { Search as SearchIcon } from '../../../icons/search';
 import { Tip } from '../../tip';
 
-export const ChatContactSearch = forwardRef((props, ref) => {
+export const ChatContactSearch = forwardRef<HTMLAreaElement>((props, ref) => {
   const { isFocused, onChange, onClickAway, onFocus, onSelect, query, results, ...other } = props;
 
   const handleSelect = (result) => {

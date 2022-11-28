@@ -18,7 +18,7 @@ const cardSelector = (state, cardId) => {
   };
 };
 
-export const KanbanCard = forwardRef((props, ref) => {
+export const KanbanCard = forwardRef<HTMLAreaElement>((props, ref) => {
   const { cardId, dragging, column, ...other } = props;
   const card = useSelector((state) => cardSelector(state, cardId));
   const [open, setOpen] = useState(false);

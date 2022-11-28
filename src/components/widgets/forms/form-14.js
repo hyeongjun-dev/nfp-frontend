@@ -15,6 +15,8 @@ import {
   TextField,
   Typography
 } from '@mui/material';
+import Image from 'next/image';
+
 
 const products = [
   {
@@ -73,7 +75,7 @@ export const Form14 = () => (
                     }
                   }}
                 >
-                  <img
+                  <Image
                     alt={product.name}
                     src={product.image}
                   />

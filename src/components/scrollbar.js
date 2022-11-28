@@ -5,7 +5,7 @@ import { styled } from '@mui/material/styles';
 
 const ScrollbarRoot = styled(SimpleBar)``;
 
-export const Scrollbar = forwardRef((props, ref) => {
+export const Scrollbar = forwardRef<SimpleBar>((props, ref) => {
   return (
     <ScrollbarRoot
       ref={ref}

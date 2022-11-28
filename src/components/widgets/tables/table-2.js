@@ -1,4 +1,4 @@
-import { format, subDays, subHours, subMinutes, subSeconds } from 'date-fns';
+import {format, subDays, subHours, subMinutes, subSeconds} from 'date-fns';
 import numeral from 'numeral';
 import {
   Avatar,
@@ -17,9 +17,10 @@ import {
   Tooltip,
   Typography
 } from '@mui/material';
-import { Scrollbar } from '../../scrollbar';
-import { ChevronRight as ChevronRightIcon } from '../../../icons/chevron-right';
-import { DotsHorizontal as DotsHorizontalIcon } from '../../../icons/dots-horizontal';
+import {Scrollbar} from '../../scrollbar';
+import {ChevronRight as ChevronRightIcon} from '../../../icons/chevron-right';
+import {DotsHorizontal as DotsHorizontalIcon} from '../../../icons/dots-horizontal';
+import Image from 'next/image';
 
 const now = new Date();
 
@@ -189,7 +190,7 @@ export const Table2 = () => (
                         }
                       }}
                     >
-                      <img
+                      <Image
                         alt="Tech"
                         key={technology}
                         src={technologyMap[technology]}

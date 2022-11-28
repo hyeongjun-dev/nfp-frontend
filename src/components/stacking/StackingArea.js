@@ -18,7 +18,7 @@ import {useAtomValue} from "jotai/utils";
 import {useStxAddresses} from "../../connect/hooks";
 import {useSelector} from "../../store";
 import {SeverityPill} from "../severity-pill";
-
+import Image from 'next/image'
 
 
 export const StackingArea = (props) => {
@@ -70,8 +70,8 @@ export const StackingArea = (props) => {
               <Typography variant="h6" color={"white"}>
                 Delegate Stacks
               </Typography>
-              <a href={"https://stacking.club/reward-address/12DQ3u4JdnGf6QZF9qAd7z9zUo7NnXpXFg"} target={"_blank"}>
-                <img style={{width: "20px", height: "20px"}} src={"/pancake.png"}/>
+              <a href={"https://stacking.club/reward-address/12DQ3u4JdnGf6QZF9qAd7z9zUo7NnXpXFg"} rel="noreferrer" target={"_blank"}>
+                <Image width={"20px"} height={"20px"} src={"/pancake.png"}/>
               </a>
             </Box>
           )}
@@ -162,13 +162,17 @@ export const StackingArea = (props) => {
                       color="neutral.400">
             FAQ: <a style={{textDecoration: "none", color: "blue"}}
                     href={"https://nfpstudio.medium.com/exploring-nfp-studio-stacking-service-1c98a72092df"}
+                    rel="noreferrer"
                     target={"_blank"}>English</a> | <a style={{textDecoration: "none", color: "blue"}}
                                                        href={"https://nfpstudio.medium.com/nfp-%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4-%EC%8A%A4%ED%83%9D%ED%82%B9-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0-5697a11ff6e7"}
+                                                       rel="noreferrer"
                                                        target={"_blank"}>Korean</a>
           </Typography>
           <Typography mt={1} sx={{textAlign: "center", fontSize: "11px"}} id="non-linear-slider"
                       color="neutral.400">
-            <a href={"https://stackskorea.co/"} style={{textDecoration: "none", color: "#9aa3ae"}} target={"_blank"}>Trusted
+            <a href={"https://stackskorea.co/"} style={{textDecoration: "none", color: "#9aa3ae"}}
+               rel="noreferrer"
+               target={"_blank"}>Trusted
               By Stacks Korea.</a>
           </Typography>
         </CardContent>

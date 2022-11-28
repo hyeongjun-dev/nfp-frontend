@@ -12,7 +12,8 @@ import {
   Tooltip,
   Typography
 } from '@mui/material';
-import { InformationCircleOutlined as InformationCircleOutlinedIcon } from '../../../icons/information-circle-outlined';
+import {InformationCircleOutlined as InformationCircleOutlinedIcon} from '../../../icons/information-circle-outlined';
+import Image from 'next/image'
 
 const countries = [
   {
@@ -120,7 +121,7 @@ export const Table8 = () => (
                       }
                     }}
                   >
-                    <img
+                    <Image
                       alt={country.name}
                       src={country.flag}
                     />

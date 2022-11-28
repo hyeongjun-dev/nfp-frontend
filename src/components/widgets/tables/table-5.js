@@ -1,5 +1,5 @@
 import numeral from 'numeral';
-import { subDays, subHours } from 'date-fns';
+import {subDays, subHours} from 'date-fns';
 import {
   Box,
   Card,
@@ -17,12 +17,13 @@ import {
   TableRow,
   TextField
 } from '@mui/material';
-import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
-import { Image as ImageIcon } from '../../../icons/image';
-import { PencilAlt as PencilAltIcon } from '../../../icons/pencil-alt';
-import { Search as SearchIcon } from '../../../icons/search';
-import { Scrollbar } from '../../scrollbar';
-import { SeverityPill } from '../../severity-pill';
+import {ArrowRight as ArrowRightIcon} from '../../../icons/arrow-right';
+import {Image as ImageIcon} from '../../../icons/image';
+import {PencilAlt as PencilAltIcon} from '../../../icons/pencil-alt';
+import {Search as SearchIcon} from '../../../icons/search';
+import {Scrollbar} from '../../scrollbar';
+import {SeverityPill} from '../../severity-pill';
+import Image from 'next/image';
 
 const now = new Date();
 
@@ -355,7 +356,7 @@ export const Table5 = () => (
                             }
                           }}
                         >
-                          <img
+                          <Image
                             alt="Product"
                             src={product.image}
                           />

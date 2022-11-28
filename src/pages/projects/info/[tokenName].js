@@ -71,7 +71,7 @@ const Header = ({logoImg, title, description, tags}) => {
           <Grid container direction={"row"} spacing={theme.spacing(1)} sx={{marginTop: theme.spacing(2)}}>
             {tags?.map((e, idx) => {
               return (
-                <Grid item>
+                <Grid key={idx} item>
                 <Chip
                 key={idx}
                 label={e}

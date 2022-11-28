@@ -173,7 +173,7 @@ export const AccountFungibleTokenList = (props) => {
                       }}
                       ml={2}
                     >
-                      <a href={token.url} target='_blank'>
+                      <a href={token.url} rel="noreferrer" target='_blank'>
                         <img
                           style={{display: 'inline-block', verticalAlign: 'middle'}}
                           width={24}
