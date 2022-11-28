@@ -247,7 +247,18 @@ const Home = () => {
           </Stack>
         </Stack>
         <Stack sx={{flex:1, marginTop: -10}} flexDirection={"column"} alignItems={"center"}>
-          <Typography sx={{}} color={"white"} variant={"subtitle1"}>Powered by DeSpread</Typography>
+          {
+            smUp ?
+              (
+              <Typography color={"white"} variant={"subtitle1"}>© 2022, DESPREAD LABS. ALL RIGHTS RESERVED.</Typography>
+              ) :
+              (
+                <Stack direction={"column"} sx={{flex:1}} justifyContent={"center"}>
+                  <Typography color={"white"} variant={"body2"}>© 2022, DESPREAD LABS</Typography>
+                  <Typography color={"white"} variant={"body2"} align={"center"}>ALL RIGHTS RESERVED.</Typography>
+                </Stack>
+              )
+          }
         </Stack>
       </Box>
     </>

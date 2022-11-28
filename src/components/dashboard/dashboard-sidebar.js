@@ -14,6 +14,7 @@ import {useConnect} from "../../connect/auth";
 import StringHelper from "../../utils/StringHelper";
 import {ExternalLink} from "../../icons/external-link";
 import useScrollTracker from "../../utils/useScrollTracker";
+import {appConfig} from "../../config";
 
 const LogoMark = () => {
   return (<Grid container sx={{flexDirection:'row', flex:1}} alignItems="center" columnSpacing={1}>
@@ -254,7 +255,7 @@ export const DashboardSidebar = (props) => {
             />
             <Box sx={{ flexGrow: 1, p: 2 }}>
               <NextLink
-                href="https://twitter.com/NFP2021"
+                href={appConfig.twitterLinkOfDeSpread}
                 passHref
               >
                 <Link target="_blank">

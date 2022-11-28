@@ -25,6 +25,7 @@ import {UserCircle as UserCircleIcon} from '../../icons/user-circle';
 import {Search as SearchIcon} from '../../icons/search';
 import {Users as UsersIcon} from '../../icons/users';
 import NextLink from "next/link";
+import {appConfig} from "../../config"
 
 
 const languages = {
@@ -284,7 +285,7 @@ export const DashboardNavbar = (props) => {
             <Stack>
               <Box sx={{ flexGrow: 1, marginTop: "2px" }}>
                 <NextLink
-                  href="https://twitter.com/NFP2021"
+                  href={appConfig.twitterLinkOfDeSpread}
                   passHref
                 >
                   <Link target="_blank">
