@@ -54,11 +54,11 @@ class CustomDocument extends Document {
           <meta property="og:title" content="NFP STUDIO"/>
           <meta property="og:description" content="Build Tools for Stacks Community."/>
           <meta property="og:url" content="https://app.nfpstudio.io"/>
-          <meta property="og:image" content="https://nfpstudio.io/resource/og_image/og_image.png"/>
+          <meta property="og:image" content="https://nfp-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/despread_studio.png"/>
           <meta name="twitter:card" content="summary_large_image"/>
           <meta name="twitter:site" content="@CryptoDevGang"/>
           <meta name="twitter:creator" content="@CryptoDevGang"/>
-          <meta name="twitter:image" content="https://nfpstudio.io/resource/og_image/og_image.png"/>
+          <meta name="twitter:image" content="https://nfp-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/despread_studio.png"/>
         </Head>
         <body>
         <Main />
