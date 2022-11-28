@@ -18,7 +18,8 @@ const cardSelector = (state, cardId) => {
   };
 };
 
-export const KanbanCard = forwardRef<HTMLAreaElement>((props, ref) => {
+// eslint-disable-next-line react/display-name
+export const KanbanCard = forwardRef((props, ref) => {
   const { cardId, dragging, column, ...other } = props;
   const card = useSelector((state) => cardSelector(state, cardId));
   const [open, setOpen] = useState(false);
