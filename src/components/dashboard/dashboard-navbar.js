@@ -1,18 +1,8 @@
 import {useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {useTranslation} from 'react-i18next';
-import {
-  AppBar,
-  Avatar,
-  Badge,
-  Box, Button,
-  ButtonBase, Grow,
-  IconButton,
-  Toolbar,
-  Tooltip, Typography
-} from '@mui/material';
+import {Avatar, Badge, Box, ButtonBase, Grid, IconButton, Stack, Toolbar, Tooltip, useMediaQuery} from '@mui/material';
 import {styled} from '@mui/material/styles';
-import {Menu as MenuIcon} from '../../icons/menu';
 import {AccountPopover} from './account-popover';
 import {ContactsPopover} from './contacts-popover';
 import {ContentSearchDialog} from './content-search-dialog';
@@ -22,10 +12,10 @@ import {Bell as BellIcon} from '../../icons/bell';
 import {UserCircle as UserCircleIcon} from '../../icons/user-circle';
 import {Search as SearchIcon} from '../../icons/search';
 import {Users as UsersIcon} from '../../icons/users';
-import {Selector as SelectorIcon} from "../../icons/selector";
 import {Connect} from "../../connect/connect";
-import {useSelector} from "../../store";
-import {useConnect} from "../../connect/auth";
+import SelectChainMenu from "../selectChainMenu";
+import {Menu as MenuIcon} from '../../icons/menu';
+
 
 const languages = {
   en: '/static/icons/uk_flag.svg',
@@ -33,20 +23,6 @@ const languages = {
   es: '/static/icons/es_flag.svg'
 };
 
-const DashboardNavbarRoot = styled(AppBar)(({theme}) => ({
-  backgroundColor: theme.palette.background.paper,
-  ...(theme.palette.mode === 'light'
-    ? {
-      boxShadow: theme.shadows[3]
-    }
-    : {
-      backgroundColor: theme.palette.background.paper,
-      borderBottomColor: theme.palette.divider,
-      borderBottomStyle: 'solid',
-      borderBottomWidth: 1,
-      boxShadow: 'none'
-    })
-}));
 
 const LanguageButton = () => {
   const anchorRef = useRef(null);
@@ -248,21 +224,37 @@ const AccountButton = () => {
   );
 };
 
+const LogoMark = () => {
+  return (<Grid container sx={{flexDirection:'row'}} alignItems="center" columnSpacing={1}>
+    <Grid item marginLeft={"24px"} marginTop={"6px"} >
+      <img
+        onClick={
+          () => {
+            window.location.href = `/home`;
+          }
+        }
+        width={200}
+        src="https://despread.s3.ap-northeast-2.amazonaws.com/logo/despread_studio_white_logo.png"
+        style={{
+          cursor: 'pointer',
+        }}
+      />
+    </Grid>
+  </Grid>)
+}
+
 export const DashboardNavbar = (props) => {
   const {onOpenSidebar, ...other} = props;
-  const {connected} = useSelector((state) => state.connect);
-  const {ownerStxAddress} = useConnect();
+  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'), {
+    noSsr: true
+  });
 
   return (
     <>
-      <DashboardNavbarRoot
+      <Box
         sx={{
-          left: {
-            lg: 280
-          },
-          width: {
-            lg: 'calc(100% - 280px)'
-          }
+          background: 'linear-gradient(to right bottom, #232a3e, #2c2d5b)',
+          zIndex: 10,
         }}
         {...other}>
         <Toolbar
@@ -273,52 +265,39 @@ export const DashboardNavbar = (props) => {
             px: 2
           }}
         >
-          <IconButton
-            onClick={onOpenSidebar}
-            sx={{
-              display: {
-                xs: 'inline-flex',
-                lg: 'none'
-              }
-            }}
-          >
-            <MenuIcon fontSize="small"/>
-          </IconButton>
-          <Box sx={{flexGrow: 1}}/>
-          {/*<LanguageButton />*/}
-          {/*<ContentSearchButton />*/}
-          {/*<ContactsButton />*/}
-          {/*<NotificationsButton />*/}
-          {/*<AccountButton />*/}
-          <Grow in={connected}>
-            <Box
-              sx={{
-                alignItems: 'center',
-                backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                display: 'flex',
-                justifyContent: 'space-between',
-                px: 3,
-                py: '11px',
-                borderRadius: 1
-              }}
-            >
-              <div>
-                <Typography
-                  color="inherit"
-                  variant="body2"
+          <Stack direction={"row"} justifyContent={"space-between"} sx={{display: "flex", flex:1}}>
+            <Stack direction={"row"}>
+              {lgUp ? <LogoMark></LogoMark> : <div></div>}
+              {lgUp ? <div/> : (
+                <IconButton
+                  onClick={onOpenSidebar}
+                  sx={{
+                    display: {
+                      xs: 'inline-flex',
+                      lg: 'none'
+                    },
+                    color:"white"
+                  }}
                 >
-                  Connected: {connected ? ownerStxAddress : ''}
-                </Typography>
-              </div>
-            </Box>
-          </Grow>
-          {' '}
-          <Connect/>
+                  <MenuIcon fontSize="medium"/>
+                </IconButton>
+              )}
+            </Stack>
+            {
+              props.hasConnect ? (
+                <Stack direction={"row"}>
+                  <SelectChainMenu />
+                  <Connect/>
+                </Stack>
+              ) : <></>
+            }
+          </Stack>
         </Toolbar>
-      </DashboardNavbarRoot>
+      </Box>
     </>
   );
 };
+
 
 DashboardNavbar.propTypes = {
   onOpenSidebar: PropTypes.func

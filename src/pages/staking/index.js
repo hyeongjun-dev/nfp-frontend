@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import Head from 'next/head';
-import {Box, Grid} from '@mui/material';
+import {Box, Container, Grid} from '@mui/material';
 import {DashboardLayout} from '../../components/dashboard/dashboard-layout';
 import {gtm} from '../../lib/gtm';
 import {StackingTitle} from "../../components/stacking/StackingTitle";
@@ -68,27 +68,29 @@ const Stacking = () => {
     <>
       <Head>
         <title>
-          Stacking
+          Staking
         </title>
       </Head>
       <Box
         sx={{
-          backgroundColor: 'background.default',
-          p: 3
+          width: "100%",
+          flexGroxw: 1,
+          py: 7,
         }}
       >
-
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={8}>
-            <StackingTitle apy={stackingInfo.apy}/>
-            <StackingCurrent setIsStacked={setIsStacked}/>
-            <StackingActivities currentCycle={stackingInfo.currentCycle}/>
+        <Container maxWidth="lg">
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={8}>
+              <StackingTitle apy={stackingInfo.apy}/>
+              <StackingCurrent setIsStacked={setIsStacked}/>
+              <StackingActivities currentCycle={stackingInfo.currentCycle}/>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <StackingInfo stackingInfo={stackingInfo}/>
+              <StackingArea isStacked={isStacked} stackingInfo={stackingInfo}/>
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={4}>
-            <StackingInfo stackingInfo={stackingInfo}/>
-            <StackingArea isStacked={isStacked} stackingInfo={stackingInfo}/>
-          </Grid>
-        </Grid>
+        </Container>
       </Box>
     </>
   );

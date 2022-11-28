@@ -1,7 +1,9 @@
 import Chart from "react-apexcharts";
 import {Box} from "@mui/material";
+import {useTheme} from "@mui/material/styles";
 
-export const ProjectChart2 = ({series}) => {
+export const ProjectChart2 = ({series, style}) => {
+  const theme = useTheme();
 
   const options = {
     options: {
@@ -19,6 +21,7 @@ export const ProjectChart2 = ({series}) => {
           autoScaleYaxis: true,
         }
       },
+      colors: [theme.palette.primary.main, '#7783DB'],
       dataLabels: {
         enabled: false
       },
@@ -37,11 +40,38 @@ export const ProjectChart2 = ({series}) => {
       },
       yaxis: {
         title: {
-          text: 'Price'
+          text: 'Price',
+          style: {
+            fontSize: '12px',
+            color:  'white',
+            fontFamily: 'Helvetica, Arial, sans-serif',
+            fontWeight: 400,
+            cssClass: 'apexcharts-xaxis-label',
+          },
+        },
+        labels: {
+          show: true,
+          style: {
+            colors: "white",
+            fontSize: '12px',
+            fontFamily: 'Helvetica, Arial, sans-serif',
+            fontWeight: 400,
+            cssClass: 'apexcharts-xaxis-label',
+          },
         },
       },
       xaxis: {
         type: 'datetime',
+        labels: {
+          show: true,
+          style: {
+            colors: "white",
+            fontSize: '12px',
+            fontFamily: 'Helvetica, Arial, sans-serif',
+            fontWeight: 400,
+            cssClass: 'apexcharts-xaxis-label',
+          },
+        },
       },
       tooltip: {
         shared: false,
@@ -51,18 +81,20 @@ export const ProjectChart2 = ({series}) => {
         y: {
           formatter: function (val) {
             return val
-          }
+          },
         }
       }
     },
   };
 
   return (
-    <Box sx={{display: "flex", justifyContent: "center"}}>
-      <Box sx={{width: "95%",}}>
-        <Chart options={options.options} series={series} type="area" width={"95%"} height={300}/>
+    <div style={style}>
+      <Box sx={{display: "flex", flex:1, justifyContent: "center"}}>
+        <Box sx={{width: "100%",}}>
+          <Chart options={options.options} series={series} type="area" width={"100%"} height={300}/>
+        </Box>
       </Box>
-    </Box>
+    </div>
   )
 };
 

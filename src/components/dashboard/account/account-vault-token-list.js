@@ -75,10 +75,17 @@ export const AccountVaultTokenList = (props) => {
     };
 
     return (
-        <Card {...props}>
+        <Card {...props}
+          sx={{background:'rgba(255, 255, 255, 0.1)',
+              borderColor: '#54576a',
+              borderWidth: 1,
+              borderStyle: 'solid'
+          }}
+        >
             <CardHeader
-                avatar={<CogIcon/>}
-                title="Vaults"
+                avatar={<CogIcon sx={{color:"white"}}/>}
+                title={<Typography variant="h6" color="white">Vaults</Typography>}
+
                 // action={(
                 //     <Tooltip title="Vault is not added to the total value.">
                 //         <InformationCircleOutlinedIcon sx={{color: 'action.active'}}/>
@@ -90,7 +97,14 @@ export const AccountVaultTokenList = (props) => {
                     <Skeleton variant="rectangular" width={"100%"} height={100}/>
                     :
                     <Table>
-                        <TableHead>
+                        <TableHead
+                          sx={{background:'rgba(255, 255, 255, 0.1)',
+                              borderColor: '#54576a',
+                              borderWidth: 1,
+                              borderStyle: 'solid',
+                              mt: 4
+                          }}
+                        >
                             <TableRow>
                                 <TableCell>
                                     <TableSortLabel
@@ -98,7 +112,7 @@ export const AccountVaultTokenList = (props) => {
                                         direction={protocolDirection}
                                         onClick={() => handleSortByProtocol('protocol')}
                                     >
-                                        <Box ml={2}>
+                                        <Box ml={2} color={"white"}>
                                             Protocol
                                         </Box>
                                     </TableSortLabel>
@@ -109,7 +123,9 @@ export const AccountVaultTokenList = (props) => {
                                         direction={typeDirection}
                                         onClick={() => handleSortByType('type')}
                                     >
-                                        Type
+                                        <Box color={"white"}>
+                                            Type
+                                        </Box>
                                     </TableSortLabel>
                                 </TableCell>
                                 <TableCell>
@@ -118,7 +134,9 @@ export const AccountVaultTokenList = (props) => {
                                         direction={tokenDirection}
                                         onClick={() => handleSortByToken('token')}
                                     >
-                                        Token
+                                        <Box color={"white"}>
+                                            Token
+                                        </Box>
                                     </TableSortLabel>
                                 </TableCell>
                                 <TableCell>
@@ -127,7 +145,9 @@ export const AccountVaultTokenList = (props) => {
                                         direction={amountDirection}
                                         onClick={() => handleSortByAmount('amount')}
                                     >
-                                        Amount
+                                        <Box color={"white"}>
+                                            Amount
+                                        </Box>
                                     </TableSortLabel>
                                 </TableCell>
                                 <TableCell>
@@ -136,7 +156,9 @@ export const AccountVaultTokenList = (props) => {
                                         direction={valueDirection}
                                         onClick={() => handleSortByValue('value')}
                                     >
-                                        Value
+                                        <Box color={"white"}>
+                                            Value
+                                        </Box>
                                     </TableSortLabel>
                                 </TableCell>
                             </TableRow>
@@ -148,7 +170,10 @@ export const AccountVaultTokenList = (props) => {
                                     sx={{
                                         '&:last-child td': {
                                             border: 0
-                                        }
+                                        },
+                                        "&:hover": {
+                                            backgroundColor: "#5149e5 !important"
+                                        },
                                     }}
                                 >
                                     <TableCell width="25%">
@@ -171,27 +196,28 @@ export const AccountVaultTokenList = (props) => {
                                             <Typography
                                                 sx={{ml: 2}}
                                                 variant="subtitle2"
+                                                color={"white"}
                                             >{vault.protocol}
                                             </Typography>
                                         </Box>
                                     </TableCell>
                                     <TableCell width="25%">
-                                        <Typography variant="subtitle2">
+                                        <Typography variant="subtitle2" color={"white"}>
                                             {vault.type}
                                         </Typography>
                                     </TableCell>
                                     <TableCell width="20%">
-                                        <Typography variant="subtitle2">
+                                        <Typography variant="subtitle2" color={"white"}>
                                             {vault.token}
                                         </Typography>
                                     </TableCell>
                                     <TableCell width="15%">
-                                        <Typography variant="subtitle2">
+                                        <Typography variant="subtitle2" color={"white"}>
                                             {asNumFormat(vault.amount)}
                                         </Typography>
                                     </TableCell>
                                     <TableCell width="15%">
-                                        <Typography variant="subtitle2">
+                                        <Typography variant="subtitle2" color={"white"}>
                                             {asDollarFormat(vault.value)}
                                         </Typography>
                                     </TableCell>

@@ -11,10 +11,10 @@ import {
   Chip,
   Container,
   Divider,
-  Grid,
+  Grid, InputAdornment,
   Link,
   Stack,
-  Typography
+  Typography, useMediaQuery
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import {DashboardLayout} from '../../../components/dashboard/dashboard-layout';
@@ -42,58 +42,80 @@ import {
 } from "../../../components/dashboard/conent-share-dialog";
 import StringHelper from "../../../utils/StringHelper";
 import {apiConfig} from "../../../config";
+import {Search as SearchIcon} from "../../../icons/search";
 
 const Header = ({logoImg, title, description, tags}) => {
   const theme = useTheme();
-  return (
-    <Grid container direction="row" spacing={theme.spacing(1)}>
-      <Grid
-        item
-        container
-        sm={2}
-        md={2}
-        direction={'column'}
-        alignItems="center"
-        justifyContent={"start"}
-      >
-        <Grid item sx={{backgroundColor:"transparent", marginTop: theme.spacing(1)}}>
-          <Typography>
-            <Avatar
-              src={logoImg}
-              sx={{
-                background: 'transparent',
-                width: 100,
-                height: 100,
-              }}
-              variant="rounded"
-            >
-            </Avatar>
+  const mdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
+
+  if (mdUp) {
+    return (
+      <Stack direction={"row"} style={{background: "transparent", flex:1}} spacing={theme.spacing(4)}>
+        <img
+          width={100}
+          height={100}
+          src={logoImg}
+          style={{marginTop: 4}}
+        />
+        <Stack>
+          <Typography variant="h6" align={"left"} color={"white"}>
+            {title}
           </Typography>
-        </Grid>
-      </Grid>
-      <Grid item sm={9} md={9} sx={{marginLeft:theme.spacing(2)}}>
-        <Typography variant="h6" align={"left"}>
-          {title}
-        </Typography>
-        <Typography
-          sx={{ mt: 1 }}
-          variant="body2"
-        >
-          {description}
-        </Typography>
-        <Stack direction={"row"} sx={{marginTop:theme.spacing(2)}} spacing={theme.spacing(1)}>
-          {tags?.map((e, idx) => {
-            return (<Chip
-              key={idx}
-              label={e}
-              variant="outlined"
-              sx={{color:grey[600]}}
-            />)
-          })}
+          <Typography
+            sx={{mt: 1}}
+            variant="body2"
+            color={"white"}
+          >
+            {description}
+          </Typography>
+          <Grid container direction={"row"} spacing={theme.spacing(1)} sx={{marginTop: theme.spacing(2)}}>
+            {tags?.map((e, idx) => {
+              return (
+                <Grid item>
+                <Chip
+                key={idx}
+                label={e}
+                variant="outlined"
+                sx={{color: "white", background: 'rgba(255, 255, 255, 0.1)'}}
+              /></Grid>)
+            })}
+          </Grid>
+          {/*</Stack>*/}
         </Stack>
-      </Grid>
-    </Grid>
-  )
+      </Stack>)
+  } else {
+    return (
+      <Stack direction={"column"} style={{background: "transparent"}} alignItems={"center"} spacing={theme.spacing(4)}>
+        <img
+          width={100}
+          height={100}
+          src={logoImg}
+        />
+        <Stack>
+          <Typography variant="h6" align={"left"} color={"white"}>
+            {title}
+          </Typography>
+          <Typography
+            sx={{mt: 1}}
+            variant="body2"
+            color={"white"}
+          >
+            {description}
+          </Typography>
+          <Stack direction={"row"} sx={{marginTop: theme.spacing(2)}} spacing={theme.spacing(1)}>
+            {tags?.map((e, idx) => {
+              return (<Chip
+                key={idx}
+                label={e}
+                variant="outlined"
+                sx={{color: "white", background: 'rgba(255, 255, 255, 0.1)'}}
+              />)
+            })}
+          </Stack>
+        </Stack>
+      </Stack>
+    )
+  }
 }
 
 const ContentShareButton = () => {
@@ -109,7 +131,8 @@ const ContentShareButton = () => {
 
   return (
     <>
-      <Button variant="outlined" startIcon={<Share />} sx={{borderRadius:4}}
+      <Button variant="contained" startIcon={<Share />} sx={{borderRadius:4, color:"white"}}
+              color="primary"
               onClick={handleOpenSearchDialog}>
         Share
       </Button>
@@ -122,6 +145,7 @@ const ContentShareButton = () => {
 };
 
 const CompanySummary = ({links}) => {
+  const theme = useTheme();
 
   const linkIconKeys = [
     "twitter", "reddit", "discord", "github", "telegram",
@@ -148,7 +172,11 @@ const CompanySummary = ({links}) => {
     if (StringHelper.isEqualTrimAndIgnoreCase(keyName, 'WEBSITE')) return null;
 
     return (<Button
-      variant="text" size={"small"} sx={{borderRadius:4}}
+      variant="text" size={"small"} sx={{borderRadius:4, color:"white",
+      '&:hover': {
+        backgroundColor: 'rgba(255,255,255, 0.08)'
+      },
+      }}
       onClick={(e)=>{
         e.preventDefault();
         window.open(href, "_blank");
@@ -159,7 +187,14 @@ const CompanySummary = ({links}) => {
   };
 
   return (
-    <Card>
+    <Card
+      sx={{background:'rgba(255, 255, 255, 0.1)',
+        borderColor: '#54576a',
+        borderWidth: 1,
+        borderStyle: 'solid',
+        mb: 2
+      }}
+    >
       <CardContent>
         <Stack
           justifyContent="flex-start"
@@ -286,46 +321,64 @@ const CompanyDetails = () => {
           {projectInfo.title}
         </title>
       </Head>
+
       <Box
         component="main"
         sx={{
+          width: "100%",
           flexGrow: 1,
-          py: 4,
+          py: 8,
         }}
       >
-        <Container maxWidth="lg" style={{backgroundColor:"transparent"}}>
-          <Box sx={{ mb: 4 }}>
-            <NextLink
-              href="/projects"
-              passHref
-            >
-              <Link
-                color="textPrimary"
-                sx={{
-                  alignItems: 'center',
-                  display: 'flex'
-                }}
+        <Container maxWidth="lg">
+          <Box sx={{mb: 4}}>
+            <Stack direction={"row"} alignItems="center" justifyContent="flex-start">
+              <Box>
+                <NextLink
+                  href="/projects"
+                  passHref
+                >
+                  <Link
+                    color="white"
+                    sx={{
+                      alignItems: 'center',
+                      display: 'flex'
+                    }}
+                  >
+                    <ArrowBackIcon
+                      fontSize="large"
+                      sx={{ mr: 1 }}
+                    />
+                  </Link>
+                </NextLink>
+              </Box>
+              <Typography variant="h4"
+                          style={{
+                            background: "-webkit-linear-gradient(45deg, #e9e1fe 30%, #e3eafc 90%)",
+                            WebkitBackgroundClip: "text",
+                            WebkitTextFillColor: "transparent"
+                          }}
               >
-                <ArrowBackIcon
-                  fontSize="small"
-                  sx={{ mr: 1 }}
-                />
-                <Typography variant="subtitle2">
-                  Projects
-                </Typography>
-              </Link>
-            </NextLink>
+                Project Information
+              </Typography>
+            </Stack>
           </Box>
           <Grid
             container
-            spacing={4}
+            spacing={3}
           >
             <Grid
               item
               xs={12}
               lg={8}
             >
-              <Card>
+              <Card
+                sx={{background:'rgba(255, 255, 255, 0.1)',
+                  borderColor: '#54576a',
+                  borderWidth: 1,
+                  borderStyle: 'solid'
+                }}
+              >
                 <CardHeader
                   disableTypography
                   title={(
@@ -355,20 +408,20 @@ const CompanyDetails = () => {
                         }}
                         variant="rounded"
                       />
-                      <Typography variant="h6" align={"left"}>
+                      <Typography variant="h6" align={"left"} color={"white"}>
                         {projectInfo.symbol}
                       </Typography>
                     </Stack>
                     <Stack direction={"row"} spacing={1} sx={{marginLeft: 2, marginTop: 1}} alignItems="flex-start">
-                      <Typography variant="body1" align={"left"}>
+                      <Typography variant="body1" align={"left"} color={"white"}>
                         ${lastPrice}
                       </Typography>
                       <Typography variant="body2" align={"left"} sx={{color: getChangeRateByPercentageColor(dayChangeRateByPercentage)}}>
                         {dayChangeRateByPercentage}%
                       </Typography>
                     </Stack>
-                    <Box component="span" sx={{ marginTop: 5 }}>
-                      <Chart series={series}/>
+                    <Box component="span" sx={{ marginTop: 5, background: 'transparent' }}>
+                      <Chart series={series} style={{paddingLeft: 8, paddingRight: 8}}/>
                     </Box>
                   </Stack>
                 </CardContent>

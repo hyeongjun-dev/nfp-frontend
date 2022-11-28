@@ -2,9 +2,11 @@ import {useEffect, useRef, useState} from "react";
 import Chart from "react-apexcharts";
 import {Box} from "@mui/material";
 import {api} from "../../api/apiClient";
+import {useTheme} from "@mui/material/styles";
 
 export const ProjectChart = ({symbol}) => {
-  const chartRef = useRef()
+  const chartRef = useRef();
+  const theme = useTheme();
   const [series, setSeries] = useState([])
 
   async function getPriceHistory(symbol) {
@@ -42,6 +44,7 @@ export const ProjectChart = ({symbol}) => {
           autoScaleYaxis: true,
         }
       },
+      colors: [theme.palette.primary.main, '#7783DB'],
       dataLabels: {
         enabled: false
       },
@@ -60,11 +63,38 @@ export const ProjectChart = ({symbol}) => {
       },
       yaxis: {
         title: {
-          text: 'Price'
+          text: 'Price',
+          style: {
+            fontSize: '12px',
+            color:  'white',
+            fontFamily: 'Helvetica, Arial, sans-serif',
+            fontWeight: 400,
+            cssClass: 'apexcharts-xaxis-label',
+          },
+        },
+        labels: {
+          show: true,
+          style: {
+            colors: "white",
+            fontSize: '12px',
+            fontFamily: 'Helvetica, Arial, sans-serif',
+            fontWeight: 400,
+            cssClass: 'apexcharts-xaxis-label',
+          },
         },
       },
       xaxis: {
         type: 'datetime',
+        labels: {
+          show: true,
+          style: {
+            colors: "white",
+            fontSize: '12px',
+            fontFamily: 'Helvetica, Arial, sans-serif',
+            fontWeight: 400,
+            cssClass: 'apexcharts-xaxis-label',
+          },
+        },
       },
       tooltip: {
         shared: false,
@@ -82,7 +112,14 @@ export const ProjectChart = ({symbol}) => {
 
   return (
     <Box sx={{display: "flex", justifyContent: "center"}}>
-      <Box sx={{width: "95%",}}>
+      <Box sx={{
+        width: "95%",
+        marginTop: 4,
+        justifyContent: "center",
+        alignContent: "center",
+        marginLeft: 5,
+        marginBottom: 4
+      }}>
         <Chart options={options.options} series={series} type="area" width={"95%"} height={300}/>
       </Box>
     </Box>

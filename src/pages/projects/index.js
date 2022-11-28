@@ -12,6 +12,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  TextField,
   Tooltip,
   Typography
 } from "@mui/material";
@@ -21,15 +22,22 @@ import {useEffect, useState} from "react";
 import {withComma} from "../../utils/number";
 import {ProjectTitle} from "../../components/projects/ProjectTitle";
 import {ProjectInfo} from "../../components/projects/ProjectInfo";
-import {
-  InformationCircleOutlined as InformationCircleOutlinedIcon
-} from "../../icons/information-circle-outlined";
-import {Chart} from "../../components/chart";
+import {InformationCircleOutlined as InformationCircleOutlinedIcon} from "../../icons/information-circle-outlined";
 import dynamic from "next/dynamic";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import StringHelper from "../../utils/StringHelper";
 import {apiConfig} from "../../config";
+import {styled} from "@mui/material/styles";
+
+
+const CssTextField = styled(TextField)(({theme}) => ({
+  '& .MuiOutlinedInput-root': {
+    '&:hover fieldset': {
+      borderColor: theme.palette.text.secondary,
+    },
+  },
+}))
 
 const Projects = () => {
   const [projects, setProjects] = useState([])
@@ -40,6 +48,9 @@ const Projects = () => {
     ssr: false
   });
 
+  const COLUMN_WIDTHS = [100, 100, 100, 100, 100, 100, 100];
+  const COLUMN_LEFT_MARGINS = [4, 0, 0, 0, 0, 2, 0];
+
   useEffect(() => {
     api.get(`/project`)
       .then(async (response) => {
@@ -49,7 +60,6 @@ const Projects = () => {
         for (const d of response.data) {
           d.displayInfo = responseOfProjectInfoData.hasOwnProperty(StringHelper.trimAndUppercase(d.symbol));
         }
-
         setProjects(response.data)
         let totalMarketCap = response.data.reduce((lastValue, currentValue) => {
           return lastValue + parseInt(currentValue.totalMarketCap)
@@ -67,162 +77,196 @@ const Projects = () => {
   }
 
   return (
-    <Box
-      component="main"
-      sx={{
-        flexGrow: 1,
-        py: 7
-      }}
-    >
-      <Container sx={{mb: 4}}>
-        <ProjectTitle/>
-        <ProjectInfo totalMarketCap={totalMarketCap}/>
-        <Card sx={{mt: 4}}>
-          <CardHeader
-            avatar={<ReportIcon/>}
-            title="Project List"
-            action={(
-              <Tooltip title="MarketCap = totalSupply x price">
-                <InformationCircleOutlinedIcon sx={{color: 'action.active'}}/>
-              </Tooltip>
-            )}
-          />
-          <TableContainer>
-            <Table sx={{border: "0.5px solid #dadada"}}>
-              <TableHead>
-                <TableRow>
-                  <TableCell align="center">
-                    <Box ml={1}>
-                      #
-                    </Box>
-                  </TableCell>
-                  <TableCell>
-                    <Box ml={5}>
-                      PROJECT
-                    </Box>
-                  </TableCell>
-                  <TableCell align="center">
-                    TOKEN
-                  </TableCell>
-                  <TableCell align="right">
-                    PRICE
-                  </TableCell>
-                  <TableCell align="right">
-                    MARKET CAP
-                  </TableCell>
-                  <TableCell align="right">
-                    24H
-                  </TableCell>
-                  <TableCell align="right">
-
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {projects.map((project, index) => {
-                  return (
-                    <>
-                      <TableRow
-                        key={index}
-                        hover={project.displayInfo}
-                        sx={{
-                          '&:last-child td': {
-                            border: 0
-                          },
-                          background: "#ffffff",
-                          hover: {
-                            color: "#374151"
-                          },
-                          cursor: project.displayInfo ? "pointer": undefined
-                        }}
-                      >
-                        <TableCell align="center" onClick={event => goToProjectInfoPage(event, project)}>
-                          <Box ml={1} onClick={event => goToProjectInfoPage(event, project)}>
-                            {index + 1}
-                          </Box>
-                        </TableCell>
-                        <TableCell onClick={event => goToProjectInfoPage(event, project)}>
-                          <Box
-                            ml={5}
-                            sx={{
-                              alignItems: 'center',
-                              display: 'flex'
-                            }}
-                          >
-                            <a target='_blank'>
-                              <img
-                                style={{display: 'inline-block', verticalAlign: 'middle'}}
-                                width={30}
-                                height={30}
-                                src={project.image}
-                              />
-                            </a>
+    <>
+      <Box
+        component="main"
+        sx={{
+          width: "100%",
+          flexGroxw: 1,
+          py: 7,
+        }}
+      >
+        <Container maxWidth="lg">
+          <ProjectTitle/>
+          <ProjectInfo totalMarketCap={totalMarketCap}/>
+          <Card
+            sx={{
+              background: 'rgba(255, 255, 255, 0.1)',
+              borderColor: '#54576a',
+              borderWidth: 1,
+              borderStyle: 'solid',
+              mt: 4
+            }}
+          >
+            <CardHeader
+              avatar={<ReportIcon sx={{color:"white"}}/>}
+              title={<Typography variant="h6" color="white">Project List</Typography>}
+              action={(
+                <Tooltip title="MarketCap = totalSupply x price">
+                  <InformationCircleOutlinedIcon sx={{color: 'action.active'}}/>
+                </Tooltip>
+              )}
+            />
+            <TableContainer>
+              <Table sx={{border: "0.5px solid #dadada"}}>
+                <TableHead
+                  sx={{background:'rgba(255, 255, 255, 0.1)',
+                    borderColor: '#54576a',
+                    borderWidth: 1,
+                    borderStyle: 'solid',
+                    mt: 4
+                  }}
+                >
+                  <TableRow>
+                    <TableCell width={COLUMN_WIDTHS[0]} align="left">
+                      <Box ml={COLUMN_LEFT_MARGINS[0]} color={"white"}>
+                        {"#"}
+                      </Box>
+                    </TableCell>
+                    <TableCell width={COLUMN_WIDTHS[1]} align="left">
+                      <Box ml={COLUMN_LEFT_MARGINS[1]} color={"white"}>
+                        PROJECT
+                      </Box>
+                    </TableCell>
+                    <TableCell width={COLUMN_WIDTHS[2]} align="left">
+                      <Box ml={COLUMN_LEFT_MARGINS[2]} color={"white"}>
+                        TOKEN
+                      </Box>
+                    </TableCell>
+                    <TableCell width={COLUMN_WIDTHS[3]} align="left">
+                      <Box ml={COLUMN_LEFT_MARGINS[3]} color={"white"}>
+                        PRICE
+                      </Box>
+                    </TableCell>
+                    <TableCell width={COLUMN_WIDTHS[4]} align="left">
+                      <Box ml={COLUMN_LEFT_MARGINS[4]} color={"white"}>
+                        MARKET CAP
+                      </Box>
+                    </TableCell>
+                    <TableCell width={COLUMN_WIDTHS[5]} align="left">
+                      <Box ml={COLUMN_LEFT_MARGINS[5]} color={"white"}>
+                        24H
+                      </Box>
+                    </TableCell>
+                    <TableCell width={COLUMN_WIDTHS[6]} align="left">
+                    </TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody
+                  sx={{
+                    background:'transparent',
+                    borderColor: '#54576a',
+                    borderWidth: 1,
+                    borderStyle: 'solid',
+                    mt: 4,
+                  }}
+                >
+                  {projects.map((project, index) => {
+                    return (
+                      <>
+                        <TableRow
+                          key={index}
+                          sx={{
+                            "&:hover": {
+                              backgroundColor: "#5149e5 !important"
+                            },
+                          }}
+                        >
+                          <TableCell width={COLUMN_WIDTHS[0]} align="left" onClick={event => goToProjectInfoPage(event, project)}>
+                            <Box ml={COLUMN_LEFT_MARGINS[0]} onClick={event => goToProjectInfoPage(event, project)}>
                               <Typography
-                                sx={{ml: 2}}
                                 variant="subtitle2"
+                                color={"white"}
                               >
-                                {project.project}
+                                {index + 1}
                               </Typography>
-                            {/*{ project.displayInfo ?*/}
-                            {/*    <a href={`/projects/info/${StringHelper.trimAndUppercase(project.symbol)}`} target={"_blank"}>*/}
-                            {/*      <OpenInNew sx={{ml: 1, mt:1}} style={{ fontSize: 15 }}/>*/}
-                            {/*    </a> :*/}
-                            {/*    ""*/}
-                            {/*}*/}
-                          </Box>
-                        </TableCell>
-                        <TableCell align="center" onClick={event => goToProjectInfoPage(event, project)}>
-                          <Typography variant="subtitle2">
-                            {project.symbol}
-                          </Typography>
-                        </TableCell>
-                        <TableCell sx={{textAlign: 'right'}} onClick={event => goToProjectInfoPage(event, project)}>
-                          <Typography variant="subtitle2">
-                            {'$' + parseFloat(project.price)}
-                          </Typography>
-                        </TableCell>
-                        <TableCell sx={{textAlign: 'right'}} onClick={event => goToProjectInfoPage(event, project)}>
-                          <Typography variant="subtitle2">
-                            {'$' + withComma(parseInt(project.totalMarketCap))}
-                          </Typography>
-                        </TableCell>
-                        <TableCell sx={{textAlign: 'right'}} onClick={event => goToProjectInfoPage(event, project)}>
-                          <Typography variant="subtitle2">
-                            {isNaN(project.dayChangeRateByPercentage) ? '-' : parseFloat(project.dayChangeRateByPercentage) + '%'}
-                          </Typography>
-                        </TableCell>
-                        <TableCell sx={{textAlign: 'right', ":hover": false}}>
-                          <IconButton onClick={() => {
-                            // let newOpenMap = {...openMap}
-                            // newOpenMap[index] = openMap[index] !== undefined ? !openMap[index] : true
-                            // setOpenMap(newOpenMap)
-                            if(activatedTarget === project.symbol){
-                              setOpen(!open)
-                            }else{
-                              setOpen(true)
-                            }
-                            setActivatedTarget(project.symbol)
-                          }}>
-                            {activatedTarget === project.symbol && open ? <KeyboardArrowUpIcon/> : <KeyboardArrowDownIcon/>}
-                          </IconButton>
-                        </TableCell>
-                      </TableRow>
-                      <TableRow key={'chart_' + index}>
-                        <TableCell style={{ paddingBottom: 0, paddingTop: 0, border: "none"}} colSpan={7}>
-                          <Collapse in={activatedTarget === project.symbol && open} unmountOnExit>
-                            <Chart symbol={project.symbol}/>
-                          </Collapse>
-                        </TableCell>
-                      </TableRow>
-                    </>
-                  )
-                })}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Card>
-      </Container>
-    </Box>
+                            </Box>
+                          </TableCell>
+                          <TableCell width={COLUMN_WIDTHS[1]} onClick={event => goToProjectInfoPage(event, project)}>
+                            <Box
+                              ml={COLUMN_LEFT_MARGINS[1]}
+                              sx={{
+                                alignItems: 'center',
+                                display: 'flex',
+                              }}
+                            >
+                              <a target='_blank'>
+                                <img
+                                  style={{display: 'inline-block', verticalAlign: 'middle'}}
+                                  width={30}
+                                  height={30}
+                                  src={project.image}
+                                />
+                              </a>
+                                <Typography
+                                  sx={{ml: 2}}
+                                  variant="subtitle2"
+                                  color={"white"}
+                                >
+                                  {project.project}
+                                </Typography>
+                            </Box>
+                          </TableCell>
+                          <TableCell width={COLUMN_WIDTHS[2]} align="left" onClick={event => goToProjectInfoPage(event, project)}>
+                            <Box ml={COLUMN_LEFT_MARGINS[2]}>
+                              <Typography color={"white"} variant="subtitle2">
+                                {project.symbol}
+                              </Typography>
+                            </Box>
+                          </TableCell>
+                          <TableCell width={COLUMN_WIDTHS[3]} align={"left"} onClick={event => goToProjectInfoPage(event, project)}>
+                            <Box ml={COLUMN_LEFT_MARGINS[3]}>
+                              <Typography variant="subtitle2" color={"white"}>
+                                {'$' + parseFloat(project.price)}
+                              </Typography>
+                            </Box>
+                          </TableCell>
+                          <TableCell width={COLUMN_WIDTHS[4]} align={"left"} onClick={event => goToProjectInfoPage(event, project)}>
+                            <Box ml={COLUMN_LEFT_MARGINS[4]}>
+                              <Typography variant="subtitle2" color={"white"}>
+                                {'$' + withComma(parseInt(project.totalMarketCap))}
+                              </Typography>
+                            </Box>
+                          </TableCell>
+                          <TableCell width={COLUMN_WIDTHS[5]} align={"left"} onClick={event => goToProjectInfoPage(event, project)}>
+                            <Box ml={COLUMN_LEFT_MARGINS[5]}>
+                              <Typography variant="subtitle2" color={"white"}>
+                                {isNaN(project.dayChangeRateByPercentage) ? '-' : parseFloat(project.dayChangeRateByPercentage) + '%'}
+                              </Typography>
+                            </Box>
+                          </TableCell>
+                          <TableCell width={COLUMN_WIDTHS[6]} align={"left"} sx={{":hover": false}}>
+                            <Box ml={COLUMN_LEFT_MARGINS[6]}>
+                              <IconButton onClick={() => {
+                                if(activatedTarget === project.symbol){
+                                  setOpen(!open)
+                                }else{
+                                  setOpen(true)
+                                }
+                                setActivatedTarget(project.symbol)
+                              }}>
+                                {activatedTarget === project.symbol && open ? <KeyboardArrowUpIcon sx={{color:"white"}}/> : <KeyboardArrowDownIcon sx={{color:"white"}}/>}
+                              </IconButton>
+                            </Box>
+                          </TableCell>
+                        </TableRow>
+                        <TableRow key={'chart_' + index}>
+                          <TableCell style={{ paddingBottom: 0, paddingTop: 0, border: "none"}} colSpan={7}>
+                            <Collapse in={activatedTarget === project.symbol && open} unmountOnExit>
+                              <Chart symbol={project.symbol}/>
+                            </Collapse>
+                          </TableCell>
+                        </TableRow>
+                      </>
+                    )
+                  })}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Card>
+        </Container>
+      </Box>
+    </>
   )
 };
 

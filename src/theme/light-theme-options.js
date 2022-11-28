@@ -13,11 +13,11 @@ const neutral = {
 };
 
 const background = {
-  default: '#F9FAFC',
+  default: '#0B0F19',
   paper: '#FFFFFF'
 };
 
-const divider = '#E6E8F0';
+const divider = '#4c547a';
 
 const primary = {
   main: '#5048E5',
