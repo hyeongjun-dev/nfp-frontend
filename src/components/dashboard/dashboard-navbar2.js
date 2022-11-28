@@ -1,8 +1,20 @@
 import {useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {useTranslation} from 'react-i18next';
-import {Avatar, Badge, Box, ButtonBase, Grid, IconButton, Stack, Toolbar, Tooltip, useMediaQuery} from '@mui/material';
-import {styled} from '@mui/material/styles';
+import {
+  Avatar,
+  Badge,
+  Box,
+  Button,
+  ButtonBase,
+  Grid,
+  IconButton,
+  Link,
+  Stack,
+  Toolbar,
+  Tooltip,
+  useMediaQuery
+} from '@mui/material';
 import {AccountPopover} from './account-popover';
 import {ContactsPopover} from './contacts-popover';
 import {ContentSearchDialog} from './content-search-dialog';
@@ -12,9 +24,7 @@ import {Bell as BellIcon} from '../../icons/bell';
 import {UserCircle as UserCircleIcon} from '../../icons/user-circle';
 import {Search as SearchIcon} from '../../icons/search';
 import {Users as UsersIcon} from '../../icons/users';
-import {Connect} from "../../connect/connect";
-import SelectChainMenu from "../selectChainMenu";
-import {Menu as MenuIcon} from '../../icons/menu';
+import NextLink from "next/link";
 
 
 const languages = {
@@ -251,8 +261,6 @@ export const DashboardNavbar = (props) => {
   const mdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
   const smUp = useMediaQuery((theme) => theme.breakpoints.up('sm'));
 
-
-
   return (
     <>
       <Box
@@ -271,11 +279,29 @@ export const DashboardNavbar = (props) => {
         >
           <Stack direction={"row"} justifyContent={"space-between"} sx={{display: "flex", flex:1}}>
             <Stack direction={"row"}>
-              {lgUp ? <LogoMark marginLeft={"24px"}></LogoMark> : <div></div>}
-              {lgUp ? <div/> : (
-                <LogoMark width={130}></LogoMark>
-              )}
+              {lgUp ? <LogoMark marginLeft={"24px"}></LogoMark> :  <LogoMark width={130}></LogoMark>}
             </Stack>
+            <Stack>
+              <Box sx={{ flexGrow: 1, marginTop: "2px" }}>
+                <NextLink
+                  href="https://twitter.com/NFP2021"
+                  passHref
+                >
+                  <Link target="_blank">
+                    <Button
+                      color="primary"
+                      component="a"
+                      fullWidth
+                      variant="contained"
+                      size={"small"}
+                    >
+                      {('Twitter')}
+                    </Button>
+                  </Link>
+                </NextLink>
+              </Box>
+            </Stack>
+
           </Stack>
         </Toolbar>
       </Box>

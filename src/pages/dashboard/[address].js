@@ -52,9 +52,21 @@ const Dashboard = () => {
   const {connected} = useSelector((state) => state.connect);
   const {ownerStxAddress} = useConnect();
 
+  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
+  const mdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
   const smUp = useMediaQuery((theme) => theme.breakpoints.up('sm'), {
     noSsr: true
   });
+
+  const getIconSize = () => {
+    if (lgUp)
+      return "38px"
+    if (mdUp)
+      return "38px"
+    if (smUp)
+      return "30px"
+    return "30px"
+  };
 
   const router = useRouter();
 
@@ -193,7 +205,7 @@ const Dashboard = () => {
                 <Box
                   sx={{
                     maxWidth: '100%',
-                    minWidth: smUp ? 400 : 200,
+                    minWidth: mdUp ? 400 : (smUp ? 300 : 100),
                   }}
                 >
                   <CssTextField
@@ -207,7 +219,7 @@ const Dashboard = () => {
                       ),
                     }}
                     // color="secondary"
-                    placeholder="Your wallet address"
+                    placeholder={smUp ? "Your wallet address" : "Wallet address"}
                     sx={{
                       '& .MuiInputBase-root': {
                         color: 'white',
