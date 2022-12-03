@@ -31,22 +31,22 @@ const Stacking = () => {
     gtm.push({event: 'page_view'});
 
     async function callPoxInfo() {
-      let response = await getPoxInfo();
-      if (response.data.status === 200) {
-        let body = response.data;
-        setStackingInfo({
-          apy: body.apy,
-          rewardsCyclePeriod: parseInt(body.reward_cycle_length / 6 / 24),
-          currentCycle: body.currentCycle,
-          nextCycle: body.next_cycle.id,
-          deadLine: (body.next_reward_cycle_in - 200),
-          nextRewardCycleIn: body.next_reward_cycle_in,
-          selfStacking: body.current_cycle.min_threshold_ustx / 1000000,
-          delegationStacking: stackingInfo.delegationStacking,
-          nextRewardStartBlockHeight: body.next_cycle.reward_phase_start_block_height,
-          poolAddress: body.poolAddress
-        })
-      }
+      // let response = await getPoxInfo();
+      // if (response.data.status === 200) {
+      //   let body = response.data;
+      //   setStackingInfo({
+      //     apy: body.apy,
+      //     rewardsCyclePeriod: parseInt(body.reward_cycle_length / 6 / 24),
+      //     currentCycle: body.currentCycle,
+      //     nextCycle: body.next_cycle.id,
+      //     deadLine: (body.next_reward_cycle_in - 200),
+      //     nextRewardCycleIn: body.next_reward_cycle_in,
+      //     selfStacking: body.current_cycle.min_threshold_ustx / 1000000,
+      //     delegationStacking: stackingInfo.delegationStacking,
+      //     nextRewardStartBlockHeight: body.next_cycle.reward_phase_start_block_height,
+      //     poolAddress: body.poolAddress
+      //   })
+      // }
     }
     callPoxInfo()
   }, []);

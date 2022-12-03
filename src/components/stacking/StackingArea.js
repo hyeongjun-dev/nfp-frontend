@@ -7,7 +7,8 @@ import {
   Divider,
   InputAdornment,
   OutlinedInput, Slider, TextField,
-  Typography
+  Typography,
+  makeStyles, Drawer
 } from "@mui/material";
 import CountUp from "react-countup";
 import {StackingDelegateBtn} from "./StackingDelegateBtn";
@@ -19,10 +20,12 @@ import {useStxAddresses} from "../../connect/hooks";
 import {useSelector} from "../../store";
 import {SeverityPill} from "../severity-pill";
 import Image from 'next/image'
+import {useTheme} from "@mui/material/styles";
 
 
 export const StackingArea = (props) => {
   const {connected} = useSelector((state) => state.connect);
+  const theme = useTheme();
 
   const [delegateAmount, setDelegateAmount] = useState();
   const [stxBalance, setStxBalance] = useState(0);
@@ -126,7 +129,13 @@ export const StackingArea = (props) => {
               type={"number"}
               placeholder={"MIN 100 STX"}
               value={delegateAmount}
-              sx={{fontSize: "0.9rem"}}
+              sx={{fontSize: "0.9rem",
+                color: 'white',
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: theme.palette.primary.main,
+                  borderWidth: 2,
+                }
+              }}
               endAdornment={
                 <InputAdornment position="end">
                   <Button onClick={() => {
