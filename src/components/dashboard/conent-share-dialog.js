@@ -13,6 +13,7 @@ import {
   WhatsappIcon,
   WhatsappShareButton,
 } from "react-share";
+import {useTheme} from "@mui/material/styles";
 
 export const ContentShareDialog = (props) => {
   const { onClose, open, ...other } = props;
@@ -23,29 +24,43 @@ export const ContentShareDialog = (props) => {
       maxWidth="sm"
       onClose={onClose}
       open={open}
+      sx={{
+        backdropFilter: "blur(1px)"
+      }}
+      PaperProps={{
+        style: { borderRadius: 8,
+          borderWidth: 1,
+          borderColor: '#5c6182',
+          borderStyle: 'solid',
+        }
+      }}
       {...other}>
       <Box
         sx={{
           alignItems: 'center',
-          backgroundColor: 'primary.main',
-          color: 'primary.contrastText',
           display: 'flex',
           justifyContent: 'space-between',
           px: 3,
-          py: 2
+          py: 2,
+          background:'#253165',
+          borderWidth: 0,
+          borderBottomWidth: 1,
+          borderColor: '#5c6182',
+          borderStyle: 'solid',
         }}
       >
-        <Typography variant="h6">
+        <Typography variant="h6" sx={{color:"#979cb5"}}>
           Share
         </Typography>
         <IconButton
           color="inherit"
           onClick={onClose}
         >
-          <XIcon fontSize="small" />
+          <XIcon fontSize="small" sx={{color:"#979cb5"}}/>
         </IconButton>
       </Box>
-      <DialogContent>
+      <DialogContent sx={{backgroundColor: "#253165"
+      }}>
         <Stack direction="row" spacing={2} justifyContent="center"
                alignItems="center">
           <Stack direction="column">
@@ -55,12 +70,23 @@ export const ContentShareDialog = (props) => {
               quote={"NFP STUDIO"}
               hashtag="#nfp"
             >
-              <FacebookIcon
-                borderRadius={48}
-                size={48}
-              />
+              <Stack
+                sx={{
+                  '&:hover': {
+                    borderRadius: 24,
+                    boxShadow: "0 0 10px #9ecaed",
+                    width: 48,
+                    height: 48
+                  },
+                }}
+              >
+                <FacebookIcon
+                  borderRadius={48}
+                  size={48}
+                />
+              </Stack>
             </FacebookShareButton>
-            <Typography alignSelf={"center"} variant="caption" display="block">Facebook</Typography>
+            <Typography alignSelf={"center"} variant="caption" display="block" sx={{color: "white", marginTop: "4px"}}>Facebook</Typography>
           </Stack>
           <Stack direction="column">
             <WhatsappShareButton
@@ -68,12 +94,23 @@ export const ContentShareDialog = (props) => {
               title={"NFP STUDIO"}
               separator=":: "
             >
-              <WhatsappIcon
-                borderRadius={48}
-                size={48}
-              />
+              <Stack
+                sx={{
+                  '&:hover': {
+                    borderRadius: 24,
+                    boxShadow: "0 0 10px #9ecaed",
+                    width: 48,
+                    height: 48
+                  },
+                }}
+              >
+                <WhatsappIcon
+                  borderRadius={48}
+                  size={48}
+                />
+              </Stack>
             </WhatsappShareButton>
-            <Typography alignSelf={"center"} variant="caption" display="block">WhatsApp</Typography>
+            <Typography alignSelf={"center"} variant="caption" display="block" sx={{color: "white", marginTop: "4px"}}>WhatsApp</Typography>
           </Stack>
           <Stack direction="column">
             <TwitterShareButton
@@ -81,36 +118,69 @@ export const ContentShareDialog = (props) => {
               title={"NFP STUDIO"}
               hashtags={["nfp"]}
             >
-              <TwitterIcon
-                borderRadius={48}
-                size={48}
-              />
+              <Stack
+                sx={{
+                  '&:hover': {
+                    borderRadius: 24,
+                    boxShadow: "0 0 10px #9ecaed",
+                    width: 48,
+                    height: 48
+                  },
+                }}
+              >
+                <TwitterIcon
+                  borderRadius={48}
+                  size={48}
+                />
+              </Stack>
             </TwitterShareButton>
-            <Typography alignSelf={"center"} variant="caption" display="block">Twitter</Typography>
+            <Typography alignSelf={"center"} variant="caption" display="block" sx={{color: "white", marginTop: "4px"}}>Twitter</Typography>
           </Stack>
           <Stack direction="column">
             <TelegramShareButton
               url={"https://app.nfpstudio.io/"}
               title={"NFP STUDIO"}
             >
-              <TelegramIcon
-                borderRadius={48}
-                size={48}
-              />
+              <Stack
+                sx={{
+                  '&:hover': {
+                    borderRadius: 24,
+                    boxShadow: "0 0 10px #9ecaed",
+                    width: 48,
+                    height: 48
+                  },
+                }}
+              >
+                <TelegramIcon
+                  borderRadius={48}
+                  size={48}
+                />
+              </Stack>
             </TelegramShareButton>
-            <Typography alignSelf={"center"} variant="caption" display="block">Telegram</Typography>
+            <Typography alignSelf={"center"} variant="caption" display="block" sx={{color: "white", marginTop: "4px"}}>Telegram</Typography>
           </Stack>
           <Stack direction="column">
             <RedditShareButton
               url={"https://app.nfpstudio.io/"}
               title={"NFP STUDIO"}
             >
-              <RedditIcon
-                borderRadius={48}
-                size={48}
-              />
+              <Stack
+                sx={{
+                  '&:hover': {
+                    borderRadius: 24,
+                    boxShadow: "0 0 10px #9ecaed",
+                    width: 48,
+                    height: 48
+                  },
+                }}
+              >
+                <RedditIcon
+                  borderRadius={48}
+                  size={48}
+                />
+              </Stack>
             </RedditShareButton>
-            <Typography alignSelf={"center"} variant="caption" display="block">Reddit</Typography>
+            <Typography alignSelf={"center"} variant="caption" display="block" sx={{color: "white", marginTop: "4px"}}>Reddit</Typography>
           </Stack>
         </Stack>
       </DialogContent>
