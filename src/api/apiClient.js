@@ -11,3 +11,27 @@ export const api = axios.create({
     "Content-Type": "application/json",
   },
 });
+
+export const stackingClubApi = axios.create(
+  {
+    baseURL: "https://api.stacking.club/api",
+    withCredentials: false,
+    timeout: 15000,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  }
+);
+
+export const stacksApi = axios.create(
+  {
+    baseURL: "https://stacks-node-api.stacks.co",
+    withCredentials: false,
+    timeout: 15000,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  }
+)

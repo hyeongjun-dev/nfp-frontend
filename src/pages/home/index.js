@@ -4,8 +4,27 @@ import Head from "next/head";
 import {LandingLayout} from "../../components/dashboard/landing-layout";
 import Particles from "react-particles";
 import {loadFull} from "tsparticles";
-import {useTheme} from "@mui/material/styles";
+import { keyframes } from '@emotion/react'
+import {styled} from "@mui/material/styles";
 
+
+const marquee = keyframes`
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+`
+
+const Track = styled('div')(({ theme }) => ({
+  display: 'flex',
+  direction: "row",
+  flexWrap: 'nowrap',
+  willChange: "transform",
+  alignItems: 'center',
+  animation: `${marquee} 23s linear infinite`,
+}));
 
 const ChainSelectButton = ({src, chainName, color="white", onClick=null, active= true}) => {
   const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
@@ -20,6 +39,16 @@ const ChainSelectButton = ({src, chainName, color="white", onClick=null, active=
     if (smUp)
       return 64
     return 32
+  };
+
+  const getTextVariant = () => {
+    if (lgUp)
+      return "subtitle2";
+    if (mdUp)
+      return "subtitle2";
+    if (smUp)
+      return "subtitle2";
+    return "caption";
   };
 
   const getIconStyle = () => {
@@ -38,10 +67,7 @@ const ChainSelectButton = ({src, chainName, color="white", onClick=null, active=
   }
 
   const getIconTextColor = () => {
-    if (active) {
-      return "rgba(255, 255, 255, 1)"
-    }
-    return "rgba(255, 255, 255, 0.25)"
+    return "rgba(255, 255, 255, 1)"
   }
 
   return (
@@ -59,7 +85,7 @@ const ChainSelectButton = ({src, chainName, color="white", onClick=null, active=
             borderColor: color,
             borderStyle: "solid",
             zIndex: 10,
-            opacity: active ? 1 : 0.25
+            opacity: 1,//active ? 1 : 0.25
           }}
           width={getIconSize()}
           height={getIconSize()}
@@ -68,11 +94,54 @@ const ChainSelectButton = ({src, chainName, color="white", onClick=null, active=
         </img>
       </IconButton>
       <Stack sx={{flex:1}} flexDirection={'row'} justifyContent={"center"}>
-        <Typography sx={{fontWeight: 'bold'}} variant={"subtitle2"} color={getIconTextColor()}>{chainName}</Typography>
+        <Typography sx={{fontWeight: 'bold'}} variant={getTextVariant()} color={getIconTextColor()}>{chainName}</Typography>
       </Stack>
     </Stack>
   )
 }
+
+const readyForNextIconData = [
+  {
+    chainName: "Ethereum",
+    fileName: "eth_icon.svg",
+    color: "white",
+  },
+  {
+    chainName: "Boba",
+    fileName: "boba_icon.svg",
+    color: "black",
+  },
+  {
+    chainName: "Solana",
+    fileName: "solana_icon.svg",
+    color: "white",
+  },
+  {
+    chainName: "Bnb",
+    fileName: "bnb_icon.svg",
+    color: "white",
+  },
+  {
+    chainName: "Near",
+    fileName: "near_icon.svg",
+    color: "white",
+  },
+  {
+    chainName: "Ava",
+    fileName: "avalanche_icon.svg",
+    color: "white",
+  },
+  {
+    chainName: "Polkadot",
+    fileName: "polygon_icon.svg",
+    color: "white",
+  },
+  {
+    chainName: "Fantom",
+    fileName: "fantom_icon.svg",
+    color: "white",
+  },
+]
 
 const Home = () => {
 
@@ -121,6 +190,26 @@ const Home = () => {
   const particlesLoaded = useCallback(async container => {
     // await console.log(container);
   }, []);
+
+  const getWillSupportIconSize = () => {
+    if (lgUp)
+      return 64
+    if (mdUp)
+      return 64
+    if (smUp)
+      return 64
+    return 32
+  };
+
+  const getWillSupportLayerWidth = () => {
+    if (lgUp)
+      return 600
+    if (mdUp)
+      return 550
+    if (smUp)
+      return 380
+    return 280
+  };
 
   return (
     <>
@@ -241,8 +330,22 @@ const Home = () => {
               <ChainSelectButton onClick={()=>{
                 window.location.href = `/projects/aptos`;
               }} src={"/static/icons/aptos_icon.svg"} chainName={"Aptos"}/>
-              <ChainSelectButton src={"/static/icons/eth_icon.svg"} chainName={"Ethereum"} active={false}/>
-              <ChainSelectButton src={"/static/icons/boba_icon.svg"} chainName={"Boba"} active={false} color={"black"}/>
+              {/*<ChainSelectButton src={"/static/icons/boba_icon.svg"} chainName={"Boba"} active={false} color={"black"}/>*/}
+            </Stack>
+            <Stack direction={"column"} alignItems={"center"} spacing={2} sx={{marginTop: 8}}>
+              <Typography sx={{color: "white"}} variant={"h5"}>
+                Coming Soon
+              </Typography>
+              <Stack direction={"row"} sx={{background:'', flex:1, overflow: 'hidden', maxWidth: getWillSupportLayerWidth()}}>
+                <Track>
+                  {readyForNextIconData.concat(readyForNextIconData).map((e, index) => {
+                    return (
+                      <Box key={index} sx={{paddingLeft: 1, paddingRight: 1}}>
+                        <ChainSelectButton  src={`/static/icons/${e.fileName}`} chainName={e.chainName} active={false} color={e.color}/>
+                      </Box>)
+                  })}
+                </Track>
+              </Stack>
             </Stack>
           </Stack>
         </Stack>
@@ -254,7 +357,7 @@ const Home = () => {
               ) :
               (
                 <Stack direction={"column"} sx={{flex:1}} justifyContent={"center"}>
-                  <Typography color={"white"} variant={"body2"}>© 2022, DESPREAD LABS</Typography>
+                  <Typography color={"white"} variant={"body2"}>© 2022, DESPREAD LABS.</Typography>
                   <Typography color={"white"} variant={"body2"} align={"center"}>ALL RIGHTS RESERVED.</Typography>
                 </Stack>
               )

@@ -8,8 +8,7 @@ import {StackingArea} from "../../components/stacking/StackingArea";
 import {StackingCurrent} from "../../components/stacking/StackingCurrent";
 import {StackingActivities} from "../../components/stacking/StackingActivities";
 import {StackingInfo} from "../../components/stacking/StackingInfo";
-import {getPoxInfo} from "../../api/stacking/stacking";
-
+import {stackingClubApi, stacksApi} from "../../api/apiClient";
 
 const Stacking = () => {
   const [displayBanner, setDisplayBanner] = useState(true);
@@ -31,22 +30,44 @@ const Stacking = () => {
     gtm.push({event: 'page_view'});
 
     async function callPoxInfo() {
-      // let response = await getPoxInfo();
-      // if (response.data.status === 200) {
-      //   let body = response.data;
-      //   setStackingInfo({
-      //     apy: body.apy,
-      //     rewardsCyclePeriod: parseInt(body.reward_cycle_length / 6 / 24),
-      //     currentCycle: body.currentCycle,
-      //     nextCycle: body.next_cycle.id,
-      //     deadLine: (body.next_reward_cycle_in - 200),
-      //     nextRewardCycleIn: body.next_reward_cycle_in,
-      //     selfStacking: body.current_cycle.min_threshold_ustx / 1000000,
-      //     delegationStacking: stackingInfo.delegationStacking,
-      //     nextRewardStartBlockHeight: body.next_cycle.reward_phase_start_block_height,
-      //     poolAddress: body.poolAddress
-      //   })
-      // }
+      try {
+        let stackingInfoData = {
+          apy: 0.0,
+          rewardsCyclePeriod: '-',
+          currentCycle: 0,
+          nextCycle: 0,
+          deadLine: 0,
+          nextRewardCycleIn: -9999,
+          selfStacking: '-',
+          delegationStacking: 100,
+          nextRewardStartBlockHeight : 0,
+          poolAddress: ''
+        }
+        let res = await stackingClubApi.get("/overview/stats");
+        if (res.status === 200) {
+          const {apy, currentCycle} = res.data;
+          const poolAddress = 'SP2H485NJWV1M1XVS3N8CM64KM205G25X5JZ8FR04';
+          stackingInfoData.apy = apy;
+          stackingInfoData.currentCycle = currentCycle;
+          stackingInfoData.poolAddress = poolAddress;
+        } else {
+          console.log(res);
+        }
+        res = await stacksApi.get('/v2/pox');
+        if (res.status === 200) {
+          const {reward_cycle_length, next_reward_cycle_in, current_cycle, next_cycle} = res.data;
+          stackingInfoData.rewardsCyclePeriod = parseInt(reward_cycle_length / 6 / 24);
+          stackingInfoData.deadLine = next_reward_cycle_in - 200;
+          stackingInfoData.nextRewardCycleIn = next_reward_cycle_in;
+          stackingInfoData.selfStacking = current_cycle.min_threshold_ustx / 1000000;
+          stackingInfoData.nextRewardStartBlockHeight = next_cycle.reward_phase_start_block_height;
+        } else {
+          console.log(res);
+        }
+        setStackingInfo(stackingInfoData);
+      } catch (e) {
+        console.log(e);
+      }
     }
     callPoxInfo()
   }, []);

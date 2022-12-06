@@ -20,17 +20,17 @@ const background = {
 const divider = '#2D3748';
 
 const primary = {
-  main: '#7582EB',
-  light: '#909BEF',
-  dark: '#515BA4',
-  contrastText: neutral[900]
+  main: '#5048E5',
+  light: '#828DF8',
+  dark: '#3832A0',
+  contrastText: '#FFFFFF'
 };
 
 const secondary = {
   main: '#10B981',
   light: '#3FC79A',
   dark: '#0B815A',
-  contrastText: neutral[900]
+  contrastText: '#FFFFFF'
 };
 
 const success = {
@@ -161,11 +161,12 @@ export const darkThemeOptions = {
   },
   palette: {
     action: {
-      active: neutral[400],
-      hover: 'rgba(255, 255, 255, 0.04)',
-      selected: 'rgba(255, 255, 255, 0.08)',
-      disabledBackground: 'rgba(255, 255, 255, 0.12)',
-      disabled: 'rgba(255, 255, 255, 0.26)'
+      active: neutral[500],
+      focus: 'rgba(55, 65, 81, 0.12)',
+      hover: 'rgba(55, 65, 81, 0.04)',
+      selected: 'rgba(55, 65, 81, 0.08)',
+      disabledBackground: 'rgba(255, 255, 255, 0.1)',
+      disabled: 'rgba(156, 157, 168, 0.5)'
     },
     background,
     divider,
