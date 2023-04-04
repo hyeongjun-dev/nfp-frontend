@@ -17,7 +17,6 @@ export const localNode = localMocknet;
 export const localAuth = false;
 export const mocknet = localMocknet;
 
-console.log({ localNode, localAuth, beta, mocknet, testnet, mainnet });
 export const authOrigin = localAuth
   ? 'http://localhost:3000'
   : beta

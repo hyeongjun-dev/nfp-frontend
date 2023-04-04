@@ -4,8 +4,8 @@
   "author": "Devias",
   "private": true,
   "scripts": {
-    "start:local": "export NEXT_PUBLIC_CHAIN=mainnet && next -p 10300",
-    "start:dev": "export NEXT_PUBLIC_CHAIN=testnet && next -p 10301",
+    "start:local": "export NEXT_PUBLIC_CHAIN=testnet && next -p 10300",
+    "start:dev": "export NEXT_PUBLIC_CHAIN=mainnet && next -p 10301",
     "start:prod": "export NEXT_PUBLIC_CHAIN=mainnet && npm run build && npm run start",
     "build": "next build",
     "start": "export NEXT_PUBLIC_CHAIN=mainnet && next start -p 10302",
@@ -32,6 +32,9 @@
     "@emotion/react": "^11.4.1",
     "@emotion/server": "^11.4.0",
     "@emotion/styled": "^11.3.0",
+    "@fortawesome/fontawesome-svg-core": "^6.1.2",
+    "@fortawesome/free-brands-svg-icons": "^6.1.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@fullcalendar/common": "^5.9.0",
     "@fullcalendar/core": "^5.9.0",
     "@fullcalendar/daygrid": "^5.9.0",
@@ -78,8 +81,10 @@
     "react-hot-toast": "^1.0.2",
     "react-i18next": "^11.8.5",
     "react-markdown": "^5.0.3",
+    "react-particles": "^2.5.3",
     "react-quill": "2.0.0-beta.4",
     "react-redux": "^7.2.4",
+    "react-share": "^4.4.0",
     "react-syntax-highlighter": "^15.4.3",
     "redux": "^4.1.0",
     "redux-devtools-extension": "^2.13.9",
@@ -88,13 +93,19 @@
     "simplebar-react": "^2.3.6",
     "stylis": "^4.0.10",
     "stylis-plugin-rtl": "^2.1.1",
+    "tsparticles": "^2.5.3",
     "typescript": "4.4.4",
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^13.0.5",
     "@svgr/webpack": "^5.5.0",
-    "eslint": "^7.32.0",
+    "@typescript-eslint/parser": "^5.43.0",
+    "eslint": "7.32.0",
     "eslint-config-next": "12.0.3-canary.7",
-    "next-transpile-modules": "^9.0.0"
+    "eslint-plugin-react": "^7.31.10",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "next-transpile-modules": "^9.0.0",
+    "prettier": "2.7.1"
   }
 }

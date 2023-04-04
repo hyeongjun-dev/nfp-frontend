@@ -70,17 +70,30 @@ export const AccountFarmTokenList = (props) => {
   };
 
   return (
-    <Card {...props}>
+    <Card {...props}
+      sx={{background:'rgba(255, 255, 255, 0.1)',
+        borderColor: '#54576a',
+        borderWidth: 1,
+        borderStyle: 'solid'
+      }}
+    >
       <CardHeader
-        avatar={<ChartBarIcon/>}
-        title="Farm Balance"
+        avatar={<ChartBarIcon sx={{color:"white"}}/>}
+        title={<Typography variant="h6" color="white">Farm Balance</Typography>}
       />
       {
         props.farmLoading ?
           <Skeleton variant="rectangular" width={"100%"} height={100}/>
           :
           <Table>
-            <TableHead>
+            <TableHead
+              sx={{background:'rgba(255, 255, 255, 0.1)',
+                borderColor: '#54576a',
+                borderWidth: 1,
+                borderStyle: 'solid',
+                mt: 4
+              }}
+            >
               <TableRow>
                 <TableCell>
                   <TableSortLabel
@@ -88,7 +101,7 @@ export const AccountFarmTokenList = (props) => {
                     direction={symbolDirection}
                     onClick={() => handleSortBySymbol('symbol')}
                   >
-                    <Box ml={2}>
+                    <Box ml={2} color={"white"}>
                       Protocol
                     </Box>
                   </TableSortLabel>
@@ -99,7 +112,9 @@ export const AccountFarmTokenList = (props) => {
                     direction={balanceDirection}
                     onClick={() => handleSortByBalance('balance')}
                   >
-                    Pair
+                    <Box color={"white"}>
+                      Pair
+                    </Box>
                   </TableSortLabel>
                 </TableCell>
                 <TableCell>
@@ -108,7 +123,9 @@ export const AccountFarmTokenList = (props) => {
                     direction={priceDirection}
                     onClick={() => handleSortByPrice('price')}
                   >
-                    Balance
+                    <Box color={"white"}>
+                      Balance
+                    </Box>
                   </TableSortLabel>
                 </TableCell>
                 <TableCell>
@@ -117,7 +134,9 @@ export const AccountFarmTokenList = (props) => {
                     direction={valueDirection}
                     onClick={() => handleSortByValue('value')}
                   >
-                    Value
+                    <Box color={"white"}>
+                      Value
+                    </Box>
                   </TableSortLabel>
                 </TableCell>
               </TableRow>
@@ -140,7 +159,7 @@ export const AccountFarmTokenList = (props) => {
                       }}
                       ml={2}
                     >
-                      <a href={token.url} target='_blank'>
+                      <a href={token.url} rel="noreferrer" target='_blank'>
                         <img
                           style={{display: 'inline-block', verticalAlign: 'middle'}}
                           width={24}
@@ -152,22 +171,23 @@ export const AccountFarmTokenList = (props) => {
                       <Typography
                         sx={{ml: 2}}
                         variant="subtitle2"
+                        color={"white"}
                       >{token.protocol}
                       </Typography>
                     </Box>
                   </TableCell>
                   <TableCell width="25%">
-                    <Typography variant="subtitle2">
+                    <Typography variant="subtitle2" color={"white"}>
                       {token.pair}
                     </Typography>
                   </TableCell>
                   <TableCell width="20%">
-                    <Typography variant="subtitle2">
+                    <Typography variant="subtitle2" color={"white"}>
                       {asNumFormat(token.amount)}
                     </Typography>
                   </TableCell>
                   <TableCell width="30%">
-                    <Typography variant="subtitle2">
+                    <Typography variant="subtitle2" color={"white"}>
                       {asDollarFormat(token.value)}
                     </Typography>
                   </TableCell>

@@ -9,7 +9,8 @@ export const createTheme = (config) => {
     {
       direction: config.direction
     });
-
+  // console.log("aaa");
+  // console.log(config);
   if (config.responsiveFontSizes) {
     theme = responsiveFontSizes(theme);
   }

@@ -13,11 +13,11 @@ const neutral = {
 };
 
 const background = {
-  default: '#F9FAFC',
+  default: '#0B0F19',
   paper: '#FFFFFF'
 };
 
-const divider = '#E6E8F0';
+const divider = '#4c547a';
 
 const primary = {
   main: '#5048E5',
@@ -37,34 +37,34 @@ const success = {
   main: '#14B8A6',
   light: '#43C6B7',
   dark: '#0E8074',
-  contrastText: '#FFFFFF'
+  contrastText: neutral[900]
 };
 
 const info = {
   main: '#2196F3',
   light: '#64B6F7',
   dark: '#0B79D0',
-  contrastText: '#FFFFFF'
+  contrastText: neutral[900]
 };
 
 const warning = {
   main: '#FFB020',
   light: '#FFBF4C',
   dark: '#B27B16',
-  contrastText: '#FFFFFF'
+  contrastText: neutral[900]
 };
 
 const error = {
   main: '#D14343',
   light: '#DA6868',
   dark: '#922E2E',
-  contrastText: '#FFFFFF'
+  contrastText: neutral[900]
 };
 
 const text = {
   primary: '#121828',
   secondary: '#65748B',
-  disabled: 'rgba(55, 65, 81, 0.48)'
+  disabled: 'rgba(255, 255, 255, 0.48)'
 };
 
 export const lightThemeOptions = {
@@ -164,8 +164,8 @@ export const lightThemeOptions = {
       focus: 'rgba(55, 65, 81, 0.12)',
       hover: 'rgba(55, 65, 81, 0.04)',
       selected: 'rgba(55, 65, 81, 0.08)',
-      disabledBackground: 'rgba(55, 65, 81, 0.12)',
-      disabled: 'rgba(55, 65, 81, 0.26)'
+      disabledBackground: 'rgba(255, 255, 255, 0.1)',
+      disabled: 'rgba(156, 157, 168, 0.5)'
     },
     background,
     divider,

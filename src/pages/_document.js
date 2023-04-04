@@ -49,6 +49,16 @@ class CustomDocument extends Document {
             name="theme-color"
             content="#111827"
           />
+          <meta property="og:locale" content="en_US"/>
+          <meta property="og:type" content="website"/>
+          <meta property="og:title" content="NFP STUDIO"/>
+          <meta property="og:description" content="Build Tools for Stacks Community."/>
+          <meta property="og:url" content="https://app.nfpstudio.io"/>
+          <meta property="og:image" content="https://nfp-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/despread_studio.png"/>
+          <meta name="twitter:card" content="summary_large_image"/>
+          <meta name="twitter:site" content="@CryptoDevGang"/>
+          <meta name="twitter:creator" content="@CryptoDevGang"/>
+          <meta name="twitter:image" content="https://nfp-bucket.s3.ap-northeast-2.amazonaws.com/thumbnail/despread_studio.png"/>
         </Head>
         <body>
         <Main />
@@ -65,6 +75,7 @@ CustomDocument.getInitialProps = async (ctx) => {
   const { extractCriticalToChunks } = createEmotionServer(cache);
 
   ctx.renderPage = () => originalRenderPage({
+    // eslint-disable-next-line react/display-name
     enhanceApp: (App) => (props) => (
       <App
                 emotionCache={cache}

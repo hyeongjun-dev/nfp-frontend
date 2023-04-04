@@ -26,6 +26,18 @@ class StringHelper {
             (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
         );
     };
+
+    static trim = (str) => {
+        return str.replace(/(\s*)/g, "");
+    }
+
+    static trimAndUppercase = (str) => {
+        return this.trim(str).toUpperCase();
+    }
+
+    static isEqualTrimAndIgnoreCase = (a, b) => {
+        return this.trimAndUppercase(a) === this.trimAndUppercase(b);
+    }
 }
 
 export default StringHelper;

@@ -30,6 +30,7 @@ const reduceChildRoutes = ({ acc, item, depth, path }) => {
         open={partialMatch}
         path={item.path}
         title={item.title}
+        disabled={item.disabled}
       >
         {renderNavItems({
           depth: depth + 1,
@@ -49,6 +50,7 @@ const reduceChildRoutes = ({ acc, item, depth, path }) => {
         key={key}
         path={item.path}
         title={item.title}
+        disabled={item.disabled}
       />
     );
   }

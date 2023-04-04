@@ -17,6 +17,7 @@ export const PropertyListItem = (props) => {
           <Typography
             sx={{ minWidth: align === 'vertical' ? 'inherit' : 180 }}
             variant="subtitle2"
+            color={"white"}
           >
             {label}
           </Typography>
@@ -30,7 +31,7 @@ export const PropertyListItem = (props) => {
           >
             {children || (
               <Typography
-                color="inherit"
+                color="white"
                 variant="body2"
               >
                 {value}

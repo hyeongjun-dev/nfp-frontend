@@ -15,6 +15,7 @@ import {
 import { Search as SearchIcon } from '../../../icons/search';
 import { Tip } from '../../tip';
 
+// eslint-disable-next-line react/display-name
 export const ChatContactSearch = forwardRef((props, ref) => {
   const { isFocused, onChange, onClickAway, onFocus, onSelect, query, results, ...other } = props;
 
